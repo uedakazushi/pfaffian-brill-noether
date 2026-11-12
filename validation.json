@@ -1,6 +1,6 @@
 {
   "date": "2026-11-13",
-  "status": "Content and destination runtime validation complete; source cleanup follows verified push",
+  "status": "COMPLETE: destination verified, source dedicated files retired after persistence",
   "source_commit": "ce947b61c60fec4c44f42eca9524fcd1c4357d7e",
   "original_tex_sha256": {
     "papers/sections/pfaffian_formal_deformations_gluing.tex": "32d694616be827a7b2848849e8857f3d73944d106712f5e308bb33b4edc23091",
@@ -62,5 +62,12 @@
   "audit_limits": [
     "External theorem hypotheses and full proofs not independently audited",
     "Old large-rank input matrices and integer certificates missing"
-  ]
+  ],
+  "source_cleanup": {
+    "commit": "7edd5953043b427cc3e3715f32fc6f7fac056342",
+    "dedicated_files_removed": 10,
+    "retained_shared_file": "papers/sections/pfaffian_formal_deformations_gluing.tex",
+    "remaining_entries_checked": 13,
+    "remaining_input_sha256_matches": 117
+  }
 }

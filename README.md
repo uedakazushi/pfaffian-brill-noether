@@ -13,3 +13,5 @@ python3 computations/verify_pfaffian_vertex_and_tate.py
 日本語LuaLaTeX・LuaTeX-ja・HaranoAjiフォント・latexmk、Python3とSymPyが必要。PDFと中間物はbuild/で非追跡。VS Codeはリポジトリをフォルダとして開き、既定のLaTeX Workshop recipeを使う。Actions・force pushなし。
 
 一般Poisson分類・量子化はnc-cubic論文Aの既知入力であり、本稿の独立新成果と数えない。原稿内に証明があること、有限検算、独立監査、新規性を区別する。欠けた旧大型行列と未監査範囲は `notes/research_notes.md`、実行範囲は `validation.json`。
+
+移管先で277頁の全文組版、全頁描画・レイアウト概観、10TeX入力・618ラベル・581参照・121引用・70文献の閉包検査、Schur/Tate厳密計算を実行済み。未解決参照・重複・overfull・文字欠落は0。これは全証明の独立監査ではない。

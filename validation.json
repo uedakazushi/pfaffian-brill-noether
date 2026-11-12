@@ -1,6 +1,6 @@
 {
   "date": "2026-11-13",
-  "status": "initial content saved before runtime verification",
+  "status": "Content and destination runtime validation complete; source cleanup follows verified push",
   "source_commit": "ce947b61c60fec4c44f42eca9524fcd1c4357d7e",
   "original_tex_sha256": {
     "papers/sections/pfaffian_formal_deformations_gluing.tex": "32d694616be827a7b2848849e8857f3d73944d106712f5e308bb33b4edc23091",
@@ -15,5 +15,52 @@
     "papers/sections/brill_noether_boundary_geometry.tex": "4604115c8c8211ce00f68e1adeebd42dc1345a90543488e7a9cd1c288696f4c9"
   },
   "shared_at_source": "papers/sections/pfaffian_formal_deformations_gluing.tex",
-  "mathematical_independent_audit": false
+  "mathematical_independent_audit": false,
+  "source_check": {
+    "tex_inputs": 10,
+    "labels": 618,
+    "references": 581,
+    "citations": 121,
+    "bibliography": 70,
+    "sha256": {
+      "papers/pfaffian_brill_noether_technical.tex": "b4790b579fc9d487231dc572dd78a148000675b9516480d78407c6cf2a324178",
+      "papers/sections/pfaffian_formal_deformations_gluing.tex": "32d694616be827a7b2848849e8857f3d73944d106712f5e308bb33b4edc23091",
+      "papers/sections/brill_noether_boundary_geometry.tex": "4604115c8c8211ce00f68e1adeebd42dc1345a90543488e7a9cd1c288696f4c9",
+      "papers/sections/pfaffian_contact_low_order.tex": "4c38f7c2fbe1e84356985e452ea7673fd0e7b6f831ba820c64e8a80807e56c2b",
+      "papers/sections/pfaffian_contact_high_order.tex": "ae252de4ffdb4febda4b185edd52e16fb8aff15a7708087c0bfa1713262d919c",
+      "papers/sections/pfaffian_vertex_structure.tex": "bd65835edf4c5416a9ab0651056b3f6232f839d1bcf1ec048139cfc37cd0b271",
+      "papers/sections/pfaffian_contact_classification.tex": "138b79792168991b96b7de303628092a07c42f87865c208886730ab7bfafb7c9",
+      "papers/sections/pfaffian_equivariant_algebraization.tex": "17816d6b3e7f16d7afdd97e293cbb4770a93f4483b9a12fe79508c3b96c200ae",
+      "papers/sections/pfaffian_hessian_geometry.tex": "3d323bb648d09768ae7e27ffb6172c320900312fb87a9233a2abd2cdaeca1153",
+      "papers/sections/pfaffian_computation_audit.tex": "4d66deb142d713047c7f58425b13146de2bb31bc2101eaa14899303f94837f88"
+    },
+    "limit": "Static closure only, not mathematical proof audit."
+  },
+  "pages": 277,
+  "lualatex_build": true,
+  "typesetting_failures": {
+    "undefined_references": false,
+    "undefined_citations": false,
+    "duplicates": false,
+    "overfull": false,
+    "missing_glyphs": false
+  },
+  "all_pages_rendered_and_layout_overview_inspected": true,
+  "visual_scope": "277-page layout overview; not formula-by-formula mathematical audit",
+  "pdf_sha256": "6ba313b4cef07351d751011eff2d27e39951176d80f6df81f2ac6c783913f3d5",
+  "finite_calculations": {
+    "executed": true,
+    "checks": [
+      "symbolic all-r,c Schur Hilbert identity",
+      "5890/4929/20330 finite Tate spaces",
+      "exact MC recurrence orders 2 through 6",
+      "four literal blocks",
+      "Hessian coefficient 1/96"
+    ],
+    "old_large_rank_certificates_reproduced": false
+  },
+  "audit_limits": [
+    "External theorem hypotheses and full proofs not independently audited",
+    "Old large-rank input matrices and integer certificates missing"
+  ]
 }

@@ -1,0 +1,195 @@
+\section{Hessian摂動の局所特異性とPfaffian graph上の解消}
+\label{sec:pfaffian-hessian-local-geometry}
+本節は2026年11月1日のPfaffian境界原稿（旧論文III）の
+第23--24節に含まれる結果を、証明のある現行TeXとして再構成する。
+旧稿の普遍非線形接触分類（第21--22節）と
+全次数の頂点核の決定（第10節）はまだ本文を照合・統合していない。
+従って本節は、実際のBrill--Noether境界が下記の
+正規形と接触同値であることを新たに証明するものではない。
+固定した滑らかな三次式と係数$c$の模型についての定理である。
+
+\subsection{五変数Hessian摂動のMilnor環とTjurina環}
+$V$を五次元複素ベクトル空間とし、
+$F\in\operatorname{Sym}^3V^*$が滑らかな
+$X=V_+(F)\subset\PP(V)$を定めるとする。
+座標$x_0,\ldots,x_4$を選び
+\[
+ H_F=\det\left(\frac{\partial^2 F}{\partial x_i\partial x_j}\right),
+ \qquad g_{F,c}=F+cH_F,\qquad c\in\CC
+\]
+と置く。$H_F$は五次斉次式である。
+
+\begin{lemma}[正則な初期式によるfiltered Koszul比較]
+\label{lem:hessian-filtered-koszul}
+$R=\CC[[x_0,\ldots,x_4]]$、$\mathfrak m=(x_0,\ldots,x_4)$とし、
+$b_i\in\mathfrak m^2$の二次初期式$b_i^{(2)}$が
+$\CC[x_0,\ldots,x_4]$の正則列をなすとする。
+$J=(b_0,\ldots,b_4)$なら
+\[
+ \operatorname{gr}_{\mathfrak m}(R/J)
+ \simeq\CC[x_0,\ldots,x_4]/(b_0^{(2)},\ldots,b_4^{(2)}),
+ \qquad J\cap\mathfrak m^{k+2}=\mathfrak m^kJ\quad(k\ge0).
+\]
+\end{lemma}
+\begin{proof}
+$v=\sum_i a_ib_i$の係数の最小次数を$r$とする。
+次数$r+2$の斉次項が消えるなら、
+$\sum_i a_i^{(r)}b_i^{(2)}=0$である。
+正則列の斉次syzygyはKoszul syzygyで生成される。
+このKoszul syzygyを$b_i$に持ち上げた零関係式を引けば、
+$v$を保ったまま係数の最小次数を上げられる。
+$\mathfrak m$進完備性と逐次の次数上昇を使って、
+$v\in\mathfrak m^{k+2}$の表示係数を$\mathfrak m^k$に選べる。
+従って交叉公式が得られる。同じ手順で初期イデアルが
+$(b_i^{(2)})$と一致するので、associated gradedの同型も従う。
+\end{proof}
+
+\begin{proposition}[Hessian摂動のMilnor数とTjurina数]
+\label{prop:hessian-milnor-tjurina}
+任意の$c\in\CC$について$g_{F,c}$は原点に孤立臨界点を持ち、
+Milnor数とTjurina数は
+\[
+ \mu(g_{F,c})=32,\qquad
+ \tau(g_{F,c})=
+ \begin{cases}32&c=0,\\31&c\ne0.\end{cases}
+\]
+Milnor環の$\mathfrak m$進Hilbert級数は$(1+t)^5$、
+$c\ne0$のTjurina環のそれは
+$1+5t+10t^2+10t^3+5t^4$である。
+従って$c\ne0$の五変数超曲面芽は斉次三次錐と
+接触同値でない。
+\end{proposition}
+\begin{proof}
+$F_i=\partial_iF$の共通の射影零点があれば、
+Eulerの等式から$F$の特異点を与えてしまう。
+従って五つの二次式$F_i$は正則列であり、
+\[
+ M_F=\CC[x_0,\ldots,x_4]/(F_0,\ldots,F_4),\qquad
+ \operatorname{Hilb}(M_F;t)=(1+t)^5.
+\]
+次数五のsocleは一次元で、$[H_F]$がその非零生成元である。
+これは$(F_i)$と$(x_i)$のKoszul分解を
+$F_i=\frac12\sum_jF_{ij}x_j$によって比較すれば、
+最上位Torの生成元が$2^{-5}H_F$へ移ることからも確認できる。
+
+$g_i=\partial_i g_{F,c}=F_i+c\,\partial_iH_F$の
+二次初期式は$F_i$なので、
+補題\ref{lem:hessian-filtered-koszul}により
+\[
+ \operatorname{gr}_{\mathfrak m}
+ \bigl(R/(g_0,\ldots,g_4)\bigr)\simeq M_F.
+\]
+したがってMilnor環の次元は32で、
+$[H_F]$はなお非零の一次元socleを生成する。
+Eulerの公式からMilnor環において
+\[
+ 3[F]+5c[H_F]=0,\qquad
+ [g_{F,c}]=-\frac{2c}{3}[H_F].
+\]
+$c=0$なら$[g_{F,c}]=0$であり、
+$c\ne0$なら$[g_{F,c}]$は非零socle元となる。
+Tjurina環はこの元でMilnor環を割ったものなので
+表示した次元とHilbert級数が従う。
+接触同値はTjurina環を保つため、最後の主張も従う。
+\end{proof}
+
+\begin{remark}[係数の二つの軌道]
+$c,c'\ne0$なら$\lambda^2c=c'$を満たす$\lambda$に対して
+$\lambda^{-3}g_{F,c}(\lambda x)=g_{F,c'}(x)$。
+従ってこの固定$F$の五変数模型で$c=0$と$c\ne0$は
+二つの接触同値類となる。この事実だけから、
+十変数のPfaffian境界の全接触分類は導けない。
+\end{remark}
+
+\subsection{Pfaffian graphと相対次元五の二次ファイブレーション}
+$W=\bigwedge^2V$を十次元空間とし、
+五つの$4\times4$ Pfaffianからなる写像を
+$q:W\to V^*$（体積形式による同一視を含む）とする。
+$\Sigma=\{q=0\}$をrank二以下の錐とし、
+\[
+ {\cal H}=\operatorname{Bl}_{\Sigma}W
+ \simeq \operatorname{Tot}_{\PP^4}(\bigwedge^2\mathcal Q)
+\]
+をPfaffian graphの標準的な模型とする。
+$\mathcal Q$は階数四の普遍商束である。
+基底の斉次代表$p$と束内のPfaffian二次式$r$を使うと
+$q(a)=rp$であり、$p'=up$に対して$r'=u^{-1}r$となる。
+
+\begin{proposition}[Pfaffian境界模型のstrict transform]
+\label{prop:pfaffian-hessian-strict-transform}
+$D_{F,c}=V(F(q(a))+cH_F(q(a)))\subset W$とおく。
+その$\mathcal H$上のstrict transformは
+\[
+ \widetilde D_{F,c}
+ =\{F(p)+cr^2H_F(p)=0\}\subset\mathcal H.
+\]
+これは適切な$\PP^4$上の三次線束の大域切断で定義され、
+零切断上の$X$の近傍で滑らかである。
+\end{proposition}
+\begin{proof}
+斉次性により
+\[
+ F(rp)+cH_F(rp)
+ =r^3\bigl(F(p)+cr^2H_F(p)\bigr).
+\]
+例外因子$r=0$が括弧の零集合の全成分とはならないから、
+三重の例外因子を除いた表示がstrict transformを与える。
+$p'=up,\ r'=u^{-1}r$の変換で括弧は$u^3$倍される。
+零切断$r=0$では方程式の微分が$dF$に一致する。
+$X$の滑らかさから$dF\ne0$であり、結論が従う。
+\end{proof}
+
+\begin{proposition}[四次元孤立特異点の解消とのファイバー積]
+\label{prop:pfaffian-hessian-quadric-fibration}
+$Y_{F,c}=V(g_{F,c})\subset\CC^5$とし、
+$\mathcal L=\operatorname{Bl}_0\CC^5
+=\operatorname{Tot}_{\PP^4}\mathcal O(-1)$とする。
+線束座標$t$により
+\[
+ \widetilde Y_{F,c}=\{F(p)+ct^2H_F(p)=0\}
+ \subset\mathcal L
+\]
+と書けば、$X$の近傍で$\widetilde Y_{F,c}$は滑らかな四次元空間である。
+$\widetilde q:\mathcal H\to\mathcal L$を
+$(p,a)\mapsto(p,r(a))$とすると
+\[
+ \widetilde D_{F,c}
+ =\mathcal H\times_{\mathcal L}\widetilde Y_{F,c}.
+\]
+この写像は相対次元五の二次ファイブレーションで、
+臨界部分およびその像はいずれも零切断$X$である。
+解析局所またはétale局所で写像は
+\[
+ (u_1,u_2,u_3,z_1,\ldots,z_6)\longmapsto
+ (u_1,u_2,u_3,z_1z_2+z_3z_4+z_5z_6)
+\]
+と同型である。
+\end{proposition}
+\begin{proof}
+$x=tp$を$F(x)+cH_F(x)$に代入して$t^3$を除くと
+$\widetilde Y_{F,c}$の方程式が得られる。
+零切断では$dF\ne0$であり滑らか。
+式に$t=r(a)$を代入するとファイバー積の等式が得られる。
+各rank六の束ファイバー上で$r$は非退化二次形式である。
+$r(a)=t$で定義されたファイバーの垂直微分が零となるのは
+$a=0$のときだけで、同時に$t=0$を要求する。
+滑らかな因子$X$に沿って$t$を法座標、
+残りを局所座標$u_1,u_2,u_3$に取る。
+非退化二次形式の局所標準化から表示した模型を得る。
+\end{proof}
+\begin{remark}[射影のファイバーのHessian因子]
+$c\ne0$、$p\in X$に対し
+$\widetilde D_{F,c}\to\PP^4$のファイバーは
+$H_F(p)\ne0$なら$\{r^2=0\}\subset\CC^6$、
+$H_F(p)=0$なら$\CC^6$である。
+この射影の選択はPfaffian graphの模型に依存し、
+元の対象モジュライ上の選択不要な不変量とはまだ主張しない。
+\end{remark}
+
+\begin{remark}[検証の状態]
+ここでの数学的証明は、旧論文IIIの第23--24節に対応する
+記述を現行TeXへ再構成したもので、今回の独立監査を意味しない。
+一般の実際のBrill--Noether境界との接触同値、
+とりわけ$F(q)+H_F(q)/96$への普遍的・解析的な正規化は
+別の結果であり、本節では入力としても仮定なしに使用しない。
+\end{remark}

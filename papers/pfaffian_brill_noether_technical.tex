@@ -1,0 +1,548 @@
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage[margin=23mm,headheight=16pt]{geometry}
+\usepackage{luatexja-fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}[Scale=MatchLowercase]
+\setmainjfont{HaranoAjiMincho-Regular.otf}[BoldFont=HaranoAjiGothic-Medium.otf]
+\setsansjfont{HaranoAjiGothic-Medium.otf}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\newcommand{\mathscr}{\mathcal}
+\usepackage{booktabs,array,enumitem,xcolor,fancyhdr,needspace}
+\usepackage[unicode,colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!50!black,citecolor=blue!45!black]{hyperref}
+\hypersetup{pdftitle={非可換 cubic threefold：形式変形空間・残余圏・貼り合わせと点加群},pdfauthor={Research note}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{0.28em}
+\setlist{nosep,leftmargin=1.7em}
+\allowdisplaybreaks[2]
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small 非可換 cubic threefold}
+\fancyhead[R]{\small 現行研究原稿}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\theoremstyle{definition}
+\newtheorem{theorem}{命題}[section]
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{corollary}[theorem]{系}
+\newcommand{\CC}{\mathbb C}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\Aff}{\mathbb A}
+\newcommand{\Ku}{\operatorname{Ku}}
+\newcommand{\HH}{\operatorname{HH}}
+\newcommand{\HP}{\operatorname{HP}}
+\newcommand{\Gr}{\operatorname{Gr}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Spf}{\operatorname{Spf}}
+\newcommand{\Def}{\operatorname{Def}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Perf}{\operatorname{Perf}}
+\newcommand{\qgr}{\operatorname{qgr}}
+\newcommand{\Dsg}{D_{\mathrm{sg}}}
+\newcommand{\Art}{\operatorname{Art}_{\CC}}
+\newcommand{\NC}{\operatorname{NC}}
+\newcommand{\Pois}{\operatorname{Pois}}
+\newcommand{\RHom}{\operatorname{RHom}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\rk}{\operatorname{rank}}
+\newcommand{\frakm}{\mathfrak m}
+\newcommand{\MF}{\operatorname{MF}}
+\newcommand{\CatDef}{\operatorname{CatDef}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\title{\bfseries 非可換 cubic threefold\\[0.35em]
+\large 形式変形空間・残余圏・貼り合わせと点加群}
+\author{}
+\date{2026年11月13日・第19版}
+
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+\begin{abstract}
+Pfaffian合成$P_F=F(q(a))$に付随する普遍同変接触商を
+$\CC[\overline U_4,\overline J_6][\Theta_8]\oplus\CC\cdot[H_{10}]$と全次数で決定する。
+Pfaffian係数環上のSchur分解、二行のBott計算と\v{C}ech--Koszul比較により、
+非平坦な代入後の頂点核を制御する。
+先頭normal項の主イデアルの補空間によって、全普遍形式摂動の一意切片を与え、
+全摂動クラス内の有限決定性は八次normal係数が非零であることと同値と示す。
+実際のBrill--Noether境界ではnormal係数が全次数で消え、Tate規格化と合わせて
+$P_F+H_{10}/96$への普遍形式右同値を得る。
+有限Tate方程式と同変近似を用いて、同じ右同値を零切断の各点で代数的・解析的に実現する。
+付随する五変数Hessian摂動のMilnor数32、非零係数でのTjurina数31、
+Pfaffian graph上の二次ファイブレーションも記述する。
+形式変形・残余圏・貼り合わせの基礎と、個々の有限計算の検証範囲を区別する。
+一般の無限正規代表の収束性、固定三次式で全座標変更を許す分類、
+網羅的な先行研究上の新規性は主張しない。
+\end{abstract}
+
+\input{papers/sections/pfaffian_formal_deformations_gluing.tex}
+
+\input{papers/sections/brill_noether_boundary_geometry.tex}
+
+\input{papers/sections/pfaffian_contact_low_order.tex}
+
+\input{papers/sections/pfaffian_contact_high_order.tex}
+
+\input{papers/sections/pfaffian_vertex_structure.tex}
+\input{papers/sections/pfaffian_contact_classification.tex}
+\input{papers/sections/pfaffian_equivariant_algebraization.tex}
+\input{papers/sections/pfaffian_hessian_geometry.tex}
+
+\input{papers/sections/pfaffian_computation_audit.tex}
+\begin{thebibliography}{99}
+\small
+\bibitem{PfArtinAnalytic} M.~Artin, \emph{On the solutions of analytic equations},
+Invent. Math. 5 (1968), 277--291, Theorem 1.2;
+\url{https://doi.org/10.1007/BF01389777}.
+\bibitem{PfArtinAlgebraic} M.~Artin, \emph{Algebraic approximation of structures over complete local rings},
+Publ. Math. IHES 36 (1969), 23--58, Theorem 1.10;
+\url{https://www.numdam.org/item/PMIHES_1969__36__23_0/}.
+\bibitem{PfRWW} C.~Raicu, J.~Weyman and E.~E.~Witt,
+\emph{Local cohomology with support in ideals of maximal minors and sub-maximal Pfaffians},
+Adv. Math. 250 (2014), 596--610; \url{https://arxiv.org/abs/1305.1719},
+\S2.1 (2.2), Theorem 2.2, Example 1.2.
+\bibitem{PfWeyman} J.~Weyman, \emph{Cohomology of Vector Bundles and Syzygies},
+Cambridge Tracts in Mathematics 149, 2003, Chapter 2;
+\url{https://doi.org/10.1017/CBO9780511546556}.
+\bibitem{PfBM} E.~Bierstone and P.~Milman,
+\emph{Invariant solutions of analytic equations}, Enseign. Math. (2) 25 (1979), 115--130,
+Theorem A, p.116; \url{https://doi.org/10.5169/seals-50374}.
+\bibitem{Yek}
+A. Yekutieli,
+\emph{Twisted deformation quantization of algebraic varieties},
+Adv. Math. 268 (2015), 241--305.
+Definitions 2.7--2.8, Theorem 3.6, Corollary 11.2.
+\url{https://arxiv.org/abs/0905.0488}
+
+\bibitem{May}
+E. Mayanskiy,
+\emph{Poisson cohomology of two Fano threefolds}.
+Lemma 1, Section 2.2, Theorems 1--2.
+\url{https://arxiv.org/abs/1303.5916}
+
+\bibitem{Kon}
+M. Kontsevich,
+\emph{Deformation quantization of Poisson manifolds, I},
+Lett. Math. Phys. 66 (2003), 157--216.
+Sections 4.6, 6, 8.
+\url{https://arxiv.org/abs/q-alg/9709040}
+
+\bibitem{EG}
+P. Etingof and V. Ginzburg,
+\emph{Noncommutative del Pezzo surfaces and Calabi--Yau algebras},
+J. Eur. Math. Soc. 12 (2010), 1371--1416.
+Sections 3, 7--8.
+\url{https://arxiv.org/abs/0709.3593}
+
+\bibitem{IS}
+N. Iyudu and S. Shkarin,
+\emph{Sklyanin algebras and a cubic root of 1}.
+Theorem 1.1 and Introduction.
+\url{https://arxiv.org/abs/2108.06290}
+
+\bibitem{HeYe}
+J.-W. He and Y. Ye,
+\emph{Clifford deformations of Koszul Frobenius algebras and noncommutative quadrics}.
+Lemma 1.2 in the preprint.
+\url{https://arxiv.org/abs/1905.04699}
+
+\bibitem{WWY}
+C. Walton, X. Wang and M. Yakimov,
+\emph{Poisson geometry of PI 3-dimensional Sklyanin algebras}.
+Section 2.3, especially Lemma 2.19 (independent of the later PI assumption).
+\url{https://arxiv.org/abs/1704.04975}
+
+\bibitem{CCKM}
+T. Cassidy, A. Conner, E. Kirkman and W. F. Moore,
+\emph{Periodic free resolutions from twisted matrix factorizations}.
+Theorems 4.7 and 5.5.
+\url{https://arxiv.org/abs/1307.8415}
+
+\bibitem{YZ}
+A. Yekutieli and J. J. Zhang,
+\emph{Serre duality for noncommutative projective schemes},
+Proc. Amer. Math. Soc. 125 (1997), 697--707.
+Theorem 4.2 and Corollary 4.3.
+\url{https://doi.org/10.1090/S0002-9939-97-03782-9}
+
+\bibitem{IM}
+A. Itaba and M. Matsuno,
+\emph{AS-regularity of geometric algebras of plane cubic curves},
+J. Aust. Math. Soc. 112 (2022), 193--217.
+Lemma 2.15 and the proof of Theorem 4.4.
+\url{https://doi.org/10.1017/S1446788721000070}
+
+\bibitem{Chen}
+X.-W. Chen,
+\emph{Generalized Serre duality}.
+Theorem 3.10.
+\url{https://arxiv.org/abs/math/0610258}
+
+\bibitem{Kuz}
+A. Kuznetsov,
+\emph{Hochschild homology and semiorthogonal decompositions},
+arXiv:0904.4330.
+Theorem 7.7, Remark 7.8, Theorem 8.9.
+\url{https://arxiv.org/abs/0904.4330}
+
+\bibitem{JLLZ}
+A. Jacovskis, X. Lin, Z. Liu and S. Zhang,
+\emph{Infinitesimal categorical Torelli theorems for Fano threefolds},
+J. Pure Appl. Algebra 227 (2023), 107418.
+Theorem 4.4(2).
+\url{https://arxiv.org/abs/2203.08187}
+
+\bibitem{KL}
+B. Keller and W. Lowen,
+\emph{On Hochschild cohomology and Morita deformations},
+Int. Math. Res. Not. 2009, no.17, 3221--3235.
+\url{https://webusers.imj-prg.fr/~bernhard.keller/publ/KellerLowenHochDefo.pdf}
+
+\bibitem{LowenPre}
+W. Lowen,
+\emph{Algebroid prestacks and deformations of ringed spaces}.
+Theorems 1.4 and 3.26.
+\url{https://arxiv.org/abs/math/0511197}
+
+\bibitem{DDL}
+O. De Deken and W. Lowen,
+\emph{Abelian and derived deformations in the presence of
+$\mathbb Z$-generating geometric helices},
+J. Noncommut. Geom. 5 (2011), 477--505.
+Theorem 4.5, Propositions 5.8--5.11, proof of Theorem 5.13, Lemma 5.14.
+\url{https://doi.org/10.4171/JNCG/83}
+
+\bibitem{Orlov}
+D. Orlov,
+\emph{Derived categories of coherent sheaves and triangulated categories of singularities}.
+Theorem 2.5.
+\url{https://arxiv.org/abs/math/0503632}
+
+\bibitem{Ueyama}
+K. Ueyama,
+\emph{Graded maximal Cohen--Macaulay modules over noncommutative graded
+Gorenstein isolated singularities},
+J. Algebra 383 (2013), 85--103.
+\url{https://doi.org/10.1016/j.jalgebra.2013.02.022}
+The Serre formula is also stated as Theorem 4 in the author's ICRA XV slides:
+\url{https://www.math.uni-bielefeld.de/icra2012/presentations/icra2012_ueyama.pdf}
+
+\bibitem{BKP}
+A. Blanc, L. Katzarkov and P. Pandit,
+\emph{Generators in formal deformations of categories}.
+Definition 3.3 and Section 3.3 (Lurie's comparison, Proposition 5.3.21).
+\url{https://arxiv.org/abs/1705.00655}
+
+\bibitem{BS}
+J. Burke and G. Stevenson,
+\emph{The derived category of a graded Gorenstein ring}.
+Definition 5.1, Remark 5.2, Lemma 6.2, Theorem 6.4(3).
+\url{https://arxiv.org/abs/1507.00830}
+
+\bibitem{BFK}
+M. Ballard, D. Favero and L. Katzarkov,
+\emph{A category of kernels for equivariant factorizations and its implications for Hodge theory},
+Publ. Math. IHES 120 (2014), 1--111.
+Theorem 5.15 and Corollary 5.18.
+\url{https://doi.org/10.1007/s10240-013-0059-9}
+
+\bibitem{Elagin}
+A. Elagin,
+\emph{On equivariant triangulated categories}.
+Theorem 4.2 and the dg enhancement construction.
+\url{https://arxiv.org/abs/1403.7027}
+
+\bibitem{OrlovGlue}
+D. Orlov,
+\emph{Smooth and proper noncommutative schemes and gluing of DG categories},
+Adv. Math. 302 (2016), 59--105.
+Proposition 3.8, Theorems 3.18 and 3.25.
+\url{https://arxiv.org/abs/1402.7364}
+
+\bibitem{Zhang}
+J. J. Zhang,
+\emph{Twisted graded algebras and equivalences of graded categories},
+Proc. London Math. Soc. (3) 72 (1996), 281--311.
+Theorem 1.1.
+\url{https://doi.org/10.1112/plms/s3-72.2.281}
+
+\bibitem{AV}
+M. Artin and M. Van den Bergh,
+\emph{Twisted homogeneous coordinate rings},
+J. Algebra 133 (1990), 249--271.
+\url{https://doi.org/10.1016/0021-8693(90)90269-T}
+
+\bibitem{SVdB}
+J. T. Stafford and M. Van den Bergh,
+\emph{Noncommutative curves and noncommutative surfaces},
+Bull. Amer. Math. Soc. 38 (2001), 171--216.
+Theorem 3.2 and Section 8 (the quantum triangle).
+\url{https://arxiv.org/abs/math/9910082}
+\bibitem{FLZ}
+S. Feyzbakhsh, Z. Liu and S. Zhang,
+\emph{New perspectives on categorical Torelli theorems for del Pezzo threefolds}.
+Section 3.2, equations (9)--(12), Proposition 5.5, Remark 7.2.
+\url{https://arxiv.org/abs/2304.01321}
+
+\bibitem{ELOI}
+A. I. Efimov, V. A. Lunts and D. O. Orlov,
+\emph{Deformation theory of objects in homotopy and derived categories I: general theory}.
+Proposition 6.1 and Section 7.
+\url{https://arxiv.org/abs/math/0702838}
+
+\bibitem{ELOII}
+A. I. Efimov, V. A. Lunts and D. O. Orlov,
+\emph{Deformation theory of objects in homotopy and derived categories II:
+pro-representability of the deformation functor}.
+Sections 3, 5--7; Theorem 7.2, Theorem 11.8, Proposition 11.10.
+\url{https://arxiv.org/abs/math/0702839}
+
+\bibitem{RZ}
+D. Rogalski and J. J. Zhang,
+\emph{Canonical Maps to Twisted Rings}.
+Introduction and Section 4.
+\url{https://arxiv.org/abs/math/0409405}
+
+\bibitem{Getzler}
+E. Getzler,
+\emph{Lie theory for nilpotent $L_\infty$-algebras},
+Ann. of Math. 170 (2009), 271--301.
+Proposition 1.1, Section 4, Proposition 4.4.
+\url{https://doi.org/10.4007/annals.2009.170.271}
+
+\bibitem{TV}
+B. To\"en and M. Vaqui\'e,
+\emph{Moduli of objects in dg-categories},
+Ann. Sci. \'Ecole Norm. Sup. (4) 40 (2007), 387--444.
+Lemma 2.8, Theorem 3.6, Corollaries 3.15, 3.17, 3.21--3.22.
+\url{https://arxiv.org/abs/math/0503269}
+
+\bibitem{FP}
+S. Feyzbakhsh and L. Pertusi,
+\emph{Serre-invariant stability conditions and Ulrich bundles on cubic threefolds},
+\'Epijournal de G\'eom\'etrie Alg\'ebrique 7 (2023), Article 1.
+Section 6, Proposition 6.3, Corollary 6.5.
+\url{https://doi.org/10.46298/epiga.2022.9611}
+
+\bibitem{PY}
+L. Pertusi and S. Yang,
+\emph{Some remarks on Fano threefolds of index two and stability conditions}.
+Theorem 1.2.
+\url{https://arxiv.org/abs/2004.02798}
+
+\bibitem{StacksUnramified}
+The Stacks Project Authors,
+\emph{The Stacks Project},
+Lemma 41.17.1, Tag 04HH (\'etale local structure of unramified morphisms).
+\url{https://stacks.math.columbia.edu/tag/04HH}
+
+\bibitem{AIK}
+J. Alper, A. V. Isaev and N. G. Kruzhilin,
+\emph{Associated forms of binary quartics and ternary cubics},
+Transformation Groups 21 (2016), no. 3, 593--618.
+Section 3.2, equations (3.11), (3.18), Remark 3.1.
+\url{https://arxiv.org/abs/1409.8369}
+
+\bibitem{IMRelations}
+A. Itaba and M. Matsuno,
+\emph{Defining relations of 3-dimensional quadratic AS-regular algebras},
+Mathematical Journal of Okayama University 63 (2021), no. 1, 61--86.
+Theorems 2.8, 4.12, 4.16 and Lemma 4.17.
+\url{https://www.math.okayama-u.ac.jp/mjou/mjou63/_04_Itaba.pdf}
+
+\bibitem{ATT}
+A. S. I. Anema, J. Top and A. Tuijp,
+\emph{Hesse Pencils and 3-Torsion Structures},
+SIGMA 14 (2018), 102, 13 pages.
+Theorem 1.1 and Sections 2--4.
+\url{https://doi.org/10.3842/SIGMA.2018.102}
+\bibitem{KellerHoch}
+B. Keller,
+\emph{Derived invariance of higher structures on the Hochschild complex}.
+Manuscript, 2003, revised May 16, 2018.
+Section 4.5, equations (4.5.1)--(4.5.2).
+\url{https://webusers.imj-prg.fr/~bernhard.keller/publ/dih.pdf}
+
+\bibitem{ToenMorita}
+B. To\"en,
+\emph{The homotopy theory of dg-categories and derived Morita theory},
+Invent. Math. 167 (2007), 615--667.
+Section 8.1 and Theorem 8.9.
+\url{https://arxiv.org/abs/math/0408337}
+
+\Needspace{5\baselineskip}
+\bibitem{LowenObstruction}
+W. Lowen,
+\emph{Obstruction Theory for Objects in Abelian and Derived Categories},
+Comm. Algebra \textbf{33} (2005), 3195--3223.
+Theorem 3.8, Corollary 3.11.
+\href{https://doi.org/10.1081/AGB-200066155}{doi:10.1081/AGB-200066155}.
+\url{https://arxiv.org/abs/math/0407019}
+
+\bibitem{StacksNilPerfect}
+The Stacks Project Authors,
+\emph{The Stacks Project}, Lemma 15.80.4, Tag 07LU.
+\url{https://stacks.math.columbia.edu/tag/07LU}
+
+\bibitem{StacksPicardSmooth}
+The Stacks Project Authors,
+\emph{The Stacks Project}, Lemma 108.8.5, Tag 0DPJ.
+\url{https://stacks.math.columbia.edu/tag/0DPJ}
+
+\bibitem{PicardFormal}
+A. Chatzistamatiou,
+\emph{Commutative formal groups arising from schemes},
+Appendix A.2, Proposition A.2.2.
+\url{https://arxiv.org/abs/1203.4926}
+
+\bibitem{ChowGrass}
+W.-L. Chow,
+\emph{On the Geometry of Algebraic Homogeneous Spaces},
+Ann. of Math. (2) \textbf{50} (1949), 32--67.
+\href{https://doi.org/10.2307/1969351}{doi:10.2307/1969351}.
+
+\bibitem{GhorpadeKaipa}
+S. R. Ghorpade and K. V. Kaipa,
+\emph{Automorphism groups of Grassmann codes},
+Finite Fields Appl. \textbf{23} (2013), 80--102.
+Theorem 3.6.
+\url{https://arxiv.org/abs/1204.5547}
+
+\bibitem{SGA2}
+A. Grothendieck, avec un expos\'e de M. Raynaud,
+\emph{Cohomologie locale des faisceaux coh\'erents et th\'eor\`emes de Lefschetz
+locaux et globaux (SGA 2)},
+Y. Laszlo (\'ed.), Documents Math\'ematiques \textbf{4}, SMF, 2005.
+Expos\'e XII, Corollaire 3.7.
+\url{https://arxiv.org/abs/math/0511279}
+
+
+\bibitem{LieblichComplexes}
+M. Lieblich,
+\emph{Moduli of complexes on a proper morphism},
+J. Algebraic Geom. 15 (2006), 175--206.
+Theorem 3.1.1, Corollary 3.1.2, Theorem 4.2.1, Corollary 4.3.3.
+\url{https://arxiv.org/abs/math/0502198}
+
+\bibitem{StacksStrictTransform}
+The Stacks Project Authors,
+Lemma 31.34.2, Tag 080E (strict transformとblowup).
+\url{https://stacks.math.columbia.edu/tag/080E}
+
+\bibitem{StacksProperFinite}
+The Stacks Project Authors,
+Lemma 37.44.1, Tag 02LS (properかつquasi-finiteな射の有限性).
+\url{https://stacks.math.columbia.edu/tag/02LS}
+
+\bibitem{MustataSing}
+M. Musta\c{t}\u{a},
+\emph{Singularities in birational geometry: minimal log discrepancies and the log canonical threshold},
+AIM workshop notes, Section 1, pp.~1--3.
+\url{https://www.aimath.org/WWN/singularvariety/sing.pdf}
+
+
+\bibitem{BeteaWheeler}
+D. Betea and M. Wheeler,
+\emph{Refined Cauchy and Littlewood identities, plane partitions and
+symmetry classes of alternating sign matrices}, arXiv:1402.0229, equation (6).
+\url{https://arxiv.org/abs/1402.0229}
+
+\bibitem{DeBoeckPagetWildon}
+M. de Boeck, R. Paget and M. Wildon,
+\emph{Plethysms of symmetric functions and highest weight representations},
+Trans. Amer. Math. Soc. 374 (2021), 8013--8043, Example 1.6.
+\url{https://doi.org/10.1090/tran/8481}
+\url{https://arxiv.org/abs/1810.03448}
+
+
+\bibitem{DyckerhoffMF}
+T. Dyckerhoff,
+\emph{Compact generators in categories of matrix factorizations},
+Duke Math. J. \textbf{159} (2011), 223--274.
+\url{https://arxiv.org/abs/0904.4713}.
+
+\bibitem{BDSS}
+L. Bus\'e, A. Dimca, H. Schenck and G. Sticlaru,
+\emph{The Hessian polynomial and the Jacobian ideal of a reduced
+hypersurface in $\mathbf P^n$}, arXiv:1910.09195v4 (2021).
+\url{https://arxiv.org/abs/1910.09195}.
+
+\bibitem{StacksFormalFunctions}
+The Stacks Project Authors,
+\emph{Theorem on formal functions}, Theorem 30.20.5, Tag 02OC.
+\url{https://stacks.math.columbia.edu/tag/02OC}.
+
+
+\bibitem{StacksEtaleCriterion}
+The Stacks Project Authors,
+\emph{\'Etale morphisms}, Proposition 59.26.2, Tag 03PA;
+Section 29.37, Tag 02GH.
+\url{https://stacks.math.columbia.edu/tag/03PA}
+
+\bibitem{StacksFaithfulCompletion}
+The Stacks Project Authors,
+Lemma 10.97.3, Tag 00MC (faithful flatness of completion).
+\url{https://stacks.math.columbia.edu/tag/00MC}
+
+\bibitem{StacksFlatBaseChange}
+The Stacks Project Authors,
+\emph{Flat base change}, Lemma 30.5.2, Tag 02KH.
+\url{https://stacks.math.columbia.edu/tag/02KH}
+
+% 既存原稿の thebibliography 環境の中へ追加する項目。
+\bibitem{Fisher2008}
+T. Fisher,
+\emph{The invariants of a genus one curve},
+Proceedings of the London Mathematical Society (3) \textbf{97} (2008), 753--782.
+\url{https://doi.org/10.1112/plms/pdn021}.
+著者公開版：\url{https://www.dpmms.cam.ac.uk/~taf1000/papers/g1inv.pdf},
+\S3.3, \S4, Lemma~4.3, Theorem~4.4(i).
+
+\bibitem{SwanMKN}
+R. G. Swan,
+\emph{On a Theorem of Mohan Kumar and Nori},
+著者公開原稿、\S3, Corollary~3.8, Lemma~3.9.
+\url{https://www.math.uchicago.edu/~swan/MKN.pdf}.
+
+\bibitem{StacksCMRegular}
+The Stacks Project Authors,
+\emph{The Stacks Project},
+Lemmas 10.106.3 and 10.104.2, Tags 00NQ and 02JN.
+\url{https://stacks.math.columbia.edu/tag/00NQ},
+\url{https://stacks.math.columbia.edu/tag/02JN}.
+
+
+% 既存のthebibliographyの内部へ追加する。
+\bibitem{FisherHessian2012}
+T.~Fisher,
+\emph{The Hessian of a genus one curve},
+Proc.\ London Math.\ Soc.\ (3) \textbf{104} (2012), 613--648,
+doi:10.1112/plms/pdr039.
+著者版：\url{https://www.dpmms.cam.ac.uk/~taf1000/papers/g1hessians.pdf}.
+
+\bibitem{StacksCechKoszul}
+The Stacks Project Authors,
+\emph{The Stacks Project},
+Tag 012X, \emph{Spectral sequences: double complexes},
+\url{https://stacks.math.columbia.edu/tag/012X};
+Tag 0G6L,
+\url{https://stacks.math.columbia.edu/tag/0G6L}.
+
+% 既存thebibliographyへ追加する第18版理論の一次資料。
+\bibitem{Dube1990}
+T.~W.~Dub\'e,
+\emph{The structure of polynomial ideals and Gr\"obner bases},
+SIAM Journal on Computing \textbf{19} (1990), no.~4, 750--773.
+\href{https://doi.org/10.1137/0219053}{doi:10.1137/0219053}.
+斉次版はTheorem~8.2、非斉次版はCorollary~8.3、いずれもp.~773。
+一次論文PDF:
+\url{https://cs.uwaterloo.ca/~r5olivei/courses/2025-spring-cs860/D90.pdf}.
+
+\end{thebibliography}
+\end{document}

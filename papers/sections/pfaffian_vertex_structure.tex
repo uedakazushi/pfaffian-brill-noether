@@ -1,0 +1,167 @@
+\section{Pfaffian変数上のSchur分解と全次数頂点核}
+\label{sec:pf-vertex-structure}
+通常接触像$J_n=\mathcal C_n\cap G$、分裂射影
+（定理\ref{thm:v17-split-normal-projection}）、横断四次以上の代表
+（命題\ref{prop:v17-normal-invisible-representatives}）とその$I$-torsion性を用いる。
+本節は有限次数の通常rankや巨大なGr\"obner上界に依存せず、
+$\mathcal K^{\rm nor}$を決定する。Pfaffian代入が平坦だとは仮定しない。
+
+$E$を五次元、$D=\det E$とし、まずdeterminant twistを外して
+\[
+ S=\Sym(\wedge^2E),\quad B=\Sym(\wedge^4E)\subset S,
+ \quad A=\Sym(\Sym^3E),\quad R=A\otimes S
+\]
+と置く。$a$は十個の一次座標、$q$は五個の符号付きPfaffianで、
+$B$では次数1、$S$では次数2である。
+$g_i=(\partial_iF)(q)$、$G=(g_i)$、$I=(q)S$とする。
+$F$の全35係数は独立な変数のまま保つ。
+
+\begin{proposition}[Pfaffian係数環上の直和と線形分解]
+\label{prop:pf-schur-resolution}
+$M_r=\bigoplus_{c\ge0}S_{(r+c,r+c,c,c,0)}E$とすると、
+$S=\bigoplus_{r\ge0}M_r$は$B$加群の直和分解である。
+$(M_r)_c$の$a$次数は$r+2c$、$M_0=B$である。
+$r\ge1$では、$q$次数について次の完全列を持つ：
+\begin{multline*}
+0\longrightarrow B(-2)\otimes D^2\otimes S_{(r-1,r-1)}E
+ \longrightarrow B(-1)\otimes D\otimes S_{(r,r-1)}E\\
+ \longrightarrow B\otimes S_{(r,r)}E\longrightarrow M_r\longrightarrow0.
+\end{multline*}
+特に$M_r$は$q\ne0$上で局所自由である。
+\end{proposition}
+\begin{proof}
+Littlewood分解\cite[\S2.1, (2.2)]{PfRWW}は
+$\Sym^n(\wedge^2E)=\bigoplus_{b\ge c\ge0,b+c=n}S_{(b,b,c,c,0)}E$で、多重度は1。
+$b=r+c$と置く。$\wedge^4E$の乗法にPieri則を使うと、偶数列長を持ち得る図は
+$(b+1,b+1,c+1,c+1,0)$だけである。
+最高ウェイト$a_{01}^rq_4^c$の$q_4$倍は非零なので、乗法は次の成分へ全射となり、
+$r$を保つ$B$加群構造と次数零からの生成を得る。
+
+普遍線形写像$L=B(-1)\otimes D\to B\otimes E$に導来Schur関手
+$S_{(r,r)}$を施す。テンソル冪のYoung冪等元とKoszul符号による標準構成
+\cite[Chapter 2]{PfWeyman}では、階数一の$L$から除くvertical stripは
+$(r,r)$、$(r,r-1)$、$(r-1,r-1)$だけで、表示した三項複体になる。
+$q\ne0$では$L$は部分直線束であり、商束$Q$の$S_{(r,r)}Q$の分解なので完全である。
+第二homologyは自由加群の部分加群で原点支持だから零。
+その余核は長さ一の自由分解を持ち、$B_{(q)}$上の深さは少なくとも4なので、
+有限長の第一homologyも零である。
+零次homologyは深さ少なくとも3で、$\PP(E)$上の束$S_{(r,r)}Q$の全切断加群となる。
+次のBott計算がその次数$c$の切断を表示したSchur加群と同定し、
+Pieriの一意な非零乗法を最高ウェイトで規格化すれば$M_r$と一致する。
+\end{proof}
+
+\begin{lemma}[局所コホモロジーの二つの行]
+\label{lem:pf-bott-rows}
+$H^i_{(q)}(M_r)$は$i=3,5$以外で零であり、
+\[
+ H^3_{(q)}(M_r)_c=0\quad\text{unless }-r-2\le c\le-3,
+ \qquad H^5_{(q)}(M_r)_c=0\quad\text{unless }c\le-r-5.
+\]
+$r=0$では最初の範囲は空である。
+\end{lemma}
+\begin{proof}
+$B_1=E^*\otimes D$なので、次数$c$の切断束は
+$S_{(r,r)}Q\otimes\mathcal O(c)\otimes D^c$である。
+Bottの規則\cite[Theorem 2.2]{PfRWW}に用いる列は
+$(r+4,r+3,2,1,-c)$となる。
+$c\ge0$では零次だけで$D^c$を戻すと$S_{(r+c,r+c,c,c,0)}E$を得る。
+$c<0$で$-c=1,2,r+3,r+4$なら重複があり零。
+$3\le-c\le r+2$では末尾が二項を越えて射影コホモロジー次数2、
+$-c\ge r+5$では四項を越えて次数4となる。
+前者の表現は$S_{(r+c,r+c,-2,c+1,c+1)}E$、
+後者は$S_{(-4,r+c+1,r+c+1,c+1,c+1)}E$である。
+全切断加群なので$H^0,H^1$は零で、
+$H^i_{(q)}(M_r)_c=H^{i-1}(\PP(E),\widetilde M_r(c))$から主張を得る。
+\end{proof}
+
+\begin{lemma}[普遍勾配との\v{C}ech--Koszul比較]
+$\widehat M_r=A\otimes M_r$、$T_r=H^0_{(q)}(\widehat M_r/G\widehat M_r)$とする。
+$(T_r)_{m,c}\ne0$なら、$m\ge3,c\le3$または$m\ge5,c\le5-r$である。
+\end{lemma}
+\begin{proof}
+$q\ne0$では$F\mapsto dF(q)$は階数5の全射であり、$M_r$は局所自由なので、
+$K_\bullet=K(g_0,\ldots,g_4;\widehat M_r)$の正homologyは$(q)$-torsionである。
+$K_k$をコホモロジー次数$-k$に置いた双複体
+$\check C^\bullet_{(q)}\otimes K_\bullet$を考える。
+先にKoszul homologyを取ると、総次数零に寄与する項は$H^0_{(q)}(\widehat M_r/G\widehat M_r)$だけ。
+そこに入る微分は負の\v{C}ech次数を要求し、出る微分の着地点は
+正homologyの正局所コホモロジーなので零である。
+逆順では補題\ref{lem:pf-bott-rows}から$i=3,5$の二行だけで、
+$(m,c)$成分は
+\[
+ A_{m-k}\otimes H^i_{(q)}(M_r)_{c-2k}\otimes\wedge^k(E\otimes D^2).
+\]
+総次数零では$(i,k)=(3,3),(5,5)$だけとなり、表示した二条件を得る。
+双方向有限なので収束に問題はない。
+\end{proof}
+
+\begin{theorem}[高い横断次数の頂点加群]
+\label{thm:pf-vertex-sixteen}
+$T_{\ge4}=H^0_I(R/G)\cap\operatorname{im}(A\otimes I^4\to R/G)$は$A$上自由で、
+生成元の$(\deg_F,\deg_a)$と個数は$(5,8):5$、$(5,9):10$、$(5,10):1$である。
+$H=\det\operatorname{Hess}F(q)$、$H_j=(\partial_{q_j}H)(q(a))$とすると、
+五つの$H_j$、十個の独立な$aH_j$、一つの$H$がこの加群を生成する。
+$(a)^3T_{\ge4}=0$であり、$q_k[H_j]=\delta_{kj}[H]$、$(a)[H]=0$である。
+\end{theorem}
+\begin{proof}
+$\GL(E)$不変性と多重度一の分解から、Pfaffian錐のsymbolic powerに属する成分は
+最高ウェイト$a_{01}^rq_4^c$の一般点での消滅次数$c$で判定できる。
+従って$I^{(s)}=I^s=\bigoplus_{r\ge0,c\ge s}(M_r)_c$である。
+勾配は$r$を保ち$q$次数2なので、商にもこの分解が降りる。
+前補題から$c\ge4$で残るのは$(r,c)=(0,4),(1,4),(0,5)$だけである。
+$r=0$では第三行はなく、$c=4,5$の第五行は$k=5$だけが非零。
+$r=1,c=4$でも第三行には$4-2k=-3$という整数解がなく、第五行は$k=5$だけ。
+従って総複体の該当成分は一項だけで、入出微分はない。
+その次元は$\dim H^5(M_0)_{-6}=5$、$\dim H^5(M_1)_{-6}=10$、
+$\dim H^5(M_0)_{-5}=1$で、係数は$A_{m-5}$となる。
+よって全て$F$次数5の自由生成元で、$a$次数は$r+2c$から8,9,10である。
+
+Euler恒等式$\operatorname{Hess}F(q)q=2\nabla F(q)$とadjugateにより
+$q_kH=2\sum_l\operatorname{adj}(\operatorname{Hess}F)_{kl}g_l$。
+その微分から$q_k[H_j]=\delta_{kj}[H]$となり、$H_j$は上の$(0,4)$に属する。
+$M_0=B$が$B$加群の直和因子であることから、$R/G$は$A\otimes B/G$を直和因子として持つ。
+$F=\sum q_i^3/3$で$G=(q_i^2)$、$H=2^5\prod q_i$は非零なので、普遍$[H]$も非零である。
+一次元の自由成分を$H$が生成し、$\sum f_j(F)[H_j]=0$に$q_k$を掛ければ
+$f_k(F)[H]=0$から全て零となる。従って五つの$H_j$は基底である。
+三つの生成元表現は、determinant twistを戻す前で
+$E\otimes D^6$, $\wedge^3E\otimes D^6$, $D^7$。
+$a$の乗法は外積の非零定数倍であり、零なら$q_jH_j=H\ne0$に矛盾する。
+従って十個の$aH_j$が中段を生成する。
+$Z_{ijk}=[a_{ij}H_k]$は完全反対称で、$q_4H_4=H$から
+$[a_{ij}Z_{klm}]=\varepsilon_{ijklm}[H]/3$となる。
+次数11以上の成分がないことから$(a)^3T_{\ge4}=0$を得る。
+$F$の任意特殊化後の埋込みの単射性を主張しない。
+\end{proof}
+
+\begin{theorem}[普遍通常接触商の全次数決定]
+\label{thm:pf-full-contact-module}
+\[
+ \mathcal K_n^{\rm nor}=
+ \begin{cases}\CC\cdot[H_{10}],&n=10,\\0,&n\ne10,\end{cases}
+ \qquad
+ \bigoplus_{n\ge6}\mathcal C_n/J_n
+ =\CC[\overline U_4,\overline J_6][\Theta_8]\oplus\CC\cdot[H_{10}].
+\]
+Hilbert級数は$t^8/((1-t^4)(1-t^6))+t^{10}$である。
+\end{theorem}
+\begin{proof}
+核の各類は横断四次以上、従って$I^{(4)}=I^4$に入る代表を持ち、
+$I$-torsionなので前定理の$T_{\ge4}$に入る。
+その二重次数は$(\deg_F,\deg_a)=(n-5,n)$である。
+残る$a$次数8,9,10のうち、最初の二つは必要な$F$次数3,4が生成元次数5より小さいため零。
+$n=10$では一つの$H$だけが残り、必要なdeterminant指標も一致する。
+元の規約$E=V^*$, $D=\det(V)^{-1}$へは$a$次数$n$に$D^{-n}$を掛ける。
+$H$の指標$D^7D^{-10}=D^{-3}$は境界の指標である。
+通常商の$R/G$への埋込みと既知の分裂射影から結論する。
+\end{proof}
+\begin{corollary}[有限通常rankと十次形式決定性]
+$\mathcal K_{26}^{\rm nor}=0$であり、$\dim\mathcal C_{26}=6377$を用いると
+$\dim J_{26}=6375$である。
+また全normal係数が零の普遍形式境界は$P+cH_{10}$へ普遍形式右同値となる。
+\end{corollary}
+\begin{proof}
+二十六次自由成分は$[\Theta U_4^3J_6]$と$[\Theta J_6^3]$だけである。
+normal零の境界では十次を越える各残差が$J_n$に入るので共変場で逐次消せる。
+Hessianへの微分作用も通常像に入るため帰納法が続き、次数増加によって合成は形式的に収束する。
+これは巨大な二十六次行列を実行したとの主張ではない。
+\end{proof}

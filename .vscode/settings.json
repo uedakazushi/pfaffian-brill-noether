@@ -1,0 +1,33 @@
+{
+  "latex-workshop.latex.build.fromFolder": "%WORKSPACE_FOLDER%",
+  "latex-workshop.latex.outDir": "%WORKSPACE_FOLDER%/build",
+  "latex-workshop.latex.auxDir": "%WORKSPACE_FOLDER%/build",
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (LuaLaTeX, repository root)",
+      "tools": [
+        "latexmk-lualatex-root"
+      ]
+    }
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk-lualatex-root",
+      "command": "latexmk",
+      "cwd": "%WORKSPACE_FOLDER%",
+      "args": [
+        "-r",
+        "%WORKSPACE_FOLDER%/.latexmkrc",
+        "-lualatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC_EXT%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.synctex.afterBuild.enabled": true
+}

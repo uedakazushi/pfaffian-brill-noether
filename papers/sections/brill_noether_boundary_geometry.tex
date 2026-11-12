@@ -1,0 +1,1549 @@
+\section{評価核の点における境界：相対三次錐と解消}
+\label{sec:local-bn-cubic}
+
+前節は $e=[E]$ における適合部分空間を形式的に記述した。
+本節では、その一般の評価核の点で、非局所自由な境界そのものを調べる。
+以下、$C_0=X\cap\PP^2$ は滑らかな平面三次曲線、
+$L\in\Pic^3(C_0)$、$L\ne\OO_{C_0}(1)$ とし、
+$F=F_L$ を\eqref{eq:evaluation-kernel}の評価核とする。
+文字 $C_0$ は曲線を表し、適合部分空間 $C$ と区別する。
+
+\subsection{評価核の変形と三つの法方向}
+
+$W_L=H^0(C_0,L)$ とし、曲線上の評価核、法束、および二つの線形束を
+\[
+ M_L=\ker(W_L\otimes\OO_{C_0}\to L),\qquad
+ N=N_{C_0/X}=\OO_{C_0}(1)^{\oplus2},\qquad
+ B=L^{-1}\otimes\det N
+\]
+と書く。さらに
+\begin{equation}\label{eq:local-bn-bundle}
+ \mathcal B_L=M_L\otimes B,\qquad
+ \mathcal M_L=\det\mathcal B_L=\OO_{C_0}(4)\otimes L^{-3}
+\end{equation}
+とおく。$\mathcal B_L$ は階数2・次数3、$\mathcal M_L$ は次数3である。
+ここで線形束の表示では、$\det W_L$ および $\det H^0(\mathcal B_L)$ という
+基底からの1次元因子を局所自明化している。
+自明化を選ばない場合、$\det M_L=\det W_L\otimes L^{-1}$ であり、
+以下の評価列のkernelにも $\det H^0(\mathcal B_L)$ の因子を保持する。
+これらの選択は射影埋め込みと次数に影響しない。
+
+\begin{theorem}[評価核の滑らかな変形空間]\label{thm:evaluation-local-moduli}
+$F$ のscalarを除いた変形空間 $U_F$ は滑らかな10次元の局所空間である。
+平面三次曲線と次数3の線形束を動かす評価核の族は、
+$F$ の近傍で滑らかな7次元の局所部分空間 $P\subset U_F$ を定める。
+その法空間は自然に
+\[
+ N_{P/U_F,[F]}=H^0(C_0,\mathcal B_L),\qquad h^0(C_0,\mathcal B_L)=3
+\]
+と同定される。また $\Ext^2_X(F,F)=0$ である。
+\end{theorem}
+
+\begin{proof}
+まず $M_L$ は安定である。実際、次数が $-1$ 以上の線部分束
+$A\subset M_L\subset\OO_{C_0}^{\oplus3}$ を考える。
+$\deg A>0$ なら $\Hom(A,\OO_{C_0})=0$ である。
+$\deg A=0$ の場合、非零射が存在するには $A\simeq\OO_{C_0}$ が必要だが、
+$H^0(M_L)=0$ に反する。
+$\deg A=-1$ なら $h^0(A^*)=1$ なので、$A\to\OO_{C_0}^3$ は固定した
+定数ベクトルを通る。その評価像が零であることは、この定数ベクトルに対応する
+$L$ の切断が零であることを意味し、再び矛盾する。
+従って任意の線部分束の次数は $-2$ 以下であり、$M_L$ は安定である。
+
+$\mathcal B_L$ と $\mathcal B_L(-p)$ は正次数の安定束なので、
+任意の $p\in C_0$ に対し $H^1(\mathcal B_L)=H^1(\mathcal B_L(-p))=0$ となる。
+Riemann--Rochから $h^0(\mathcal B_L)=3$ であり、$\mathcal B_L$ は大域生成される。
+
+評価列を $C_0$ に制限すると
+\begin{equation}\label{eq:evaluation-restriction}
+ 0\longrightarrow L\otimes N^*\longrightarrow F|_{C_0}
+   \longrightarrow M_L\longrightarrow0
+\end{equation}
+を得る。余次元2のregular immersionに対する局所Extの計算から
+\[
+ \mathcal Hom_X(F,\OO_X)=W_L^*\otimes\OO_X,
+ \qquad \mathcal Ext^1_X(F,\OO_X)=j_*B
+\]
+であり、より高いsheaf Extは零である。また
+\[
+ 0\longrightarrow M_L^*\otimes L\longrightarrow
+ \mathcal Hom_X(F,j_*L)|_{C_0}\longrightarrow N\longrightarrow0,
+ \qquad
+ \mathcal Ext^1_X(F,j_*L)=j_*\det N.
+\]
+これらの束の $H^1$ は零なので
+\[
+ \dim\Hom_X(F,j_*L)=15,\quad
+ \Ext^1_X(F,j_*L)=H^0(\OO_{C_0}(2)),\quad
+ \Ext^1_X(F,W_L\otimes\OO_X)=W_L\otimes H^0(B).
+\]
+最後の二空間の次元は6と9である。それらの間の射は積写像であり、
+\[
+ 0\longrightarrow\mathcal B_L\longrightarrow W_L\otimes B
+   \longrightarrow\OO_{C_0}(2)\longrightarrow0
+\]
+と $H^1(\mathcal B_L)=0$ により全射である。
+\eqref{eq:evaluation-kernel}に $\RHom_X(F,-)$ を適用し、$F$ の単純性を用いると
+\[
+ 0\to\CC\to\CC^9\to\CC^{15}\to\Ext^1_X(F,F)
+ \to\CC^9\to\CC^6\to\Ext^2_X(F,F)\to0
+\]
+を得る。従って $\dim\Ext^1_X(F,F)=10$、$\Ext^2_X(F,F)=0$ であり、
+\begin{equation}\label{eq:normal-evaluation-sequence}
+ 0\longrightarrow T_{[F]}P\longrightarrow\Ext^1_X(F,F)
+ \longrightarrow H^0(C_0,\mathcal B_L)\longrightarrow0
+\end{equation}
+の核は7次元である。
+
+最後に、この核が実際の評価核の族の接空間であることを確認する。
+平面の変形は $H^0(N)$ の6方向、線形束の変形は $H^1(\OO_{C_0})$ の1方向を持つ。
+局所完全交叉の計算から $\Ext^1_X(j_*L,j_*L)$ の次元も7であり、
+この平面・Picard族のKodaira--Spencer写像は同型である。
+実際、評価列に $\RHom_X(-,j_*L)$ を適用し $H^1(L)=0$ を用いると
+\[
+ 0\longrightarrow\operatorname{End}(W_L)/\CC
+ \longrightarrow\Hom_X(F,j_*L)
+ \longrightarrow\Ext^1_X(j_*L,j_*L)\longrightarrow0
+\]
+となる。
+評価射の基底を選ぶと、この族の上に $\mathrm{PGL}(W_L)$ の8方向が加わる。
+Quotの接空間 $\Hom_X(F,j_*L)$ は15次元なので、その全接方向が得られる。
+核の変形への写像で基底変更の8方向を除くと、
+\eqref{eq:normal-evaluation-sequence}の7次元の核になる。
+従って評価核の族の接写像は単射である。
+滑らかな族から滑らかな局所変形空間への射なので、
+必要ならétale近傍に移り、$P$ を滑らかな局所閉部分空間として取れる。
+形式局所環の水準では、これは接写像の単射と完備Nakayamaによる閉埋め込みである。
+\end{proof}
+
+\subsection{incidenceと三次曲線の別の埋め込み}
+
+\begin{theorem}[評価核に沿う境界の三次錐]\label{thm:local-bn-cubic}
+$U_F$ の十分小さい近傍で、非局所自由な層のincidenceを
+$\mathcal I_F\subset X\times U_F$、そのscheme-theoretic imageを $D_F$ とする。
+このとき以下が成立する。
+\begin{enumerate}
+ \item $\mathcal I_F$ は滑らかな9次元空間であり、
+ $\mathcal I_F\times_{U_F}P=\mathscr C_P$ は評価核の曲線の相対族である。
+ \item $D_F$ はintegralな因子であり、$P$ に沿う位数は3である。
+ そのnormal coneの射影化は、各ファイバー上で
+ \[
+ C_0\hookrightarrow\PP H^0(C_0,\mathcal B_L)
+ \]
+ という完全線形系 $|\mathcal M_L|$ による三次埋め込みで与えられる。
+ \item $\mathcal I_F\to D_F$ は $P$ に沿うblowupであり、
+ その例外因子は $\mathscr C_P$ である。$D_F\setminus P$ は滑らかで、
+ $\operatorname{Sing}(D_F)_{\mathrm{red}}=P$ である。
+\end{enumerate}
+ここでの等式はこの評価核の点の近傍についてであり、
+$e=[E]$ を含む境界全体の特異部分の同定は主張していない。
+\end{theorem}
+
+\begin{proof}
+まず $\mathcal B_L$ の評価列は
+\begin{equation}\label{eq:local-bn-embedding}
+ 0\longrightarrow\mathcal M_L^{-1}
+ \longrightarrow H^0(\mathcal B_L)\otimes\OO_{C_0}
+ \longrightarrow\mathcal B_L\longrightarrow0
+\end{equation}
+となる。双対を取り $H^0(\mathcal B_L^*)=0$ を使うと、
+3次元空間 $H^0(\mathcal B_L)^*$ と $H^0(\mathcal M_L)$ が同定される。
+従って評価のkernel lineを送る写像は $|\mathcal M_L|$ による完全線形系であり、
+次数3なので閉埋め込みである。
+
+$p\in C_0$ で $F\simeq\mathcal I_{C_0}\oplus\OO_X^2$ と書けば、
+普遍族の局所表示は $[\OO\to\OO^4]$ で、特殊点の列ベクトルは $(f,g,0,0)$ である。
+ここで $(f,g)$ は $C_0$ のイデアルを生成する。
+非自由incidenceは、この列ベクトルの四成分が全て零となるスキームである。
+$X$ の法方向から $df,dg$ の2方向が得られ、残る2方向への変形の微分は
+\[
+ H^0(\mathcal B_L)\longrightarrow\mathcal B_L|_p
+\]
+という評価写像である。これは全射なので、incidenceの四方程式の微分は独立である。
+従って $\mathcal I_F$ は $C_0$ に沿って滑らかである。
+proper性を用いて近傍を縮小すれば、全体を滑らかな既約9次元空間としてよい。
+
+評価核のFittingイデアルは曲線のイデアルそのものなので、スキームとして
+\[
+ \mathcal I_F\times_{U_F}P=\mathscr C_P
+\]
+が成立する。右辺は滑らかな8次元空間であるから、滑らかな $\mathcal I_F$ の
+Cartier因子である。従ってblowupの普遍性によりproperな射
+\[
+ f:\mathcal I_F\longrightarrow\operatorname{Bl}_P U_F
+\]
+を得る。targetの例外因子を $E_P$ とすると
+\[
+ f^*E_P=\mathscr C_P
+\]
+がCartier因子として係数1で成立する。
+例外因子上の射は\eqref{eq:local-bn-embedding}の相対版であり、閉埋め込みである。
+その接写像の階数は8、法方向も係数1の等式により非零なので、$df$ の階数は9である。
+
+このように $f$ は例外因子上でunramifiedで、その各像点のファイバーは被約な一点である。
+proper性によりその近傍でfiniteにでき、finite加群に対するNakayamaにより
+局所環の射は全射になる。従って $f$ はそこで閉埋め込みである。
+さらにproper性で $[F]$ の近傍を縮小し、$f$ を境界のstrict transformへの同型にできる。
+このstrict transformは滑らかで、$E_P$ と横断的に交わる。
+交叉は $\PP_P(N_{P/U_F})$ 内の相対三次曲線なので、
+$D_F$ の $P$ に沿う初期式は、重複のない相対三次式となる。
+従って位数は3であり、normal coneの記述を得る。
+strict transformは $\operatorname{Bl}_P D_F$ に一致する。
+$P$ の外ではblowupが同型なので $D_F\setminus P$ は滑らかである。
+一方、$P$ に沿う方程式の位数は3なので $P\subset\operatorname{Sing}(D_F)$ である。
+これで最後の等式も従う。
+\end{proof}
+
+\subsection{境界の形式近傍は相対normal coneに一致する}
+
+\begin{theorem}[三次項より高い項の除去]\label{thm:relative-cubic-formality}
+$[F]$ の完備局所座標を $(s_1,\ldots,s_7,z_1,z_2,z_3)$、
+$P=(z_1,z_2,z_3)$ と取る。$D_F$ の方程式を
+\[
+ d(s,z)=f_3(s,z)+O((z)^4)
+\]
+と書けば、$f_3$ は $z$ に関する斉次三次式で、$s=0$ の平面三次曲線は
+$(C_0,\mathcal M_L)$ である。
+$s$ を固定し $z$ の一次項を保つ形式座標変換により、$d$ は正確に $f_3$ へ移る。
+従って $D_F$ の $P$ に沿う形式近傍は、相対normal coneの形式近傍に同型である。
+\end{theorem}
+
+\begin{proof}
+$A=\CC[[s_1,\ldots,s_7]]$ とおく。
+$f_3(0,z)$ は滑らかな平面三次曲線なので、その三つの偏微分は正則列をなし、
+Jacobian環のHilbert seriesは $(1+t)^3$ である。
+従って任意の $n\ge4$ に対し
+\[
+ A[z]_{n-2}^{\oplus3}\longrightarrow A[z]_n,
+ \quad(h_1,h_2,h_3)\longmapsto
+ \sum_i h_i\frac{\partial f_3}{\partial z_i}
+\]
+は、特殊ファイバーで全射であり、Nakayamaにより $A$ 上でも全射である。
+最低次の剰余項 $d_n$ をこの像として書き、
+$z_i\mapsto z_i-h_i$ で消す。$h_i$ の次数は $n-2\ge2$ なので、
+それ以前の次数は変わらない。この操作を繰り返せば $(z)$-進位相で収束し、
+所要の座標変換を得る。
+\end{proof}
+
+固定した横断sliceの解消では、例外曲線は $C_0$、その法束は
+$\mathcal M_L^{-1}$ であり、自己交叉数は $-3$ である。
+ここで得たのは相対三次錐であって、一定の楕円曲線の錐と
+7次元滑らかな空間との積であるとは限らない。
+平面を動かすと $C_0$ の $j$-不変量も動き得る。
+また本節の高次項除去は、$[F_L]$ という評価核の点での三次横断方程式に対するものであり、
+$e=[E]$ における六次方程式の高次項を消したものではない。
+
+\section{六次境界からのTorelliと最小の局所次数}\label{sec:boundary-torelli}
+
+第\ref{sec:sextic-boundary}節の六次超曲面は、もとの三次三次元多様体を
+射影同型まで決定する。さらに、非局所自由境界の形式芽全体を用いなくても、
+その6次までの局所環で復元に十分である。
+
+$X=V(F)\subset\PP(V^*)$、$W=\Lambda^2V$ とし、
+\[
+ P_X(a)=F(q(a)),\qquad
+ R_X=\operatorname{Sym}(W^*)/(P_X),\qquad
+ \Gamma_X=\operatorname{Spec}R_X
+\]
+と書く。$q=(q_0,\ldots,q_4)$ は符号付きPfaffianである。
+$H_X=\operatorname{Proj}R_X$ は正規な8次元六次超曲面で、
+$(\operatorname{Sing}H_X)_{\mathrm{red}}=\Gr(2,V)$ である。
+
+\subsection{偏極の内在性と射影Torelli}
+
+\begin{lemma}[六次超曲面のPicard群]\label{lem:sextic-picard}
+\[
+ \operatorname{Pic}(H_X)=\mathbb Z[\OO_{H_X}(1)],\qquad
+ \omega_{H_X}=\OO_{H_X}(-4).
+\]
+従って $\OO_{H_X}(1)$ は $\omega_{H_X}^{-1}$ の唯一の4乗根であり、
+抽象多様体 $H_X$ から内在的に決まる。
+\end{lemma}
+
+\begin{proof}
+解消を $r:J=\PP_X(\Lambda^2Q)\to H_X$、束射影を $\pi:J\to X$ と書く。
+正規性とproper双有理性から $r_*\OO_J=\OO_{H_X}$ なので、
+射影公式により $r^*:\operatorname{Pic}(H_X)\to\operatorname{Pic}(J)$ は単射である。
+Lefschetzの定理\cite[Expos\'e XII, Corollaire 3.7]{SGA2}と射影束の公式から
+\[
+ \operatorname{Pic}(J)
+ =\mathbb Z[\pi^*\OO_X(1)]\oplus\mathbb Z[\OO_J(1)],\qquad
+ \OO_J(1)=r^*\OO_{H_X}(1).
+\]
+$r^*L=\pi^*\OO_X(b)\otimes\OO_J(a)$ とする。
+階数2の一般の点のfiberは滑らかな平面三次曲線 $T$ であり、
+$r^*L|_T$ と $\OO_J(1)|_T$ は自明である。
+一方 $\deg\OO_X(1)|_T=3$ なので $3b=0$、従って $b=0$ となる。
+引き戻しの単射性から $L=\OO_{H_X}(a)$ を得る。
+超曲面のadjunctionは $\omega_{H_X}=\OO_{H_X}(6-10)$ を与える。
+\end{proof}
+
+\begin{theorem}[六次超曲面のTorelli]\label{thm:sextic-torelli}
+滑らかな三次三次元多様体 $X,Y$ に対し、任意の抽象同型
+$H_X\xrightarrow{\sim}H_Y$ は、一意の射影同型 $X\xrightarrow{\sim}Y$ から誘導される。
+逆に任意の射影同型 $X\xrightarrow{\sim}Y$ は $H_X\xrightarrow{\sim}H_Y$ を誘導する。
+特に、抽象代数多様体の自己同型群として
+\[
+                       \operatorname{Aut}(H_X)\simeq\operatorname{Aut}(X)
+\]
+である。
+\end{theorem}
+
+\begin{proof}
+補題\ref{lem:sextic-picard}により同型は $\OO(1)$ を保つ。
+制限 $H^0(\PP(W),\OO(1))\to H^0(H_X,\OO_{H_X}(1))$ は同型なので、
+これは一意の射影線形同型 $\PP(W_X)\to\PP(W_Y)$ に延びる。
+この同型は被約特異部分 $\Gr(2,V_X)$ と $\Gr(2,V_Y)$ を対応させる。
+Chowの定理\cite[Section II.1]{ChowGrass}\cite[Theorem 3.6]{GhorpadeKaipa}により、
+$5\ne2\cdot2$ なので、この射は $\PP(\Lambda^2g)$ の形を持つ。
+ここで射影同型 $[g]:\PP(V_X)\to\PP(V_Y)$ は一意であり、
+Grassmannianの双対性に由来する追加の同型は生じない。
+
+階数4の部分上のkernel写像を
+\[
+ \kappa_X:\PP(\Lambda^2V_X)\setminus\Gr(2,V_X)\longrightarrow\PP(V_X^*)
+\]
+と書く。この射は全射であり、
+\[
+ H_X\setminus\Gr(2,V_X)=\kappa_X^{-1}(X),\qquad
+ \kappa_Y(\Lambda^2g(a))=(g^{-1})^*\kappa_X(a).
+\]
+従って $\PP((g^{-1})^*)$ は $X$ を $Y$ へ移す。
+逆向きは同じ公式から従う。
+また $\operatorname{Pic}(X)=\mathbb Z[\OO_X(1)]$ なので、
+$X$ の抽象自己同型も射影自己同型である。
+\end{proof}
+
+この証明は、次の座標に依存しない復元手順も与える。
+$H=H_X$ をその内在的な $\OO_H(1)$ で $\PP^9$ に埋め込み、
+\[
+ Z=(\operatorname{Sing}H)_{\mathrm{red}},\qquad
+ K=H^0(\PP^9,\mathcal I_Z(2))
+\]
+とおく。$K$ は5次元で、その二次式の全線形系による有理写像
+\[
+ \Phi_K:\PP^9\dashrightarrow\PP(K^*)
+\]
+は、Pfaffianによるkernel写像そのものである。従って
+\begin{equation}\label{eq:boundary-reconstruct-cubic}
+                 X\simeq\overline{\Phi_K(H\setminus Z)}
+                 \subset\PP(K^*)
+\end{equation}
+と復元できる。
+多項式の言葉では、代入写像
+$\operatorname{Sym}^3K\to\operatorname{Sym}^6(W^*)$ は単射で、
+六次方程式 $P_X$ の逆像が、スカラー倍を除いて一意な三次式 $F$ である。
+
+\begin{theorem}[次数付き環と抽象アフィン錐]\label{cor:affine-sextic-torelli}
+次の条件は同値である。
+\begin{enumerate}
+\item $X$ と $Y$ が射影同型である。
+\item $H_X$ と $H_Y$ が抽象多様体として同型である。
+\item $R_X$ と $R_Y$ が次数付き $\CC$-代数として同型である。
+\item $\Gamma_X$ と $\Gamma_Y$ が、頂点の指定を忘れたアフィン多様体として同型である。
+\end{enumerate}
+また
+\[
+ 1\longrightarrow\CC^*\longrightarrow\operatorname{Aut}_{\mathrm{gr}}(R_X)
+ \longrightarrow\operatorname{Aut}(X)\longrightarrow1
+\]
+は完全列である。
+\end{theorem}
+
+\begin{proof}
+前三条件の同値と完全列は定理\ref{thm:sextic-torelli}による。
+アフィン錐については
+\[
+ (\operatorname{Sing}\Gamma_X)_{\mathrm{red}}
+   =\operatorname{Cone}(\Gr(2,V)),\qquad
+ \bigl(\operatorname{Sing}((\operatorname{Sing}\Gamma_X)_{\mathrm{red}})\bigr)_{\mathrm{red}}
+   =\{0\}.
+\]
+実際、Pl\"ucker錐は頂点以外で滑らかで、頂点では次元7に対し接空間が10次元である。
+従ってアフィン同型は頂点を保つ。
+頂点の局所環の随伴次数環は、次数1で生成された $R_X$ 自身なので、
+その同型は $R_X\simeq R_Y$ を誘導する。
+\end{proof}
+
+この完全列の分裂は主張しない。
+また、アフィン錐や形式芽の全自己同型群では、接空間上恒等となる非線形自己同型も
+考慮する必要があるので、それらを $\operatorname{Aut}(X)$ に同一視してはいない。
+
+\subsection{形式境界と6次の局所環}
+
+非局所自由境界の完備局所環を
+\[
+ A_X=\widehat{\OO}_{D_X,e_X},\qquad
+ \mathfrak m_X\subset A_X
+\]
+とし、$r$ 次の局所環を $A_X^{(r)}=A_X/\mathfrak m_X^{r+1}$ と定める。
+
+\begin{theorem}[境界の6次Torelli]\label{thm:boundary-sixth-jet}
+抽象的な完備局所 $\CC$-代数 $A_X$ は、$X$ を射影同型まで決定する。
+さらに
+\[
+ X\simeq Y\ \text{（射影同型）}
+ \quad\Longleftrightarrow\quad
+ A_X^{(6)}\simeq A_Y^{(6)}\ \text{（局所 $\CC$-代数同型）}.
+\]
+一方、全ての $r\le5$ について
+\[
+ A_X^{(r)}\simeq
+ \CC[a_1,\ldots,a_{10}]/(a_1,\ldots,a_{10})^{r+1}
+\]
+であり、$X$ に依存しない。
+従って最大イデアルによるこの切断の中では、6次が復元に必要な最小の次数である。
+\end{theorem}
+
+\begin{proof}
+定理\ref{thm:sextic-boundary}から
+$\operatorname{gr}_{\mathfrak m_X}A_X=R_X$ である。
+より具体的に $T^*=\mathfrak m_X/\mathfrak m_X^2$ とおくと、
+\[
+ \ker\left(\operatorname{Sym}^6T^*
+      \longrightarrow\mathfrak m_X^6/\mathfrak m_X^7\right)
+ =\CC\cdot P_X
+\]
+は1次元である。この積写像は $A_X^{(6)}$ だけから内在的に決まるので、
+六次超曲面 $H_X$、従って定理\ref{thm:sextic-torelli}により $X$ を復元できる。
+
+逆に、正則な局所座標で境界の方程式を
+$d_X=P_X+\text{（7次以上）}$ と書けば
+\[
+ A_X^{(6)}\simeq
+ \CC[a_1,\ldots,a_{10}]/\bigl((a)^7,P_X\bigr).
+\]
+従って射影同型な $X,Y$ は同型な6次局所環を与える。
+5次以下では関係式 $d_X$ 自体が消えるため、最後の主張も従う。
+\end{proof}
+
+\begin{remark}[このTorelliの入力]
+ここでの入力は、gluing object $E$ における\emph{非局所自由境界の指定された形式芽}
+である。その局所環を与えれば、周囲の滑らかな $U$、接座標、$X$ によって
+添字付けられたincidenceの族は、復元の入力に残す必要がない。
+一方、境界の構成には $\Ku(X)\subset D^b(X)$ という幾何的実現と
+局所自由性、または点対象を用いたBrill--Noether条件を用いている。
+従って、この結果だけから、境界を指定しない残余圏や滑らかな形式空間
+$\Def_E\simeq\operatorname{Spf}\CC[[a_1,\ldots,a_{10}]]$ が
+同じ復元データを内在的に選ぶとは結論しない。
+\end{remark}
+
+\subsection{境界そのものの形式斉次性を判定する条件}
+
+6次Torelliは、境界がその接錐と形式同型であるという主張とは区別する必要がある。
+後者には、universal対象のcohomology-jump方程式の高次項が関係する。
+その判定には次の内在的な条件が使える。
+
+\Needspace{8\baselineskip}
+\begin{theorem}[形式Euler導分による判定]\label{prop:boundary-euler}
+$A=\CC[[a_1,\ldots,a_{10}]]/(d)$ とし、$d$ の最低次項を
+$P=P_X$ とする。次の条件は同値である。
+\begin{enumerate}
+\item $A\simeq\CC[[a_1,\ldots,a_{10}]]/(P)$ である。
+\item $A$ に、最大イデアルを保ち、$\mathfrak m_A/\mathfrak m_A^2$ 上で恒等作用をする
+連続 $\CC$-導分 $\delta$ が存在する。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+斉次な環にはEuler導分があるので $(1)\Rightarrow(2)$ は明らかである。
+逆に $\delta(a_i)$ の代表元を選び、$\delta$ を形式冪級数環の導分へ持ち上げる。
+その線形部分は $\mathcal E=\sum_i a_i\partial_{a_i}$ であり、
+$\delta(d)=b d$、$b(0)=6$ を満たす。
+次数 $n\ge2$ の座標補正に対する作用素が $n-1$ 倍であることを用い、
+逐次 $\delta(y_i)=y_i$ となる形式座標を構成できる。
+この座標で $\mathcal E(d')=b'd'$、$b'(0)=6$ である。
+\[
+                      \mathcal E(\log u)=6-b'
+\]
+を各次数 $n$ で $n$ により割って解けば、$u(0)=1$ のunit $u$ が得られ、
+$\mathcal E(ud')=6ud'$ となる。従って $ud'$ は純粋な6次式である。
+座標変更の線形部分と $u$ の定数項はいずれも恒等なので、その6次式は $P$ である。
+\end{proof}
+
+具体的には、$d=P+d_7+d_8+\cdots$ とし
+$S=\CC[a_1,\ldots,a_{10}]$、$J_P=(\partial_{a_i}P)$ とおく。
+最初の障害は
+\[
+                             [d_7]\in(S/J_P)_7
+\]
+である。二次の座標補正と一次のunit補正で変わる項は
+$\sum_iS_2\partial_{a_i}P+S_1P=(J_P)_7$ だからである。
+等号にはEulerの公式 $6P=\sum_i a_i\partial_{a_i}P$ を用いた。
+7次から $N-1$ 次までを消した後には、同様に $(S/J_P)_N$ が次の障害を受け持つ。
+高次の障害は、それ以前に行った消去の選択に依存し得る。
+全次数で整合する消去を構成できることが、形式斉次化の条件である。
+第\ref{sec:boundary-higher-jets}節では、全非零三次式上の正則で同変な座標を構成し、
+実際の境界について $d_7=d_8=d_9=0$ とできることを示す。
+第7版の段階で次に残った項は10次であった。
+第\ref{sec:tate-boundary-tenth}節では、その実際の係数と消去不能性を決定する。
+
+なお、この接錐には一般の有限決定性を適用できない。
+任意の $M>6$ に対し
+\[
+                         P+\sum_{i=1}^{10}a_i^M
+\]
+は $P$ と $M-1$ 次まで一致するが、原点は孤立特異点である。
+実際、次数と両立する単項式順序で、その10個の偏微分の先頭単項式は
+$a_i^{M-1}$ なので、Jacobian環は有限次元になる。
+一方、$P=0$ の特異部分は7次元のPl\"ucker錐である。
+従って両者は形式同型ではない。
+これは任意の超曲面芽の中での例であり、この摂動が実際の境界 $D_X$ から
+生じるとは主張していない。
+
+\clearpage
+\section{境界の全特異部分と二段階の解消}
+\label{sec:global-bn-singular}
+
+本節では、$e=[E]$ を含む全形式近傍で、境界の被約な特異部分を同定する。
+前節までの相対Picardの記述を使い、特異または非被約な平面三次曲線の方向も含める。
+各曲線が滑らかであることは仮定せず、全平面を動かす普遍曲線の全空間が
+滑らかであることを用いる。
+
+$A=\widehat{\OO}_{\Def_E,e}\simeq\CC[[w_1,\ldots,w_{10}]]$、
+$U=\operatorname{Spec}A$ とし、境界、適合部分空間、incidenceをそれぞれ
+$D,C,\mathcal I$ と書く。
+以下の主張はこの完備局所環上でのものである。
+完備局所環上では正則性を用い、形式近傍の滑らかさとして記述する。
+$G=\Gr(2,V)$、$W=\Lambda^2V\otimes T$、
+$T=H^3(X,\OO_X(-2))$ とおく。
+
+\begin{theorem}[境界の全特異部分]\label{thm:global-bn-singular}
+$e$ における形式近傍で、閉被約部分スキームとして
+\[
+ \operatorname{Sing}(D)_{\mathrm{red}}=C
+\]
+が成立する。特に、$C$ に含まれない小次元の特異成分は存在しない。
+また $D$ は正規なGorenstein因子である。
+\end{theorem}
+
+この命題は、$\operatorname{Sing}(D)$ の非被約なスキーム構造まで
+$C$ と一致すると主張するものではない。
+証明のため、まず射影された評価核の局所表示を全Picard族上で求める。
+
+\subsection{射影対象の局所微分と平面曲線}
+
+形式Picardの局所chartで零切断の方程式を $t=0$ とし、
+曲線族を $j:\mathscr C\hookrightarrow X\times S$、線形束を $L$ と書く。
+その評価核を
+\[
+ 0\longrightarrow F\longrightarrow p_*L\otimes\OO_{X\times S}
+ \longrightarrow j_*L\longrightarrow0
+\]
+で定める。$j$ は相対余次元2のregular immersionなので、
+局所的には $F\simeq\mathcal I_{\mathscr C}\oplus\OO^2$ である。
+
+\begin{lemma}[Picard族の局所行列]\label{lem:picard-local-matrix}
+$F$ の局所free resolutionを
+$[P^{-1}\xrightarrow{d_F}P^0]$、階数をそれぞれ1と4と取れる。
+適当な局所自明化のもとで、射影対象 $\mathcal E=\pi F$ は
+\begin{equation}\label{eq:picard-local-matrix}
+ \mathcal E\simeq
+ [P^{-1}\xrightarrow{\,t b^{-1}d_F\,}Q],
+ \qquad b:Q\xrightarrow{\sim}P^0
+\end{equation}
+と表示される。従ってincidenceの四つの方程式のPicard族への制限は、
+イデアルとして正確に $t\mathcal I_{\mathscr C}$ を生成する。
+\end{lemma}
+
+\begin{proof}
+相対theta補題\ref{lem:relative-picard-theta}により、
+単元を吸収すると
+\[
+ K=\RHom(Q,F)\simeq Rp_*L(-1)
+   \simeq[\OO_S\xrightarrow{t}\OO_S]
+\]
+であり、右辺は次数0と1に置かれる。
+$F\in\OO_X^\perp$ 上で $\pi=L_Q$ なので、mutation triangleは
+\[
+ K\otimes Q\xrightarrow{\mathrm{ev}}F\longrightarrow\mathcal E
+\]
+となる。零切断ではEuler列とKoszul列から
+\[
+ 0\longrightarrow\OO_X(-1)\otimes\det U
+ \longrightarrow Q\longrightarrow F_0\longrightarrow0
+\]
+を得る。evaluationの次数0成分はこの自然な全射 $Q\to F_0$ である。
+局所resolutionをこの全射に合わせて選ぶと、
+その持ち上げ $b:Q\to P^0$ は零切断上で可逆であり、
+形式近傍でも可逆となる。ここでは基底の線形束を局所自明化している。
+
+evaluationのconeの微分は
+\[
+ \begin{pmatrix}
+  d_F&b\\
+  0&-tI_4
+ \end{pmatrix}
+\]
+である。可逆なblock $b$ を消去すると
+\eqref{eq:picard-local-matrix}を得る。
+$d_F$ の成分は $\mathcal I_{\mathscr C}$ を生成するため、イデアルの主張も従う。
+この計算は相対perfect complexのconeに対するものであり、
+各曲線が滑らかであることを必要としない。
+\end{proof}
+
+\subsection{二つのblowupと閉埋め込み}
+
+\begin{theorem}[境界の埋め込み解消]\label{thm:bn-double-blowup}
+次の二段階のblowupを考える：
+\[
+ Y_1=\operatorname{Bl}_eU,\qquad
+ C_1=\operatorname{Bl}_eC\subset Y_1,\qquad
+ Y_2=\operatorname{Bl}_{C_1}Y_1.
+\]
+$B=\operatorname{Bl}_X\mathcal I$ は $Y_2$ に閉埋め込み、
+その像は $D$ のstrict transformに一致する。
+$Y_2\to U$ は $D$ のembedded log resolutionである。
+\end{theorem}
+
+\begin{proof}
+最初の例外因子を $E_1=\PP(W)$ と書く。
+$\mathfrak m_e\OO_{\mathcal I}=\mathcal I_X$ なので、
+blowupの普遍性からproperな射 $B\to Y_1$ があり、その閉ファイバーは
+\[
+ J=\PP_X(\Lambda^2Q).
+\]
+$B$ は滑らかな9次元空間であり、$E_1$ のpullbackは係数1で $J$ となる。
+
+局所表示 $\mathcal E_U=[\OO\xrightarrow{d}\OO^4]$ を取る。
+blowup chartで $w_j=\rho$、$w_i=\rho a_i$ とすると
+$d_i(x,\rho a)=\rho r_i(x,a,\rho)$ と書ける。
+$B$ の方程式は四つの $r_i=0$ である。
+実際、$\rho=0$ の零点は滑らかな $J=\PP_X(\Lambda^2Q)$ で、
+$r_i$ の四つの微分は独立である。
+従って $V(r_1,\ldots,r_4)$ 上で $\rho$ は非零因子であり、
+$\rho$-torsionを除く操作による余分な変化はない。
+strict transformが $\operatorname{Bl}_X\mathcal I$ に一致する一般的性質は
+\cite{StacksStrictTransform}も参照されたい。
+
+相対Picardの記述により、$C_1$ の $G$ に沿う完備化は形式Picardそのものである。
+従って $C_1$ は滑らかな7次元空間で、
+$C_1\cap E_1=G$ は横断的な交叉である。
+$\rho|_{C_1}$ はPicard parameter $t$ の単元倍であるから、
+補題\ref{lem:picard-local-matrix}を四つの $r_i$ に適用すると、
+スキームとして
+\begin{equation}\label{eq:bn-blowup-picard-intersection}
+ B\times_{Y_1}C_1=\mathscr C_{\widehat{\mathcal P}}
+\end{equation}
+を得る。これは非flatなbase changeとstrict transformの交換を仮定したものではなく、
+明示した方程式を制限した結果である。
+
+ここで普遍平面三次曲線は
+\[
+ \mathscr C_G=\{(p,U):p\in X,\ U\subset\ker(p:V\to\OO_X(1))\}
+            =\Gr_X(2,Q)
+\]
+という $X$ 上のGrassmannian束であり、
+その全空間は滑らかな7次元空間である。
+形式Picardは $G$ 上の形式線形束なので、
+\eqref{eq:bn-blowup-picard-intersection}の右辺は滑らかな8次元空間となる。
+従って $Z=B\times_{Y_1}C_1$ は $B$ のCartier因子であり、
+\[
+ \mathcal I_{C_1}\OO_B=\mathcal I_Z.
+\]
+形式完備化で確認したCartier性は $A$ 上でも成立する。
+その不成立箇所が非空なら、proper性により閉点ファイバーに会うからである。
+
+よって $B\to Y_2$ へ持ち上がり、二番目の例外因子を $E_2$ とすると、
+そのpullbackは係数1で $Z$ である。
+$C_1$ は $E_1$ と横断的なので、閉ファイバーは正確に
+\[
+ (Y_2)_e=\operatorname{Bl}_G\PP(W).
+\]
+$G$ のidealは五つのPfaffianで生成されるから、
+このblowupはPfaffianによる有理写像のgraph closureである。
+rank4の稠密開集合でkernel pointを取ることにより、
+\begin{equation}\label{eq:pfaffian-projective-graph}
+ \operatorname{Bl}_G\PP(W)
+ \simeq\PP_{\PP(V^*)}(\Lambda^2Q_{\PP(V^*)})
+\end{equation}
+を得る。右辺は滑らかな $\PP^5$-束であり、rank4のgraphの閉包に一致する。
+$J=\PP_X(\Lambda^2Q)$ は右辺の $X\subset\PP(V^*)$ への逆像である。
+従って $B\to Y_2$ の閉ファイバーは閉埋め込みである。
+
+最後に、この閉埋め込みを全体へ上げる。
+$A$ 上properな射 $f:B\to Y_2$ の非quasi-finite locusは閉集合である。
+閉ファイバーが閉埋め込みなので、この閉集合は閉点ファイバーに会わない。
+proper性により空であり、$f$ はproperかつquasi-finite、従ってfiniteである
+\cite{StacksProperFinite}。
+finite base changeとNakayamaにより
+$\operatorname{coker}(\OO_{Y_2}\to f_*\OO_B)$ の台も閉点ファイバーに会わない。
+再びproper性からこのcokernelは零で、$f$ は閉埋め込みとなる。
+その像は、中心の外の境界の閉包、すなわち $D$ のstrict transformである。
+
+最初の例外因子のstrict transformを $E_1'$ と書く。
+$Y_2$ の次元は10であり、交叉はすべてスキームとして
+\[
+ \begin{aligned}
+ B\cap E_1'&=J &&(\dim=8),\\
+ B\cap E_2&=Z &&(\dim=8),\\
+ B\cap E_1'\cap E_2&=\mathscr C_G &&(\dim=7),\\
+ E_1'\cap E_2&=\PP_G(N_{G/\PP(W)}) &&(\dim=8)
+ \end{aligned}
+\]
+と表される。各全空間は滑らかで、次元は期待次元に等しい。
+従って $B+E_1'+E_2$ はsimple normal crossingsであり、
+所要のembedded log resolutionを得る。
+\end{proof}
+
+\begin{proof}[命題\ref{thm:global-bn-singular}の証明]
+二つのblowupの合成は $U\setminus C$ 上で同型である。
+境界のstrict transformが滑らかな $B$ なので、
+$D\setminus C$ は滑らかであり、
+$\operatorname{Sing}(D)_{\mathrm{red}}\subset C$ を得る。
+逆包含は、滑らかな平面切断の評価核を表す $C$ の稠密部分で既に証明した。
+特異部分は閉集合で、$C$ は既約であるから、逆包含は $C$ 全体に延長される。
+
+$D$ は整な超曲面なので $S_2$ を満たす。
+その特異部分は $D$ 内で余次元2なので $R_1$ も満たし、正規である。
+Gorenstein性は超曲面であることから従う。
+\end{proof}
+
+\subsection{対数標準特異点と二つの数値不変量}
+
+discrepancyを $a$、log discrepancyを $A=a+1$ とする。
+境界の全高次方程式を決定しなくても、上の解消からこれらを計算できる。
+対数標準性とlog resolutionによるthresholdの計算には、
+例えば\cite[Section 1]{MustataSing}の定義を用いる。
+
+\begin{theorem}[対数標準性と最小log discrepancy]\label{thm:bn-log-invariants}
+$D$ は対数標準特異点を持ち、そのnon-klt locusは $C$ である。
+さらに
+\[
+ \operatorname{lct}_e(U,D)=1,\qquad
+ \operatorname{mld}_e(D)=4
+\]
+となる。
+\end{theorem}
+
+\begin{proof}
+$\pi:Y_2\to U$ とおく。
+$e$ における境界の重複度は6であり、
+$C_1$ の一般点におけるstrict transformの重複度は3である。
+後者は滑らかな平面切断の評価核点での計算による。
+従って
+\begin{equation}\label{eq:bn-log-resolution-divisors}
+ \pi^*D=B+6E_1'+3E_2,\qquad K_{Y_2/U}=9E_1'+2E_2.
+\end{equation}
+最初の中心は10次元空間の点、次の中心は余次元3である。
+また $C_1$ は $E_1$ に含まれないため、
+$E_1$ のpullbackに $E_2$ の追加成分は生じない。
+
+adjunctionを $B$ に制限すると
+\begin{equation}\label{eq:bn-adjunction-discrepancy}
+ K_B=\pi_D^*K_D+3J-Z.
+\end{equation}
+例外因子のdiscrepancyは $3$ と $-1$ であり、$J+Z$ はsimple normal crossingsである。
+従って $D$ は対数標準で、non-klt locusは $Z$ の像 $C$ となる。
+また\eqref{eq:bn-log-resolution-divisors}から
+\[
+ \operatorname{lct}_e(U,D)
+ =\min\left\{1,\frac{10}{6},\frac{3}{3}\right\}=1.
+\]
+
+$e$ を中心とする任意のdivisorial valuation $\nu$ の $B$ 上の中心は $J$ に入る。
+$(B,J+Z)$ が対数標準であるため、
+$A_B(\nu)\ge\nu(J)+\nu(Z)$ である。
+よって\eqref{eq:bn-adjunction-discrepancy}から
+\[
+ A_D(\nu)=A_B(\nu)-\nu(Z)+3\nu(J)\ge4\nu(J)\ge4.
+\]
+$J$ 自身が $A_D(J)=4$ を達成するので、
+$\operatorname{mld}_e(D)=4$ となる。
+\end{proof}
+
+\subsection{適合部分空間を一度に吹き上げる記述}
+
+二段階の解消から、incidenceそのものにも埋め込みの記述が得られる。
+以下では $C$ の標準Pl\"ucker座標を $A$ に持ち上げ、
+$C$ を五つの斉次二次Pfaffianで定める形式座標を選ぶ。
+これは $A\to\OO_C$ が余接空間の同型を誘導するため可能である。
+traceの1次元因子は自明化して表示する。
+
+\begin{theorem}[適合部分空間のblowup内のincidence]\label{thm:bn-single-blowup}
+$H=\operatorname{Bl}_C U$ とすると、その閉ファイバーに沿う完備化は
+\[
+ \widehat H_{\PP(V^*)}
+ \simeq
+ \widehat{\operatorname{Tot}_{\PP(V^*)}
+        (\Lambda^2Q_{\PP(V^*)}\otimes T)}_{\PP(V^*)}
+\]
+である。従って $H$ は滑らかで、
+incidenceは $D$ のstrict transformとして $\mathcal I\hookrightarrow H$
+と閉埋め込まれる。
+射影を $p:H\to\PP(V^*)$ と書けば、そのCartier classは
+\[
+ \OO_H(\mathcal I)\simeq p^*\OO_{\PP(V^*)}(3)
+\]
+である。
+さらに $\mathcal I\times_U C$ は被約なCartier因子 $S$ であり、
+$S$ は $X=\mathcal I_e$ に沿って横断的なordinary double pointを持つ。
+\end{theorem}
+
+\begin{proof}
+$S$ を $\mathcal I|_{C\setminus\{e\}}$ の閉包の素因子とする。
+$\mathcal I$ は滑らかなので $S$ はCartierであり、
+$\beta:B\to\mathcal I$ におけるstrict transformは $Z$ である。
+$\beta^*S=Z+mJ$ と書く。
+$J\to X$ の各 $\PP^5$-ファイバー上で $Z\cap J$ は
+\[
+ \Gr(2,Q_x)\subset\PP(\Lambda^2Q_x)
+\]
+というPl\"ucker二次超曲面であり、
+$\OO_B(J)|_{\PP^5}=\OO_{\PP^5}(-1)$ である。
+一方、$\beta^*\OO_{\mathcal I}(S)$ はこのファイバー上で自明だから、
+$0=2-m$、すなわち $m=2$ となる。
+
+$C$ の方程式は斉次二次式なので、
+最初のblowupでは
+\[
+ \mathcal I_C\OO_{Y_1}
+ =\OO_{Y_1}(-2E_1)\mathcal I_{C_1}.
+\]
+これを $B$ に引き戻すと
+$\mathcal I_C\OO_B=\OO_B(-2J-Z)=\mathcal I_S\OO_B$ を得る。
+$\mathcal I_C\OO_{\mathcal I}\subset\mathcal I_S$ だから、
+invertible ideal $\mathcal I_S$ で割ったidealを $\mathcal K$ とおけば
+$\mathcal K\OO_B=\OO_B$ である。
+$\beta$ は全射なので $\mathcal K=\OO_{\mathcal I}$ となる。
+実際、$\mathcal K$ がある点の極大idealに入るなら、
+その逆像の点でもunit idealにはならない。
+従って
+\begin{equation}\label{eq:bn-preimage-compatibility}
+ \mathcal I_C\OO_{\mathcal I}=\mathcal I_S
+\end{equation}
+がスキームとして成立し、$\mathcal I\to H$ が存在する。
+
+$H$ はアフィンPfaffian写像のgraph closureである。
+そのgraphは
+\[
+ \{(a,p):a\in\Lambda^2\ker p\otimes T\}
+ =\operatorname{Tot}_{\PP(V^*)}(\Lambda^2Q\otimes T)
+\]
+であり、rank4の稠密開集合を含む滑らかなrank6のベクトル束となる。
+これを原点でbase changeし、完備化すると命題の表示を得る。
+
+また $\mathcal I_C\OO_{Y_2}=\OO_{Y_2}(-2E_1'-E_2)$ なので
+$Y_2\to H$ も存在する。
+閉ファイバー上では\eqref{eq:pfaffian-projective-graph}の $\PP(V^*)$ への射影である。
+従って $J\to H_e$ は $J\to X\hookrightarrow\PP(V^*)$ に一致し、
+$\mathcal I_e\to H_e$ は元の閉埋め込み $X\hookrightarrow\PP(V^*)$ である。
+命題\ref{thm:bn-double-blowup}の証明で用いたproper性とNakayamaの議論により、
+$\mathcal I\to H$ は全体で閉埋め込みとなる。
+
+$H$ の例外因子を $R$ とする。
+rank4束 $Q$ のskew form $a$ に対する $a\wedge a$ は
+$\det Q\otimes T^2$ の切断なので
+\[
+ \OO_H(R)=p^*(\det Q\otimes T^2)\simeq p^*\OO(-1).
+\]
+最後の同型では定数の1次元因子を自明化した。
+$C$ の一般点での境界の位数は3だから、$H\to U$ による総変換は
+$\mathcal I+3R$ である。
+$D$ は $U=\operatorname{Spec}A$ 上でprincipalなので
+\[
+ \OO_H(\mathcal I)=\OO_H(-3R)\simeq p^*\OO(3)
+\]
+を得る。ここで線形束のclassを決定したことは、
+その切断の高次項を消去したことを意味しない。
+
+最後に\eqref{eq:bn-preimage-compatibility}から $S=\mathcal I\cap R$ である。
+零切断に沿う $R$ の二次項は、六つのskew coordinatesの非退化Pfaffianである。
+$\mathcal I\cap\PP(V^*)=X$ は滑らかな三次超曲面なので、
+$\mathcal I$ の $X$ に沿う法方向でもこの二次形式は非退化である。
+形式Morse補題により、各 $x\in X$ の局所で $(S,X)$ は
+\[
+ \left(X\times
+ \{z_1z_2+z_3z_4+z_5z_6=0\},\ X\times\{0\}\right)
+\]
+に形式同型となる。
+これは $X$ 上局所的な主張であり、法束の大域的な自明性は仮定しない。
+\end{proof}
+
+$H$ の例外因子 $R$ 自体は零切断に沿って特異なので、
+simple normal crossingsの計算には二段階のモデルを用いる。
+実際、graphの束表示から $Y_2\simeq\operatorname{Bl}_{\PP(V^*)}H$ と分かり、
+その中で $\mathcal I$ のstrict transformは $B=\operatorname{Bl}_X\mathcal I$ となる。
+
+以上の結果は、特異平面切断を含む方向で別の特異成分が発生する可能性を除く。
+一方、Jacobian idealが定める非被約な特異スキームの詳細や、
+六次初期式 $F(q)$ より高い項を全て消去できるかは、別の問題として残る。
+
+
+\subsection{境界からの偏極三次三次元多様体の復元}
+
+\begin{theorem}[内在的なblowupによる復元]\label{thm:bn-intrinsic-reconstruction}
+実際のBrill--Noether境界の、閉点 $e$ を指定した完備局所芽 $(D,e)$ に対して
+$\widetilde D=\operatorname{Bl}_{\operatorname{Sing}(D)_{\mathrm{red}}}D$
+とおく。偏極三次三次元多様体は
+\[
+ (X,\OO_X(1))
+ \simeq\bigl(\widetilde D_e,\OO_{\widetilde D}(1)|_{\widetilde D_e}\bigr)
+\]
+として復元される。
+従って二つのこの形式境界の芽が同型なら、
+対応する三次三次元多様体は射影的に同型である。
+\end{theorem}
+
+\begin{proof}
+strict transformの一般的性質\cite{StacksStrictTransform}から、
+$H=\operatorname{Bl}_C U$ 内の $D$ のstrict transformは
+$\operatorname{Bl}_C D$ に等しい。従って
+\[
+ \mathcal I\simeq\operatorname{Bl}_C D
+ =\operatorname{Bl}_{\operatorname{Sing}(D)_{\mathrm{red}}}D.
+\]
+その閉ファイバーはスキームとして $X$ である。
+またblowupのtautological line bundleは
+$\mathcal I_C\OO_{\mathcal I}=\OO_{\mathcal I}(-S)$ であり、
+$S=R|_{\mathcal I}$ と $\OO_H(R)\simeq p^*\OO(-1)$ から、
+$X$ への制限は $\OO_X(1)$ となる。
+全構成が形式境界のgermから内在的に定まり、所要の復元を得る。
+\end{proof}
+
+この復元は境界をその接錐へ形式同型にすることを必要としない。
+入力は実際のBN境界の芽であり、境界を指定しない残余圏だけからの復元は主張しない。
+
+
+\section{境界方程式の普遍共変量と高次項}
+\label{sec:boundary-higher-jets}
+
+前節では境界の特異部分と解消を決定した。本節では、頂点の方程式自体を調べる。
+その係数を三次式 $F$ の多項式として扱える普遍座標を構成し、
+7次から9次までを除外し、10次の候補を明示する。
+その実際の係数は次節で計算する。
+
+\subsection{特異三次式を含む普遍族上の形式座標と境界方程式}
+\label{subsec:universal-bn-equation}
+
+境界方程式の高次項へ群作用を用いるには、その係数が三次式 $F$ に関して
+正則であることが必要である。滑らかな三次式の開集合だけで座標を取ると、
+判別式の逆数が入り得る。本節では全ての非零三次式へ族を広げる。
+
+\[
+ S=\Sym^3V\setminus\{0\},\qquad
+ T=(\det V)^*,\qquad W=\Lambda^2V\otimes T,
+ \qquad L=(\det V)^{-3}
+\]
+とおく。trace線を保持すると、Pfaffian写像は
+\[
+ q:W\longrightarrow\Lambda^4V\otimes T^2
+       \simeq V^*\otimes(\det V)^{-1},
+ \qquad a\longmapsto\tfrac12a\wedge a
+\]
+であり、$P(F,a)=F(q(a))$ は $L$ に値を持つ。
+
+\begin{theorem}[正則で同変な普遍境界方程式]
+\label{thm:universal-bn-equation}
+$S$ 上の対象 $E_F$ の変形空間に、cohomologyのedge同型を一次部分とする
+$GL(V)$-同変な形式座標 $a\in W$ を同時に取れる。
+この座標で、$L$ に値を持つ正則な同変形式級数
+\begin{equation}\label{eq:universal-bn-series}
+ d(F,a)=F(q(a))+\sum_{n\ge7}d_n(F,a)
+\end{equation}
+が存在し、各滑らかな $F$ での零点は実際の形式Brill--Noether境界である。
+$d_n$ は $a$ に関して $n$ 次、$F$ に関して $n-5$ 次の多項式であり、
+\begin{equation}\label{eq:universal-bn-covariants}
+ d_n\in\mathcal C_n:=(\Hom_{GL(V)})\!\left(
+ \Sym^{n-5}(\Sym^3V)\otimes\Sym^n(\Lambda^2V),
+ (\det V)^{n-3}\right).
+\end{equation}
+この主張は、整合的に選べる普遍座標についての存在命題である。
+任意のminimal modelで既に選んだ座標が、この正則性と同変性を持つとは主張しない。
+\end{theorem}
+
+\begin{proof}
+\textbf{特異ファイバー上の対象モジュライ。}
+$S$ は35次元affine空間から一点を除いたものであり、
+\begin{equation}\label{eq:universal-bn-base-vanishing}
+ \Gamma(S,\OO_S)=\CC[\Sym^3V],\qquad
+ H^i(S,\OO_S)=0\quad(1\le i\le33),\qquad \Pic(S)=0.
+\end{equation}
+消滅は35個の座標関数の正則列に関する局所コホモロジーから従う。
+定数ベクトル束についても同じ消滅が成り立つ。
+さらに $GL(V)$ は標数零でlinearly reductiveなので、同変な
+$H^1,H^2$ についても消滅する。
+
+普遍超曲面 $\mathcal X\to S$ はflat、projective、Gorensteinである。
+また全空間 $\mathcal X$ 自身は滑らかである。
+実際、$F$ の係数方向の微分は、各 $p\in\PP(V^*)$ で非零の評価写像になる。
+補題\ref{lem:universal-tangent-lift}の計算は、非被約な三次式も含めて
+\[
+ \mathcal E xt^0(E,E)=\OO_S,\qquad
+ \mathcal E xt^1(E,E)=W\otimes\OO_S,
+ \qquad \mathcal E xt^{r\ne0,1}(E,E)=0
+\]
+を与える。
+
+Lieblichの対象モジュライの代数性とsimple locusのrigidification
+\cite[Theorem 4.2.1, Corollary 4.3.3]{LieblichComplexes}を用い、
+$E_F$ の切断 $\sigma:S\to M$ を含むalgebraic spaceを取る。
+この定理の仮定はflat properな射であり、個々のファイバーの滑らかさは要らない。
+$\Ext^2(E,E)=0$ と対象の障害理論
+\cite[Theorem 3.1.1, Corollary 3.1.2]{LieblichComplexes}により、
+$M\to S$ は切断の近傍で相対次元10の滑らかな射である。
+ここでは切断が閉埋め込みになる\'etale局所germを用い、
+全モジュライの分離性は仮定しない。以下の完備化とblowupもこのgermで行い、貼り合わせる。
+その法束は $W\otimes\OO_S$ である。
+
+\textbf{全次数の同変座標。}
+滑らかな射と切断の形式座標は基底上局所的に存在する。
+一次部分をedge同型に固定し、$n-1$ 次まで座標を貼り合わせたとする。
+$n$ 次の二つの延長の差は
+\[
+ \Hom(W^*,\Sym^nW^*)\otimes\OO_S
+       =W\otimes\Sym^nW^*\otimes\OO_S
+\]
+の切断である。この $H^1$ の消滅を同変圏で用いて、整合する形式同型
+\[
+                   \widehat M_{\sigma(S)}\simeq S\times\widehat W_0
+\]
+を次数ごとに構成する。必要ならuniversal対象のscalar gerbeも、
+$S$ 上での対象 $E$ から始め、同変な $H^2$ の消滅により同時に自明化できる。
+同型類の不変性からlinearizationの整合性を推論したのではなく、
+最初から同変な貼り合わせの障害を消している。
+
+\textbf{普遍incidenceとCartier像。}
+$M$ の\'etale chartでuniversal複体を取る。
+$\mathcal X\times_SM\to\mathcal X$ は滑らかなので、その全空間は正則であり、
+このbounded coherentな複体はperfectである。
+中心族に沿って可逆な部分を消すと、局所表示は
+\[
+                       [\,\OO\xrightarrow{\,b\,}\OO^4\,]
+\]
+となる。微分の四成分の零点はchartの変更と基底からの直線束によるtwistに不変なので、
+scalar gerbeから降りてproperなincidence $\mathcal I\to M$ を与える。
+その切断上のファイバーはスキームとして $\mathcal X$ である。
+基底方向の微分は、全ての非零三次式上で全射な評価写像
+\[
+ W\otimes\OO_{\mathcal X}\longrightarrow Q(1)\otimes T
+\]
+であり、核は $N=\Lambda^2Q\otimes T$ である。
+従って $\mathcal I$ は中心族に沿って滑らかで、$\mathcal X$ の法束は $N$ である。
+
+proper性により近傍を縮小すると、$\mathcal I$ の中心族を通るgermはintegralである。
+そのscheme-theoretic image $\mathcal D\subset M$ もintegralである。
+滑らかな三次式の稠密な開集合では定理\ref{thm:sextic-boundary}から余次元1であり、
+$M$ は正則なので $\mathcal D$ はCartier因子となる。
+以下では、この通常の代数的な像を完備化する。
+
+\textbf{特異三次式上でも先頭係数は消えない。}
+$\mathcal I\times_MS=\mathcal X$ がスキームとして成立するので、properな射
+\[
+ f:\operatorname{Bl}_{\mathcal X}\mathcal I
+           \longrightarrow\operatorname{Bl}_{\sigma(S)}M
+\]
+を得る。両辺の例外因子を $J,A$ とすると、$f^*A=J$ は係数1のCartier因子の等式である。
+例外因子上の射は
+\[
+ J=\PP_{\mathcal X}(N)\longrightarrow S\times\PP(W)
+\]
+であり、その像は $\mathcal H=\{F(q(a))=0\}$ である。
+階数4の部分ではkernel点が一意なので、この射はスキームとして同型になる。
+階数2ではkernel平面と非零三次式の零点の交わりは常に非空である。
+制限三次式が恒等的に零の場合も、ファイバーが平面全体になるだけである。
+従って、この像の台の記述は全ての $F\in S$ で成立する。
+
+$f$ の像は $\mathcal D$ のstrict transformであるから、その例外因子との交わりの台は
+正確に $\mathcal H$ となる。
+滑らかな三次式上では先頭項が $F(q)$ なので、6次未満のjetは $S$ 全体で零であり、
+6次項は局所的に $c(F)F(q)$ である。
+$F(q)$ は各非零 $F$ で非零なので、その張る直線は直線部分束であり、$c$ は正則である。
+もし $c(F_0)=0$ なら、strict transformと例外因子の交わりは $F_0$ 上の
+$\PP(W)$ 全体を含んでしまう。これは $\mathcal H_{F_0}$ が真の超曲面であることに反する。
+従って $c$ は全ての点でunitである。
+
+この先頭項は、同変な直線束の同型
+\[
+                    \mathcal I_{\mathcal D}|_S\simeq L^*\otimes\OO_S
+\]
+を与える。これを形式近傍へ延長する際の障害は
+$H^1([S/GL(V)],\Sym^nW^*\otimes\OO_S)$ に入り、零である。
+よって $L$ に値を持ち、先頭項が正確に $F(q)$ である同変な方程式 $d$ を取れる。
+
+\textbf{係数の多項式性と重み。}
+各 $d_n$ の係数は $S$ 上の正則関数なので、
+\eqref{eq:universal-bn-base-vanishing}から三次式の係数の多項式である。
+scalar行列 $z\id_V$ は $F,W,L$ にそれぞれ $z^3,z^{-3},z^{-15}$ で作用する。
+従って $F$ の次数 $m$ は $3m-3n=-15$、すなわち $m=n-5$ を満たす。
+traceのtwistを外すと\eqref{eq:universal-bn-covariants}を得る。
+
+最後に、scheme-theoretic imageの任意の基底変換との可換性は使わない。
+滑らかな $F$ へ制限した $d$ は実際のincidence上で零なので、その境界の方程式で割れる。
+両者の先頭項は同じ非零の $F(q)$ であるから、商は形式局所環のunitである。
+従って、滑らかな各ファイバーで実際の境界を定義する。
+\end{proof}
+
+\begin{lemma}[同じ普遍座標での適合部分空間]
+\label{lem:universal-chart-plucker}
+定理\ref{thm:universal-bn-equation}の座標では、各滑らかな $F$ の適合形式部分空間は
+標準的なPl\"ucker錐そのものである。すなわち
+\[
+             \widehat C_c=\{a\in\widehat W_0:a\wedge a=0\}
+\]
+が閉形式部分スキームとして成立する。
+\end{lemma}
+
+\begin{proof}
+$V=U\oplus Z$、$\dim U=2$ と固定し、
+\[
+ S_U=\{F:F|_Z\ne0\}
+      \simeq\Aff^{25}\times(\Aff^{10}\setminus\{0\}),\qquad
+ D_U=\det U\otimes T\simeq(\det Z)^*
+\]
+とおく。$\Gamma(S_U,\OO)=\CC[\Sym^3V]$ である。
+普遍平面三次曲線のPicard群の形式完備化は、標数零の形式対数により
+$D_U$ の零切断完備化と同一視できる。
+形式対数は基底変換と自己同型に自然であり、各有限jetが $S_U$ 上で正則なので、
+この同一視は $GL(U)\times GL(Z)$-同変である。
+これは平面曲線が特異または非被約である場合も含む。
+
+この形式Picard族からの射影族は
+\[
+                    D_U^{-1}\otimes i^*(j_*L)[-1]
+\]
+である。$D_U^{-1}$ の因子によって原点が $E_F$ に一致する。
+局所的なuniversal直線束の選択の差は基底からの直線束によるtwistなので、
+simple対象のrigidifiedモジュライへの射は貼り合わさる。
+従って普遍座標への写像 $w(F,s)$ の各係数は $S_U$ 上で正則、従って $F$ の多項式である。
+
+$GL(U)$ の中心 $r\id_U$ はPicardの接線 $D_U$ には重み0で作用し、
+$W$ の三成分
+\[
+ (\Lambda^2U\otimes T)\ \oplus\ (U\otimes Z\otimes T)
+                         \ \oplus\ (\Lambda^2Z\otimes T)
+\]
+にはそれぞれ重み $0,-1,-2$ で作用する。
+一方、$F$ の各成分の重みは $0,1,2,3$ である。
+多項式性と同変性から、$w(F,s)$ の負の重みの二成分は全次数で零であり、
+像は常に $\Lambda^2U\otimes T$ の直線内にある。
+Picard族のKodaira--Spencer写像はtautologicalな包含で非零なので、
+この写像はパラメータの可逆な変更を除いて、その直線の形式完備化全体を与える。
+
+滑らかな $X_F$ は平面を含まないので、全ての $U$ について $F|_Z\ne0$ である。
+従ってこの議論はGrassmannian全体に適用でき、Picard族からの射は
+tautological直線束の標準縮約と、各ファイバーで可逆な形式パラメータ変更との合成になる。
+そのscheme-theoretic imageは標準Pl\"ucker錐である。
+定理\ref{thm:picard-compatibility-equality}の全次数の像の等式から結論を得る。
+\end{proof}
+
+
+\subsection{高次境界項の共変量と第11次までの標準形}
+\label{subsec:boundary-higher-jets}
+
+以下では定理\ref{thm:universal-bn-equation}の正則な普遍同変座標を用いる。
+$\Delta=\det V$、$W=\Lambda^2V\otimes\Delta^{-1}$ とし、
+$P(F,a)=F(q(a))$ と書く。$O(a^r)$ は $a$ に関する次数が $r$ 以上という意味である。
+本節の座標変換と単元は、特に断らない限り、全非零三次式上で正則かつ
+$GL(V)$-同変なものに限る。
+
+\begin{lemma}[境界共変量の有限次元計算]\label{lem:boundary-covariant-dimensions}
+\eqref{eq:universal-bn-covariants}の空間は
+\[
+\begin{array}{c|rrrrrrr}
+ n&6&7&8&9&10&11&12\\ \hline
+ \dim\mathcal C_n&1&0&1&0&2&0&5
+\end{array}
+\]
+という次元を持つ。従って普遍境界方程式の $d_7,d_9,d_{11}$ は零である。
+これは表示した有限範囲の主張であり、全ての奇数次の消滅は主張しない。
+\end{lemma}
+
+\begin{proof}
+Littlewood恒等式\cite[式(6)]{BeteaWheeler}は、5変数で
+\[
+ \Sym^n(\Lambda^2V)=
+ \bigoplus_{\substack{r\ge s\ge0\\r+s=n}}
+           \mathbb S_{(r,r,s,s,0)}V
+\]
+を与える。$m=n-5$ とおき、$(n-3)^5$ という長方形内で補分割を取ると、
+\begin{equation}\label{eq:boundary-plethysm-candidates}
+ \dim\mathcal C_n=
+ \sum_{j=0}^{\lfloor(m-1)/2\rfloor}
+ [\Sym^m(\Sym^3V):
+   \mathbb S_{(m+2,m-1-j,m-1-j,j,j)}V]
+\end{equation}
+となる。例えば
+\[
+ \Sym^2\Sym^3V=\mathbb S_6V\oplus\mathbb S_{42}V,
+\]
+\[
+ \Sym^3\Sym^3V=
+ \mathbb S_9V\oplus\mathbb S_{72}V\oplus\mathbb S_{63}V
+ \oplus\mathbb S_{522}V\oplus\mathbb S_{441}V
+\]
+である。後者は\cite[Example 1.6]{DeBoeckPagetWildon}にも明記されている。
+これにより $n=7,8$ の主張を得る。
+
+残る有限計算を再現可能にするため、計算方法も固定する。
+$M_m(\beta)$ を
+\[
+ \prod_{\substack{\alpha\in\mathbb N^5\\|\alpha|=3}}
+       (1-tx^\alpha)^{-1}
+   =\sum_{m,\beta}M_m(\beta)t^mx^\beta
+\]
+の整数係数とし、$\rho=(4,3,2,1,0)$ とおく。Weylの交代式から
+\begin{equation}\label{eq:boundary-character-alternant}
+ [\Sym^m\Sym^3V:\mathbb S_\lambda V]
+ =\sum_{\sigma\in S_5}\operatorname{sgn}(\sigma)
+     M_m(\lambda+\rho-\sigma\rho).
+\end{equation}
+負の成分を持つ重みの係数は零とする。この有限和の結果は次の通りである。
+\[
+\begin{array}{c|l|l}
+ n&\text{候補分割}&\text{各重複度}\\ \hline
+ 9 &(6,3,3),\ (6,2,2,1,1)&0,0\\
+ 10&(7,4,4),\ (7,3,3,1,1),\ (7,2,2,2,2)&1,0,1\\
+ 11&(8,5,5),\ (8,4,4,1,1),\ (8,3,3,2,2)&0,0,0\\
+ 12&(9,6,6),\ (9,5,5,1,1),\ (9,4,4,2,2),\ (9,3,3,3,3)&2,1,2,0
+\end{array}
+\]
+$n=9$ の5行の分割は、$\Sym^4\Sym^3V$ が4個の一行分割のテンソル積の
+直和因子であることから現れない。残る $(6,3,3)$ の重複度は3変数の交代式で
+\[
+                       18-12-16-6+8+8=0
+\]
+となる。$n=10$ の三つの候補について、\eqref{eq:boundary-character-alternant}の
+正符号の和と負符号の和は、それぞれ
+\[
+                    85-84,\qquad780-780,\qquad2040-2039
+\]
+であり、$n=11$ では $187-187,\ 2279-2279,\ 7997-7997$ である。
+添付の \texttt{nc\_cubic\_verify\_v7.py} は全係数を整数で計算し、
+重みの総和とWeyl次元公式による独立な次元検査も行う。
+\end{proof}
+
+\begin{lemma}[唯一の八次候補]\label{lem:boundary-eighth-covariant}
+$H=\operatorname{Hess}_F(q(a))$ とする。体積を選び、3元部分集合 $I$ に対し
+$c_I=\epsilon_{I,I^c}a_{I^c}$ とおけば、
+\begin{equation}\label{eq:boundary-theta-eight}
+ \Theta_8(F,a)=\frac1{216}
+       \sum_{|I|=|J|=3}c_Ic_J\det H_{I,J}
+\end{equation}
+は $\mathcal C_8$ の非零な元であり、その空間を生成する。
+従って普遍境界方程式の八次項は $d_8=c_8\Theta_8$ と書ける。
+ここで $c_8\in\CC$ は $F$ に依存しない定数である。
+\end{lemma}
+
+\begin{proof}
+体積を選ばない表示では
+$H\in\Sym^2V\otimes\Delta^{-1}$ である。
+$\Lambda^3H$ の二つの $\Lambda^3V$ 因子を、二つの
+$a\in\Lambda^2V\otimes\Delta^{-1}$ と外積で縮約すると、
+\eqref{eq:boundary-theta-eight}は $\Delta^{-3}$ に値を持つ。
+その $F$ の次数は3、$a$ の次数は8なので $\mathcal C_8$ に属する。
+Fermat式 $F_0=\sum_{i=0}^4x_i^3$ では
+\begin{equation}\label{eq:boundary-theta-fermat}
+ \Theta_8(F_0,a)=
+       \sum_{i<j}a_{ij}^2\prod_{k\ne i,j}q_k(a).
+\end{equation}
+下の横断切片でこれは非零なので、補題\ref{lem:boundary-covariant-dimensions}から結論を得る。
+\end{proof}
+
+\begin{theorem}[実際の八次項の幾何的消滅]\label{thm:boundary-eighth-vanishing}
+実際のBrill--Noether境界について $c_8=0$ である。従って、正則な普遍同変座標で
+\begin{equation}\label{eq:boundary-nine-jet}
+                         d(F,a)=F(q(a))+O(a^{10})
+\end{equation}
+が成立する。
+\end{theorem}
+
+\begin{proof}
+$F=F_0$ とし、$U=\langle x_3,x_4\rangle$、$Z=\langle x_0,x_1,x_2\rangle$ と分ける。
+$\Gamma=\mu_3(x_3)\times\mu_3(x_4)$ の $W$ 上の固定部分は $a_{34}=t$ という直線である。
+固定平面のFermat曲線
+\[
+ C_0=\{x_3=x_4=0,\quad x_0^3+x_1^3+x_2^3=0\}
+\]
+のPicard形式族は、この直線に入り、一次微分が非零なので形式直線全体を与える。
+これは補題\ref{lem:universal-chart-plucker}の固定した $U$ に対する記述でもある。
+その非零な一般点は、固定した $C_0$ 上の $L(t)$ の評価核に対応する。
+
+命題\ref{thm:local-bn-cubic}により、この点での境界の法方向の三次曲線は
+$C_0$ を $|\OO_{C_0}(4)\otimes L(t)^{-3}|$ で埋め込んだ曲線である。
+従ってその抽象楕円曲線の $j$ は恒等的に零である。
+適合部分空間は同じ座標で標準Pl\"ucker錐なので、$t\ne0$ の点でその法空間は
+$\Lambda^2Z$ の三方向である。実際、混合する六成分はGrassmannianの接方向であり、
+その混合成分を零にした切片では、適合部分空間は $\Lambda^2Z=0$ となる。
+従って次の切片の三次項が、法方向の三次曲線をそのまま計算する。
+
+混合成分を零とし、
+\[
+ a_{34}=t,\qquad (z_0,z_1,z_2)=(a_{12},-a_{02},a_{01})
+\]
+とおくと、直接計算により
+\begin{equation}\label{eq:boundary-hesse-slice}
+ P(F_0,a)=t^3(z_0^3+z_1^3+z_2^3),\qquad
+ \Theta_8(F_0,a)=t^5z_0z_1z_2.
+\end{equation}
+$a$ に関する $n$ 次項の $z$ に関する三次部分は、$t^{n-3}$ の倍である。
+法方向の三次式を $t^3$ で割ると
+\[
+ z_0^3+z_1^3+z_2^3+c_8t^2z_0z_1z_2+O(t^3)
+\]
+を得る。Fermat三次式の $GL_3$ 軌道の接空間は $z_0z_1z_2$ を除く
+九つの三次単項式を張る。従って形式陰関数定理により、これは線形座標変換で
+\[
+ z_0^3+z_1^3+z_2^3+s(t)z_0z_1z_2,
+ \qquad s(t)=c_8t^2+O(t^3)
+\]
+というHesse形になる。既に得たHesse式の公式から
+\[
+ j(s)=\frac{s^3(216-s^3)^3}{(s^3+27)^3}
+     =512s^3+O(s^6)
+\]
+なので、$j=512c_8^3t^6+O(t^7)$ である。
+これは $j\equiv0$ と両立するためには $c_8=0$ を要求する。
+$d_7=d_9=0$ は補題\ref{lem:boundary-covariant-dimensions}で既に分かっている。
+\end{proof}
+
+\begin{theorem}[第11次までの標準形と残る普遍係数]\label{thm:boundary-eleven-jet}
+正則で同変な単元を掛けることにより、実際の普遍境界方程式を
+\begin{equation}\label{eq:boundary-eleven-jet}
+ d(F,a)=F(q(a))+
+ c_{10}\det\operatorname{Hess}_F(q(a))+O(a^{12})
+\end{equation}
+と取れる。$c_{10}\in\CC$ は普遍定数である。
+本節では候補空間までを決定し、次節の命題\ref{thm:tate-tenth-coefficient}で
+$c_{10}=1/96$ を証明する。
+第10次の正則な普遍同変座標変換と単元による商は1次元であり、
+$H_{10}=\det\operatorname{Hess}_F(q(a))$ で代表される。
+\end{theorem}
+
+\begin{proof}
+単元の4次補正の空間を
+\[
+ \mathcal U_4=
+ \Hom_{GL(V)}\left(
+ \Sym^4\Sym^3V\otimes\Sym^4\Lambda^2V,\Delta^4\right)
+\]
+と定める。これは、$F$ と $a$ の両方に4次の、scalarに値を持つ普遍不変多項式の空間である。
+交代式\eqref{eq:boundary-character-alternant}を二つのcharacterの積へ適用すると
+$\dim\mathcal U_4=1$ を得る。その非零生成元を $U_4$ とする。
+これは $U_4$ を非零定数倍の任意性まで定義し、以下に正規化は必要ない。
+多項式環は整域なので $P U_4\ne0$ である。
+
+一方、$H\in\Sym^2V\otimes\Delta^{-1}$ の行列式は
+$(\det V)^2\otimes\Delta^{-5}=\Delta^{-3}$ に値を持つので、
+$H_{10}\in\mathcal C_{10}$ である。これは $P$ の倍数ではない。
+実際、Fermat式で $q=(1,1,1,1,\eta)$、$\eta^3=-4$ と取れば
+\[
+                 F_0(q)=0,\qquad
+                 H_{10}(F_0,a)=6^5\prod_iq_i\ne0.
+\]
+この $q$ はある階数4の交代行列のPfaffianベクトルとして実現できる。
+従って $P U_4,H_{10}$ は独立であり、$\dim\mathcal C_{10}=2$ から基底をなす。
+$d_{10}=\alpha P U_4+c_{10}H_{10}$ と書き、単元 $1-\alpha U_4$ を掛ければよい。
+$\mathcal C_{11}=0$ なので余りは $O(a^{12})$ である。
+
+座標変換についても商の範囲を確認する。
+$a$ に関する $r$ 次の普遍座標補正の空間は
+\[
+ \mathcal G_r=
+ \Hom_{GL(V)}\left(
+ \Sym^{r-1}\Sym^3V\otimes\Sym^r\Lambda^2V,
+ \Lambda^2V\otimes\Delta^{r-1}\right).
+\]
+同じ整数計算により
+\[
+ \dim\mathcal G_2=\dim\mathcal G_3=\dim\mathcal G_4=0,
+ \qquad \dim\mathcal G_5=2,
+\]
+また1次から3次までの単元補正も零である。
+$\phi_5\in\mathcal G_5$ に対し $(dq)_a\phi_5$ は $F$ に4次、$a$ に6次であり、
+その共変量空間の次元は
+\[
+ \dim\Hom_{GL(V)}\left(
+ \Sym^4\Sym^3V\otimes\Sym^6\Lambda^2V,
+ \mathbb S_{(5,5,5,5,4)}V\right)=1
+\]
+である。この空間は非零な $qU_4$ で張られるから
+$(dP)_a\phi_5\in\CC P U_4$ である。
+逆にEuler型補正 $\phi_5=U_4a$ は $(dP)_a\phi_5=6P U_4$ を与える。
+従って座標変換と単元の像はちょうど $\CC P U_4$ である。
+\end{proof}
+
+\begin{remark}[標準形の適用範囲]\label{rem:boundary-jet-scope}
+\eqref{eq:boundary-eleven-jet}は全次数の形式斉次性を証明しない。
+また普遍同変な商と、固定した $F$ に対して任意の座標変換を許した
+Jacobian商 $\CC[a]/J_{P_F}$ は異なる。
+普遍な商の計算だけでは、$H_{10}(F,-)$ の固定した $F$ でのJacobian類は決まらない。
+Fermatの場合には補題\ref{lem:fermat-tenth-jacobian}で通常のJacobian商での非零性を別に証明する。
+実際の係数は命題\ref{thm:tate-tenth-coefficient}で $1/96$ と決定する。
+また命題\ref{thm:all-smooth-hessian-jacobian}は、通常のJacobian類の非零性を
+全ての滑らかな $F$ へ拡張する。
+$H_{10}$ は $q$ に5次なので、階数2の部分に沿って少なくとも5次で消える。
+従って法方向の三次曲線の $j$ を使った上の議論では、この係数は検出できない。
+\end{remark}
+
+\begin{remark}[厳密検算の範囲]
+\texttt{nc\_cubic\_verify\_v7.py} はPython標準ライブラリのみを用い、
+表の共変量、単元・座標補正の次元、Pfaffianの切片
+\eqref{eq:boundary-hesse-slice}、および $j$ の先頭係数512を整数または有理数で検証する。
+検算時の実行時間は約1秒であった。
+普遍座標の存在、properなincidenceの像、Picard族の同定、
+実際の三次曲線のisotrivialityは幾何的証明の入力であり、計算コードの検証対象ではない。
+\end{remark}
+
+
+\begin{remark}[9次の局所環と一段階解消での10次候補]
+命題\ref{thm:boundary-eighth-vanishing}を局所環で述べると、
+$A_X=\widehat{\OO}_{D,e}$ に対し
+\[
+ A_X/\mathfrak m_X^{10}
+ \simeq\CC[a_1,\ldots,a_{10}]/\bigl((a)^{10},P_X\bigr)
+\]
+である。これは命題\ref{thm:boundary-sixth-jet}の6次Torelliを保ったまま、
+接錐との一致を9次まで延ばす。
+
+また補題\ref{lem:universal-chart-plucker}により、
+命題\ref{thm:bn-single-blowup}の一段階解消を同じ普遍座標で使える。
+$\operatorname{Tot}_{\PP(V^*)}(\Lambda^2Q\otimes T)$ の局所chartで、
+基底点の代表を $p$、束の座標を $b$ とし、局所Pfaffian $r(b)$ を
+$q(b)=r(b)p$ で正規化する。$r$ は $b$ に関して2次である。
+このとき
+\[
+ P(F,b)=r(b)^3F(p),\qquad
+ H_{10}(F,b)=r(b)^5\det\operatorname{Hess}_F(p).
+\]
+総変換の例外因子の係数が3なので、$r^3$ で割ったincidenceのstrict transformは
+\[
+ F(p)+c_{10}r(b)^2\det\operatorname{Hess}_F(p)+O(b^6)=0
+\]
+と書ける。余りの各斉次成分も $r^3$ で割れることは、
+例外因子に沿う位数3と、$r$ の斉次性から従う。
+従って境界の10次候補は、解消空間内では三次超曲面の方程式に対する
+束方向4次の補正として現れる。
+この式の係数は、次節で実際のincidenceをTate行列から構成して計算する。
+\end{remark}
+
+\subsection{Fermatにおける10次Hessian候補のJacobian類}
+
+普遍な同変座標変更で消えないことと、固定した三次式上の任意の座標変更で
+消えないことは区別する必要がある。次の計算は、Fermatに固定した通常のJacobian商についての主張である。
+
+\begin{lemma}[10次候補の非零類]
+\label{lem:fermat-tenth-jacobian}
+$F_0=x_0^3+\cdots+x_4^3$ とし、符号付きPfaffianを $q_0,\ldots,q_4$ とする。
+\[
+ S_a=\CC[a_{ij}:0\le i<j\le4],\qquad
+ P=\sum_{i=0}^4q_i^3,\qquad J_P=(\partial_{a_{ij}}P)
+\]
+とおくと、
+\[
+                  \Xi:=\prod_{i=0}^4q_i\notin(J_P)_{10}.
+\]
+従って $\det\operatorname{Hess}_{F_0}(q)=6^5\Xi$ も、
+通常の次数10のJacobian商で非零である。
+\end{lemma}
+
+\begin{proof}
+有限群 $\Gamma=\mu_3^5\rtimes S_5$ のtraceを含む作用を用いる。
+対角元に対して
+\[
+ a_{ij}\longmapsto
+       \frac{\zeta_i\zeta_j}{\prod_k\zeta_k}\,a_{ij}
+\]
+であり、$P$ と $\Xi$ は $\mu_3^5$ に不変である。
+置換に対して両者のcharacterは $\operatorname{sgn}(\sigma)$ である。
+次数10ではtraceからの符号の10乗は1なので、置換の計算には
+\[
+ \sigma(a_{ij})=a_{\sigma(i)\sigma(j)},\qquad a_{ji}=-a_{ij}
+\]
+という通常の交代行列の作用を使える。
+符号付きReynolds和を
+\[
+                 R(h)=\sum_{\sigma\in S_5}
+                          \operatorname{sgn}(\sigma)\,\sigma(h)
+\]
+と書く。
+
+もし $\Xi\in(J_P)_{10}$ なら、次数5の係数を持つ表示を
+$\Gamma$ の指定characterへ射影できる。
+全ての偏微分は置換により $\partial_{a_{01}}P$ へ移るので、その像は
+$R(M\partial_{a_{01}}P)$ で張られる。
+ここで $M=\prod a_{ij}^{e_{ij}}$ の頂点次数を
+$d_i=\sum_{j\ne i}e_{\min(i,j),\max(i,j)}$ とすると、対角群による射影は
+\[
+ d_0,d_1\equiv2\pmod3,\qquad d_2,d_3,d_4\equiv1\pmod3,
+ \qquad \sum_i d_i=10
+\]
+を満たす単項式だけを残す。
+次数5の全2002単項式のうち該当するものは20個であり、
+$\{0,1\}$ を保つ部分群 $S_2\times S_3$ の下で次の四軌道に分かれる。
+
+\[
+                         m=a_{03}a_{04}^3a_{12}^2a_{13}a_{14}a_{23}^2
+\]
+の係数を抽出する。各軌道内のReynolds和は代表のものと符号だけ異なる。
+Pfaffianの三項表示を代入した係数の計算は次のとおりである。
+表の最後の欄には、120置換中の非零の寄与だけを、重複を含めて記した。
+
+\begin{center}
+\begin{tabular}{@{}clcl@{}}
+\toprule
+ & 代表 $M$ & 軌道の大きさ & $[m]R(M\partial_{a_{01}}P)$ の寄与\\
+\midrule
+$A$ & $a_{01}^2a_{02}a_{03}a_{04}$ & 2 & なし\\
+$B$ & $a_{01}a_{02}a_{12}a_{23}a_{24}$ & 3 & なし\\
+$C$ & $a_{02}^2a_{12}^2a_{34}$ & 3 & $6,6,-6,-6$\\
+$D$ & $a_{02}^2a_{12}a_{13}a_{24}$ & 12 & $3,3,-3,-3$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+従って20列全てについて、この係数は零である。
+一方 $[m]\Xi=1$ である。実際、$m$ を得る各Pfaffianの項の選択は
+\[
+ (a_{14}a_{23})(-a_{04}a_{23})(a_{04}a_{13})
+                 (-a_{04}a_{12})(a_{03}a_{12})=m
+\]
+だけである。
+$\Xi$ 自身は指定characterに属するので、$R(\Xi)=120\Xi$ である。
+以上の係数抽出は、$\Xi$ が射影されたJacobian像に属する可能性を排除する。
+
+なお $R_A:=R(A\partial_{a_{01}}P)$ などと略記すると、
+同じ有限計算では $R_C=0$、$3R_D=-R_A$ となる。
+\[
+ r=a_{04}a_{14}^4a_{23}^3a_{24}a_{34},\qquad
+ s=a_{03}a_{04}^3a_{12}^3a_{13}a_{23}a_{34}
+\]
+の二つの係数を取った行列は
+\[
+ \begin{pmatrix}{[r]R_A} &{[r]R_B}\\{[s]R_A} &{[s]R_B}\end{pmatrix}
+                  =\begin{pmatrix}18&12\\0&24\end{pmatrix}
+\]
+なので、$R_A,R_B$ は独立である。
+したがって指定characterにおけるJacobian像の次元は2で、
+$\Xi$ を加えた次元は3になる。
+全ての計算は整数係数の多項式と有理数上の線形代数で行い、
+検算コードでも20列の係数と二つのrankを再現している。
+\end{proof}
+
+\begin{remark}[実際の境界の係数は別の問題]
+この補題はFermatに固定した候補のJacobian類を計算している。
+実際の境界方程式におけるこの候補の係数を決定したものではなく、
+この補題だけでは境界の形式斉次性の否定も、一般の $F$ への非零性の拡張も結論しない。
+両方を次節で証明する。
+\end{remark}
+
+\begin{remark}[係数が非零なら生じる形式的障害]
+もし実際の普遍係数 $c_{10}$ が非零なら、Fermatの境界は六次錐と形式同型ではない。
+ここでは、低次数の座標変更が10次の障害を隠さないことも確認できる。
+形式同型の線形部分は六次式の線形自己同型として取り除ける。
+接空間上恒等の座標変更と定数項1の単元の積はprounipotentな接触変換であり、
+その対数はベクトル場と関数の乗法作用素の和 $Y+b$ である。
+これらの作用素の交換子は再び同じ形で、次数を少なくとも1上げる。
+従って $(u\Phi^*P-P)$ の最初の非零次数は $((Y+b)P)$ の最初の非零次数と一致する。
+7次から9次まで変化がないなら、10次の変化は
+\[
+       \sum_{i<j}(Y_5)_{ij}\,\partial_{a_{ij}}P+b_4P
+                         \in(J_P)_{10}
+\]
+に入る。Eulerの公式により $P$ 自身も $J_P$ に属する。
+補題\ref{lem:fermat-tenth-jacobian}の非零類はこの変化では打ち消せない。
+ここまでは $c_{10}\ne0$ を仮定した議論である。
+次節で係数を計算し、同じ障害を全ての滑らかな $F$ で証明する。
+\end{remark}
+
+\clearpage

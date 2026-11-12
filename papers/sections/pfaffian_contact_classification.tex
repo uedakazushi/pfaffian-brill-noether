@@ -1,0 +1,145 @@
+\section{普遍同変摂動の非線形接触分類}
+\label{sec:pf-contact-classification}
+$P=P_F$, $H=H_{10}$, $\Theta=\Theta_8$と略記する。
+本節の同値は$F$を固定し、全係数に多項式的な普遍$\GL(V)$同変形式写像による
+\[
+ f'(F,a)=\eta(F,a)f(F,\Phi(F,a)),\quad
+ \eta(F,0)=1,\quad\Phi(F,a)=a+O(a^2)
+\]
+である。固定した一つの$F$で任意の座標変更を許す分類とは異なる。
+$A=\CC[u,v]$, $\widehat A=\CC[[u,v]]$, $\operatorname{wt}(u)=4$, $\operatorname{wt}(v)=6$とし、
+$u,v$を$\overline U_4,\overline J_6$に対応させる。
+定理\ref{thm:pf-full-contact-module}により、通常像を次数ごとに除くと
+全ての先頭項$P$の摂動に
+\[
+ f_{c,B}=P+cH+\Theta B(U_4,J_6),\qquad c\in\CC,\quad B\in\widehat A
+\]
+という代表がある。
+
+\begin{lemma}[二定数とnormal比の必要変換則]
+\label{lem:pf-normal-ratio-law}
+$c$と$b=B(0,0)$は上記の同値の不変量である。
+二つのnormal代表が同値なら、$s\in1+(u,v)\widehat A$が存在して
+\[
+ B'(u,v)=s(u,v)^2B(s(u,v)^4u,s(u,v)^6v)
+\]
+となる。
+\end{lemma}
+\begin{proof}
+共変場$\mathcal G_2=\mathcal G_3=\mathcal G_4=0$、不変式
+$\mathcal U_1=\mathcal U_2=\mathcal U_3=0$より、次数増分は少なくとも4である。
+八次の$\Theta$係数は不変で、十次で動くのは$PU_4$方向だけなので$c$も不変。
+定理\ref{thm:v18-normal-contact-law}による錐上の径方向作用を$\sigma(z)$、
+法一次作用を$\tau(z)$と書く。
+法三次項は$z^6f+z^8B(z^4u,z^6v)h_f$であり、$H$は寄与しない。
+$f$係数から$\eta\tau^3\sigma^3=1$、$h_f$係数から
+$B'(z^4u,z^6v)=\sigma(z)^2B(z^4\sigma(z)^4u,z^6\sigma(z)^6v)$となる。
+各$z$次数の係数が$A$の対応する重み成分に入るので、
+$\sigma(z)=s(z^4u,z^6v)$と一意に書ける。
+三元三次共変量の$f,h_f$分解と$A$の代数的独立性から主張を得る。
+\end{proof}
+
+\begin{lemma}[十次模型の安定化群]
+\label{lem:pf-radial-stabilizer}
+$g_c=P+cH$とする。任意の$h\in A_s$, $s>0$について、
+$g_c$を厳密に保ちnormal径方向の先頭項が$1+z^sh$となる
+普遍形式接触変換$T_h$が存在する。
+$B$の最初の非零重み項が$Q_0\in A_d$なら、この変換の最初のnormal変化は
+$(d+2)Q_0h\in A_{d+s}$である。
+\end{lemma}
+\begin{proof}
+$R_h(f)=(1+h)^{-6}f(F,(1+h)a)$を取ると
+$R_h(g_c)=P+c(1+h)^4H=g_c+O(a^{s+10})$。
+これはnormal零で十次係数が同じなので、全次数頂点核の消失を使い
+$s+10$次から右変更$\chi=a+O(a^{s+5})$で厳密に$g_c$へ戻せる。
+normal消滅は右変更で保存され、各段階は共変な有限線形問題なので$F$で除算しない。
+$T_h(f)=R_h(f)\circ\chi$は$g_c$を保ち、$\chi$の次数増分は$s+4$以上なので
+最初の径方向項は変わらない。
+前補題と$Q_0$の斉次性から
+$(1+h)^2Q_0((1+h)^4u,(1+h)^6v)=(1+h)^{d+2}Q_0$となり、結論する。
+$c\ne0$では単なる径方向変換は$H$に非定数係数を生むため、
+この補正を省いて必要変換則を十分条件とすることはできない。
+\end{proof}
+
+\begin{theorem}[全普遍形式接触同型類の一意切片]
+\label{thm:pf-unique-contact-slice}
+normal零のクラスには一意代表$P+cH$がある。
+normal非零の場合、その先頭項$0\ne Q_0\in A_d$と$c$は不変である。
+各重み$e$で補空間$A_e=Q_0A_{e-d}\oplus L_{Q_0,e}$を一度固定すると、
+一意代表は
+\[
+ P+cH+\Theta\left(Q_0(U_4,J_6)+\sum_{e>d}R_e(U_4,J_6)\right),
+ \qquad R_e\in L_{Q_0,e}
+\]
+となる。従って二つの一般代表が同値である必要十分条件は、$c=c'$かつ
+補題\ref{lem:pf-normal-ratio-law}の$s$が存在することである。
+\end{theorem}
+\begin{proof}
+normal零は十次より高い全残差が通常像に入ることから従う。
+$B\ne0$では、$N-1$次まで正規化した後の$N$次の通常商での類を
+$[\Theta q_e]$, $e=N-8>d$とする。
+$q_e=Q_0h_{e-d}+R_e$と分解し、前補題を$h=-h_{e-d}/(d+2)$で適用する。
+これは$P+cH$を保ち、初めて$N$次で$Q_0h_{e-d}$を消す。
+既定の$R_{e'}$への作用はさらに高次である。
+残った通常像は次数$N-5$の共変場で除け、$\Theta Q_0$への作用は
+$N+d+2$次以上、$H$への作用は$N+4$次以上となる。
+これらの次数増分は無限に増すので合成は$a$進位相で存在する。
+
+一意性について、二つの切片のnormal比を結ぶ$s\ne1$の最初の項を$h\in A_k$とすると、
+最初の差は$(d+2)Q_0h\in Q_0A_k$となる。
+しかし切片の差は$L_{Q_0,d+k}$に属するので、直和分解と整域性から$h=0$で矛盾。
+従って$s=1$で全係数が一致する。
+必要十分条件の十分性も、$s$の重み付き径方向軌道内で同じ逐次切片操作を行えば、
+両方が同じ一意切片に移ることから従う。
+\end{proof}
+
+\begin{corollary}[有限決定性と残る形式moduli]
+\label{cor:pf-finite-determinacy-iff}
+全普遍摂動クラス内で有限決定性が成立する必要十分条件は$B(0,0)\ne0$で、
+その場合は十次で決まり一意代表は$P+b\Theta+cH$である。
+線形スケールも許すなら$b\ne0$の層は$c/b^2$で分類される。
+$Q_0$の重みが$d$なら切片のHilbert級数は
+$(1-t^d)/((1-t^4)(1-t^6))$である。
+\end{corollary}
+\begin{proof}
+$Q_0$は非零因子なので$0\to A[-d]\xrightarrow{Q_0}A\to A/(Q_0)\to0$を使う。
+$d=0$なら補空間は零。$d>0$なら$A/(Q_0)$は一次元環で、任意に高い重みに
+非零係数が残るので、それを変えて任意に長いjetが等しい非同値な摂動を得る。
+$B=0$の場合も任意に高い$\Theta U_4^m$を加えると、normal零の不変性によって非同値となる。
+従ってnormal零の部分クラス内の十次決定性とは異なる。
+線形項は既約性から$\lambda a$であり、先頭項を保つ単元は$\lambda^{-6}$なので
+$(b,c)\mapsto(\lambda^2b,\lambda^4c)$となる。
+\end{proof}
+\begin{corollary}[一変数の一意な残余級数]
+$B(0)=0$, $[u]B=\beta\ne0$なら一意代表は
+$P+cH+\Theta(\beta U_4+A(J_6))$, $A(v)\in v\CC[[v]]$である。
+$[u]B=0$, $[v]B=\gamma\ne0$なら
+$P+cH+\Theta(\gamma J_6+A(U_4))$, $A(u)\in u^2\CC[[u]]$である。
+\end{corollary}
+\begin{proof}
+それぞれ$Q_0=\beta u$, $\gamma v$の主イデアルの補空間を$\CC[v]$, $\CC[u]$に取る。
+前者では$P+cH+\beta\Theta U_4$とそれに$\Theta J_6^m$を加えた二つの多項式が、
+任意に長い同一jetを持つ非同値例となる。
+\end{proof}
+\begin{remark}[低い切片係数とnormal曲線が忘れる情報]
+$B=b_0+b_4u+b_6v+b_8u^2+b_{10}uv+b_{12,0}u^3+b_{12,1}v^2+\cdots$とする。
+$b_0=0$, $b_4\ne0$なら一意級数$A(v)$の最初の二係数は
+\[
+ [v]A=b_6,\qquad
+ [v^2]A=b_{12,1}-\frac{4b_6b_{10}}{3b_4}+\frac{16b_6^2b_8}{9b_4^2}.
+\]
+実際、$s_4=-b_8/(6b_4)$, $s_6=-b_{10}/(6b_4)+2b_6b_8/(9b_4^2)$で
+$u^2,uv$を消すと、$v^2$の係数は$b_{12,1}+8b_6s_6$となる。
+
+錐上の直線$ta_0$に沿う射影normal曲線は
+$f+\rho_f(t)h_f$, $\rho_f(t)=t^2B(t^4\overline U_4(f),t^6\overline J_6(f))$である。
+一般のHesse三次式$f_\lambda=D+6\lambda M$に対し
+\[
+ \mu(\rho)=\lambda+\frac{(1+8\lambda^3)\rho}{6(1-\lambda^2\rho)},\qquad
+ j(f_\lambda+\rho h_{f_\lambda})=J(\mu(\rho)).
+\]
+一般点では$J'(\lambda)(1+8\lambda^3)\ne0$なので形式逆関数定理で$\rho$を回復できる。
+径方向作用は$\rho_f(t)\mapsto\rho_f(t\sigma_f(t))$となる。
+しかしこれらのnormal曲線と$j$は$c$に依存せず、同じ$B$で異なる$c$を区別しない。
+一般の一意形式代表の収束性と、固定した$F$に対する全座標変更の分類は未解決である。
+\end{remark}

@@ -1,0 +1,139 @@
+\section{普遍同変な代数的・解析的十次正規形}
+\label{sec:pf-equivariant-algebraization}
+代数的とは、指定点の\'{e}tale germ、すなわち代数的冪級数の意味である。
+特定の逐次無限合成の収束や、大域的な多項式自己同型は主張しない。
+既に構成したTate族と形式同値を、有限個の多項式方程式へ戻す。
+
+$\mathsf S=\Sym^3V$, $W=\wedge^2V\otimes(\det V)^{-1}$とする。
+Tate正規順序$p(x)\theta_I\eta_{[J]}$で
+$\mathsf B=\operatorname{im}(h:E_3\to E_{3/2})$を取ると、これは固定された
+4929次元の$\GL(V)$表現である。
+$\eta_i=\xi_i-\sum_jF_{ij}\theta_j/6$は対角成分1の三角基底変換なので、
+$F=0$を含む全係数空間で可逆である。
+反対称化とEuler--Koszul収縮は同変で、係数$F$による除算を含まない。
+従って
+\[
+ \mathcal G(F,y,b)=b+h((A_1(y)+b)^2)=0
+\]
+は$\mathsf S\times W\times\mathsf B$上の有限多項式系であり、
+$\mathcal G(F,0,0)=0$, $\partial_b\mathcal G(F,0,0)=1$を満たす。
+その一意な代数的かつ収束する枝を$b=\beta(F,y)$と書く。
+定数blockの抽出と行列式は多項式操作なので、ある多項式$\mathcal D$により
+$d_T(F,y)=\mathcal D(F,y,\beta(F,y))=\det K_F(y)/2$となる。
+これらは先のTate有限\'{e}tale模型と同じ構成である。
+
+\begin{lemma}[中心重みで零切断全体へ戻す]
+\label{lem:pf-center-weight-convergence}
+$(F,a)=(0,0)$の普遍同変形式写像$\psi:\mathsf S\oplus W\to W$の
+$a$次数$r$の項は、$F$次数$r-1$の多項式である。
+原点で収束するなら同じ級数は各$(F_0,0)$で収束し、$F$のコンパクト集合上で共通の正の収束半径を持つ。
+原点で代数的なら各零切断の点でも代数的である。
+\end{lemma}
+\begin{proof}
+中心$\lambda I$は$F,a$に重み$3,-3$で作用するので、出力重み$-3$は
+$3\deg_F-3r=-3$を強制する。
+各$r$に許される単項式は有限個であり、$\psi=\sum_{r\ge1}\psi_r$となる。
+$s\ne0$について$\psi(F,a)=s\psi(sF,s^{-1}a)$である。
+原点の積近傍$\|F\|,\|a\|<\varepsilon$で収束するとき、
+$F_0$の近傍（またはコンパクト集合）上で$\|sF\|<\varepsilon$となる$s$を選び、
+$\|a\|<|s|\varepsilon$とすればよい。
+固定した非零定数による線形代入は代数性も保つ。
+\end{proof}
+
+\begin{theorem}[形式右同値の同変代数化]
+\label{thm:pf-equivariant-right-algebraization}
+$g(F,a)$を多項式とし、$d_T(F,\widehat\Phi(F,a))=g(F,a)$を満たす
+普遍同変形式写像$\widehat\Phi=a+O(a^2)$が存在するとする。
+任意の有限$a$-jetを保ち、同じ等式を厳密に満たす普遍同変な
+代数的・収束的局所自己同型$\Phi$を取れる。
+各$a$係数は全$F$上で多項式であり、零切断の各$(F_0,0)$で成立する。
+単元付き形式接触同値の場合も同様である。
+\end{theorem}
+\begin{proof}
+Bierstone--Milman\cite[Theorem A]{PfBM}の同変近似定理を用いる。
+これは線形還元的群が独立変数と未知変数の有限次元空間に線形作用するとき、
+原点で零となる同変形式解を任意の有限精度で同変収束解に近似でき、
+方程式が多項式なら代数的解に選べるという既知定理である。
+ここでは群は$\GL(V)$、標数零であり、孤立特異点の仮定は不要。
+
+独立変数を$(F,a)$、未知変数を$(y,b)\in W\oplus\mathsf B$として
+\[
+ \mathcal G(F,y,b)=0,\qquad \mathcal D(F,y,b)-g(F,a)=0
+\]
+を考える。これは45独立変数・4939未知変数の有限系であり、
+$(\widehat\Phi,\beta(F,\widehat\Phi))$という原点で零の同変形式解を持つ。
+未知解の空間を有限次元線形表現とするのであり、非線形な零点集合を線形表現と仮定していない。
+$(F,a)$の全次数$2k+1$までの近似を選ぶ。
+中心重みから$y$の$a$次数$r$の全次数は$2r-1$なので、この近似は
+$a$の$k$-jetを$F$の多項式係数ごとに保つ。
+$\partial_b\mathcal G=1$による枝の一意性から$b=\beta(F,y)$であり、第二式は
+$d_T(F,y)=g(F,a)$となる。
+前補題で全零切断に沿う代数性と収束性へ戻す。
+$a$の一次項は恒等なので逆関数定理により局所自己同型で、逆も代数的・収束的である。
+逆の係数は有限多項式操作で決まり、同変性は一意性から従う。
+
+単元$\eta=1+O(a)$を許す場合は、未知数$v=\eta-1$を自明な一次元表現に加え、
+第二式を$(1+v)\mathcal D-g=0$にする。
+$v$の$F$次数と$a$次数は等しく、同じ近似とスケーリングが適用できる。
+\end{proof}
+
+\begin{theorem}[実際の境界の厳密な十次正規形]
+\label{thm:pf-exact-algebraic-tenth}
+Tate規格化の実際の境界について、普遍同変な代数的・収束的局所自己同型$\Phi$が存在し
+\[
+ d_T(F,\Phi(F,a))=P_F(a)+\frac1{96}H_{10}(F,a)
+\]
+となる。単元変更は不要で、$F$を固定し、任意に指定した有限jetまで形式正規化と一致させられる。
+特に滑らかな$F_0$の実際のBrill--Noether境界の芽は右辺の零点の芽と代数的・解析的に同型である。
+\end{theorem}
+\begin{proof}
+Tateの十次計算（定理\ref{thm:tate-tenth-coefficient}）では単元を用いていたので、
+まずこの点を右変更だけで処理する。
+未規格化の式は$P+H/96+\alpha PU_4+O(a^{12})$である。
+Euler等式$dP(U_4a)=6PU_4$から$\chi=a-\alpha U_4a/6$を用いれば、
+十次の$PU_4$だけを消せる。二階Taylor項と$H$への一次作用は十四次以上なので、
+$H/96$係数は変わらない。
+全次数normal消滅（定理\ref{thm:v18-all-order-normal-vanishing}）はこの右変更で保存され、
+定理\ref{thm:pf-full-contact-module}により十次より高い全残差が通常像に入る。
+共変場の逐次消去で$P+H/96$への形式右同値を得るので、前定理を適用する。
+Tate有限族が実際の対象・境界を表すことは既述の評価写像とdeterminantal idealの比較による。
+普遍式には$F=0$も含むが、三次三様体への幾何的適用には$F_0$の滑らかさを用いる。
+\end{proof}
+
+\begin{proposition}[Pl\"ucker錐と平面ラベルの保存]
+$\Sigma=V(q(a))$とすると、上の$\Phi$とその逆は$\mathsf S\times\Sigma$をschemeとして保存し、
+各非零階数二点の平面ラベルも保つ。点ごとの固定は主張しない。
+\end{proposition}
+\begin{proof}
+$V=L_2\oplus Q_3$、$a_0=e_0\wedge e_1\otimes(\det V)^{-1}$とする。
+$\operatorname{diag}(t,t,1,1,1)$は$a_0$を固定し、$F$の重みは0,1,2,3、
+出力$W$の三成分の重みは0,−1,−2である。
+各係数が$F$の多項式なので、$\Phi_r(F,a_0)$は重み零の直線$\CC a_0$に属する。
+階数二軌道全体でも同じであり、径方向係数は原点近傍で単元となる。
+$\Sigma$のイデアルが素であることから各多項式係数で$\Phi^*I_\Sigma\subset I_\Sigma$、
+逆写像から等号を得る。代数的・収束的germから完備化への忠実平坦性でscheme保存を降下する。
+\end{proof}
+\begin{proposition}[固定パラメータでの独立なArtin論証]
+収束的（または代数的）入力$f(t,a),g(t,a)$に対し、$t$を固定し零切断を保つ
+形式局所右同値があるなら、同じ等式の解析的（または代数的）局所同値がある。
+有限個のイデアル保存・点ごとの固定制約も同時に保てる。
+\end{proposition}
+\begin{proof}
+$\phi(t,a)=U(t,a)a$と書き、$f(t,Ua)-g(t,a)=0$にArtin近似\cite[Theorem 1.2]{PfArtinAnalytic}を適用し、
+$U(0,0)$の可逆性を保つ。代数的入力は\cite[Theorem 1.10]{PfArtinAlgebraic}により有限\'{e}tale表示の補助変数を加え多項式系に直す。
+全未知関数は同じ$(t,a)$に依存し、一般に偽な入れ子型解析近似を要求しない。
+$I=(q_1,\ldots,q_l)$には最小生成系を取り$q(\phi)=M q(a)$を加え、
+$M(0,0)$を可逆に保てばイデアルの等号を得る。
+点ごとの固定は$\phi-a=Lq$、径方向だけを許すなら$\phi-va=Lq$で有限系になる。
+有限相対jetの係数が$t$で収束していれば、
+$\phi=\phi_{\le k}+\sum_{|\alpha|=k+1}a^\alpha U_\alpha$を課してそのjetも保てる。
+本件の係数は$F=F_0+t$の多項式なのでこの条件を満たす。
+\end{proof}
+\begin{corollary}[normal開層の多項式摂動の代数的実現]
+$B(0)\ne0$の多項式摂動は、$P+b\Theta+cH$へ普遍同変な代数的・解析的接触同値で移る。
+\end{corollary}
+\begin{proof}
+形式分類で得た解を$(1+v)f(F,y)-(P+b\Theta+cH)=0$に代入し、
+同変近似と中心重みの議論を同じように適用する。
+一般の無限形式正規代表の収束性はこの系からは結論しない。
+\end{proof}

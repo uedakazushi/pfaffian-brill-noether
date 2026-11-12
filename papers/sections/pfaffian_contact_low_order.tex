@@ -1,0 +1,6540 @@
+\section{Tate行列分解による境界の明示化と十次係数}
+\label{sec:tate-boundary-tenth}
+
+本節では、対象の変形を実際の有限階数行列分解から構成する。
+出発点は剰余体の安定化を表すKoszul--Tate行列分解である
+\cite[\S\S 2.3, 4.1]{DyckerhoffMF}。以下ではOrlovのwindowの選択に依存せず、
+階数8束の評価写像からgluing対象そのものを回復する。
+これにより、前節で未決定であった十次係数を計算できる。
+以下の数値は、評価写像の接座標と通常の符号付きPfaffianを用いる
+Tate規格化での値である。
+
+\subsection{共変なMaurer--Cartan再帰}
+
+$S=\CC[x_0,\ldots,x_4]$、$F\in S_3$ とし、
+$\theta_i$ を外積作用、$\xi_i$ を対応する縮約作用とする。
+従って $\{\theta_i,\xi_j\}=\delta_{ij}$ である。
+\[
+ f_i=\frac13F_i,\qquad B_{ij}=\frac16F_{ij},\qquad
+ \mathsf D_0=\sum_i x_i\xi_i+\sum_i f_i\theta_i,
+ \qquad \eta_i=\xi_i-\sum_jB_{ij}\theta_j
+\]
+とおく。Eulerの恒等式から
+\[
+ \mathsf D_0^2=F,\qquad \{\mathsf D_0,\theta_i\}=x_i,\qquad
+ \{\mathsf D_0,\eta_i\}=0,\qquad \{\eta_i,\eta_j\}=-2B_{ij}.
+ \tag{T1}\label{eq:tate-clifford-relations}
+\]
+$\eta_{[J]}$ は $\eta$ の積の反対称化を表す。
+正規順序 $\theta_I\eta_{[J]}$ により、自己準同型dg代数の underlying
+complex は $x_0,\ldots,x_4$ のKoszul複体と同定される。
+この反対称化を使うことにより、同定は $GL(V)$ と可換である。
+
+$x$ 次数 $d$、$\theta$ 次数 $|I|$ の成分に対して
+\[
+ h\bigl(p(x)\theta_I\eta_{[J]}\bigr)
+ =\frac1{d+|I|}\sum_i
+   \frac{\partial p}{\partial x_i}\,
+   (\theta_i\wedge\theta_I)\eta_{[J]}
+ \tag{T2}\label{eq:tate-homotopy}
+\]
+と定め、$d+|I|=0$ では零とする。
+ここで微分するのは係数 $p(x)$ だけであり、$\eta$ は形式的な基底として扱う。
+$\delta=[\mathsf D_0,-]_{\mathrm s}$ と書けば
+\[
+ \delta h+h\delta=1-\pi,
+\]
+ただし $\pi$ は $x=0$、$\theta$ 次数零への射影である。
+
+体積元を固定し、$a=(a_{ij})\in\Lambda^2V\otimes(\det V)^*$ に対して
+\[
+ A_1(a)=\sum_{|I|=3}\epsilon(I,I^c)a_{I^c}\eta_{[I]},
+ \qquad
+ A_n(a)=-h\left(\sum_{i=1}^{n-1}A_i(a)A_{n-i}(a)\right)
+ \quad(n\ge2)
+ \tag{T3}\label{eq:tate-mc-recurrence}
+\]
+と定める。
+これは $a$ の次数ごとの有限計算である。
+
+\begin{lemma}[再帰の正当性]\label{lem:tate-mc-existence}
+$\mathsf D_a=\mathsf D_0+\sum_{n\ge1}A_n(a)$ は形式的な次数付き行列分解であり、
+$\mathsf D_a^2=F$ を満たす。
+係数は $F$ の係数に多項式的に依存し、構成全体は $GL(V)$ と可換である。
+\end{lemma}
+
+\begin{proof}
+重みを $\mathrm{wt}(x_i)=1$、$\mathrm{wt}(\theta_i)=-1/2$、
+$\mathrm{wt}(\eta_i)=1/2$ とする。
+$\mathsf D_0,A_1$ は重み $3/2$ の奇作用素であり、$h$ は重み $-3/2$ を持つ。
+低次のMaurer--Cartan方程式を帰納的に仮定すると、
+$R_n=\sum_{i=1}^{n-1}A_iA_{n-i}$ は $\delta$-closedで、重み3の偶作用素である。
+$\pi R_n$ が非零なら、それは $\eta$ 次数6でなければならないが、
+$\eta$ は5個しかない。従って $\pi R_n=0$、
+$\delta(-hR_n)=-R_n$ となる。
+これで全ての次数の方程式が解ける。
+反対称化による正規順序、Koszul homotopy、および
+$F_i/3,F_{ij}/6$ の構成は全て共変であり、除算は正整数によるものだけである。
+\end{proof}
+
+\subsection{rank 8束からgluing objectを作る}
+
+行列分解の偶数側、奇数側をそれぞれ
+\[
+ \begin{aligned}
+ P_0&=S(-9)\oplus S(-8)^{10}\oplus S(-7)^5,\\
+ P_1&=S(-7)^5\oplus S(-6)^{10}\oplus S(-5)
+ \end{aligned}
+\]
+と置く。各直和項は順に $\Lambda^0,\Lambda^2,\Lambda^4$、
+および $\Lambda^1,\Lambda^3,\Lambda^5$ に対応する。
+$\mathsf D_a$ の二つの部分を
+\[
+ \Phi_a:P_0\longrightarrow P_1,
+ \qquad \Psi_a:P_1\longrightarrow P_0(3)
+\]
+と書く。$\Phi_a$ の $S(-7)^5\to S(-7)^5$ 成分を
+$K_F(a)$ とする。これは $x$ に依存しない $5\times5$ 行列である。
+$\Lambda^4$ の第 $j$ 列に $(-1)^j\theta_{\{0,\ldots,4\}\setminus j}$ を使うと
+\[
+                         K_F(a)=-a+O(a^2).
+ \tag{T4}\label{eq:tate-K-linear}
+\]
+
+$X=V(F)$ として
+\[
+ i_*\mathcal M_a=\operatorname{coker}\bigl(\Psi_a(4)\bigr)
+\]
+を定める。その $\PP^4$ 上の表示は
+\[
+ 0\longrightarrow
+ \OO(-3)^5\oplus\OO(-2)^{10}\oplus\OO(-1)
+ \xrightarrow{\ \Psi_a(4)\ }
+ \OO(-2)\oplus\OO(-1)^{10}\oplus\OO^5
+ \longrightarrow i_*\mathcal M_a\longrightarrow0.
+ \tag{T5}\label{eq:tate-bundle-resolution}
+\]
+$\Psi_a$ の単射性は $\Phi_a\Psi_a=F$ と $F$ の非零因子性から従う。
+任意のArtin基底へ還元しても $F$ は非零因子であり、同じ単射性が成立する。
+従ってcokernelは基底上flatで、この表示はArtin基底変換と可換である。
+
+\begin{lemma}[実際のuniversal対象]\label{lem:tate-universal-object}
+$\mathcal M_a$ は $X$ 上のrank 8束の形式変形であり、
+\[
+ \mathcal E_a=\operatorname{Cone}\bigl(
+ H^0(\mathcal M_a)\otimes\OO_X\longrightarrow\mathcal M_a\bigr)
+ \tag{T6}\label{eq:tate-evaluation-object}
+\]
+は $E$ のuniversalな形式変形を与える。
+接写像は $a\mapsto\pm a$ であり、接座標の比較に現れる定数は符号だけである。
+\end{lemma}
+
+\begin{proof}
+中心でKoszul複体を比較すると、体積線を明記した完全列
+\[
+ 0\longrightarrow\det V\otimes\OO_X(-1)
+ \longrightarrow\Lambda^4V\otimes\OO_X
+ \longrightarrow\mathcal M_0
+ \longrightarrow Q\longrightarrow0
+ \tag{T7}\label{eq:tate-central-evaluation}
+\]
+を得る。
+具体的には、\eqref{eq:tate-bundle-resolution}の $\Lambda^4V\otimes\OO$
+を除いた商を考える。$\Lambda^3V\otimes\OO(-2)$ からのKoszul写像を先に除くと、
+残る標的は $\OO(-2)\oplus Q$ である。
+$f=\sum_i f_i\theta_i$ と書けば、$\Lambda^1$ からの写像は
+\[
+ v\longmapsto\bigl(\iota_xv,-f\,\iota_xv\bigr)
+\]
+というgraphを通る。これは
+$\iota_x(f\wedge v)=Fv-f\,\iota_xv$ と $F|_X=0$ による。
+従ってcokernelは $Q$ であり、核は $\Lambda^5V\otimes\OO(-1)$
+からのKoszul写像である。特に $\mathcal M_0$ は $Q$ と
+$Q^*\otimes\det V$ の拡大なので局所自由である。
+Artin基底上でもflatnessとNakayamaから局所自由性が従う。
+
+\eqref{eq:tate-bundle-resolution}のコホモロジーから
+$R\Gamma(\mathcal M_a)=\OO^{\,5}$ および
+$R\Gamma(\mathcal M_a(-1))=0$ を得る。
+従って $\mathcal E_a\in\Ku(X)$ である。
+中心の三角は
+\[
+ \det V\otimes\OO_X(-1)[1]\longrightarrow\mathcal E_0
+ \longrightarrow Q\longrightarrow\det V\otimes\OO_X(-1)[2].
+\]
+$R\Gamma(\mathcal E_0(-1))=0$ のため、最後の射は非零である。
+これは $T=H^3(\OO_X(-2))\simeq(\det V)^*$ を含む
+\eqref{eq:E-triangle}そのものである。
+
+接写像もこの表示で追跡できる。
+$\mathrm{vol}=\theta_0\cdots\theta_4$ とすると、
+$A_1\mathrm{vol}$ の $\Lambda^2$ 成分は $-\sum a_{ij}\theta_i\theta_j$ である。
+変形した関係式 $\Psi_a\mathrm{vol}=0$ を用い、商
+$\Lambda^2V\otimes\OO(-1)\to Q$ に $\iota_x$ を適用すると、
+コホモロジー間の一次微分は標準評価切断 $\pm\iota_x(a)$ になる。
+この計算には $1/3$ などの追加の係数は現れない。
+従って接写像は同型であり、$\Def_E$ の滑らかさから形式的同型となる。
+\end{proof}
+
+
+\begin{remark}[Serre traceとの規格化の比較]
+\label{rem:tate-serre-trace-normalization}
+Tate模型の二拡大は、通常のhypersurface residueで定めたtraceに対しても
+符号を除いて係数1の生成元である。
+実際、$U_i=(x_i\ne0)$ 上で $s_i=e_i/x_i$ とおき、
+$f=\sum_i(F_i/3)e_i$ と書く。
+$\mathcal M_0\to Q$ の局所分裂は
+\[
+ v\longmapsto(-s_i\wedge f\wedge v,v)
+\]
+で与えられる。
+この差を二つのEuler列で順に持ち上げると、
+$\Ext^2(Q,\OO_X(-1))\simeq H^3(\OO_X(-2))$ に対応する
+\v Cech 3-cocycleは
+\[
+ \gamma_{ijkl}
+   =\pm\det(s_i,s_j,s_k,s_l,f)
+   =\pm\epsilon_{ijklm}\frac{f_m}{x_ix_jx_kx_l}
+\]
+となる。その $\PP^4$ 上への持ち上げのcoboundaryは
+\[
+ \pm\frac{\sum_m x_mf_m}{x_0x_1x_2x_3x_4}
+   =\pm\frac{F}{x_0x_1x_2x_3x_4}.
+\]
+従って $0\to\OO_{\PP^4}(-5)\xrightarrow{F}\OO_{\PP^4}(-2)
+\to\OO_X(-2)\to0$ のboundary mapは、この類を
+$H^4(\OO_{\PP^4}(-5))$ の標準生成元
+$\pm1/(x_0x_1x_2x_3x_4)$ に送る。
+$f_i=F_i/3$ は $\sum_i x_if_i=F$ を満たすための規格化であり、
+この比較に追加の係数3は現れない。
+残る符号は接座標 $a$ の符号に対応するが、$P_F$ と $H_{10}$ の
+$a$ 次数はいずれも偶数なので、係数 $1/96$ を変えない。
+\end{remark}
+
+\begin{proposition}[実際のincidenceの明示表示]\label{prop:tate-actual-incidence}
+$\Phi_a$ を最後の $\Lambda^4$ 直和項に制限し、$\OO(7)$ でtwistした
+$16\times5$ 行列を
+\[
+ \mathsf T_F(x,a):\OO^5\longrightarrow
+ \OO^5\oplus\OO(1)^{10}\oplus\OO(2)
+\]
+と書く。その最初の5行は $K_F(a)$ である。
+$X\times\widehat U$ 上の実際のBN incidenceは
+\[
+              \mathcal I=V\bigl(I_5(\mathsf T_F(x,a))\bigr)
+ \tag{T7a}\label{eq:tate-actual-incidence}
+\]
+で与えられる。ここで $I_5$ は全ての $5\times5$ minorのイデアルである。
+従って点変数 $x$ に関しては、次数0、1、2の行しか必要ない。
+\end{proposition}
+
+\begin{proof}
+$X$ 上では $\ker\Phi_a=\operatorname{im}\Psi_a$ なので、$\Phi_a$ は
+$\mathcal M_a$ を局所自由な像へ同型に送る。
+この同型の下で $\mathsf T_F$ は評価写像
+$\OO^5\to\mathcal M_a$ と、その像の局所的にsplitする包含の合成である。
+従って両者のrank条件とdeterminantal idealは一致する。
+局所的に可逆な $4\times4$ blockを除くと、評価写像は
+$[\OO\to\OO^4]$ の四つの成分へ還元され、最大minorのイデアルは
+前節までに用いたincidenceのイデアルとスキームとして一致する。
+中心でのrankは4であり、近傍ではrankが3以下になる点はない。
+$\mathcal E_a=[\OO^5\to\mathcal M_a]$ の導来ファイバーから
+$\dim\operatorname{Hom}(\mathcal E_a,\OO_x)\ge4$ は評価rankが4以下という条件に一致する。
+\end{proof}
+
+\subsection{境界を定める有限行列式}
+
+\begin{theorem}[境界の行列式表示]\label{thm:tate-boundary-determinant}
+Tate座標において、BN境界 $D$ の定義式は、単元を除いて
+\[
+                         \det K_F(a)=0
+ \tag{T8}\label{eq:tate-boundary-determinant}
+\]
+である。先頭項は $2F(q(a))$ である。
+\end{theorem}
+
+\begin{proof}
+$K_F$ は $\mathsf T_F$ の最初の5行なので、その行列式は
+$I_5(\mathsf T_F)$ に属する。従って $\det K_F$ は actual incidence
+$\mathcal I$ 上でスキームとして零である。
+$D$ は $\mathcal I\to\widehat U$ のスキーム論的像であり、
+整なCartier因子であるから、その定義式は $\det K_F$ を割る。
+$K_F$ の一次項は交代行列であり、六次の先頭項は
+普遍共変式の一意性と対角三次式での計算から $2F(q)$ である。
+実際 $F_0=\sum x_i^3$ と、下で使う $a_*$ を取ると
+$K_{F_0}(ta_*)=-ta_*+2t^2I_5+O(t^3)$ であり、
+$\operatorname{adj}(-a_*)=q(a_*)q(a_*)^{\mathsf t}$ から
+六次係数は $2\sum_i q_i^2=10=2F_0(q(a_*))$ となる。
+$D$ 自身の先頭項が $F(q)$ であることと比較すると、商は単元となる。
+\end{proof}
+
+行列分解から境界の外側も読める。
+$K_F(a)$ が可逆なら、$\Phi_a$ の5個の定数pivotを消去でき、
+対応する $\Psi_a$ の直和項は $F\cdot\mathrm{id}$ になる。
+従って $\mathcal M_a$ は $\OO_X^5$ を直和因子として持つ。
+残る $\Psi_a$ の $1\times10$ と $10\times1$ の定数blockは、
+それぞれ一次項が $a$ の10座標なので、成分の生成するイデアルはNakayamaにより
+極大イデアルである。最初の5組の消去は異なる内部次数を結ぶ正次数の行列で行われるため、
+この二つの定数blockを変えない。従って原点以外で各一つのunitを消去できる。
+残るのは $9\times9$ の線形行列であり、
+$\mathcal E_a$ は
+\[
+ 0\longrightarrow\OO_{\PP^4}(-2)^9
+ \longrightarrow\OO_{\PP^4}(-1)^9
+ \longrightarrow i_*\mathcal E_a\longrightarrow0
+\]
+を持つnormalizedなrank 3 Ulrich束である。
+
+\subsection{小さい有理数行列による十次項の証明書}
+
+\begin{theorem}[普遍十次係数]\label{thm:tate-tenth-coefficient}
+上記の評価写像・Pfaffianの規格化では
+\[
+ \boxed{\displaystyle
+ d(F,a)=F(q(a))+\frac1{96}\det\bigl(\operatorname{Hess}_F(q(a))\bigr)
+       +O(a^{12}).}
+ \tag{T9}\label{eq:tate-tenth-coefficient}
+\]
+ここでは定義式に掛かる単元の項を除いている。
+特に十次Hessian類は零でない。
+\end{theorem}
+
+\begin{proof}
+この再帰は全ての非零三次式上で正則かつ同変であり、接写像もedge同型に一致する。
+従って第\ref{sec:boundary-higher-jets}節の普遍座標と同じクラスの座標である。
+命題\ref{thm:boundary-eleven-jet}と
+補題\ref{lem:tate-universal-object}により、普遍係数を一つの標本で決めればよい。
+\[
+ F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3,\qquad
+ a_*=(e_1-e_0)\wedge(e_2-e_0)+(e_3-e_0)\wedge(e_4-e_0)
+\]
+を選ぶ。このとき
+\[
+ q(a_*)=(1,1,1,1,1),\quad F_*(q(a_*))=0,\quad
+ \det\operatorname{Hess}_{F_*}(q(a_*))=-31104.
+\]
+再帰\eqref{eq:tate-mc-recurrence}から、必要な定数blockは
+\[
+ K_{F_*}(t a_*)=tA+t^2B+t^4C+t^6D+O(t^7)
+\]
+となり、三次・五次blockは零である。具体的には
+\[
+ A=\begin{pmatrix}
+ 0&-1&1&-1&1\\1&0&-1&0&0\\-1&1&0&0&0\\
+ 1&0&0&0&-1\\-1&0&0&1&0
+ \end{pmatrix},\qquad
+ B=\operatorname{diag}(2,2,2,2,-8),
+\]
+\[
+ C=\frac13\begin{pmatrix}
+ 0&-4&-4&16&16\\-4&0&8&12&32\\-4&8&0&12&32\\
+ 16&12&12&0&48\\16&32&32&48&0
+ \end{pmatrix},
+\]
+\[
+ D=\frac1{90}\begin{pmatrix}
+ 0&-3040&-3040&-3040&-3040\\
+ -3280&-560&-4606&-2437&-1277\\
+ -3280&-4606&-560&-4677&-5837\\
+ -3280&-2437&-4677&-560&-1206\\
+ -3280&-2477&-4637&-2406&2240
+ \end{pmatrix}.
+\]
+これらは全て有理数での計算であり、各次数で
+$[\mathsf D_0,A_n]_{\mathrm s}+\sum_{i+j=n}A_iA_j=0$ を検証できる。
+十次の行列式には $B^5$、$A^2B^2C$、$A^4D$ の三種だけが寄与し、
+その値は順に
+\[
+                    -128,\qquad\frac{640}{3},\qquad-\frac{2200}{3}
+\]
+である。従って
+\[
+                  [t^{10}]\det K_{F_*}(ta_*)=-648.
+\]
+六次先頭係数は $2F(q)$ である。
+普遍式の10次項は $P U_4$ の倍数と $H_{10}$ の和であり、7--9次項は零である。
+この標本では $F(q)=0$ なので、正規化単元に由来する $P U_4$ の項も零となる。
+従って
+\[
+           2c_{10}(-31104)=-648,\qquad c_{10}=\frac1{96}.
+\]
+\end{proof}
+
+補題\ref{lem:fermat-tenth-jacobian}と組み合わせると、
+Fermat三次三次元多様体のBN境界は、その六次接錐と形式的に同型ではない。
+また、一段blowup上では $q(a)=r(b)p$ なので、strict transformの方程式は
+\[
+ F(p)+\frac1{96}r(b)^2\det\operatorname{Hess}_F(p)+O(b^6)=0
+\]
+となる。この非零の四次法方向補正が、接錐では見えなかった境界の情報である。
+
+\begin{remark}[現行の厳密再現]
+\texttt{computations/verify\_pfaffian\_vertex\_and\_tate.py}は
+外積・Cliffordの二つのbitmaskと有理多項式によって再帰を独立に再構成する。
+六次までの実際のMaurer--Cartan恒等式を確認し、表示した四つの定数block、
+三次・五次blockの零性、行列式係数$-648$と比$1/96$を再計算する。
+有限標本から境界を同定するのではなく、実際の対象とscheme-theoretic imageの同定には
+前の評価写像とdeterminantal idealの証明を用いる。
+\end{remark}
+
+\subsection{すべての滑らかな三次式に対するHessian類の非零性}
+\label{subsec:all-smooth-hessian}
+
+以下の議論では、普遍同変な座標変更への制限を外す。
+$\mathfrak a\subset S=\CC[W]$ をPl\"ucker錐
+$C=\widehat{\operatorname{Cone}\operatorname{Gr}(2,V)}$ の斉次素イデアルとし、
+$P=P_F=F(q)$、$H=H_{10}(F,-)=\det\operatorname{Hess}_F(q)$ と書く。
+ここでイデアルの計算は、同じ斉次方程式で定義される代数的な錐上で行う。
+
+\begin{lemma}[三次の位数を保つベクトル場の接性]
+\label{lem:cubic-order-forces-tangency}
+$F$ を滑らかな三次式とし、$Y\in\operatorname{Der}_{\CC}(S)$ とする。
+$Y(P)\in\mathfrak a^3$ ならば
+\[
+ Y(\mathfrak a)\subset\mathfrak a.
+\]
+\end{lemma}
+\begin{proof}
+$C$ の一般点は階数2の二形式であり、その点における法空間は3次元である。
+$q$ の法方向の一次部分は、この法空間を対応する平面の3次元座標空間に同定する。
+従って $P$ の法方向の三次初期式は、その平面への $F$ の制限である。
+滑らかな $X=(F=0)$ の一般の平面切断はBertiniの定理により滑らかなので、
+この三次初期式は一般点で滑らかな平面三次曲線を定義する。
+
+より正確には、$R=S_{\mathfrak a}$ は剰余体 $K=\CC(C)$ を持つ
+3次元正則局所環である。$Y$ を $R$ に延長すると、
+その法方向の定数項は
+\[
+ v\colon\mathfrak aR/(\mathfrak aR)^2\longrightarrow K
+\]
+を定める。$f_3\in\operatorname{Sym}^3_K(\mathfrak aR/(\mathfrak aR)^2)$
+を $P$ の初期式とすると、$Y(P)$ の二次初期式は $v\lrcorner df_3$ である。
+$Y(P)\in\mathfrak a^3$ によりこれは零である。
+滑らかな三次式 $f_3$ の三つの偏微分は一次独立なので $v=0$ となる。
+実際、非零の定数方向で微分が零なら、その方向を座標に選ぶことで
+$f_3$ は二変数の式になり、射影曲線はその方向の点で特異になる。
+従って $Y(\mathfrak a)R\subset\mathfrak aR$ であり、
+$\mathfrak a$ が素イデアルであることから $Y(\mathfrak a)\subset\mathfrak a$ が従う。
+\end{proof}
+
+\begin{theorem}[一般の三次式でも消えない10次Hessian類]
+\label{thm:all-smooth-hessian-jacobian}
+すべての滑らかな三次式 $F$ に対して
+\[
+ \boxed{\quad H_{10}(F,-)\notin(J_{P_F})_{10}.\quad}
+\]
+ここで $J_{P_F}$ は、固定した $F$ において10個の座標すべてで微分した
+通常のJacobianイデアルである。
+\end{theorem}
+\begin{proof}
+仮に $H\in(J_P)_{10}$ とすると、係数が5次の斉次ベクトル場 $Y_5$ を使って
+$H=Y_5(P)$ と書ける。$P\in\mathfrak a^3$、$H\in\mathfrak a^5$ なので、
+補題\ref{lem:cubic-order-forces-tangency}により $Y_5$ は $C$ に接する。
+
+この接性により $Y_5$ はRees代数を保ち、従って吹上げ
+\[
+ \beta\colon\mathcal H=\operatorname{Bl}_C(W)
+ \simeq\operatorname{Tot}_{\PP(V^*)}(\Lambda^2Q\otimes T)
+ \longrightarrow W
+\]
+に正則ベクトル場 $\widetilde Y$ として持ち上がる。
+このベクトル場の束方向の重みは4である。
+また $\mathfrak a\OO_{\mathcal H}$ を保つので、例外因子 $R$ にも接する。
+
+基底点の局所代表を $p$ とし、$q(b)=r(b)p$ と書く。
+$r$ は例外因子の局所方程式で、束方向2次である。
+すると
+\[
+ \beta^*P=r^3F(p),\qquad
+ \beta^*H=r^5\det\operatorname{Hess}_F(p).
+\]
+$\widetilde Y(r)\in(r)$ を使って $Y_5(P)=H$ を $r^3$ で割ると
+\[
+ \widetilde Y(F)+3\frac{\widetilde Y(r)}rF
+       =r^2\det\operatorname{Hess}_F.
+\]
+従って基底の $X=(F=0)$ 上では、$\widetilde Y$ の基底方向成分が
+\[
+ \xi\in H^0\bigl(X,T_{\PP^4}|_X\otimes\operatorname{Sym}^4N^*\bigr),
+ \qquad
+ dF(\xi)=r^2\det\operatorname{Hess}_F
+ \tag{H4}\label{eq:hessian-blowup-vectorfield}
+\]
+を与える。束方向成分は $F$ に作用しない。
+
+一方、$R_0=Q^*$ とおくと、定数直線因子を除いて
+\[
+ \operatorname{Sym}^4N^*
+   =\mathbb S_{4400}R_0\oplus\mathbb S_{3311}R_0
+      \oplus(\det R_0)^2.
+\]
+最後の直線因子は $\OO_X(2)$ であり、その包含は $r^2$ で与えられる。
+定数因子を正確に戻すと、この因子は $\OO_X(2)\otimes T^{-2}$ である。
+従って \eqref{eq:hessian-blowup-vectorfield}の最後の因子への射影は、normal sequence のconnecting mapの下で
+\[
+ [\det\operatorname{Hess}_F]\in
+ H^1(T_X(2))\otimes T^{-2}
+ \simeq\operatorname{Jac}(F)_5\otimes T^{-2}
+\]
+が零であることを要求する。
+ここで $H^1(T_{\PP^4}|_X(2))=0$ はEuler sequenceから従い、
+normal sequenceの大域切断の余核はEulerの等式 $3F=\sum p_iF_i$ により
+通常のJacobian環の5次部分である。
+
+しかし $F$ の五つの偏微分は二次の正則列をなし、
+$\operatorname{Jac}(F)$ のHilbert級数は $(1+t)^5$ である。
+その一次元のsocle $\operatorname{Jac}(F)_5$ はHessian行列式で生成される
+\cite[p.~2]{BDSS}。
+従って上の類は非零であり、矛盾する。
+\end{proof}
+
+\begin{remark}[主張の範囲]
+この定理は、三次式を固定した後の任意の形式座標変更に関する非零性である。
+普遍同変な共変量の商だけから導いた結論ではない。
+また $C$ を保つという仮定をJacobian表示に付加していない。
+$H\in\mathfrak a^5$ と法方向の三次式の滑らかさから、
+可能なJacobian表示のベクトル場が自動的に $C$ に接することを先に証明している。
+\end{remark}
+
+\begin{corollary}[実際の境界の形式非斉次性]
+\label{cor:all-smooth-nonhomogeneity}
+すべての滑らかな三次三次元多様体 $X=V(F)$ に対して、実際のBN境界
+$(D,e)$ は、その六次接錐 $(P_F=0,0)$ と形式同型ではない。
+これは任意の形式座標変更と定義式の単元倍を許した主張である。
+\end{corollary}
+\begin{proof}
+命題\ref{thm:tate-tenth-coefficient}により、実際の方程式は
+$d=P_F+cH_{10}+O((a)^{12})$、$c=1/96\ne0$ である。
+形式超曲面の同型は、周囲の形式座標変更と単元倍に持ち上がる。
+その一次部分と単元の定数項は $P_F$ を保つので、それを右から合成して除去すると、
+接空間上で恒等、単元の定数項1のcontact変換 $A$ が $A(P_F)=d$ を満たす。
+その対数は $\mathfrak m$-進次数を上げる作用素 $Y+b$ であり、
+$Y$ はベクトル場、$b$ は関数の乗法作用素である。
+$\log(A)(P_F)$ の最初の非零項は $A(P_F)-P_F$ の最初の非零項に等しい。
+よって10次部分を取ると
+\[
+ cH_{10}=Y_5(P_F)+b_4P_F\in(J_{P_F})_{10}.
+\]
+最後の包含にはEulerの等式 $6P_F=\sum a_i\partial_iP_F$ を使った。
+定理\ref{thm:all-smooth-hessian-jacobian}に矛盾する。
+\end{proof}
+
+
+\begin{corollary}[最初の形式同型障害の次数]\label{cor:boundary-tenth-jet-obstruction}
+$R_X=\widehat{\OO}_{D,e}$、$R_X^{\mathrm{cone}}=\CC[[a]]/(P_F)$ とし、
+それぞれの極大イデアルを $\mathfrak m,\mathfrak n$ とする。
+全ての滑らかな $X$ に対して
+\[
+ R_X/\mathfrak m^{10}\simeq R_X^{\mathrm{cone}}/\mathfrak n^{10},
+ \qquad
+ R_X/\mathfrak m^{11}\not\simeq R_X^{\mathrm{cone}}/\mathfrak n^{11}.
+\]
+すなわち、接錐と9次まで一致するが、10次jetで初めて同型が破れる。
+\end{corollary}
+\begin{proof}
+最初の同型は $d=P_F+O((a)^{10})$ から従う。
+仮に二番目にも同型があれば、極大イデアルの生成元の像を持ち上げることで、
+$\CC[a]/(a)^{11}$ の座標変更が得られる。
+両principal idealを比較すると、定数項が非零の単元倍を含めたcontact変換となる。
+前の証明の対数をこの有限jet上で取るだけで
+$cH_{10}\in(J_{P_F})_{10}$ が必要となり、同じ矛盾を得る。
+\end{proof}
+
+この次数10の障害は、六次jetから元の偏極三次三次元多様体を復元できるという
+命題\ref{thm:boundary-sixth-jet}と両立する。六次は $X$ の復元に必要な最小次数であり、
+十次は同じ $X$ の実際の境界と接錐を区別する最初の次数である。
+また命題\ref{prop:boundary-euler}の、接空間上で恒等に作用するEuler導分は
+実際の境界には存在しない。
+
+\subsection{Incidenceの形式近傍は法束へ線形化できない}
+\label{subsec:incidence-formal-neighborhood}
+
+前節までの非斉次性には、滑らかなincidence自体についての帰結もある。
+滑らかさと法束の決定から、形式近傍がその法束と大域的に一致するわけではない。
+
+\begin{corollary}[形式法束模型の非存在]
+\label{cor:incidence-not-formal-normal-bundle}
+すべての滑らかな三次三次元多様体 $X$ に対し、実際のincidence
+$\mathcal I$ の $X=\mathcal I_e$ に沿う形式完備化は、
+法束 $N=\Lambda^2Q\otimes T$ の零切断に沿う形式完備化と同型ではない：
+\[
+ \widehat{\mathcal I}_X
+ \not\simeq
+ \widehat{\operatorname{Tot}_X(N)}_X.
+\]
+これは、$X$ への射や周囲の吹上げへの埋め込みを忘れた形式スキームとしても成立する。
+\end{corollary}
+\begin{proof}
+$D_0=(P_F=0)$、$\mathcal I_0=\operatorname{Tot}_X(N)$ とおく。
+実際の境界とその接錐には、それぞれproper birationalな射
+\[
+ \mathcal I\longrightarrow D,\qquad
+ \mathcal I_0\longrightarrow D_0
+\]
+がある。両者の標的はnormalなので、構造層の順像はそれぞれ
+$\OO_D$、$\OO_{D_0}$ である。
+また両方の原点上のファイバーはスキームとして $X$ であり、
+原点の極大イデアルの引き戻しは $X$ のイデアルに一致する。
+形式関数定理\cite[Theorem 30.20.5, Tag 02OC]{StacksFormalFunctions}を適用すると
+\[
+ H^0(\widehat{\mathcal I}_X,\OO)
+      \simeq\widehat{\OO}_{D,e},\qquad
+ H^0(\widehat{\mathcal I_0}_X,\OO)
+      \simeq\widehat{\OO}_{D_0,0}.
+\]
+従って二つの形式近傍が同型ならば、右辺の完備局所環も同型になる。
+これは、実際の係数 $c_{10}=1/96\ne0$ と
+定理\ref{thm:all-smooth-hessian-jacobian}から従う
+系\ref{cor:all-smooth-nonhomogeneity}に反する。
+\end{proof}
+
+\begin{remark}[零切断への射との両立]
+$\mathcal I\subset X\times U$ は、もちろん第一射影
+$\pi_X\colon\mathcal I\to X$ を持つ。
+上の系は、この射の存在を否定していない。
+局所的には零切断を持つ滑らかな6次元の形式的な族であっても、
+その座標を大域的に法束の線形座標へ揃えることはできない、という主張である。
+
+実際、吹上げ
+$\mathcal H=\operatorname{Tot}_{\PP^4}(\Lambda^2Q\otimes T)$ の
+基底への射と $\pi_X$ には、既に一次で差が入り得る。
+同型
+$N\simeq\Lambda^2T_{\PP^4}|_X\otimes\OO_X(-3)$ と $dF$ による縮約から
+\[
+ 0\longrightarrow\Omega_X^1(-1)\otimes T
+ \longrightarrow N\longrightarrow T_X\longrightarrow0
+\]
+を得る。この最後の射が、そのような一次の接方向を与える。
+従って $\pi_X$ の存在だけから、解消上の方程式
+\[
+ F(p)+\frac1{96}r(b)^2\det\operatorname{Hess}_F(p)+O(b^6)=0
+\]
+の4次項を零と結論することはできない。
+\end{remark}
+
+
+\clearpage
+\section{Tate再帰の有限代数化と十二次項}
+\label{sec:tate-algebraization-twelfth}
+\label{sec:finite-algebraic-tate}
+
+内部次数を固定すると、前節のTate再帰の係数空間は有限次元になり、
+再帰全体を有限個の二次方程式の一つの局所解として表せる。
+このことから、指定したTate座標における行列分解と境界方程式の
+代数性および解析的収束を得る。
+
+\subsection{有限次元の係数空間}
+
+$\mathcal S=\Sym^3V$ を三次式の係数空間とする。
+前節の反対称化した正規順序
+$p(x)\theta_I\eta_{[J]}$ を用い、内部重み $w$ の係数空間を
+$\mathsf E_w$ と書く。
+$\eta_i=\xi_i-\sum_jF_{ij}\theta_j/6$ による基底変換は
+$\xi$ 次数について対角成分1の三角変換なので、
+$F$ に多項式的に依存し、すべての $F\in\mathcal S$ で可逆である。
+従って以下の空間と $h$ の階数は、$F$ の特異性によって変化しない。
+
+$m=\deg_xp$、$u=|I|$、$v=|J|$ とすると、重み $3/2$ の条件は
+\[
+ 2m-u+v=3,\qquad 0\le u,v\le5,\qquad m\ge0.
+ \tag{A1}\label{eq:tate-finite-weight}
+\]
+このとき $u+v$ は奇数で、$m\le4$ である。
+特に $\mathsf E_{3/2}$ は有限次元である。
+また
+\[
+ \mathsf B=\operatorname{im}
+       (h\colon\mathsf E_3\longrightarrow\mathsf E_{3/2})
+\]
+とおく。
+
+\begin{lemma}[補助係数の個数]
+\label{lem:finite-tate-dimensions}
+\[
+ \dim\mathsf E_{3/2}=5890,\qquad
+ \dim\mathsf B=4929,\qquad
+ \dim\mathsf E_3=20330.
+\]
+$\mathsf E_{3/2}$ の $\ker h$ は、10次元の
+$\Lambda^3\langle\eta\rangle$ と $\mathsf B$ の直和である。
+\end{lemma}
+\begin{proof}
+条件\eqref{eq:tate-finite-weight}に対応する係数空間の次元は
+$\binom5u\binom5v\binom{m+4}4$ である。
+一方、$u\ge1$ の成分における $h$ の像の次元は
+\[
+ \binom5v
+ \binom{m+5}{m+u}\binom{m+u-1}{u-1}.
+\]
+これは正の全次数を持つ多項式de Rham複体の完全性から従う。
+例えば $\eta$ 成分を除いた像の次元 $r(m,u)$ は
+\[
+ r(m,0)=0,\qquad
+ r(m,u)=\binom5{u-1}\binom{m+5}4-r(m+1,u-1)
+\]
+という再帰でも計算できる。
+各 $u$ について和を取ると
+\[
+\begin{array}{c|rr}
+u&\dim\mathsf E_{3/2}&\dim\mathsf B\\\hline
+0&35&0\\
+1&350&210\\
+2&1260&935\\
+3&2100&1765\\
+4&1650&1524\\
+5&495&495\\\hline
+\text{合計}&5890&4929
+\end{array}
+\]
+を得る。重み3の場合は $2m-u+v=6$ として同じ計算を行う。
+最後の主張は $\delta h+h\delta=1-\pi$ と $h^2=0$ から従う。
+\end{proof}
+
+\subsection{4929個の二次方程式による\'etale模型}
+
+$a\in W=\Lambda^2V\otimes(\det V)^*$、$b\in\mathsf B$ とし、
+\[
+ A=A_1(a)+b,\qquad
+ \mathcal G_F(a,b)=b+h(A^2)\in\mathsf B
+ \tag{A2}\label{eq:tate-finite-quadratic}
+\]
+とおく。$\mathsf B$ の基底を選べば、
+$\mathcal G_F=0$ は $(a,b)$ に関する4929個の二次方程式である。
+積の構造定数は $F$ の係数の多項式なので、
+これは $\mathcal S\times W\times\mathsf B$ 上の代数的な方程式系になる。
+
+\begin{theorem}[全次数のTate模型の代数化]
+\label{thm:tate-algebraization}
+方程式\eqref{eq:tate-finite-quadratic}の解スキームには、
+零切断 $s(F)=(F,0,0)$ 全体を含む $GL(V)$-不変な開部分 $\mathcal Z$ があり、
+射影
+\[
+ \mathcal Z\longrightarrow\mathcal S\times W
+\]
+は\'etaleである。
+$\mathcal Z$ 上の $\mathsf D_0(F)+A_1(a)+b$ は代数的な次数付き行列分解である。
+零切断に沿う形式完備化は、前節の共変なTate再帰による
+形式行列分解と一致する。
+\end{theorem}
+\begin{proof}
+零切断上では
+\[
+ \left.\frac{\partial\mathcal G_F}{\partial b}\right|_{a=b=0}
+       =\operatorname{id}_{\mathsf B}.
+\]
+従って $J=\det(\partial\mathcal G_F/\partial b)$ を可逆にすれば、
+Jacobian判定により解スキームの射影は\'etaleになる
+\cite[Proposition 59.26.2(3)]{StacksEtaleCriterion}。
+
+この段階で、homotopyで圧縮した方程式から元のMaurer--Cartan方程式を
+代数的に回復する。曲率を
+\[
+ R=\delta A+A^2\in\mathsf E_3
+\]
+とおく。$b\in\operatorname{im}h$、$h^2=0$、$\pi A=A_1$ より
+\[
+ hR=b+h(A^2)=0.
+\]
+また $\pi R=0$ である。
+実際、$x$ と $\theta$ を持たない重み3の項には
+6個の $\eta$ が必要だが、$\eta$ は5個しかない。
+Bianchi恒等式とcontractionの式から
+\[
+ \delta R=RA-AR,\qquad R=h(RA-AR)
+\]
+を得る。そこで有限次元空間 $\mathsf E_3$ 上の作用素
+\[
+ \mathcal T_A(U)=h(UA-AU),\qquad
+ \Delta=\det(1-\mathcal T_A)
+\]
+を考える。$\Delta$ は零切断上で1である。
+さらに $\Delta$ を可逆にすると、$R=\mathcal T_A(R)$ から $R=0$ が従う。
+従って $J\Delta$ を可逆にした開部分を $\mathcal Z$ に取ればよい。
+ここで20330次の行列式 $\Delta$ は開部分を指定する条件であり、
+新しい変形パラメータを導入していない。
+
+形式的陰関数の一意性により $b=O(a^2)$ の解は一意である。
+その $a$ 次数ごとの係数を取ると、まさに
+$A_n=-h\sum_{i=1}^{n-1}A_iA_{n-i}$ を得る。
+従って有限次数だけの近似ではなく、元の再帰の全係数が一致する。
+また正規順序、$h$、積はすべて共変であり、$J$ と $\Delta$ は
+対応する有限次元表現上の共役で不変なので、構成は $GL(V)$ と両立する。
+\end{proof}
+
+\begin{remark}[\'etale近傍の意味]
+固定した $F$ に対する $\mathcal Z_F$ の次元は10である。
+4929は補助未知数と方程式の個数であり、モジュライの次元ではない。
+必要なら零切断の上にある他の点を除去できる。
+選んだ切断は\'etaleな零ファイバーの開かつ閉な部分なので、
+この除去は零切断を含む開部分への制限である。
+一方、$b$ が $a$ の多項式になることや、射影が
+$W$ のZariski開部分への同型になることは主張していない。
+\end{remark}
+
+\subsection{収束半径の評価}
+
+\begin{proposition}[Catalan数による収束評価]
+\label{prop:tate-catalan-convergence}
+有限次元空間 $\mathsf E_{3/2}$ と $W$ にノルムを選び、
+\[
+ \|h(UV)\|\le C_F\|U\|\|V\|,
+ \qquad \|A_1(a)\|\le L\|a\|
+\]
+を満たす定数を取る。
+$\operatorname{Cat}_k=\frac1{k+1}\binom{2k}k$ とすると
+\[
+ \|A_n(a)\|
+ \le\operatorname{Cat}_{n-1}C_F^{n-1}(L\|a\|)^n.
+ \tag{A3}\label{eq:tate-catalan-bound}
+\]
+従って $4C_FL\|a\|<1$ でTate再帰は絶対収束する。
+この収束は、三次式 $F$ の任意のcompact集合上で一様な半径を持つ。
+\end{proposition}
+\begin{proof}
+再帰式から
+\[
+ \|A_n\|\le C_F\sum_{i=1}^{n-1}\|A_i\|\|A_{n-i}\|
+\]
+となる。Catalan数の畳み込み恒等式を用いた帰納法で
+\eqref{eq:tate-catalan-bound}を得る。
+$C_F>0$ の場合、全体のノルムは
+\[
+ \sum_{n\ge1}\|A_n(a)\|
+ \le\frac{1-\sqrt{1-4C_FL\|a\|}}{2C_F}
+\]
+で抑えられる。$C_F=0$ なら $A_1$ 以外の項は零である。
+正規順序の構造定数は $F$ の多項式なので、$C_F$ はcompact集合上で
+有界に選べる。$A_1$ はこの基底で $F$ に依存しないので、$L$ は共通に取れる。
+\end{proof}
+
+この命題が示すのは、指定したTate再帰自体の収束である。
+また定理\ref{thm:tate-algebraization}の\'etale射は局所的にquasi-finiteなので、
+その枝の座標 $b(a)$ は代数的冪級数である。
+従って $K_F(a)$ と $\det K_F(a)$ も収束する代数的冪級数になる。
+
+\subsection{代数的な対象と境界への帰結}
+
+ここでは滑らかな三次式 $F$ を固定する。
+$\mathcal Z_F$ は $W$ 上\'etaleなので滑らかであり、
+$X\times\mathcal Z_F$ も滑らかである。
+定理\ref{thm:tate-algebraization}の代数的行列分解を用いて
+\[
+ \mathcal M=\operatorname{coker}(\Psi(4)),\qquad
+ \mathcal E=\operatorname{Cone}(\OO^5\to\mathcal M)
+\]
+を構成する。固定した長さ1の表示と行列分解の恒等式により、
+$\mathcal M$ は $X\times\mathcal Z_F$ 上でmaximal Cohen--Macaulayであり、
+全空間の正則性から局所自由になる。
+零切断に沿って縮小すればrankは8であり、前節と同じ表示から
+$R\Gamma(\mathcal M)=\OO^5$、$R\Gamma(\mathcal M(-1))=0$ を得る。
+従って $\mathcal E$ は実際の代数的な対象族である。
+単純対象のscalar rigidificationを取ったモジュライ
+\cite[Theorem 4.2.1, Corollary 4.3.3]{LieblichComplexes}への射は、
+零点でのKodaira--Spencer写像が同型なので、その点で\'etaleである。
+
+\begin{corollary}[代数的・解析的な境界模型]
+\label{cor:algebraic-analytic-tate-boundary}
+固定した滑らかな $F$ に対し、$\mathcal Z_F$ の指定点のZariski近傍上で、
+実際のincidenceは $I_5(\mathsf T_F)$、そのscheme imageは
+$\det K_F=0$ で定義される。
+従って第\ref{sec:tate-boundary-tenth}節の境界模型は、
+収束する代数的冪級数による模型である。
+\end{corollary}
+\begin{proof}
+Incidenceのminorによる表示は、代数的な評価写像に対しても同じである。
+指定点の局所環を $R$ とする。
+$R\to\widehat R$ はfaithfully flatである
+\cite[Lemma 10.97.3, Tag 00MC]{StacksFaithfulCompletion}。
+またincidenceの射はproperなので、そのscheme imageを定める
+$\OO\to p_*\OO_{\mathcal I}$ の核は、このflat base changeと可換である
+\cite[Lemma 30.5.2, Tag 02KH]{StacksFlatBaseChange}。
+完備化後のイデアルは前節により $(\det K_F)$ なので、
+faithful flatnessにより $R$ 上でも同じである。
+最後にイデアル層のcoherenceから、この等式は指定点の近傍に広がる。
+\end{proof}
+
+この議論で使ったbase changeは局所環のflatな完備化である。
+properなscheme imageが任意の三次式への特殊化と可換だという仮定は使っていない。
+また、十次項を表示するための有限の単元による規格化は収束性を保つが、
+任意の形式的な座標変更の収束性まで主張するものではない。
+
+\begin{remark}[三次式を動かす場合]
+有限方程式の構成自体は $F=0$ を含む係数空間全体で成立する。
+普遍超曲面を扱う場合には非零三次式へ制限する。
+その普遍超曲面はflatかつproperで、全空間は滑らかである。
+実際、任意の射影点で非零になる三次単項式の係数について微分すれば、
+普遍方程式の微分が非零になる。
+$\mathcal Z\to\mathcal S$ も滑らかなので、
+同じ表示は、この普遍族上でも零切断の近傍に代数的な $\mathcal M$ と
+$\mathcal E$ を与える。
+上の境界の系は、滑らかな $F$ を固定した場合について述べた。
+\end{remark}
+
+\subsection{Tate定数blockの二次項をPieri則で決定する}
+\label{subsec:v9-tate-second-block}
+
+\begin{proposition}\label{prop:v9-K2-hessian}
+前節のTate行列分解の定数blockを
+$K_F(a)=-a+K_2(F,a)+K_3(F,a)+\cdots$ と書く。
+ここで $K_n$ は $a$ に関して次数 $n$ である。
+すると、選んだ符号付き補集合基底において
+\[
+                     K_2(F,a)=\frac13\operatorname{Hess}_F(q(a)).
+\]
+特に
+\[
+                    [\det K_F]_6=2F(q(a)).
+\]
+\end{proposition}
+
+\begin{proof}
+$K_n$ は $V\otimes V\otimes(\det V)^{-1}$ に値を持つ。
+中心の重みから、その $F$ 次数は $n-1$ である。
+従って二次項の空間は
+\[
+ \operatorname{Hom}_{GL(V)}
+ \left(\operatorname{Sym}^3V\otimes
+       \operatorname{Sym}^2(\Lambda^2V),
+       (V\otimes V)\otimes\det V\right)
+\]
+である。
+$\operatorname{Sym}^2(\Lambda^2V)=S_{(2,2)}V\oplus S_{(1,1,1,1)}V$ を用いる。
+標的の対称成分と交代成分の分割は、それぞれ
+$(3,1,1,1,1)$ と $(2,2,1,1,1)$ である。
+Pieri則によれば、三つの水平な箱を加えて前者を得る方法は
+$(1,1,1,1)$ からの一通りだけであり、後者を得る方法はない。
+従ってこのHom空間は一次元で、対称行列に値を持つ。
+$\operatorname{Hess}_F(q)$ はその非零元なので、係数を一例で決めればよい。
+
+$F=\sum x_i^3$、$a=e_0\wedge e_1+e_2\wedge e_3$ とする。
+このとき $q=e_4$、$A_1=\eta_2\eta_3\eta_4+\eta_0\eta_1\eta_4$ である。
+$A_1^2$ の $\eta$ 次数4の部分は $-2x_4\eta_0\eta_1\eta_2\eta_3$ であり、
+$A_2=-h(A_1^2)$ の対応する項は
+$2\theta_4\eta_0\eta_1\eta_2\eta_3$ である。
+従って $(K_2)_{44}=2$、一方 $(\operatorname{Hess}_F(q))_{44}=6$ なので、
+比例係数は $1/3$ である。
+最後に $\operatorname{adj}(-a)=q\,q^{\mathsf T}$ およびEulerの恒等式から
+\[
+ [\det K_F]_6=q^{\mathsf T}K_2q
+ =\frac13q^{\mathsf T}\operatorname{Hess}_F(q)q=2F(q)
+\]
+を得る。
+\end{proof}
+
+\subsection{十二次までの実計算と座標変更の作用}
+\label{subsec:v9-twelfth-jet}
+
+Tate再帰をblock次数8まで延ばすと、行列式を次数12まで厳密に計算できる。
+各次数の多項式Maurer--Cartan方程式を有理数演算で検証し、
+さらに実際の外積・縮約作用による $32$ 次元の作用素表示でも、
+次数0から8までの行列分解方程式を独立に検証した。
+以下は、定義式を $\frac12\det K_F$ に固定したときの値である。
+十二次の数値を新しい不変量とは解釈しない。
+
+$u_i=e_i-p_i e_0$ とし、$F_0=\sum_{i=0}^4x_i^3$、
+$F_*=\sum_{i=0}^3x_i^3-4x_4^3$ と書く。次の三つの双ベクトルを用いる。
+\[
+ \begin{aligned}
+ a^{(1)}&=u_1\wedge u_2+u_3\wedge u_4,\\
+ a^{(2)}&=a^{(1)}+u_1\wedge u_3,\\
+ a^{(3)}&=2u_1\wedge u_2+\tfrac12u_3\wedge u_4.
+ \end{aligned}
+\]
+計算結果は次の通りである。表の係数は $\det K_F$ の係数であり、
+正規化した方程式 $\frac12\det K_F$ の係数はその半分である。
+\[
+\begin{array}{c|c|c|r|r}
+ F &p&a&[t^{10}]\det K_F(ta)&[t^{12}]\det K_F(ta)\\ \hline
+ F_*&(1,1,1,1,1)&a^{(1)}&-648&-632\\
+ F_*&(1,1,1,1,1)&a^{(2)}&-648&-4504/3\\
+ F_*&(1,1,1,1,1)&a^{(3)}&-648&-3318\\
+ F_0&(1,5,-7,-8,9)&a^{(1)}&408240&5295624\\
+ F_0&(1,2,3,4,5)&a^{(1)}&-142560&-71472596/3
+\end{array}
+\]
+各行で $q(a)=p$ である。最初の四行では $F(q)=0$、
+最後の行では $F(q)=225$ である。
+七次、八次、九次、十一次の行列式係数は全て零である。
+
+最初の標本では $K_3=K_5=0$ だが、$K_7$ は零ではない。
+$A=K_1$、$B=K_2$、$C=K_4$ と書くと、十二次に寄与する
+五つのblockの組合せは
+\[
+\begin{array}{c|r}
+ \text{blockの組合せ}&\text{寄与}\\ \hline
+ A^4K_8&-285394/75\\
+ A^3BK_7&12274/75\\
+ A^2B^2K_6&78424/15\\
+ A^2BC^2&-6656/3\\
+ B^4C&0
+\end{array}
+\]
+であり、その和は $-632$ となる。
+ここで各記号は、行列式の対応する混合係数全体を表す。
+
+\begin{proposition}[十二次の標本値は座標不変ではない]
+\label{prop:v9-twelfth-gauge}
+$P_F(a)=F(q(a))$ とおく。
+七次の普遍座標変更
+\[
+ \phi_7(F,a)=\frac12\bigl(K_7(F,a)-K_7(F,a)^{\mathsf T}\bigr)
+\]
+は $W=\Lambda^2V\otimes(\det V)^{-1}$ に値を持ち、
+$F$ 次数6、$a$ 次数7の正則な共変式である。
+最初の標本 $(F_*,a_*)$ では
+\[
+                    (dP_{F_*})_{a_*}\phi_7=-\frac{6137}{50}\ne0.
+\]
+従って十二次係数の値 $-316=[t^{12}]\frac12\det K_{F_*}(ta_*)$ は、
+十一次以下の既定の正規化を保つ普遍座標変更で変わる。
+\end{proposition}
+
+\begin{proof}
+$K_7$ の値域と中心の重みから、$\phi_7$ が所定の普遍座標変更であることが分かる。
+Pfaffianは二次なので、その微分は
+\[
+ (dq)_a(\phi_7)=\frac12\bigl(q(a+\phi_7)-q(a-\phi_7)\bigr)
+\]
+で厳密に計算できる。
+最初の標本ではその値が
+\[
+ \left(0,-\frac{77221}{10800},
+ \frac{224509}{10800},-\frac{6137}{225},\frac{6137}{900}\right)
+\]
+となる。これを $dF_*(q)$ と組み合わせると、主張の $-6137/50$ を得る。
+
+実際、pullback $d'(a)=d(a+\lambda\phi_7(a))$ は次数12で
+\[
+                       d'_{12}=d_{12}+\lambda\,dP(\phi_7)
+\]
+を満たし、次数11以下を変えない。
+$\lambda=-15800/6137$ とすれば、この標本での十二次係数だけは零にできる。
+これは普遍な十二次項全体を消去したという主張ではない。
+\end{proof}
+
+普遍な正則 $GL(V)$-共変式の範囲では、十二次で調べるべき対象は
+\[
+ \mathcal C_{12}\Big/
+ \left(dP(\mathcal G_7)+P\,\mathcal U_6\right)
+\]
+である。既計算の次元は
+$\dim\mathcal C_{12}=5$、$\dim\mathcal G_7=7$、
+$\dim\mathcal U_6=2$ だが、これらの次元だけから商の次元は決まらない。
+四次の単元による十次項の正規化は、八次項が零であるため十二次項を変えない。
+また低次の座標変更の非線形な交差項は、次数12には現れない。
+従って上の商への射影を計算することが、十二次項を不変量として論じるための
+次の必要な段階である。
+
+
+\subsection{12次のcontact商について確定する上下界}
+\label{subsec:degree-twelve-contact-bounds}
+
+11次までの正規形を固定した後、12次に作用する普遍同変な変更は
+\[
+ dP_F(\phi_7)+u_6P_F,
+ \qquad \phi_7\in\mathcal G_7,\quad u_6\in\mathcal U_6
+\]
+である。$\dim\mathcal G_7=7$、$\dim\mathcal U_6=2$、
+$\dim\mathcal C_{12}=5$ だが、これらを差し引くことでは商の次元は決まらない。
+
+ここで低次の変更が追加の項を生じないことも確認しておく。
+既知の計算により $\mathcal G_2=\mathcal G_3=\mathcal G_4=0$ であり、
+5次座標変更の $P_F$ への作用は4次単元の像に入る。
+この作用を相殺して10次の正規形を保つと、$H_{10}$ への作用は14次以上になる。
+6次座標変更の $P_F$ への作用は $\mathcal C_{11}=0$ により零である。
+また二つの5次座標変更の交差項も14次から始まる。
+従って12次に残る作用は上式の線形写像で尽くされる。
+
+\begin{proposition}[Pfaffian微分の像]
+\label{prop:degree-twelve-pfaffian-image}
+$A=\Lambda^2V$ と書き、定数直線因子を戻した表示で
+\[
+ \mathcal D_8=\operatorname{Hom}_{\operatorname{GL}(V)}
+ \left(\operatorname{Sym}^6(\operatorname{Sym}^3V)
+       \otimes\operatorname{Sym}^8A,
+       \Lambda^4V\otimes\det(V)^6\right)
+\]
+とおく。この空間は4次元であり、
+\[
+ \delta q\colon\mathcal G_7\longrightarrow\mathcal D_8,
+ \qquad\phi\longmapsto a\wedge\phi(a)
+\]
+は全射である。従ってその核は3次元である。
+\end{proposition}
+\begin{proof}
+双対を取り、共通の $\det(V)^7$ を掛けると、係数写像の双対は
+\[
+ \mathsf d\colon V\otimes\operatorname{Sym}^8A
+       \longrightarrow\Lambda^3V\otimes\operatorname{Sym}^7A,
+ \qquad
+ v\otimes f\longmapsto
+ \sum_{i<j}(v\wedge e_i\wedge e_j)\otimes
+                \frac{\partial f}{\partial a_{ij}}
+\]
+となる。非零定数倍は以下の階数に影響しない。
+Littlewoodの分解、Pieriの公式、および前節までと同じ整数alternant計算により、
+必要な成分は次の表で尽くされる。ここで $\lambda$ は
+$\Sym^6(\Sym^3V)$ の分割、$\mu=(7-\lambda_5,\ldots,7-\lambda_1)$ であり、
+後ろの二列は対応する重複度である。
+\[
+\begin{array}{c|c|c|c}
+ \lambda&\mu&\mathcal D_8\text{側}&\mathcal G_7\text{側}\\ \hline
+ (6,6,6,0,0)&(7,7,1,1,1)&1&2\\
+ (7,5,4,1,1)&(6,6,3,2,0)&1&1\\
+ (7,4,4,2,1)&(6,5,3,3,0)&1&1\\
+ (6,4,4,2,2)&(5,5,3,3,1)&1&2\\
+ (6,5,4,2,1)&(6,5,3,2,1)&0&1
+\end{array}
+\]
+表中の $\lambda$ はplethysmにそれぞれ重複度1で現れる。
+
+第一行と第四行は $\mathcal U_6$ の二つの成分である。
+$\phi=a u_6$ に対し $\delta q(\phi)=2q u_6$ なので、
+この二成分で写像は非零である。
+
+残る二成分については最高重みベクトルを直接使う。
+\[
+ Q=a_{01}a_{23}-a_{02}a_{13}+a_{03}a_{12},
+ \qquad w=e_0a_{12}-e_1a_{02}+e_2a_{01}
+\]
+とおくと、$e_0a_{01}^2Q^3$ は重み $(6,5,3,3,0)$ の最高重みベクトルであり、
+その $\mathsf d$ による像の $e_0\wedge e_2\wedge e_3$ 係数は
+$3a_{01}^3Q^2\ne0$ である。
+また $w a_{01}^3Q^2$ は重み $(6,6,3,2,0)$ の最高重みベクトルで、
+\[
+ \mathsf d(w a_{01}^3Q^2)
+       =8(e_0\wedge e_1\wedge e_2)a_{01}^3Q^2\ne0.
+\]
+従って必要な四つの既約成分のすべてで双対写像が単射となり、主張が従う。
+\end{proof}
+
+\begin{corollary}[12次商の厳密な上界と下界]
+\label{cor:degree-twelve-contact-bounds}
+\[
+ \mathcal Q_{12}=
+ \mathcal C_{12}/\bigl(dP_F(\mathcal G_7)+P_F\mathcal U_6\bigr)
+\]
+とおく。これは $F$ も変数に含む普遍共変式の商である。
+このとき
+\[
+ \boxed{
+ 3\le\operatorname{rank}(dP_F\colon\mathcal G_7\to\mathcal C_{12})\le4,
+ \qquad 1\le\dim\mathcal Q_{12}\le2.
+ }
+\]
+\end{corollary}
+\begin{proof}
+$dP_F$ は $\delta q$ と $dF$ の合成なので、命題より階数は4以下である。
+Eulerの等式により
+\[
+ dP_F\left(\frac16a u_6\right)=P_Fu_6.
+\]
+従って単元の像はすでに座標変更の像に含まれ、その次元は2である。
+
+さらにTate再帰の定数ブロック $K_7$ から得られる
+$\phi_7=\operatorname{Alt}(K_7)$ は $\mathcal G_7$ の元である。
+$\operatorname{Hom}(\Lambda^4V,V)$ の交代化は、
+$\Lambda^4V\simeq V^*\otimes\det V$ を使った自然な
+$V\otimes V\otimes\det(V)^{-1}\to
+\Lambda^2V\otimes\det(V)^{-1}$ である。
+従ってこれは座標依存の行列操作ではない。
+
+命題\ref{prop:v9-twelfth-gauge}の標本 $(F_*,a_*)$ では
+\[
+ P_{F_*}(a_*)=0,\qquad
+ dP_{F_*}(\phi_7)(a_*)=-\frac{6137}{50}\ne0
+\]
+である。従ってこの像は $P_F\mathcal U_6$ に含まれず、階数は3以上である。
+この最後の値は保存された $K_7$ の有理数行列から交代化とPfaffianの微分を
+別に計算し直すことで検証できる。
+\end{proof}
+
+\begin{remark}[純粋な$q$の項と残る計算]
+12次共変量の $C$ に沿う位数は、Littlewood分解の
+$(r,r,s,s,0)$ における $s$ で読める。
+実際、最高重みベクトル $a_{01}^{r-s}Q^s$ は
+$I_C^s$ に属し、一般の階数2点でちょうど $s$ 次で消える。
+12次の成分は、$s=3,4,5$ にそれぞれ次元 $2,1,2$ で現れる。
+$s=6$ の純粋な $q$ に6次の成分は、
+$\mathbb S_{(9,3,3,3,3)}V$ のplethysm重複度が零なので存在しない。
+
+一段階吹上げで $r^3$ を割った後は、束方向6次の
+$\mathbb S_{6600}Q^*$、$\mathbb S_{5511}Q^*$、$\mathbb S_{4422}Q^*$
+の三成分が残り、最後の $\OO_X(3)$ 成分は現れない。
+従って $\operatorname{Jac}(F)_6=0$ だけでは12次の全成分は消去できない。
+上の上下界は、4次元の $\mathcal D_8$ から5次元の $\mathcal C_{12}$ への
+$dF$ の階数を完全に決めたものではない。
+また、この段階では実際の12次項の $\mathcal Q_{12}$ における類も未決定である。
+これら二点は次節で解決する。
+\end{remark}
+
+
+
+\clearpage
+\section{12次・13次の普遍接触商と境界の標準形}
+\label{sec:contact-twelve-thirteen}
+
+本節では、次数12の普遍接触商を完全に決定し、実際の境界の類が零であることを示す。
+さらに次数13の普遍接触商も零であり、境界は
+$P_F+H_{10}/96+O(a^{14})$ に正規化される。
+ここで $P_F=F(q(a))$、$H_{10}=\det\operatorname{Hess}_F(q(a))$ である。
+候補の空間、座標変更の像、実際の係数の三つを順に決定する。
+共変量の次元計算は、前節までと同じLittlewood分解とSchur指標の
+有限計算\cite{BeteaWheeler,DeBoeckPagetWildon}に基づく。
+有限個の評価値が普遍的な結論を与える理由も、各段階で明示する。
+
+\subsection{12次contact写像の階数の確定}
+\label{subsec:v10-contact-exact-rank}
+
+前節の上界4は等号である。これを証明するために、Tate再帰の
+一つの部分項を独立の座標変換として使う。
+$\kappa$ を $x=0$ における $\Lambda^4V\to V$ ブロックの抽出とし、
+$\operatorname{Alt}$ は
+$\operatorname{Hom}(\Lambda^4V,V)\simeq
+V\otimes V\otimes\det(V)^{-1}$ の自然な交代化とする。
+\[
+ \Phi_7=\operatorname{Alt}(K_7),\qquad
+ \Psi_7=\operatorname{Alt}\,\kappa
+       \bigl(h(A_1\,h(A_3^2))\bigr).
+\]
+後者は、$A_6$ の部分項 $-h(A_3^2)$ を
+$A_7$ の項 $-h(A_1A_6)$ に代入して得られる。
+
+\begin{lemma}[部分項の同変性と次数]
+$\Psi_7$ は $\mathcal G_7$ の元である。
+\end{lemma}
+\begin{proof}
+$A_1$、Chevalley反対称化による正規表示、積、$h$、$\kappa$、
+交代化はすべて普遍的な $\operatorname{GL}(V)$ 同変操作である。
+各操作は $F$ の係数に多項式的であり、$a$ の次数は葉の数に等しい。
+従って表示された部分項は $a$ に7次である。
+
+$F$ の次数は次の補助重みで確認できる：
+\[
+ \mathrm{wt}(F)=1,\quad\mathrm{wt}(a)=-1,\quad
+ \mathrm{wt}(x)=0,\quad
+ \mathrm{wt}(\theta)=-\tfrac12,\quad
+ \mathrm{wt}(\eta)=\tfrac12.
+\]
+Clifford関係は斉次で、$h$ の重みは $-1/2$、$A_1$ の重みは
+$1/2$ である。従って二項操作 $-h(UV)$ で作られる各部分項の重みは
+$1/2$ になる。$x=0$ の $\Lambda^4V\to V$ ブロックでは
+$\eta$ の個数から $\theta$ の個数を引いたものが3なので、
+$a$ に $n$ 次の部分項の係数は $F$ に $n-1$ 次である。
+ここでは $n=7$ であり、所要の $F$ に6次、$a$ に7次という次数を得る。
+部分項自体がMaurer--Cartan方程式を満たす必要はない。
+\end{proof}
+
+\begin{proposition}[12次contact商は1次元]
+\label{prop:v10-contact-exact-rank}
+普遍正則な同変写像について
+\[
+ \operatorname{rank}(dF\colon\mathcal D_8\to\mathcal C_{12})=4,
+ \qquad
+ \operatorname{rank}(dP_F\colon\mathcal G_7\to\mathcal C_{12})=4.
+\]
+従って
+\[
+ \dim\mathcal Q_{12}=1,\qquad
+ \ker(dP_F)=\ker(\delta q),\qquad\dim\ker(dP_F)=3.
+\]
+\end{proposition}
+\begin{proof}
+$F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3$ とし、
+$u_i=e_i-e_0$ に対して
+\[
+ a^{(1)}=u_1\wedge u_2+u_3\wedge u_4,
+ \qquad a^{(2)}=a^{(1)}+u_1\wedge u_3
+\]
+とおく。両方で $q(a^{(j)})=(1,1,1,1,1)$ なので $P_{F_*}=0$ である。
+有理数上のTate演算は
+\[
+\begin{array}{c|cc}
+ &dP_{F_*}(\Phi_7)&dP_{F_*}(\Psi_7)\\\hline
+ a^{(1)}&-6137/50&0\\
+ a^{(2)}&-166211/600&-48
+\end{array}
+\]
+を与える。第二列の値は、より小さい計算
+\[
+ dq(\Psi_7)(a^{(1)})=(0,40/3,-40/3,0,0),
+ \qquad
+ dq(\Psi_7)(a^{(2)})=(-40/3,0,32/3,-40/3,0)
+\]
+と $dF_*(1,1,1,1,1)=(3,3,3,3,-12)$ からも確認できる。
+評価行列の行列式は
+\[
+ \frac{147288}{25}\ne0
+\]
+である。従って $dP_F(\Phi_7)$ と $dP_F(\Psi_7)$ は
+$P_F\mathcal U_6$ を法として一次独立である。
+$P_F\mathcal U_6$ 自体は2次元で、Eulerの等式によりすでに
+$dP_F(\mathcal G_7)$ に含まれるため、全体の階数は4以上である。
+命題\ref{prop:degree-twelve-pfaffian-image}による上界4と合わせて等号を得る。
+同命題の $\delta q$ の全射性により、$dF$ は単射である。
+\end{proof}
+
+ここで示したのは $F$ を変数とする普遍正則な同変写像の階数であり、
+固定した個々の三次式について任意の非同変座標変換を許した
+Jacobian商の次元を主張するものではない。
+
+
+\subsection{12次商の生成元と実際の12次項の消滅}
+\label{subsec:v10-actual-twelfth-class}
+
+次元が1であることと、実際の項が零であることは別の主張である。
+ここでは商の非零生成元と、その係数を読み取る線形汎関数を与えたうえで、
+実際の12次項を判定する。
+
+まず $d^{\mathrm T}=\tfrac12\det K$ をTate座標での未正規化の方程式とし、
+$d^{\mathrm T}_{10}$、$d^{\mathrm T}_{12}$ をその斉次成分とする。
+定理\ref{thm:tate-tenth-coefficient}と $\dim\mathcal C_{10}=2$ により
+\begin{equation}\label{eq:v10-normalized-U4}
+ U_4=\frac{H_{10}/96-d^{\mathrm T}_{10}}{3P_F}
+       \in\mathcal U_4
+\end{equation}
+は多項式として定義される。分子の $P_F$ による可除性は既に証明した
+普遍的な $\mathcal C_{10}$ の分解から従い、点ごとの除算を意味しない。
+
+\begin{lemma}[四次単元の対角三次式への制限]
+\label{lem:v10-U4-diagonal}
+$F=\sum_i c_i x_i^3$ に対して、\eqref{eq:v10-normalized-U4}の正規化では
+\[
+ U_4(F,a)=\sum_{i=0}^4\prod_{j\ne i}(c_j a_{ij}).
+\]
+ここで $a_{ji}=-a_{ij}$ とする。
+\end{lemma}
+\begin{proof}
+対角トーラスの重みを用いる。$c^\alpha a^\beta$ は $c$ と $a$ の
+両方に4次であり、頂点 $i$ の $a$ の次数を $\deg_i(\beta)$ とすると
+\[
+ 3\alpha_i+\deg_i(\beta)=4.
+\]
+従って $\alpha_i$ は0または1で、ちょうど一つだけ0である。
+その頂点の次数は4、残る四頂点の次数は1だから、対応する単項式は
+その頂点を中心とする星型に限られる。置換対称性により
+五つの行積 $\prod_{j\ne i}(c_j a_{ij})$ の係数は等しい。
+
+係数の正規化には既存のFermatの錐外の計算を使う。
+$q=(1,2,3,4,5)$、$a=u_1\wedge u_2+u_3\wedge u_4$、
+$u_i=e_i-q_i e_0$ において
+\[
+ P_F=225,\qquad H_{10}/96=9720,\qquad
+ d^{\mathrm T}_{10}=-71280.
+\]
+従って\eqref{eq:v10-normalized-U4}の値は120である。
+上の星型の和も同じ点で120なので、係数は1である。
+\end{proof}
+
+\begin{theorem}[12次商の生成元と係数汎関数]
+\label{thm:v10-twelfth-generator}
+$\Theta_8$ を\eqref{eq:boundary-theta-eight}で定義した八次共変量とする。
+普遍共変量空間は
+\[
+ \mathcal C_{12}
+ =P_F\mathcal U_6
+   \oplus\CC\,dP_F(\Phi_7)
+   \oplus\CC\,dP_F(\Psi_7)
+   \oplus\CC\,\Theta_8U_4
+\]
+と直和分解される。特に $[\Theta_8U_4]$ は $\mathcal Q_{12}$ の基底である。
+
+$F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3$、$u_i=e_i-e_0$ とし、
+\[
+ a^{(1)}=u_1\wedge u_2+u_3\wedge u_4,\qquad
+ a^{(3)}=2u_1\wedge u_2+\tfrac12u_3\wedge u_4
+\]
+とおくと、商における $[\Theta_8U_4]$ の係数は
+\begin{equation}\label{eq:v10-rho-functional}
+ \rho(f)=\frac{21f(F_*,a^{(1)})-4f(F_*,a^{(3)})}{400}
+\end{equation}
+によって読み取れる。
+\end{theorem}
+\begin{proof}
+三つ目の点 $a^{(2)}=a^{(1)}+u_1\wedge u_3$ も含めて値を並べると、
+全ての点で $P_{F_*}=0$ であり、厳密計算は
+\[
+\begin{array}{c|rrr}
+ &a^{(1)}&a^{(2)}&a^{(3)}\\\hline
+ dP(\Phi_7)&-6137/50&-166211/600&-128877/200\\
+ dP(\Psi_7)&0&-48&0\\
+ U_4&-4&0&-4\\
+ \Theta_8&-14&-26&-97/2\\
+ \Theta_8U_4&56&0&194
+\end{array}
+\]
+を与える。$U_4$ の行は補題\ref{lem:v10-U4-diagonal}、$\Theta_8$ の行は
+\[
+ \Theta_8(F,a)=\sum_{i<j}a_{ij}^2\prod_{k\ne i,j}c_kq_k(a)
+\]
+から直接得られる。$\rho$ は $P_F\mathcal U_6$ を消し、
+表示された二つの座標変更の像も消す。一方、
+\[
+ \rho(\Theta_8U_4)=\frac{21\cdot56-4\cdot194}{400}=1.
+\]
+命題\ref{prop:v10-contact-exact-rank}から接触写像の像は4次元であり、
+$P_F\mathcal U_6$ と二つの表示された像で張られる。
+従って $\rho$ はその像を消す非零の汎関数であり、
+$\dim\mathcal C_{12}=5$ と合わせて直和分解と係数公式を得る。
+\end{proof}
+
+\begin{theorem}[実際の12次接触類は零]
+\label{thm:v10-actual-twelfth-zero}
+実際のTate族について
+\[
+ [d^{\mathrm T}_{12}]=0\quad\text{in }\mathcal Q_{12}.
+\]
+従って正則な普遍同変座標変換と単元変更により、境界方程式を
+\begin{equation}\label{eq:v10-twelve-normal-form}
+ d(F,a)=P_F(a)+\frac1{96}H_{10}(F,a)+O(a^{13})
+\end{equation}
+とできる。
+\end{theorem}
+\begin{proof}
+前節の厳密な行列因子分解の計算から
+\[
+ \bigl(d^{\mathrm T}_{12}(F_*,a^{(1)}),
+       d^{\mathrm T}_{12}(F_*,a^{(2)}),
+       d^{\mathrm T}_{12}(F_*,a^{(3)})\bigr)
+ =\left(-316,-\frac{2252}{3},-1659\right).
+\]
+従って
+\[
+ \rho(d^{\mathrm T}_{12})
+ =\frac{21(-316)-4(-1659)}{400}=0.
+\]
+命題\ref{thm:v10-twelfth-generator}により $\rho$ は1次元商の係数を完全に判定するから、接触類は零である。
+これは個々の評価値だけを根拠とする多項式恒等式の推測ではなく、
+共変量空間と接触写像の像を先に決定したうえでの係数計算である。
+
+変更も有限な普遍式で指定できる。
+\[
+ \alpha=\frac{15800}{6137},\qquad
+ \beta=\frac{689855}{883728},\qquad
+ V_6=\frac{d^{\mathrm T}_{12}
+       -\alpha\,dP_F(\Phi_7)-\beta\,dP_F(\Psi_7)}{P_F}.
+\]
+最初の二つの評価から $\alpha,\beta$ が決まり、上の直和分解により
+$V_6\in\mathcal U_6$ は多項式である。
+まず $1+3U_4$ を掛けて10次の $P_F$ の倍数を消す。
+$d^{\mathrm T}_8=0$ なので、この変更は12次項を変えない。
+次に
+\[
+ a\longmapsto a-\alpha\Phi_7(F,a)-\beta\Psi_7(F,a)
+\]
+で引き戻し、$1-V_6$ を掛けると12次項が消える。
+この座標変更が10次の $H_{10}$ に作用するのは16次以降である。
+全ての変更は有限な多項式で、座標変更の線形項は恒等、単元の定数項は1である。
+従って前節で構成した代数的エタール近傍・収束する複素解析的近傍にも適用できる。
+\end{proof}
+
+12次で新しい普遍候補が存在することと、実際の族がその方向に動くことは異なる。
+ここでは $[\Theta_8U_4]\ne0$ である一方、実際の係数は零である。
+この消去は10次のHessian障害を取り除かず、形式的非斉次性についての
+前節までの結論を変えない。また、\eqref{eq:v10-twelve-normal-form}は
+13次以上の項の消滅を主張しない。
+
+
+\subsection{13次の普遍項はすべて除去できる}
+\label{subsec:v10-degree-thirteen}
+
+まず実際の13次係数を計算することなく、13次項の除去可能性を確定する。
+続いて実際の係数も計算し、消去に使う普遍定数を明示する。
+\begin{proposition}[13次contact商の消滅]
+\label{prop:v10-degree-thirteen}
+\[
+ \dim\mathcal C_{13}=1,\qquad
+ \dim\mathcal G_8=7,\qquad
+ \dim\mathcal U_7=0,
+\]
+かつ $dP_F\colon\mathcal G_8\to\mathcal C_{13}$ は全射である。
+従って13次の普遍正則なcontact商は零である。
+\end{proposition}
+\begin{proof}
+前節までと同じ整数alternant計算により、
+$\operatorname{Sym}^8(\operatorname{Sym}^3V)$ における候補
+\[
+ (10,7,7,0,0),\quad(10,6,6,1,1),\quad
+ (10,5,5,2,2),\quad(10,4,4,3,3)
+\]
+の重複度は順に $0,0,1,0$ である。
+また $\mathcal G_8$ と $\mathcal U_7$ の重複度計算はそれぞれ
+\[
+ [(8,8,7,7,7)]\bigl(
+ \operatorname{Sym}^7(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^8(\Lambda^2V)\bigr)=7,
+\]
+\[
+ [(7,7,7,7,7)]\bigl(
+ \operatorname{Sym}^7(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^7(\Lambda^2V)\bigr)=0
+\]
+となる。
+
+Tate族の既に計算された定数ブロックから
+\[
+ \Phi_8=\operatorname{Alt}(K_8)\in\mathcal G_8
+\]
+を取る。前の補助重みと同変性の議論により、これは普遍正則な
+$F$ に7次、$a$ に8次の座標変換である。
+先の $F_*$ と $a^{(1)}$ において、保存済みの有理数行列から直接
+\[
+ dq(\Phi_8)=
+ \left(\frac{20}{3},\frac{101839}{8640},
+ -\frac{85889}{8640},-\frac{25801}{1440},
+ \frac{25801}{1440}\right)
+\]
+を得る。従って
+\[
+ \boxed{dP_{F_*}(\Phi_8)(a^{(1)})=-\frac{2189}{9}\ne0.}
+\]
+標的が1次元なので $dP_F$ は全射となり、核は6次元である。
+\end{proof}
+
+12次項を消した後の方程式を
+\[
+ d=P_F+\frac1{96}H_{10}+d_{13}+O(a^{14})
+\]
+と書くと、命題より $d_{13}=\lambda\,dP_F(\Phi_8)$ と書ける。
+座標変更 $a\mapsto a-\lambda\Phi_8(a)$ は13次項を消し、
+12次以下を変えない。従って
+\[
+ \boxed{d\sim P_F+\frac1{96}H_{10}+O(a^{14}).}
+\]
+ここで示したのは13次項の除去可能性であり、
+元のTate座標における13次係数自体が零であるとは主張していない。
+
+
+\begin{proposition}[実際の13次係数と有限な正規化]
+\label{prop:v10-explicit-thirteenth}
+未正規化のTate方程式 $d^{\mathrm T}=\tfrac12\det K$ について、普遍恒等式
+\begin{equation}\label{eq:v10-actual-thirteenth}
+ d^{\mathrm T}_{13}=-\frac{4600}{2189}\,dP_F(\Phi_8)
+\end{equation}
+が成立する。前に定義した $U_4,V_6,\alpha,\beta$ を用いて
+\[
+ \chi(F,a)=a-\alpha\Phi_7(F,a)-\beta\Psi_7(F,a)
+                         +\frac{4600}{2189}\Phi_8(F,a),
+ \qquad u(F,a)=1+3U_4(F,a)-V_6(F,a)
+\]
+とおけば
+\begin{equation}\label{eq:v10-final-normal-form}
+ \boxed{
+ u(F,a)\,d^{\mathrm T}(F,\chi(F,a))
+   =P_F(a)+\frac1{96}H_{10}(F,a)+O(a^{14}).
+ }
+\end{equation}
+ここで $\chi$ と $u$ は $F,a$ に多項式的であり、
+$d_a\chi|_{a=0}=\id$、$u(F,0)=1$ である。
+\end{proposition}
+\begin{proof}
+標準点 $(F_*,a^{(1)})$ でTate再帰を $A_9$ まで計算する。
+Clifford正規形の有理多項式演算により、9次までのMaurer--Cartan等式を
+確認し、$K_1,\ldots,K_8$ は前節の保存値と全成分で一致する。
+新しい $A_9$ の項数は5766であり、その定数ブロックを追加した行列式は
+\[
+ [t^{13}]\det K(F_*,t a^{(1)})=\frac{9200}{9},\qquad
+ d^{\mathrm T}_{13}(F_*,a^{(1)})=\frac{4600}{9}
+\]
+となる。次数13の行列式に寄与するブロックは $K_1,\ldots,K_9$ で尽くされる。
+これらの有理数行列と係数は添付の証明書にすべて保存し、
+別実装の32次元外積・縮約作用素でも次数0--9の恒等式を照合する。
+
+$\mathcal C_{13}$ は1次元であり、$dP_F(\Phi_8)$ はその非零生成元である。
+従って一つの値の比
+\[
+ \frac{4600/9}{-2189/9}=-\frac{4600}{2189}
+\]
+により\eqref{eq:v10-actual-thirteenth}が普遍的に決まる。
+
+12次までの変更は13次項を変えない。
+実際、4次単元が13次に与え得る項は $3U_4d^{\mathrm T}_9=0$、
+6次単元からは $V_6d^{\mathrm T}_7=0$ である。
+7次座標変更が13次に与え得る項も $d(d^{\mathrm T}_7)(\phi_7)=0$ であり、
+$P_F$ への二重作用は18次からである。
+従って $+(4600/2189)\Phi_8$ で引き戻せば13次項が消える。
+二つの単元の積の10次以上の部分や、単元を座標変更で引き戻す差は、
+方程式の14次未満には寄与しないので、表示した $u$ を用いてよい。
+これで\eqref{eq:v10-final-normal-form}を得る。
+
+線形項と定数項の条件により、固定した $F$ に対して $\chi$ は原点でエタールであり、
+複素解析的にも原点の近傍で可逆になる。$u$ も同じ近傍で単元である。
+従ってこれは形式的な等式に加え、前節で得た代数的・収束する解析的族に
+適用できる有限な正規化である。大域的な多項式自己同型であるとは仮定しない。
+\end{proof}
+
+これまでの結果は次のように整理できる。各行では下の次数の正規形を固定し、
+普遍正則な同変変更を用いている。
+\[
+\begin{array}{c|c|c|c|c}
+ a\text{次数}&\dim\mathcal C_n&\text{接触像の次元}&\text{商の次元}
+                                      &\text{実際の類}\\\hline
+ 8&1&0&1&0\\
+ 10&2&1&1&[H_{10}]/96\ne0\\
+ 12&5&4&1&0\\
+ 13&1&1&0&0
+\end{array}
+\]
+10次の非零性は、全ての滑らかな $F$ で通常のJacobian商にも残るという
+前節までの主張を含む。12次・13次の消去はこの障害を変えない。
+
+
+\begin{remark}[普遍的消去と固定した三次式での消去]
+\label{rem:v10-universal-fixed-scope}
+上の接触商は、$F$ を変数として多項式的に定義された
+$\operatorname{GL}(V)$ 共変量の商である。
+固定した $F$ に対する任意の座標変更を許した商とは区別する必要がある。
+普遍商の非零元が、すべての特殊化でも非零であるとは限らない。
+一方、普遍的な座標変更 $\chi(F,a)$ と単元 $u(F,a)$ による
+恒等式\eqref{eq:v10-final-normal-form}は、各 $F$ に特殊化してそのまま使える。
+この方向には、固定した $F$ の全自己同型や全接触変換の分類は不要である。
+
+固定した $F$ には、普遍的な共変量空間からは見えない低次の安定化群もある。
+その具体例として、体積を固定して $\beta\in\Lambda^2V^*$ を任意に取り、
+$g=\nabla F(q(a))$、$H=\operatorname{Hess}F(q(a))$ とおくと、
+\[
+ \phi_{\beta,3}(a)=\frac12\bigl(H\beta a-a\beta H\bigr),
+ \qquad \delta q(\phi_{\beta,3})=\beta g,
+ \qquad dP_F(\phi_{\beta,3})=0.
+\]
+最初の等式は行列の縮約を表し、$\phi_{\beta,3}$ は $a$ に3次である。
+Pfaffianの共変性から得られる恒等式
+\[
+ \delta q(Ma+aM^{\mathsf T})
+    =\operatorname{tr}(M)q-M^{\mathsf T}q
+\]
+に $M=H\beta/2$ を代入すれば、上の主張が従う。
+
+さらに $h(p)=\det\operatorname{Hess}F(p)$ とおけば、$h$ は $p$ に5次なので、
+\[
+ \psi_{\beta,7}(a)
+   =\frac14\bigl((\operatorname{Hess}h)(q)\beta a
+                       -a\beta(\operatorname{Hess}h)(q)\bigr)
+\]
+は $a$ に7次であり、
+\[
+ \delta q(\psi_{\beta,7})=\beta\nabla h(q),\qquad
+ d(h\circ q)(\phi_{\beta,3})=-dP_F(\psi_{\beta,7}).
+\]
+従って、このHamilton型の低次安定化群が10次のHessian項に与える12次の変化は、
+通常のJacobianイデアルにすでに含まれる。
+この計算は、固定した $F$ の安定化群を無視してよいと主張するものではなく、
+上記の明示的な族について作用を計算したものである。
+\end{remark}
+
+
+
+\clearpage
+\section{14次の接触商と実際の項の消去}
+\label{sec:contact-fourteen}
+
+第10版の正規形の次の次数を決定する。本節の結論は
+\[
+ \mathcal Q^{\mathrm{eff}}_{14}=\mathbb C\cdot[\Theta_8J_6],\qquad
+ [R_{14}]=0,\qquad
+ d\sim P_F+\frac1{96}H_{10}+O(a^{15})
+\]
+である。ここで $J_6$ は以下で定義する六次単元共変量であり、最後の式は
+各滑らかな $F$ の実際の境界方程式に適用される。
+
+共変量と座標変更は、これまでと同じく $F$ の係数に多項式的に正則で、
+指定した双次数を持つ普遍 $\mathrm{GL}(V)$ 同変なものに限る。
+接触変換では $F$ を固定し、$a$ の線形項と方程式の先頭係数を恒等に固定する。
+以下で用いる $F$ の方向微分は共変量を判別するための線形汎関数である。
+
+\subsection{14次の共変量とPfaffian微分}
+\label{subsec:v11-fourteenth-characters}
+
+$A=\Lambda^2V$ と書き、定数直線因子を戻した表示で
+\[
+ \mathcal D_{10}=\operatorname{Hom}_{\operatorname{GL}(V)}
+ \left(\operatorname{Sym}^8(\operatorname{Sym}^3V)
+       \otimes\operatorname{Sym}^{10}A,
+       \Lambda^4V\otimes\det(V)^8\right)
+\]
+とおく。14次に関係する空間は、前の次数より大きくなる。
+
+\begin{proposition}[14次の次元とPfaffian微分の全射性]
+\label{prop:v11-fourteenth-characters}
+\[
+ \dim\mathcal C_{14}=15,\qquad
+ \dim\mathcal G_9=28,\qquad
+ \dim\mathcal U_8=7,\qquad
+ \dim\mathcal D_{10}=17.
+\]
+さらに
+\[
+ \delta q:\mathcal G_9\longrightarrow\mathcal D_{10},
+ \qquad \phi\longmapsto a\wedge\phi
+\]
+は全射であり、その核は11次元である。
+\end{proposition}
+\begin{proof}
+Littlewood分解と、前節までと同じ整数alternantによる重複度計算を用いる。
+$\mathcal C_{14}$ について必要な
+$\operatorname{Sym}^9(\operatorname{Sym}^3V)$ のSchur重複度は、
+$\lambda_j=(11,8-j,8-j,j,j)$、$0\le j\le4$ として
+\[
+\begin{array}{c|ccccc}
+ j&0&1&2&3&4\\\hline
+ \text{重複度}&2&2&7&2&2
+\end{array}
+\]
+である。また $\mathcal U_8$ では
+$\lambda=(8,8-j,8-j,j,j)$、$0\le j\le4$ の重複度が
+$1,1,3,1,1$ となる。$\mathcal G_9$ と $\mathcal D_{10}$ はそれぞれ
+\[
+ [(9,9,8,8,8)]\bigl(
+   \operatorname{Sym}^8(\operatorname{Sym}^3V)
+   \otimes\operatorname{Sym}^{9}A\bigr)=28,
+\]
+\[
+ [(9,9,9,9,8)]\bigl(
+   \operatorname{Sym}^8(\operatorname{Sym}^3V)
+   \otimes\operatorname{Sym}^{10}A\bigr)=17
+\]
+から得られる。
+
+全射性を確認する。双対を取り、共通の $\det(V)^9$ を掛けると、
+必要な写像は
+\[
+ \mathsf d:V\otimes\operatorname{Sym}^{10}A
+       \longrightarrow\Lambda^3V\otimes\operatorname{Sym}^{9}A,
+ \qquad
+ v\otimes f\longmapsto
+ \sum_{i<j}(v\wedge e_i\wedge e_j)\otimes
+                         \frac{\partial f}{\partial a_{ij}}
+\]
+となる。左辺はPieri則により重複度なしで分解される。
+必要な成分は、$r+s=10$ として
+\[
+ \mathrm A_{r,s}=(r+1,r,s,s,0),\qquad
+ \mathrm B_{r,s}=(r,r,s+1,s,0),\qquad
+ \mathrm C_{r,s}=(r,r,s,s,1)
+\]
+の三種である。
+
+$\mathrm C_{r,s}$ は $s=1,\ldots,5$ に現れ、対応する
+$\operatorname{Sym}^8(\operatorname{Sym}^3V)$ 側の重複度は
+$1,1,3,1,1$ である。これらは7次元の単元方向に対応する。
+$\delta q(a u_8)=2q u_8$ が多項式として単射であるため、この七方向を
+すべて含む。
+
+残る成分では
+\[
+ Q=a_{01}a_{23}-a_{02}a_{13}+a_{03}a_{12},\qquad
+ w=e_0a_{12}-e_1a_{02}+e_2a_{01}
+\]
+を使う。$\mathrm A_{r,s}$ の最高重みベクトル
+$e_0a_{01}^{r-s}Q^s$ の像の $e_0\wedge e_2\wedge e_3$ 係数は
+\[
+ s\,a_{01}^{r-s+1}Q^{s-1}
+\]
+であり、$\mathrm B_{r,s}$ の最高重みベクトルについては
+\[
+ \mathsf d\bigl(w a_{01}^{r-s-1}Q^s\bigr)
+   =(r+2)(e_0\wedge e_1\wedge e_2)a_{01}^{r-s-1}Q^s
+\]
+である。必要な成分と重複度は
+\[
+\begin{array}{c|ccc|ccc}
+ \text{型}&\mathrm A_{7,3}&\mathrm A_{6,4}&\mathrm A_{5,5}
+           &\mathrm B_{8,2}&\mathrm B_{7,3}&\mathrm B_{6,4}\\\hline
+ \text{$F$側の重複度}&2&1&1&1&4&1\\
+ \text{上の非零係数}&3&4&5&10&9&8
+\end{array}
+\]
+となる。従って残る10方向でも双対写像は単射であり、
+合わせて17方向すべてで単射になる。これで元の写像の全射性と核の次元を得る。
+\end{proof}
+
+なお $dP_F=dF\circ\delta q$ であるが、上の全射性は $dF$ の階数を
+決定していない。Eulerの等式により、7次元の $P_F\mathcal U_8$ は
+すでに $dP_F(\mathcal G_9)$ に含まれる。
+
+\subsection{三つの独立なKoszul共変量による14次階数の上界}
+\label{subsec:v11-koszul-three-syzygies}
+
+前節の $\delta q$ の全射性だけでは、
+$dF:\mathcal D_{10}\to\mathcal C_{14}$ の階数は決まらない。
+ここでは三つの多項式syzygyを具体的に作り、独立性を整数計算で示す。
+この方法は、$q=0$ に沿ったKoszul複体の完全性を仮定しない。
+
+\begin{proposition}[独立な三つのKoszul像]
+\label{prop:v11-three-koszul-images}
+\[
+ \mathcal B_{14}=
+ \operatorname{Hom}_{\operatorname{GL}(V)}
+ \left(\operatorname{Sym}^7(\operatorname{Sym}^3V)
+       \otimes\operatorname{Sym}^6(\Lambda^2V),
+       \Lambda^2V^*\otimes\det(V)^7\right)
+\]
+とおく。写像
+\[
+ \mathcal B_{14}\longrightarrow\mathcal D_{10},
+ \qquad \beta\longmapsto\beta\,\nabla F(q)
+\]
+の像は少なくとも三次元である。従って
+\[
+ \operatorname{rank}(dF:\mathcal D_{10}\to\mathcal C_{14})\le14.
+\]
+別途得られる階数14の下界と合わせれば、$dF$ および
+$dP:\mathcal G_9\to\mathcal C_{14}$ の階数は正確に14となる。
+\end{proposition}
+\begin{proof}
+体積を固定した成分表示で
+\[
+ c_{ijk}=\epsilon_{ijklm}a_{lm}\quad(l<m,\ \{l,m\}=\{0,\ldots,4\}
+                                  \setminus\{i,j,k\})
+\]
+と書く。これは自然な同型
+$\Lambda^2V\simeq\Lambda^3V^*\otimes\det(V)$ による $a$ の表示である。
+七つの対称テンソル $F$ と六つの交代テンソル $c$ を縮約し、
+三つの $F$ 側の添字を自由に残す。その出力を交代化して双対化すると、
+\[
+ \Lambda^3V\otimes\det(V)^6
+       \simeq\Lambda^2V^*\otimes\det(V)^7
+\]
+に値を持つ、双次数 $(7,6)$ の共変量 $\beta$ を得る。
+したがって $\beta\in\mathcal B_{14}$ である。
+
+具体的な三つの縮約を次の表で指定する。左頂点 $0,\ldots,6$ は
+それぞれ一つの $F$ を表す。各列の三つ組は、その $c$ 頂点に接続する
+三つの $F$ 頂点を、$c$ の添字順で並べたものを表す。
+最後の列は縮約しない三つの自由添字の順序である。
+各 $F$ 頂点は、自由添字を含めてちょうど三回現れる。
+\[
+\begin{array}{c|cccccc|c}
+ &c_0&c_1&c_2&c_3&c_4&c_5&\text{自由添字}\\\hline
+ \Gamma_1&024&046&023&456&136&135&125\\
+ \Gamma_2&036&016&234&145&256&124&035\\
+ \Gamma_3&016&235&245&136&045&134&026
+\end{array}
+\]
+例えば $024$ は順序付き三つ組 $(0,2,4)$ を意味する。
+縮約後の三添字テンソルを $M_\Gamma^{klm}$ とすると、ここでの規格化は
+\[
+ (\beta_\Gamma)_{ij}
+     =\sum_{k,l,m=0}^4\epsilon_{ijklm}M_\Gamma^{klm}
+\]
+である。交代化の $1/6$ は入れない。
+
+$g=\nabla F(q)$ とおくと、$g$ は
+$V\otimes\det(V)^2$ に値を持つ双次数 $(1,4)$ の共変量である。
+従って $h_\Gamma=\beta_\Gamma g$ は
+$V^*\otimes\det(V)^9\simeq\Lambda^4V\otimes\det(V)^8$
+に値を持つ双次数 $(8,10)$ の共変量、すなわち
+$\mathcal D_{10}$ の元である。$\beta_\Gamma$ の交代性により
+\[
+ dF(h_\Gamma)=g^{\mathsf t}\beta_\Gamma g=0.
+\]
+
+三つの像の独立性は、次の一つの整数評価で確認できる。
+\[
+ a_*=
+ \begin{pmatrix}
+ 0&1&-1&1&-1\\
+ -1&0&1&0&0\\
+ 1&-1&0&0&0\\
+ -1&0&0&0&1\\
+ 1&0&0&-1&0
+ \end{pmatrix},
+ \qquad
+ F_{\mathrm K}=3x_0x_4^2+6x_1x_2x_3.
+\]
+ここでは $q(a_*)=(1,1,1,1,1)$、
+$g_{\mathrm K}=(3,6,6,6,6)$ である。
+対称テンソルの規格化は $F_{044}=F_{123}=1$ とその置換で指定される。
+三つの $h_{\Gamma}$ の第 $0,1,2$ 成分を列に並べると
+\[
+ \begin{pmatrix}
+ 192&0&-48\\
+ 336&66&-96\\
+ -816&-6&48
+ \end{pmatrix},
+ \qquad
+ \det=-1990656\ne0
+\]
+を得る。この計算は標準ライブラリだけを使う
+\texttt{v11\_filtered\_koszul\_certificate.py} で、全中間値を整数として
+再現できる。
+評価に用いた $F_{\mathrm K}$ が特異であることは問題にならない。
+これは普遍的な多項式共変量の線形独立性を証明する評価であり、
+非零の小行列式は滑らかな三次式からなる稠密開集合でも恒等的には消えない。
+
+従って $\dim\ker dF\ge3$ であり、
+$\dim\mathcal D_{10}=17$ から $\operatorname{rank}dF\le14$ を得る。
+さらに $\dim\mathcal B_{14}=3$ なので、この具体的な写像は単射である。
+階数14の下界が得られた後には
+$\ker dF=\operatorname{im}\mathcal B_{14}$ も従うが、
+この等式を上界の証明に先取りして使ってはいない。
+\end{proof}
+
+\subsection{Fermat 型評価で失われる成分}\label{subsec:v11-fermat-scope}
+
+\(F_{\mathrm{Fer}}=x_0^3+\cdots+x_4^3\) とし、その有限安定化部分群
+\[
+ H=\mu_3^5\rtimes\mathfrak S_5\subset\mathrm{GL}(V)
+\]
+を考える。以下は対角型三次式での評価の限界を与えるものであり、
+接触写像の階数そのものの計算ではない。
+\(
+ \operatorname{Sym}^{d}(\operatorname{Sym}^{3}V)
+ =\bigoplus_\lambda M_\lambda\otimes S_\lambda V
+\)
+と分解すると、\(F_{\mathrm{Fer}}^d\) の各成分は
+\(M_\lambda\otimes(S_\lambda V)^H\) に属する。
+従って、多重度空間から Fermat 軌道上の共変式への制限写像の階数は
+\[
+ \min\{\dim M_\lambda,\dim(S_\lambda V)^H\}
+\]
+以下である。非零の対角係数を持つ三次式はすべて Fermat 三次式の
+\(\mathrm{GL}(V)\)-軌道に属し、零係数の場合も多項式恒等式として従う。
+
+\begin{center}
+\begin{tabular}{c|rrrrr|c}
+ &\(j=0\)&\(j=1\)&\(j=2\)&\(j=3\)&\(j=4\)&制限階数の上界\\\hline
+\(C_{14}\) の多重度&2&2&7&2&2&\\
+\(S_{(11,8-j,8-j,j,j)}V\) の \(H\)-固定次元&21&8&7&0&0&11\\\hline
+\(U_8\) の多重度&1&1&3&1&1&\\
+\(S_{(8,8-j,8-j,j,j)}V\) の \(H\)-固定次元&3&1&2&0&0&4
+\end{tabular}
+\end{center}
+
+特に \(C_{14}\) の分割 \((11,5,5,3,3)\) と \((11,4,4,4,4)\) に対応する
+二次元ずつ、計四次元の成分は、すべての対角三次式上で恒等的に消える。
+後者については指標計算を行わずにも分かる。
+\(S_{(11,4,4,4,4)}V=\det^4V\otimes\operatorname{Sym}^7V\) の重みは
+各成分が四以上であり、\(\mu_3^5\)-固定なら各成分が三の倍数なので六以上となる。
+その総和が二十七であることに反する。
+同じ理由で \(U_8\) の分割 \((8,4,4,4,4)\) の成分も消える。
+表全体からは \(U_8\) の対角制限の核が少なくとも三次元であることが分かる。
+また \(D_{10}\) の十一個の関連分割について同じ計算を行うと、
+対角制限の階数は十以下、核は少なくとも七次元である。
+いずれも上界・下界であり、制限写像の階数がこれらの値に一致するとは主張しない。
+
+計算は有限群の指標平均だけで再現できる。
+\(\pi\vdash5\) を巡回型、\(\ell(\pi)\) を巡回数、
+\(z_\pi=\prod_r r^{m_r}m_r!\) とする。
+各巡回の位相積を \(\zeta^{k_c}\), \(k_c\in\{0,1,2\}\) とすると
+\[
+ \sum_{n\geq0}h_n(g)t^n
+ =\prod_{c\in\pi}(1-\zeta^{k_c}t^{|c|})^{-1},\qquad
+ \chi_\lambda(g)=\det(h_{\lambda_i-i+j}(g)).
+\]
+従って
+\[
+ \dim(S_\lambda V)^H
+ =\sum_{\pi\vdash5}\frac{1}{z_\pi3^{\ell(\pi)}}
+   \sum_{(k_c)}\chi_\lambda(g).
+\]
+添付コードは \(\mathbb Z[\zeta]/(\zeta^2+\zeta+1)\) の整数対で計算し、
+恒等元での指標が Weyl 次元公式に一致することも検査する。
+
+対角軌道の法空間は
+\[
+ N=\operatorname{Jac}(F_{\mathrm{Fer}})_3
+ =\left\langle x_ix_jx_k:i<j<k\right\rangle
+\]
+である。巡回型表示におけるその指標は
+\(\chi_N(g)=[z^3]\prod_{c\in\pi}(1+\zeta^{k_c}z^{|c|})\) で与えられる。
+同じ平均に \(\overline{\chi_N}\) を掛けると、上記二つの消える
+\(C_{14}\) 成分について
+\[
+ \dim\operatorname{Hom}_H(N,S_{(11,5,5,3,3)}V)=3,\qquad
+ \dim\operatorname{Hom}_H(N,S_{(11,4,4,4,4)}V)=2
+\]
+を得る。このため非対角方向の一階微分による検出は表現論的には可能である。
+これは実際の微分写像の非零性や単射性を証明するものではない。
+一方 \(U_8\) の分割 \((8,5,5,3,3)\) では固定次元とこの \(\operatorname{Hom}\) 次元が
+ともに零であるため、対角軌道に沿って少なくとも二次で消える。
+以上により、対角型三次式だけの有限評価の階数を普遍接触写像の階数と
+同一視することはできない。今回の普遍階数の証明では、非対角の法方向の
+微分を加えることで、対角型評価で見えない方向を検出する。
+
+\subsection{14次の接触写像の階数}
+\label{subsec:v11-contact-rank-fourteenth}
+
+$\kappa$ と $\operatorname{Alt}$ は第10版と同じブロック抽出と交代化とする。
+次の七つの普遍座標ベクトル場を用いる：
+\[
+ \Gamma_0=\operatorname{Alt}(K_9),\qquad
+ \Gamma_i=\operatorname{Alt}\,\kappa\!\left(
+       h\bigl(A_1h(A_iA_{8-i})\bigr)\right),\quad 1\le i\le6.
+\]
+各 $\Gamma_i$ は $\mathcal G_9$ に属する。
+実際、Chevalley反対称化による正規表示、積、$h$、$\kappa$、交代化は
+いずれも普遍的な $GL(V)$ 同変操作であり、$F$ に多項式的である。
+$a$ の次数は9で、第\ref{sec:contact-twelve-thirteen}節の補助重み
+\[
+ \mathrm{wt}(F)=1,\quad\mathrm{wt}(a)=-1,\quad
+ \mathrm{wt}(x)=0,\quad\mathrm{wt}(\theta)=-\tfrac12,
+ \quad\mathrm{wt}(\eta)=\tfrac12
+\]
+を用いると、定数 $\Lambda^4V\to V$ ブロックの係数は $F$ に8次となる。
+部分項自身にMaurer--Cartan方程式を要求しているわけではない。
+
+\begin{proposition}[14次の接触階数]
+\label{prop:v11-contact-rank-fourteenth}
+上で指定した普遍正則な同変写像について
+\[
+ \operatorname{rank}(dP\colon\mathcal G_9\longrightarrow\mathcal C_{14})=14.
+\]
+従って $\dim\mathcal C_{14}=15$ と合わせると、通常の線形接触商は1次元である。
+\end{proposition}
+\begin{proof}
+上界14は独立に構成した命題\ref{prop:v11-three-koszul-images}の三つのKoszulベクトルと
+$\dim\mathcal D_{10}=17$ による。ここでは下界14を証明する。
+
+$F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3$、$u_i=e_i-e_0$ とし、
+\begin{align*}
+ a^{(1)}&=u_1\wedge u_2+u_3\wedge u_4,\\
+ a^{(2)}&=a^{(1)}+u_1\wedge u_3,\\
+ a^{(3)}&=2u_1\wedge u_2+\tfrac12u_3\wedge u_4,\\
+ a^{(4)}&=u_1\wedge u_2+u_1\wedge u_3
+              +u_1\wedge u_4+u_2\wedge u_3.
+\end{align*}
+いずれも $q(a^{(j)})=(1,1,1,1,1)$、$P(F_*,a^{(j)})=0$ を満たす。
+さらに
+\[
+ G=6x_0x_1x_2-6x_4^3
+\]
+とおけば $G(q(a^{(j)}))=0$ なので、$F_*+tG$ に沿う方向微分も
+$P\mathcal U_8$ を消す線形汎関数になる。
+
+七つの線形汎関数を
+\[
+ L_1,\ldots,L_4=\operatorname{ev}_{(F_*,a^{(1)})},\ldots,
+                   \operatorname{ev}_{(F_*,a^{(4)})},
+ \qquad
+ L_{4+j}=\left.\frac{d}{dt}\right|_{t=0}
+             \operatorname{ev}_{(F_*+tG,a^{(b_j)})},
+ \quad (b_1,b_2,b_3)=(1,2,4)
+\]
+と定める。これは普遍多項式を区別するための評価であり、
+接触変換において $F$ を変更するという意味ではない。
+
+正確な有理数計算で得られる行列
+$M=(L_j(dP(\Gamma_i)))_{1\le j\le7,\,0\le i\le6}$ は
+\[
+ \det M=
+ \frac{60571203387672046774905265545089621}{26572050000000000}\ne0
+\]
+を満たす。独立な検算として、分母が可逆である素数 $1000003$ を法とした
+行列式は $916511$ である。
+
+従って七つの像 $dP(\Gamma_i)$ は $P\mathcal U_8$ を法として独立である。
+一方、$\dim\mathcal U_8=7$、多項式環は整域であり、Eulerの等式
+\[
+ dP(a u_8/6)=P u_8
+\]
+から $P\mathcal U_8$ は既に接触写像の像に含まれる7次元の部分空間である。
+従って階数は少なくとも $7+7=14$ であり、上界と一致する。
+\end{proof}
+
+\paragraph{方向微分の計算規約と再現性.}
+Clifford計量を $B=\operatorname{Hess}_F/6$、方向微分を
+$C=\operatorname{Hess}_G/6$ と書く。
+$\theta$ を正規順序に置き、$\eta$ はChevalley反対称化した外積記号として扱う。
+この記号の積 $\mu_B$ に対し
+\[
+ \left.\frac{d}{dt}\right|_{t=0}\mu_{B+tC}(U,V)
+ =-\sum_{i,j} C_{ij}\,
+       \mu_B(D^R_{\eta_i}U,D^L_{\eta_j}V)
+\]
+である。これはClifford積を与える、$\theta,\eta$ について定係数の縮約作用素を微分した恒等式である。
+右微分と左微分の符号を区別して用い、$h$ は $F$ に依存しないので、
+Tate再帰全体を $\mathbb Q[t]/(t^2)$ 上でそのまま微分できる。
+方向微分行の値には
+\[
+ dG(q)\,(dq)_a(\Gamma_i)
+ +dF(q)\,(dq)_a\bigl(D_F\Gamma_i[G]\bigr)
+\]
+の両項を含めている。
+
+ブロック抽出のための $x$ 次数の切断も正確である。
+Clifford積の縮約は $x$ 次数を下げず、$h$ だけがそれを1下げる。
+従って $\kappa h(UV)$ には積の $x$ 次数1以下、
+$\kappa h(A_1h(UV))$ の内側の積には2以下を残せば十分である。
+方向微分の縮約 $C_{ij}$ も $x$ に1次なので同じ議論が適用される。
+
+\texttt{v11\_contact\_rank\_certificate.py} は保存した七行について
+Pfaffian、その微分、三次式の勾配、上の行列式を正確に再計算する。
+\texttt{--recompute} を付けると、外部の計算キャッシュを読まずに
+四点の $A_1,\ldots,A_8$ と三つの方向微分を再構成する。
+各次数のMaurer--Cartan方程式は有理数で検証され、別実装の32次元外積作用素でも
+0次から8次まで検証される。
+さらに全ての使用ブロックを $x=0$ の独立な外積・縮約作用素と照合する。
+
+
+特に $\dim\ker(dP|_{\mathcal G_9})=14$ であり、
+$\delta q$ の11次元の核に加えて三つのKoszul像の持ち上げが核を与える。
+$\ker(dF|_{\mathcal D_{10}})=\operatorname{im}\mathcal B_{14}$ もこの段階で従う。
+これは当該共変量成分の結論であり、Pfaffian代入後のKoszul複体全体の
+完全性を主張するものではない。
+
+\subsection{四次単元の普遍的なテンソル公式}
+\label{subsec:v11-tetrahedral-U4}
+
+$W=\Lambda^2V\otimes(\det V)^{-1}\simeq\Lambda^3V^*$ という
+自然な同型により、$a$ を三形式 $\tau$ と見なす。
+体積を固定した座標では
+\[
+ \tau_{ijk}=\epsilon_{ijklm}a_{lm},\qquad l<m,
+\]
+であり、添字が重複するときは零とする。
+$F=f^{ijk}x_ix_jx_k$ では順序付き三つ組全体を和に取る規約とする。
+例えば普通の多項式係数が $6x_0x_1x_2$ なら、その6個の対称成分は全て1である。
+
+\begin{proposition}[四面体縮約による $U_4$]
+\label{prop:v11-tetrahedral-U4}
+第10版の正規化を持つ四次単元は
+\[
+ U_4=\frac1{24}
+ f^{a_1a_2a_3}f^{b_1b_2b_3}f^{c_1c_2c_3}f^{d_1d_2d_3}
+ \tau_{a_1b_1c_1}\tau_{a_2b_2d_1}
+ \tau_{a_3c_2d_2}\tau_{b_3c_3d_3}
+\]
+で与えられる。右辺では全ての反復添字を和に取る。
+\end{proposition}
+\begin{proof}
+$F\in\operatorname{Sym}^3V$ の全ての上添字が
+$\tau\in\Lambda^3V^*$ の下添字と縮約されているので、分子 $S$ は
+$GL(V)$ 不変な多項式である。その二重次数は $(F^4,a^4)$ であり、
+$S\in\mathcal U_4$ となる。既証の $\dim\mathcal U_4=1$ から
+$S=cU_4$ となる定数 $c$ が存在する。
+
+対角三次式 $F=\sum_i c_i x_i^3$ では四つの頂点の添字は全て相異なる
+場合だけが寄与し、各四つ組の24通りの順序は同じ符号を与える。
+従って
+\[
+ S=24\sum_{i=0}^4\prod_{j\ne i}(c_j a_{ij}).
+\]
+特に $F_*=\operatorname{diag}(1,1,1,1,-4)$ と
+$a=u_1\wedge u_2+u_3\wedge u_4$ で $S=-96$、$U_4=-4$ なので
+$c=24$ であり、主張を得る。
+\end{proof}
+
+この公式は $P=0$ でも除算を必要とせず、一般の非対角三次式について
+$U_4$ とその任意の方向微分を直接与える。
+\texttt{v11\_tetrahedral\_u4.py} は外部キャッシュを用いずに正規化を検証し、
+四次多項式の正確な補間による方向微分と、非対角三次式を生む
+行列式1の剪断による不変性も検算する。
+
+\subsection{14次では低次の安定化群も作用する}
+\label{subsec:v11-filtered-contact}
+
+以下では $P=P_F$、$H=H_{10}$、$c=1/96$ と書き、
+第10版で得た正規形を
+\[
+ f=P+cH+R_{14}+O(a^{15}),\qquad R_{14}\in\mathcal C_{14}
+\]
+とする。座標の線形項と方程式の先頭係数を固定し、$F$ 自体は変更しない。
+14次の項を比較する際には、13次までを保つ普遍正則な接触変換の全体を用いる。
+
+\begin{proposition}[14次の有効な接触作用]
+\label{prop:v11-effective-contact-fourteen}
+二つの14次項 $R_{14},R'_{14}$ が、上記の変換により14次まで同値であるための
+必要十分条件は
+\[
+ R'_{14}-R_{14}\in
+ dP(\mathcal G_9)+P\mathcal U_8+\CC\,HU_4
+\]
+である。従って有効な商は
+\begin{equation}\label{eq:v11-effective-fourteen-quotient}
+ \mathcal Q^{\mathrm{eff}}_{14}
+ =\frac{\mathcal C_{14}}
+ {dP(\mathcal G_9)+P\mathcal U_8+\CC\,HU_4}
+ =\frac{\mathcal C_{14}}
+ {dP(\mathcal G_9)+\CC\,HU_4}.
+\end{equation}
+最後の等号はEulerの等式
+$dP(au_8/6)=Pu_8$ による。
+\end{proposition}
+\begin{proof}
+普遍共変量の低次の消滅から、必要なjetは
+\[
+ \chi=a+\phi_5+\phi_6+\phi_7+\phi_8+\phi_9+O(a^{10}),
+ \qquad
+ u=1+b_4+b_6+b_8+O(a^9)
+\]
+と書ける。ここで $\phi_r\in\mathcal G_r$、$b_s\in\mathcal U_s$ である。
+$\mathcal G_2=\mathcal G_3=\mathcal G_4=0$、
+$\mathcal U_1=\mathcal U_2=\mathcal U_3=\mathcal U_5=\mathcal U_7=0$
+を用いた。$X=\phi_5$ を導分としても記す。
+
+$u(f\circ\chi)$ が13次まで $P+cH$ と一致する条件は、順に
+\[
+ XP+b_4P=0,\qquad dP(\phi_6)=0,\qquad
+ dP(\phi_7)+b_6P=0,\qquad dP(\phi_8)=0
+\]
+である。その14次の変化は
+\begin{align*}
+ R'_{14}-R_{14}
+ ={}&dP(\phi_9)+b_8P
+       +\frac12d^2P(\phi_5,\phi_5)+b_4XP\\
+   &\quad+c\bigl(XH+b_4H\bigr).
+\end{align*}
+他の混合項は15次以上に現れる。
+
+一見すると第1行の二次項が非線形な作用を与えるが、これは高次の変更へ
+吸収できる。実際、$XP=-b_4P$ と
+\[
+ X^2P=d^2P(\phi_5,\phi_5)+dP(D\phi_5\cdot\phi_5)
+\]
+から
+\[
+ \frac12d^2P(\phi_5,\phi_5)+b_4XP
+ =-\frac12dP(D\phi_5\cdot\phi_5)
+  -\frac12(Xb_4+b_4^2)P
+\]
+を得る。$D\phi_5\cdot\phi_5\in\mathcal G_9$、
+$Xb_4+b_4^2\in\mathcal U_8$ なので、これらはそれぞれ
+$\phi_9$、$b_8$ の変更に含められる。
+
+残る項を計算する。第7版の5次座標変更の計算から
+\[
+ \delta q(\phi_5)=\lambda qU_4
+\]
+となる $\lambda\in\CC$ が存在する。$F$ は $q$ に3次、
+$\det\operatorname{Hess}_F(q)$ は $q$ に5次なので
+\[
+ XP=3\lambda PU_4,\qquad XH=5\lambda HU_4.
+\]
+多項式環が整域であることと $XP+b_4P=0$ から
+$b_4=-3\lambda U_4$ が従い、従って
+\[
+ c(XH+b_4H)=2c\lambda HU_4.
+\]
+これで必要性を得る。
+
+逆に、高次の $dP(\phi_9)$ と $b_8P$ はそのまま座標変更と単元で実現する。
+$HU_4$ の方向については、任意の $t\in\CC$ に対し
+\[
+ \chi_t=a+t\,aU_4+\frac52t^2aU_4^2,
+ \qquad u_t=1-6tU_4+6t^2U_4^2
+\]
+を取る。この有限な多項式変換は13次までを保ち、14次を
+\[
+ R_{14}\longmapsto R_{14}+4ct\,HU_4
+\]
+と変える。$c\ne0$ なので任意の係数を実現でき、十分性も従う。
+\end{proof}
+
+\begin{remark}[径方向の変更を全次数で書く]
+上の有限なjetは、原点で1となる枝を選んだ代数的冪級数
+\[
+ \chi_t=a(1-4tU_4)^{-1/4},\qquad
+ u_t=(1-4tU_4)^{3/2}
+\]
+の必要部分である。$P$ は $a$ に6次、$H$ は $a$ に10次なので、
+\[
+ u_tP(\chi_t)=P,
+ \qquad u_tH(\chi_t)=\frac{H}{1-4tU_4}
+\]
+が全次数で成立する。従って $HU_4$ の方向は、先頭の6次式を厳密に保つ
+径方向の接触変換から生じている。
+\end{remark}
+
+\begin{lemma}[Hessian項の単元係数は径方向に正規化できる]
+\label{lem:v11-radial-hessian-unit}
+$A(F,a)$ を $A(F,0)=1$ を満たす普遍不変な形式冪級数とする。
+このとき
+\[
+ P_F+cH_{10}A(F,a)\ \sim\ P_F+cH_{10}
+\]
+となる普遍同変な径方向の座標変更と単元が存在する。
+$A$ が代数的冪級数なら変更も代数的であり、$A$ が収束する場合には
+変更も原点近傍で収束する。
+\end{lemma}
+\begin{proof}
+$\lambda(F,0)=1$ であるscalarな形式冪級数を
+\[
+ \lambda^4 A(F,\lambda a)=1
+\]
+によって定める。左辺から1を引いた式の、$a=0,\lambda=1$ における
+$\lambda$ 微分は4なので、係数を次数ごとに解いて一意に構成できる。
+各段階で割るのは非零定数4だけであり、係数の $F$ に関する正則性と
+同変性を保つ。$A$ が収束するときは解析的陰関数定理が適用できる。
+$A$ が代数的で $Q(F,a,A)=0$ を満たすなら、$\lambda$ は
+$Q(F,\lambda a,\lambda^{-4})=0$ を満たす。
+分母を払って得る多項式は非零である。実際、$a^\alpha Z^k$ は
+$a^\alpha\lambda^{|\alpha|-4k}$ に移り、この単項式の対応は単射である。
+従って $\lambda$ も代数的冪級数である。
+
+座標変更 $\chi=\lambda a$ と単元 $u=\lambda^{-6}$ を取れば、
+斉次性と定義式により
+\[
+ u\bigl(P_F(\chi)+cH_{10}(F,\chi)A(F,\chi)\bigr)
+ =P_F+cH_{10}\lambda^4A(F,\lambda a)=P_F+cH_{10}.
+\]
+これで主張を得る。一般の境界方程式の残余項が $H_{10}$ の倍数に
+まとまることまでは、この補題は主張していない。
+\end{proof}
+
+\subsection{第10版の正規化が実際の14次項に与える補正}
+\label{subsec:v11-actual-fourteen-correction}
+
+\begin{proposition}[14次項の正規化補正]
+\label{prop:v11-actual-fourteen-correction}
+未正規化のTate方程式を $d^{\mathrm T}=\tfrac12\det K$ とする。
+命題\ref{prop:v10-explicit-thirteenth}の具体的な $\chi,u$ により得られる
+14次項は
+\begin{equation}\label{eq:v11-fourteen-corrected}
+ R_{14}
+ =d^{\mathrm T}_{14}+3U_4d^{\mathrm T}_{10}
+ =d^{\mathrm T}_{14}+\frac1{32}HU_4-9PU_4^2.
+\end{equation}
+従って有効な商\eqref{eq:v11-effective-fourteen-quotient}では
+\[
+ [R_{14}]=[d^{\mathrm T}_{14}].
+\]
+\end{proposition}
+\begin{proof}
+第10版の座標変更の非恒等部分は7次と8次であり、$P$ に対してそれぞれ
+12次、13次から作用する。14次への一次寄与には元の8次項または7次項が必要だが、
+どちらも零である。二次寄与は18次以上であり、10次項への作用も16次以上である。
+
+単元 $1+3U_4-V_6$ については、14次に寄与するのは
+$3U_4d^{\mathrm T}_{10}$ だけである。$-V_6$ の14次への寄与は
+$-V_6d^{\mathrm T}_8=0$ となる。従って最初の等号を得る。
+$d^{\mathrm T}_{10}=H/96-3PU_4$ を代入すれば第2の等号となる。
+最後の主張は、$PU_4^2\in P\mathcal U_8$ と
+$HU_4$ が有効な接触像に含まれることから従う。
+\end{proof}
+
+さらに、上で得た正規化方程式に径方向の変更 $t=-3/4$ と単元
+$1+9U_4^2$ を続けて適用すれば、$4ct=-1/32$ であることから
+\[
+ P+cH+R_{14}+O(a^{15})
+ \ \sim\ P+cH+d^{\mathrm T}_{14}+O(a^{15})
+\]
+とできる。従って、未正規化の14次係数をそのまま14次の代表元とする
+正規化も、具体的な普遍接触変換によって選べる。
+
+この正規化補正の計算だけからは、$HU_4$ の $dP(\mathcal G_9)$ への所属は従わない。
+次の汎関数の計算で、その所属も決定する。
+
+\subsection{十四次商の生成元と実際の係数の消滅}\label{subsec:v11-fourteenth-complement}
+
+まず \(\mathcal U_6\) の一つの元 \(J_6\) をテンソル縮約として定義する。
+\(F(x)=\sum_{i,j,k}f^{ijk}x_ix_jx_k\) とし、
+\[
+ \tau(a)_{ijk}=\epsilon_{ijklm}a_{lm}\quad(l<m,
+       \ \{l,m\}=\{0,\ldots,4\}\setminus\{i,j,k\})
+\]
+と置く。これは \(W\simeq\Lambda^3V^*\) による自然な三形式である。
+六個の \(F\)-頂点を \(0,\ldots,5\) とし、六個の \(\tau\)-頂点の接続先を
+\begin{equation}\label{eq:v11-unit-six-graph}
+ (024),\ (034),\ (035),\ (124),\ (125),\ (135)
+\end{equation}
+とする。各 \(F\)-頂点には三本の辺が入る。
+各辺に添字を一つ割り当て、\(F\)-頂点で対称テンソル \(f\) を、
+各三つ組で昇順に \(\tau\) を置き、十八個の添字をすべて縮約した値を
+\(J_6(F,a)\) とする。追加の正規化係数は入れない。
+この定義から自然性と次数 \((\deg_F,\deg_a)=(6,6)\) が従い、\(J_6\in\mathcal U_6\) である。
+対角三次式では六個の頂点の色 \(i_v\in\{0,\ldots,4\}\) を用いて
+\[
+ J_6(F,a)=\sum_{i_0,\ldots,i_5}
+      \left(\prod_{v=0}^5c_{i_v}\right)
+      \prod_{(uvw)\text{ in }\eqref{eq:v11-unit-six-graph}}
+                   \tau_{i_ui_vi_w}
+\]
+となる。
+
+既存の正規化 \(\Theta_8\) と合わせて
+\(W_{14}=\Theta_8J_6\in\mathcal C_{14}\) と置く。
+この \(\Theta_8\) も、必要なら
+\[
+ T^{ijk}=f^{irs}f^{jtu}f^{kvw}\tau_{rtv}\tau_{suw},\qquad
+ \Theta_8(F,a)=\frac16 T^{ijk}q_iq_jq_k
+\]
+という自然な縮約で記述できる（反復添字はすべて縮約する）。
+対角式でこれは
+\(\sum_{i<j}a_{ij}^2\prod_{k\ne i,j}c_kq_k\) となり、従来の正規化に一致する。
+
+以下の五点評価で \(W_{14}\) の商における非零性と実際の係数の消滅を同時に証明する。
+\(F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3\), \(u_i=e_i-e_0\) とし、
+\[
+\begin{split}
+ a(b,p,r,s,t)={}&b\,u_1\wedge u_2+p\,u_1\wedge u_3
+       +r\,u_1\wedge u_4+s\,u_2\wedge u_3+t\,u_2\wedge u_4\\
+ &+\frac{1+pt-rs}{b}\,u_3\wedge u_4
+\end{split}
+\]
+に、順に
+\[
+ (1,0,0,0,0),\ (1,1,0,0,0),\ (2,0,0,0,0),\
+ (1,1,1,1,0),\ (1,1,2,0,1)
+\]
+を代入した点を \(a_0,\ldots,a_4\) とする。
+すべて \(q(a_i)=(1,1,1,1,1)\), \(P_{F_*}(a_i)=0\) を満たす。
+\begin{center}
+\begin{tabular}{c|r|r|r|r}
+\(i\)&\(J_6\)&\(\Theta_8\)&\(H_{10}U_4\)&\(d^{\mathrm T}_{14}\)\\\hline
+0&888&\(-14\)&124416&\(-931186/225\)\\
+1&10392&\(-26\)&0&\(-17749271/5400\)\\
+2&\(442371/8\)&\(-97/2\)&124416&\(-208492553/10800\)\\
+3&135096&\(-62\)&\(-373248\)&\(12734093/900\)\\
+4&82776&\(-42\)&\(-373248\)&\(166164259/16200\)
+\end{tabular}
+\end{center}
+\(f_i=f(F_*,a_i)\) と略記し、評価の有理線形結合を
+\begin{equation}\label{eq:v11-rho-fourteen}
+ \begin{split}
+ \rho_{14}(f)=\frac{1}{3473309792250}\bigl(&-1353058 f_0+789525 f_1
+                  -173792 f_2\\
+                  &-292755 f_3-216195 f_4\bigr)
+ \end{split}
+\end{equation}
+と定義する。
+正確な有理数計算により、前節の七個の画像基底
+\[
+ dP(\operatorname{Alt}K_9),\qquad
+ dP\bigl(\operatorname{Alt}\kappa h(A_1h(A_iA_{8-i}))\bigr)
+ \quad(1\leq i\leq6)
+\]
+のすべてを \(\rho_{14}\) が消し、また
+\begin{equation}\label{eq:v11-rho-fourteen-values}
+ \rho_{14}(W_{14})=1,\qquad
+ \rho_{14}(H_{10}U_4)=0,\qquad
+ \rho_{14}(d^{\mathrm T}_{14})=0
+\end{equation}
+を満たす。添付コードはこの七個の rooted 共変式について、
+反対称行列から Pfaffian 微分と \(dP\) を再構成し、すべてを消すことを検査する。
+最初の四点は階数証明用の独立な証明書と照合し、第五点にも保存キャッシュを
+用いない Tate 再帰と独立な外積作用素による再計算を用意している。
+上に並べた最初の四個の像と \(W_{14}\) の五点評価行列の行列式は
+\[
+ -\frac{2679359403669770814551549251}{15552000}\ne0
+\]
+である。
+
+\(P\mathcal U_8\) は全五点で消え、命題~\ref{prop:v11-contact-rank-fourteenth} の
+普遍階数十四の証明により、
+\(P\mathcal U_8\) の七次元と上記七個の非単元画像は \(dP(\mathcal G_9)\) 全体を張る。
+従って \(\rho_{14}\) は普遍商上の線形形式であり、
+\[
+ \mathcal C_{14}=dP(\mathcal G_9)\oplus\mathbb C W_{14},\qquad
+ \mathcal C_{14}/dP(\mathcal G_9)\simeq\mathbb C,
+ \quad [f]\longmapsto\rho_{14}(f)
+\]
+を与える。対角評価の階数を普遍階数と同一視しているのではなく、
+非対角一階微分と三個の独立な Koszul 関係による普遍階数十四を
+先に用いている点が本質的である。
+
+さらに \eqref{eq:v11-rho-fourteen-values} から
+\(H_{10}U_4\in dP(\mathcal G_9)\) が従う。
+したがって低次安定化群の追加作用を含む有効十四次商も一次元であり、
+実際の Tate 行列式の十四次類はその中で零である。
+低次正規化後の係数
+\[
+ R_{14}=d^{\mathrm T}_{14}+\frac1{32}H_{10}U_4-9PU_4^2
+\]
+についても \(\rho_{14}(R_{14})=0\) となる。
+
+\begin{theorem}[実際の境界の14次までの普遍正規形]
+\label{thm:v11-fourteenth-normal-form}
+$d^{\mathrm T}=\frac12\det K$ をTate座標での普遍境界方程式とする。
+普遍的に多項式な座標変更と単元を順次適用することにより、
+\begin{equation}\label{eq:v11-fourteenth-normal-form}
+ d^{\mathrm T}\ \sim\
+ P_F+\frac1{96}\det\operatorname{Hess}_F(q(a))+O(a^{15})
+\end{equation}
+とできる。従って任意の滑らかな三次式 $F$ について、実際の境界はこの形を持つ。
+また
+\[
+ \mathcal Q^{\mathrm{eff}}_{14}
+   =\mathcal C_{14}/dP(\mathcal G_9)
+   =\mathbb C\cdot[\Theta_8J_6]
+\]
+であり、$\rho_{14}$ はこの商の係数を与える。
+\end{theorem}
+\begin{proof}
+命題\ref{prop:v11-contact-rank-fourteenth}と
+\eqref{eq:v11-rho-fourteen-values}から
+\[
+ \ker\rho_{14}=dP(\mathcal G_9),\qquad
+ H_{10}U_4,\ d^{\mathrm T}_{14}\in\ker\rho_{14}
+\]
+である。従って命題\ref{prop:v11-effective-contact-fourteen}の追加方向は
+線形接触像に既に含まれ、有効な商も同じ一次元商である。
+さらに\eqref{eq:v11-fourteen-corrected}から $R_{14}\in dP(\mathcal G_9)$ を得る。
+
+より具体的には、階数の証明で選んだ七つの像 $dP(\Gamma_i)$ が張る空間と
+$P\mathcal U_8$ が接触像を直和に分解するので、
+\[
+ R_{14}=dP(\Xi_9)+P B_8,\qquad
+ \Xi_9\in\langle\Gamma_0,\ldots,\Gamma_6\rangle,\quad B_8\in\mathcal U_8
+\]
+と書ける。七つの係数は、同じ七つの線形汎関数 $L_j$ を用いて
+$M^{-1}(L_j(R_{14}))_j$ と一意に定まる。
+この分解は共変量空間内の分解なので、$B_8$ に $P$ による極は生じない。
+第10版で正規化した方程式に
+\[
+ a\longmapsto a-\Xi_9(F,a),\qquad
+ u=1-B_8(F,a)
+\]
+を適用すれば14次が消える。$H_{10}$ へのこの座標変更の寄与は18次以上であり、
+既に正規化した13次以下を変えない。これで\eqref{eq:v11-fourteenth-normal-form}を得る。
+\end{proof}
+
+この有限次数の正規化は原点で微分が恒等な多項式座標変更と定数項1の単元からなり、
+各固定 $F$ についてétaleかつ解析的局所可逆である。
+普遍恒等式なので、固定した滑らかな $F$ に特殊化して同じ消去が成立する。
+一方、上記の一次元という次元は指定した普遍共変量の商の次元であり、
+固定 $F$ の全Jacobian商や、判別式を逆にした係数環上の商の次元と
+同一視してはいない。
+
+14次の消去によって、10次のHessian障害が消えることはない。
+第\ref{sec:tate-boundary-tenth}節の全ての滑らかな $F$ に対する非所属は維持される。
+また補題\ref{lem:v11-radial-hessian-unit}はHessian項の単元係数を全次数で
+正規化するが、実際の全残余項がその形にまとまることは未証明である。
+
+\clearpage
+\section{Clifford反転と境界の全次数の偶正規形}
+\label{sec:all-order-parity}
+
+前節までの有限次数の消去を、実際のTate境界が持つ対称性に結び付ける。
+$P_F=F(q(a))$、$H_{10}=\det\operatorname{Hess}_F(q(a))$ と書く。
+本節の主張は、一つの普遍形式接触変換により全奇数次を同時に取り除き、
+残る正規形の問題を16次以上の偶数次へ絞れることである。
+10次のHessian障害は維持される。
+
+\subsection{Clifford反転から生じる全次数の対称性}
+\label{subsec:v12-parity}
+
+以下の議論では $F$ を固定したまま変形する。
+係数環は三次式の全係数の多項式環とし、$a$ に関する完備化だけを行う。
+特に判別式その他の $F$ の多項式を逆にしない。
+まず、Tate再帰が与える座標を、行列分解の同型類から一意に回復できることを示す。
+
+\begin{lemma}[Tate切断への形式的な帰着と一意性]
+\label{lem:v12-marked-tate-slice}
+$\delta=[\mathsf D_0,-]_{\mathrm s}$ とし、
+$h,\pi$ を\eqref{eq:tate-homotopy}のcontractionとする。
+$\mathfrak m$ を変形パラメータのイデアルとする。
+内部重み $3/2$ の奇作用素 $B\in\mathfrak m\mathsf E_{3/2}$ が
+$(\mathsf D_0+B)^2=F$ を満たすなら、
+内部重み0の偶可逆作用素 $g\equiv1\pmod{\mathfrak m}$ と
+一意な形式パラメータ $b\in W\widehat\otimes\mathfrak m$ が存在して
+\[
+ g^{-1}(\mathsf D_0+B)g=\mathsf D_0+A(b)
+\]
+となる。ここで $A(b)$ はTate再帰\eqref{eq:tate-mc-recurrence}による切断である。
+帰着を次数ごとの $h,\pi$ で行えば、各係数の $F$ に関する多項式性と
+$GL(V)$ 同変性を保つ。
+\end{lemma}
+\begin{proof}
+必要なcohomologyはcontractionから直接読める。
+$\pi$ は $x$ と $\theta$ を消し、$\eta$ の外積記号だけを残す。
+従って内部重み $3/2$ の奇部分では $\pi$ の像は
+$\Lambda^3\langle\eta\rangle=A_1(W)$ であり、
+内部重み0の偶部分では $\pi$ の像はscalarだけである。
+また $\pi\delta=0$、$\delta h+h\delta=1-\pi$ が成立する。
+
+存在を $\mathfrak m$ の次数について構成する。
+既に次数 $n-1$ まで現在の作用素 $B$ と $A(b)$ が一致したとする。
+その次数 $n$ の差を $R_n$ と書く。
+二つのMaurer--Cartan等式を引くと、低次の項は一致しているので
+$\delta R_n=0$ である。
+$b$ の次数 $n$ の補正を
+$A_1(\Delta b_n)=\pi R_n$ によって選ぶ。
+この変更後に残る差は
+\[
+ R_n-\pi R_n=\delta hR_n
+\]
+である。$g_n=1-hR_n$ による共役
+$D\mapsto g_n^{-1}Dg_n$ の次数 $n$ の変化は
+$-\delta hR_n$ なので、この差を消す。
+これを繰り返すと、$\mathfrak m$ 進完備性から $b,g$ を得る。
+
+一意性では、$B=A(b),\ C=A(c)$ とし、
+\[
+ D_Bg=gD_C,\qquad D_B=\mathsf D_0+B,\quad
+ D_C=\mathsf D_0+C,\quad g\equiv1\pmod{\mathfrak m}
+\]
+を仮定する。$b,c$ が次数 $N-1$ まで一致しているとき、
+まず $g$ の次数 $N$ 未満の項を、同じ共役を保ちながら消せることを示す。
+$g=1+g_m+O(\mathfrak m^{m+1})$、$m<N$ とすれば
+上の等式の次数 $m$ は $\delta g_m=0$ を与える。
+従って
+\[
+ g_m=c_m+\delta h(g_m),\qquad c_m=\pi g_m
+\]
+であり、$c_m$ は内部重み0のscalarである。
+ここで、変形後の微分 $\delta_B=[D_B,-]_{\mathrm s}$ を用いて
+\[
+ s=1+c_m+\delta_B\bigl(h(g_m)\bigr)
+\]
+とおく。$D_B^2=F$ は中心元なので
+\[
+ \delta_B^2(T)=[F,T]=0.
+\]
+従って $s$ は $D_B$ と\emph{正確に}可換する。
+また $s=1+g_m+O(\mathfrak m^{m+1})$ だから可逆であり、
+$g$ を $s^{-1}g$ に置き換えても $D_Bg=gD_C$ は保たれ、
+次数 $m$ の項だけが消える。
+
+これを $m<N$ に繰り返した後は $g=1+g_N+O(\mathfrak m^{N+1})$ である。
+次数 $N$ の等式は
+\[
+ B_N-C_N=-\delta g_N
+\]
+となる。両辺に $\pi$ を適用すると、Tate切断の
+$\pi A(b)=A_1(b)$ と $\pi\delta=0$ から
+$A_1(b_N-c_N)=0$、従って $b_N=c_N$ を得る。
+$N$ に関する帰納法で $b=c$ が従う。
+ここで一意なのは切断上のパラメータであり、共役作用素 $g$ 自体ではない。
+
+すべての操作は積、$h,\pi$、および定数項1の作用素の形式逆元からなる。
+各次数で行う操作は有限個であり、$h$ が割るのは正整数だけである。
+従って $F$ に関する多項式性と同変性も保たれる。
+\end{proof}
+
+\begin{theorem}[普遍境界の形式的な偶性]
+\label{thm:v12-all-order-parity}
+Tate境界 $d^{\mathrm T}(F,a)=\tfrac12\det K(F,a)$ に対し、
+$F$ の係数に多項式的な係数を持つ普遍同変な形式座標変更と形式単元により、
+\[
+ d^{\mathrm T}(F,a)\ \sim\ d_{\mathrm{ev}}(F,b),\qquad
+ d_{\mathrm{ev}}(F,-b)=d_{\mathrm{ev}}(F,b)
+\]
+とできる。座標変更の線形部は恒等写像、単元の定数項は1である。
+従って奇数次の項を、全次数で同時に消せる。
+\end{theorem}
+\begin{proof}
+Clifford代数上の\emph{通常の}反準同型 $T\mapsto T^*$ を、
+$x_i,\theta_i,\eta_i$ と $F$ の係数を固定し、積の順序を逆転させることにより定める。
+これはsuper反準同型ではない。
+Clifford関係の対称性から定義は整合的で、
+\[
+ (T^*)^*=T,\qquad \mathsf D_0^*=\mathsf D_0,\qquad
+ A_1(a)^*=-A_1(a)
+\]
+である。最後の符号は三個の反対称化した $\eta$ を逆順にする符号
+$(-1)^{3\cdot2/2}=-1$ である。
+$(\mathsf D_0+A)^2=F$ なら $(\mathsf D_0+A^*)^2=F$ も成立する。
+また偶作用素 $g$ に対して
+\[
+ (g^{-1}Dg)^*=g^*D^*(g^*)^{-1}
+\]
+なので、反転は $g\equiv1$ による共役同値類にも作用する。
+
+補題\ref{lem:v12-marked-tate-slice}で $A(a)^*$ を切断へ戻すと、
+形式写像 $\sigma$ と $g\equiv1$ が得られて
+\begin{equation}\label{eq:v12-reversion-regauging}
+ \mathsf D_0+A(\sigma(a))
+ =g(a)^{-1}\bigl(\mathsf D_0+A(a)^*\bigr)g(a)
+\end{equation}
+となる。切断上のパラメータの一意性により
+\[
+ \sigma^2=\operatorname{id},\qquad \sigma(a)=-a+O(a^2).
+\]
+存在の構成から $\sigma$ と $g$ の係数は $F$ に多項式的で、構成は同変である。
+特に中心的homothetyの重みを比較すれば、
+$\sigma$ の $a$ に関する $r$ 次項は $F$ に $r-1$ 次であり、
+既に用いている $\mathcal G_r$ に属する。
+
+次に境界の方程式を追跡する。外積代数に双線形形式
+\[
+ \langle u,v\rangle
+ =\bigl[\operatorname{rev}(u)\wedge v\bigr]_{\Lambda^5V}
+\]
+を入れる。ここで $\operatorname{rev}$ は外積の順序を逆転する。
+5次元ではこの形式は対称で、外積作用 $\theta_i$ と縮約作用 $\xi_i$ は
+ともに自己随伴である。従って $\eta_i$ も自己随伴であり、
+上の $*$ はこの形式についての随伴と一致する。
+実際、次数 $p$ の外積の反転は $(-1)^{p(p-1)/2}$ 倍であり、
+外積と縮約の自己随伴性は外積のLeibniz則から直接従う。
+
+$\Lambda^4V$ の符号付き補基底
+$v_j=(-1)^j e_0\wedge\cdots\wedge\widehat e_j\wedge\cdots\wedge e_4$
+と $\Lambda^1V$ の基底 $e_i$ の間のpairingは $\delta_{ij}$ である。
+従って $x=0$ での $\Lambda^4V\to\Lambda^1V$ ブロックは、
+$*$ により正確に $K^t$ に移り、その行列式は変わらない。
+
+内部重み0の偶共役 $g$ の $x=0$ での作用も重要である。
+この場合 $\eta_i=\xi_i$ であり、残る単項式では
+$\theta$ の個数と $\eta$ の個数が等しい。
+従って $g|_{x=0}$ は各 $\Lambda^kV$ を保存する。
+その可逆なブロックを $g_k$ とすると、
+\eqref{eq:v12-reversion-regauging}は
+\[
+ K(\sigma(a))=g_1^{-1}K(a)^t g_4
+\]
+を与える。ゆえに
+\begin{equation}\label{eq:v12-boundary-involution-unit}
+ d^{\mathrm T}(F,\sigma(a))
+ =v(F,a)d^{\mathrm T}(F,a),\qquad
+ v=\frac{\det g_4}{\det g_1},\quad v(F,0)=1.
+\end{equation}
+この単元は共役作用素から直接得ており、境界方程式による除算を必要としない。
+
+標数0なので
+\[
+ b=\frac{a-\sigma(a)}2
+\]
+は線形部が恒等写像である形式座標変更となる。
+$b(\sigma(a))=-b(a)$ だから、この座標では involution は $b\mapsto-b$ である。
+逆写像を $a=a(b)$、$\widetilde d(F,b)=d^{\mathrm T}(F,a(b))$ と書けば
+\eqref{eq:v12-boundary-involution-unit}から
+\[
+ \widetilde d(F,-b)=\widetilde v(F,b)\widetilde d(F,b),\qquad
+ \widetilde v(F,0)=1.
+\]
+そこで
+\begin{equation}\label{eq:v12-even-average}
+ d_{\mathrm{ev}}(F,b)
+ =\frac{\widetilde d(F,b)+\widetilde d(F,-b)}2
+ =\frac{1+\widetilde v(F,b)}2\,\widetilde d(F,b)
+\end{equation}
+とおく。右の係数は定数項1の単元で、左は厳密に偶関数である。
+形式逆写像と単元の構成も各次数で有限回の多項式操作しか必要としないので、
+普遍的な正則性と同変性を保つ。
+\end{proof}
+
+\begin{corollary}[既存の有限正規化と両立する偶正規形]
+\label{cor:v12-even-hessian-normal-form}
+実際のTate境界には普遍同変な形式正規形
+\begin{equation}\label{eq:v12-even-hessian-normal-form}
+ \boxed{\displaystyle
+ d^{\mathrm T}\ \sim\
+ P_F+\frac1{96}H_{10}
+       +\sum_{\substack{n\ge16\\ n\ \mathrm{even}}}R_n,
+ \qquad R_n\in\mathcal C_n
+ }
+\end{equation}
+が存在する。特に12次と14次の消去、および全奇数次の消去を同時に実現できる。
+\end{corollary}
+\begin{proof}
+$\mathcal G_2=\mathcal G_3=\mathcal G_4=0$ である。
+$\sigma^2=\operatorname{id}$ の最低次の非線形項を比較すると、
+5次の項は奇数次なので零である。
+6次以降の非線形項どうしの合成は11次から現れるため、同じ比較により
+7次と9次の項も零である。
+従って、上で構成した座標の逆写像は
+\[
+ a(b)=b+\phi_6(b)+\phi_8(b)+\phi_{10}(b)+O(b^{11})
+\]
+となる。
+
+未正規化のTate方程式では
+$d^{\mathrm T}_7=d^{\mathrm T}_8=d^{\mathrm T}_9=d^{\mathrm T}_{11}=0$
+である。
+上の座標変更による $P$ の二次のTaylor項は16次から現れる。
+一次の項についても、14次以下の偶数次に寄与するには
+元の7次または9次の項が必要であり、いずれも零である。
+従って $a(b)$ で引き戻しても、6、8、10、12、14次の係数は変わらない。
+算術平均\eqref{eq:v12-even-average}も、これらの偶数次の係数をそのまま保つ。
+特にその10次係数は従来と同じ
+$H_{10}/96-3PU_4$ である。
+
+そこで命題\ref{prop:v10-explicit-thirteenth}の変更のうち、
+7次の座標変更と4、6次の単元だけを用いる。
+これは10次を $H_{10}/96$ にし、12次を消す。
+8次の座標変更は13次の消去に使っていたものなので、
+既に偶関数となった方程式には不要である。
+これを省いても14次の係数は変わらない。
+実際、14次へのその一次寄与は元の7次係数の微分であり、零である。
+従って14次の係数は従来と同じ
+\[
+ R_{14}=d^{\mathrm T}_{14}+3U_4d^{\mathrm T}_{10}
+\]
+となる。定理\ref{thm:v11-fourteenth-normal-form}の
+9次座標変更と8次単元で、この項も消せる。
+
+7次と9次の座標変更はいずれも奇写像であり、
+4、6、8次の単元はいずれも偶関数である。
+従ってこれらの有限な変更は、方程式の全次数における偶性を保つ。
+これで表示した正規形を得る。
+\end{proof}
+
+\begin{remark}[偶性の主張の範囲]
+この定理は、全ての奇数次共変量空間が零であるという主張ではない。
+例えば $\mathcal C_{13}$ と $\mathcal C_{15}$ は非零であり、
+元のTate座標における奇数次係数も非零になり得る。
+ここで得たのは、実際の境界の反転対称性に由来する、単一の形式接触変換である。
+この第12版の証明は形式的な構成であったが、
+第\ref{sec:algebraic-parity}節で同じ偶化の代数性と収束性を証明する。
+係数が $F$ に多項式的であることは、$a$ に関する級数が多項式であることを意味しない。
+偶数次の接触類の消滅は別の問題であり、16次については
+第\ref{sec:contact-sixteen}節で決定する。
+\end{remark}
+
+\clearpage
+\section{Pfaffian微分の全射性と15次の接触商}
+\label{sec:contact-fifteen}
+
+本節では、全次数で使えるPfaffian微分の構造を証明した後、
+15次の共変量空間、低次安定化群、接触写像の階数を決定する。
+前節の偶性は実際の境界に対する構造的な結果である。
+ここで証明する15次接触写像の全射性は、許された普遍共変な15次候補全体についての結果であり、
+別の有限計算による証明を持つ。
+
+\subsection{Pfaffian微分の全次数での全射性}
+\label{subsec:v12-uniform-pfaffian}
+
+15次の計算に先立ち、前の各次数で個別に検証していた
+$\delta q$ の全射性を、5次元の一つの表現論的恒等式にまとめる。
+$A=\Lambda^2V$ とし、$r\ge1$ に対して
+\[
+ M_r=\operatorname{Sym}^{r-1}(\operatorname{Sym}^3V)
+\]
+および
+\begin{align*}
+ \mathcal G_r&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(M_r\otimes\operatorname{Sym}^r A,
+        \Lambda^2V\otimes\det(V)^{r-1}\right),\\
+ \mathcal D_{r+1}&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(M_r\otimes\operatorname{Sym}^{r+1} A,
+        \Lambda^4V\otimes\det(V)^{r-1}\right)
+\end{align*}
+と書く。
+
+\begin{proposition}[普遍共変量上のPfaffian微分は全次数で全射]
+\label{prop:v12-uniform-pfaffian-surjectivity}
+$\dim V=5$ のとき、全ての $r\ge1$ について
+\[
+ \delta q:\mathcal G_r\longrightarrow\mathcal D_{r+1}
+\]
+は全射である。
+\end{proposition}
+\begin{proof}
+まず $F$ の係数を取り除いた多項式表現の写像
+\[
+ \mathsf d:V\otimes\operatorname{Sym}^{r+1}A
+       \longrightarrow\Lambda^3V\otimes\operatorname{Sym}^r A,
+ \qquad
+ \mathsf d(vf)=\sum_{i<j}(v\wedge e_i\wedge e_j)
+                   \frac{\partial f}{\partial a_{ij}}
+\]
+を考える。これは対称代数の標準的な余微分と外積の合成なので同変である。
+Littlewood分解とPieri則により、始域は重複度1の三種類の成分からなる。
+$u+v=r+1$、$u\ge v\ge0$ として、その最高重みは
+\[
+\begin{array}{c|c|c}
+ \text{型}&\text{最高重み}&\text{条件}\\\hline
+ \mathrm A_{u,v}&(u+1,u,v,v,0)&v\ge0\\
+ \mathrm B_{u,v}&(u,u,v+1,v,0)&u>v\ge0\\
+ \mathrm C_{u,v}&(u,u,v,v,1)&v\ge1
+\end{array}
+\]
+であり、異なる行・添字から同じ重みは生じない。
+
+\[
+ Q=a_{01}a_{23}-a_{02}a_{13}+a_{03}a_{12},\qquad
+ w=e_0a_{12}-e_1a_{02}+e_2a_{01},
+\]
+\[
+ \Theta=\sum_{i=0}^4(-1)^i e_i\operatorname{Pf}_{\widehat i}(a)
+       \in V\otimes\operatorname{Sym}^2A
+\]
+とおく。$\Theta$ はこの空間の $\det(V)$ 成分である。
+三種類の最高重みベクトルはそれぞれ
+\[
+ e_0a_{01}^{u-v}Q^v,\qquad
+ wa_{01}^{u-v-1}Q^v,\qquad
+ \Theta a_{01}^{u-v}Q^{v-1}
+\]
+と選べる。
+$e_{ijk}=e_i\wedge e_j\wedge e_k$ と書けば、直接微分により
+\begin{align*}
+ [e_{023}]\,\mathsf d(e_0a_{01}^{u-v}Q^v)
+  &=v\,a_{01}^{u-v+1}Q^{v-1}\quad(v\ge1),\\
+ \mathsf d(wa_{01}^{u-v-1}Q^v)
+  &=(u+2)e_{012}a_{01}^{u-v-1}Q^v,\\
+ [e_{234}]\,\mathsf d(\Theta a_{01}^{u-v}Q^{v-1})
+  &=(v+2)a_{01}^{u-v+1}Q^{v-1}.
+\end{align*}
+第2式では $\mathsf dw=3e_{012}$、
+$w\wedge e_{01}=a_{01}e_{012}$、
+$w\wedge\sum_{i<j}e_{ij}\partial_{ij}Q=Qe_{012}$ を用いた。
+第3式では $[e_{234}]\mathsf d\Theta=3a_{01}$ であり、
+$Q^{v-1}$ の微分からさらに $(v-1)a_{01}$ が加わる。
+従ってこれらの係数はいずれも非零である。
+一方、$\mathrm A_{r+1,0}$ の最高重みベクトル
+$e_0a_{01}^{r+1}$ の像は零である。
+
+始域が重複度1であることと既約性から、これで核全体が決まり、
+\begin{equation}\label{eq:v12-uniform-pfaffian-kernel}
+ \ker\mathsf d=S_{(r+2,r+1,0,0,0)}V
+\end{equation}
+となる。最小の $r=1$ においても、残る型
+$\mathrm A_{1,1},\mathrm B_{2,0},\mathrm C_{1,1}$ の上の係数は
+ それぞれ1、4、3であり、同じ結論が成立する。
+
+最後にこの核を普遍共変量へ戻す。
+$\Lambda^2V\simeq(\Lambda^3V)^*\otimes\det V$、
+$\Lambda^4V\simeq V^*\otimes\det V$ により
+\begin{align*}
+ \mathcal G_r&\simeq\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(M_r\otimes\Lambda^3V\otimes\operatorname{Sym}^rA,
+       \det(V)^r\right),\\
+ \mathcal D_{r+1}&\simeq\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(M_r\otimes V\otimes\operatorname{Sym}^{r+1}A,
+       \det(V)^r\right).
+\end{align*}
+この表示で $\delta q$ は、対称化規約による非零定数倍を除いて
+$\operatorname{id}_{M_r}\otimes\mathsf d$ への前合成である。
+核\eqref{eq:v12-uniform-pfaffian-kernel}と $M_r$ から
+$\det(V)^r$ へのpairingが存在するには、$M_r$ に最高重み
+\[
+ (r,r,r,-1,-2)
+\]
+の表現が現れなければならない。しかし $M_r$ は多項式表現なので、そのような成分はない。
+従って全ての $\mathcal D_{r+1}$ の元は $M_r\otimes\ker\mathsf d$ を消す。
+標数0の $\mathrm{GL}(V)$ の完全可約性により、その像上の同変写像は
+全終域へ同変に延長できる。これが求める全射性である。
+なお $r=1$ の共変量は $\mathcal G_1=\CC\,a$、
+$\mathcal D_2=\CC\,q$ で、写像は $\delta q(a)=2q$ そのものである。
+\end{proof}
+
+この命題は $dF$ の核や、Pfaffian代入後のKoszul複体の完全性を主張しない。
+今後の各次数で必要な階数の問題は
+$dP=dF\circ\delta q$ のうち、$dF$ の部分に集約される。
+
+\subsection{15次の共変量空間とPfaffian微分}
+\label{subsec:v12-fifteenth-characters}
+
+$A=\Lambda^2V$ とし、定数直線因子を戻した表示で
+\[
+ \mathcal D_{11}=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{9}(\operatorname{Sym}^3V)
+       \otimes\operatorname{Sym}^{11}A,
+       \Lambda^4V\otimes\det(V)^9\right)
+\]
+とおく。
+
+\begin{proposition}[15次の次元とPfaffian微分]
+\label{prop:v12-fifteenth-characters}
+\[
+ \dim\mathcal C_{15}=7,\qquad
+ \dim\mathcal G_{10}=35,\qquad
+ \dim\mathcal U_9=1,\qquad
+ \dim\mathcal D_{11}=22.
+\]
+また $\delta q:\mathcal G_{10}\to\mathcal D_{11}$ は全射であり、
+その核は13次元である。
+\end{proposition}
+\begin{proof}
+Littlewood分解と整数alternantによるSchur重複度計算を用いる。
+$\mathcal C_{15}$ で必要となる
+$\lambda_j=(12,9-j,9-j,j,j)$、$0\le j\le4$ の
+$\operatorname{Sym}^{10}(\operatorname{Sym}^3V)$ における重複度と、
+$\mathcal U_9$ で必要となる
+$\mu_j=(9,9-j,9-j,j,j)$ の
+$\operatorname{Sym}^{9}(\operatorname{Sym}^3V)$ における重複度は
+\[
+\begin{array}{c|rrrrr}
+ j&0&1&2&3&4\\\hline
+ {}[S_{\lambda_j}V]&0&0&3&3&1\\
+ {}[S_{\mu_j}V]&0&0&0&1&0
+\end{array}
+\]
+である。$\mathcal G_{10}$ と $\mathcal D_{11}$ の次元は、それぞれ
+\[
+ [(10,10,9,9,9)]
+ \bigl(\operatorname{Sym}^{9}(\operatorname{Sym}^3V)
+                  \otimes\operatorname{Sym}^{10}A\bigr)=35,
+\]
+\[
+ [(10,10,10,10,9)]
+ \bigl(\operatorname{Sym}^{9}(\operatorname{Sym}^3V)
+                  \otimes\operatorname{Sym}^{11}A\bigr)=22
+\]
+から得られる。
+
+全射性は命題\ref{prop:v12-uniform-pfaffian-surjectivity}を $r=10$ に適用すれば従う。
+この次数に限った検証も記録する。双対写像
+\[
+ \mathsf d:V\otimes\operatorname{Sym}^{11}A
+       \longrightarrow\Lambda^3V\otimes\operatorname{Sym}^{10}A
+\]
+のPieri成分で、非単元方向に関係する最高重みと非零係数は次の通りである。
+前の次数と同様に
+$\mathrm A_{u,v}=(u+1,u,v,v,0)$、
+$\mathrm B_{u,v}=(u,u,v+1,v,0)$ と書く。
+\[
+\begin{array}{c|rrrr|rrrr}
+ \text{型}&\mathrm A_{9,2}&\mathrm A_{8,3}&\mathrm A_{7,4}&\mathrm A_{6,5}
+ &\mathrm B_{9,2}&\mathrm B_{8,3}&\mathrm B_{7,4}&\mathrm B_{6,5}\\\hline
+ \text{$F$側の重複度}&1&2&6&2&1&6&1&2\\
+ \text{非零係数}&2&3&4&5&11&10&9&8
+\end{array}
+\]
+これらは21方向を与え、残る一方向は
+$\delta q(au_9)=2qu_9$ で与えられる単元方向である。
+添付コードは十二個のPieri・plethysm成分と上の八つの最高重みの像を
+厳密な多項式として検証する。従って階数は22、核の次元は $35-22=13$ である。
+\end{proof}
+
+低次安定化群に関係する空間についても、同じ計算で
+\[
+ \dim\mathcal G_6=\dim\mathcal D_7=\dim\mathcal B_{11}=1
+\]
+を得る。ここで
+\[
+ \mathcal B_{11}
+ =\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{4}(\operatorname{Sym}^3V)
+       \otimes\operatorname{Sym}^{3}A,
+       \Lambda^2V^*\otimes\det(V)^4\right)
+\]
+である。
+
+\paragraph{この次数でも対角評価には核がある.}
+第11版と同じ有限Fermat安定化群
+$H=\mu_3^5\rtimes\mathfrak S_5$ の指標平均から、
+$\mathcal C_{15}$ に関係する三つの非零成分について
+\[
+\begin{array}{c|ccc}
+ \lambda&(12,7,7,2,2)&(12,6,6,3,3)&(12,5,5,4,4)\\\hline
+ \text{普遍重複度}&3&3&1\\
+ \dim(S_\lambda V)^H&4&3&0
+\end{array}
+\]
+を得る。従って最後の一成分は全ての対角三次式で恒等的に消え、
+対角制限の階数は高々6である。
+この最後の成分については
+$N=\operatorname{Jac}(F_{\mathrm{Fer}})_3$ として
+\[
+ \dim\operatorname{Hom}_H(N,S_{(12,5,5,4,4)}V)=1
+\]
+であり、法方向の一階微分による検出は表現論的には可能である。
+一方 $\mathcal U_9$ の一成分 $(9,6,6,3,3)$ の固定次元は1である。
+これらは制限写像の階数に対する上界であり、実際の評価写像の階数は
+以下の具体的な接触像の計算で別に決定する。
+
+なお、15次に関係するKoszul関係の二つの源の次元は
+\[
+\begin{split}
+ &\dim\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{8}(\operatorname{Sym}^3V)
+       \otimes\operatorname{Sym}^{7}A,
+       \Lambda^2V^*\otimes\det(V)^8\right)=19,\\
+ &\dim\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{7}(\operatorname{Sym}^3V)
+       \otimes\operatorname{Sym}^{3}A,
+       \Lambda^3V^*\otimes\det(V)^6\right)=3.
+\end{split}
+\]
+この二つの数から $dF$ の階数を引き算だけで決めることはできない。
+Pfaffian代入後のKoszul複体の完全性は仮定していない。
+
+\subsection{6次の安定化ベクトル場とHessian項への作用}
+\label{subsec:v12-sixth-stabilizer}
+
+$P=F(q(a))$、$h(p)=\det\operatorname{Hess}_F(p)$、$H=h(q(a))$ と書く。
+四次単元 $U_4$ の $a$ に関する微分を交代行列
+\[
+ B_{ij}=\frac{\partial U_4}{\partial a_{ij}}\quad(i<j),\qquad
+ B_{ji}=-B_{ij}
+\]
+で表す。
+これは $(F,a)$ に関して次数 $(4,3)$、値域
+$\Lambda^2V^*\otimes\det(V)^4$ の普遍共変量である。
+\[
+ T=(\operatorname{Hess}_F)(q),\qquad
+ S=(\operatorname{Hess}h)(q)
+\]
+とおき、二つのベクトル場を
+\begin{equation}\label{eq:v12-sixth-tenth-fields}
+ \Phi_6=\frac12(TBa-aBT),\qquad
+ \Psi_{10}=\frac14(SBa-aBS)
+\end{equation}
+で定める。
+
+\begin{lemma}[6次安定化群の作用も15次のJacobian像に入る]
+\label{lem:v12-sixth-hessian-action}
+$\Phi_6$ は1次元の $\mathcal G_6$ の非零生成元であり、
+\[
+ \delta q(\Phi_6)=B\nabla F(q),\qquad dP(\Phi_6)=0.
+\]
+また $\Psi_{10}\in\mathcal G_{10}$ であり、
+\[
+ \delta q(\Psi_{10})=B\nabla h(q),\qquad
+ dH(\Phi_6)=-dP(\Psi_{10}).
+\]
+特に $dH(\mathcal G_6)\subset dP(\mathcal G_{10})$ である。
+\end{lemma}
+\begin{proof}
+Pfaffianの共変性を微分すると、任意の行列 $M$ について
+\[
+ (dq)_a(Ma+aM^t)=\operatorname{tr}(M)q-M^tq
+\]
+を得る。この式は $a$ の各点での接ベクトルの式なので、
+$M$ が $a$ に依存する場合にも同じように使える。
+$M=TB/2$ とすると対称行列と交代行列の積なのでtraceは零である。
+$Tq=2\nabla F(q)$ から $\delta q(\Phi_6)=B\nabla F(q)$ を得る。
+交代性により $\nabla F(q)^tB\nabla F(q)=0$、従って $dP(\Phi_6)=0$ である。
+
+$h$ は $p$ に5次なので $Sq=4\nabla h(q)$ である。
+$M=SB/4$ に同じ式を適用すると
+$\delta q(\Psi_{10})=B\nabla h(q)$ となる。
+従って
+\[
+ dH(\Phi_6)=\nabla h(q)^tB\nabla F(q)
+ =-\nabla F(q)^tB\nabla h(q)=-dP(\Psi_{10}).
+\]
+次数は $\Phi_6$ が $(F,a)$ に $(5,6)$、
+$\Psi_{10}$ が $(9,10)$ であり、値域のdeterminant twistも
+それぞれ $\det(V)^5$、$\det(V)^9$ となる。
+従って表示した共変量空間に属する。
+
+非零性を具体的に確認する。
+標準点 $F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3$ と
+$a^{(1)}=(e_1-e_0)\wedge(e_2-e_0)+(e_3-e_0)\wedge(e_4-e_0)$ では
+\[
+ q=(1,1,1,1,1),\qquad U_4=-4,
+\]
+\[
+ (B_{01},B_{02},B_{03},B_{04})=(-4,4,-4,4),\qquad
+ B_{ij}=0\quad(1\le i<j\le4).
+\]
+よって
+\[
+ \delta q(\Phi_6)=(-60,12,-12,12,-12)\ne0.
+\]
+命題\ref{prop:v12-fifteenth-characters}の $\dim\mathcal G_6=1$ から
+$\Phi_6$ が生成元であることも従う。
+\end{proof}
+
+同じ標準点では
+\[
+ dH(\Phi_6)=1866240,\qquad dP(\Psi_{10})=-1866240.
+\]
+従ってHessian項への作用そのものが零なのではなく、15次のJacobian像に吸収される。
+またTateブロックの交代部分について、標準点で
+\[
+ \delta q(\operatorname{Alt}K_6)
+   =\left(\frac{20}{3},-\frac43,\frac43,-\frac43,\frac43\right)
+\]
+であることと1次元性を用いると、普遍恒等式
+\[
+ \operatorname{Alt}K_6=-\frac19\Phi_6,
+ \qquad dH(\operatorname{Alt}K_6)=\frac19dP(\Psi_{10})
+\]
+を得る。
+
+\paragraph{小さい独立計算証明書.}
+\texttt{v12\_filtered\_contact\_certificate.py} は有理数演算だけを用い、
+既存の五つの保存点で\eqref{eq:v12-sixth-tenth-fields}の二つのPfaffian微分、
+$dH(\Phi_6)=-dP(\Psi_{10})$、
+$\operatorname{Alt}K_6=-\Phi_6/9$ を全成分で確認する。
+同じコードは前節の $\mathrm C_{u,v}$ 系列の係数 $v+2$ を
+$1\le r\le12$ の全該当成分について整数多項式として検証する。
+全次数・普遍的な主張そのものは、上記の表現論と行列恒等式の証明による。
+
+\subsection{15次の有効な接触作用と正規化補正}
+\label{subsec:v12-filtered-contact}
+
+\begin{proposition}[15次の低次安定化群は新しい商方向を与えない]
+\label{prop:v12-effective-contact-fifteen}
+$c\in\CC$ を固定し、
+\[
+ f=P+cH+R_{15}+O(a^{16})
+\]
+を考える。$F$、座標の線形項、先頭係数を固定し、14次までの正規形を保つ
+全ての普遍正則な接触変換を用いても、有効な15次商は
+\[
+ \mathcal Q^{\mathrm{eff}}_{15}
+   =\mathcal C_{15}/dP(\mathcal G_{10})
+\]
+である。
+\end{proposition}
+\begin{proof}
+必要なjetを
+\[
+ \chi=a+\phi_5+\phi_6+\phi_7+\phi_8+\phi_9+\phi_{10}+O(a^{11}),
+ \qquad u=1+b_4+b_6+b_8+b_9+O(a^{10})
+\]
+と書き、$X=\phi_5$、$Y=\phi_6$ とおく。
+低次の共変量の消滅は14次の議論と同じである。
+13次までを保つ条件は
+\[
+ XP+b_4P=0,\qquad YP=0,\qquad
+ dP(\phi_7)+b_6P=0,\qquad dP(\phi_8)=0.
+\]
+さらに14次を保つ式は、前節で求めた
+$\phi_9,b_8,X,b_4$ の式である。
+15次の変化はTaylor展開から正確に
+\[
+ R'_{15}-R_{15}
+ =dP(\phi_{10})+b_9P+d^2P(X,Y)+b_4YP+c\,dH(Y)
+\]
+となる。他の二次項・単元の混合項はこの次数に達しない。
+
+$YP=0$ を $X$ で微分すると
+\[
+ d^2P(X,Y)=-dP(DY\cdot X),\qquad DY\cdot X\in\mathcal G_{10}
+\]
+を得る。また $b_4YP=0$ であり、
+補題\ref{lem:v12-sixth-hessian-action}により
+$dH(Y)\in dP(\mathcal G_{10})$ である。
+単元項もEulerの等式 $b_9P=dP(ab_9/6)$ によって同じ像に含まれる。
+これで必要性を得る。
+逆に任意の $dP(\phi_{10})$ は10次の座標変更により実現し、
+14次以下を変えない。従って十分性も成立する。
+\end{proof}
+
+\begin{proposition}[既存の具体的な正規化は15次の係数を変えない]
+\label{prop:v12-actual-fifteen-correction}
+命題\ref{prop:v10-explicit-thirteenth}と
+定理\ref{thm:v11-fourteenth-normal-form}で選んだ具体的な有限正規化の後では
+\[
+ R_{15}=d^{\mathrm T}_{15}.
+\]
+\end{proposition}
+\begin{proof}
+これらの正規化の座標変更は7、8、9次からなり、単元は4、6、8次からなる。
+座標変更が15次に与え得る一次寄与は、それぞれ元の9、8、7次係数の微分であり、
+全て零である。
+二次の座標変更が $P$ に与える寄与は18次からである。
+単元からの寄与も、それぞれ元の11、9、7次係数の倍数であり、全て零である。
+また最小の単元と最小の座標変更の混合項は16次から現れる。
+従って15次の係数は変わらない。
+ここでは主正規化で使った具体的な変更を対象とし、
+任意の5次・6次の安定化変更を加えた正規化について同じ等式を主張してはいない。
+\end{proof}
+
+\subsection{15次の接触写像は全射である}
+\label{subsec:v12-contact-rank-fifteenth}
+
+15次では、前の次数とは異なり、普遍的な線形接触商そのものが消える。
+第10・11版と同じブロック抽出 $\kappa$ と交代化を用い、
+六つの普遍座標ベクトル場を
+\[
+ \Gamma_0=\operatorname{Alt}(K_{10}),\qquad
+ \Gamma_i=\operatorname{Alt}\,\kappa\!\left(
+      h\bigl(A_1h(A_iA_{9-i})\bigr)\right),\quad1\le i\le5
+\]
+と定める。いずれも $\mathcal G_{10}$ に属する。
+実際、Chevalley反対称化、Clifford積、$h$、$\kappa$、交代化は
+普遍的な $\mathrm{GL}(V)$ 同変操作であり、$F$ に多項式的である。
+$a$ の次数は10で、前版と同じ補助重み
+\[
+ \mathrm{wt}(F)=1,\quad\mathrm{wt}(a)=-1,\quad
+ \mathrm{wt}(x)=0,\quad\mathrm{wt}(\theta)=-\tfrac12,
+ \quad\mathrm{wt}(\eta)=\tfrac12
+\]
+から、定数 $\Lambda^4V\to V$ ブロックの係数は $F$ に9次となる。
+これらの部分項自身にMaurer--Cartan方程式を課しているわけではない。
+
+\begin{proposition}[15次の普遍接触商の消滅]
+\label{prop:v12-contact-rank-fifteenth}
+普遍正則な同変写像
+\[
+ dP:\mathcal G_{10}\longrightarrow\mathcal C_{15}
+\]
+は全射である。従って
+\[
+ \operatorname{rank}dP=7,\qquad \dim\ker dP=28,
+ \qquad\mathcal Q^{\mathrm{lin}}_{15}
+       =\mathcal Q^{\mathrm{eff}}_{15}=0.
+\]
+また $dF:\mathcal D_{11}\to\mathcal C_{15}$ は階数7、核は15次元である。
+\end{proposition}
+\begin{proof}
+$F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3$、$u_i=e_i-e_0$ とし、
+\begin{align*}
+ a^{(1)}&=u_1\wedge u_2+u_3\wedge u_4,\\
+ a^{(2)}&=a^{(1)}+u_1\wedge u_3,\\
+ a^{(3)}&=2u_1\wedge u_2+\tfrac12u_3\wedge u_4,\\
+ a^{(4)}&=u_1\wedge u_2+u_1\wedge u_3
+                    +u_1\wedge u_4+u_2\wedge u_3.
+\end{align*}
+全ての点で $q=(1,1,1,1,1)$、$P=F_*(q)=0$ である。
+さらに $G=6x_0x_1x_2-6x_4^3$ とおけば $G(q)=0$ も成り立つ。
+六つの線形汎関数を
+\[
+ L_j=\operatorname{ev}_{(F_*,a^{(j)})}\quad(1\le j\le3),
+ \qquad
+ L_{3+j}=\left.\frac{d}{dt}\right|_{t=0}
+       \operatorname{ev}_{(F_*+tG,a^{(b_j)})},
+ \quad (b_1,b_2,b_3)=(1,2,4)
+\]
+とする。これらは全て $P\mathcal U_9$ を消す。
+方向微分は普遍多項式を区別するための評価であり、
+接触変換における $F$ の変更を許すという意味ではない。
+
+行列 $M=(L_j(dP(\Gamma_i)))_{1\le j\le6,\,0\le i\le5}$ は
+正確な有理数計算により
+\[
+ \det M=
+ \frac{4583737618198478767481154324593650656534581}
+      {55540601303040000000000}\ne0
+\]
+を満たす。分母が可逆である素数 $1000003$ を法として、
+行列から直接計算した行列式も $147271\ne0$ である。
+従って六つの像 $dP(\Gamma_i)$ は $P\mathcal U_9$ を法として独立である。
+
+一方、$\dim\mathcal U_9=1$、$P$ は非零多項式であり、
+多項式環が整域であることから $P\mathcal U_9$ は1次元である。
+Eulerの等式
+\[
+ dP(au_9/6)=Pu_9
+\]
+により、この方向も接触像に含まれる。従って
+$\operatorname{rank}dP\ge6+1=7$ となる。
+$\dim\mathcal C_{15}=7$ なので全射であり、
+$\dim\ker dP=35-7=28$ である。
+有効な接触同値もこの線形の座標変更を含むので、両方の商が零になる。
+
+最後に $dP=dF\circ\delta q$ で、$\delta q$ は全射である。
+従って $dF$ も階数7をもち、その核は $22-7=15$ 次元である。
+\end{proof}
+
+\paragraph{計算証明の範囲と再現性.}
+方向微分の規約は第11版と同じである。
+$B=\operatorname{Hess}_F/6$、$C=\operatorname{Hess}_G/6$ と書けば、
+Chevalley反対称化した $\eta$ 記号のClifford積の微分は
+\[
+ D_B\mu_B(U,V)[C]
+ =-\sum_{i,j}C_{ij}\,
+       \mu_B(D^R_{\eta_i}U,D^L_{\eta_j}V)
+\]
+で与えられる。方向微分行には
+\[
+ dG(q)\,(dq)_a(\Gamma_i)
+ +dF(q)\,(dq)_a\bigl(D_F\Gamma_i[G]\bigr)
+\]
+の両項を含めている。
+Clifford積は $x$ 次数を下げず、$h$ だけが1下げるので、
+定数ブロックに必要な積を $x$ 次数1以下、二重の $h$ の内側を2以下で
+切断しても正確である。
+
+\texttt{v12\_contact\_rank\_certificate.py} は、六行分の全ての
+交代行列、Pfaffian、その微分、勾配との縮約、行列式を正確に検証する。
+\texttt{--recompute} は私的な計算キャッシュを読まず、
+四点の $A_1,\ldots,A_8$ と三つの一階変分を再構成する。
+Maurer--Cartan方程式を有理数で検証し、別実装の32次元外積作用素と照合する。
+使用する定数ブロックも $x=0$ の外積・縮約作用素で検算される。
+\texttt{--compare-fresh} は別に保存した新規計算の六行と完全一致することを確認する。
+
+\begin{corollary}[Pfaffian代入後のKoszul完全性は破れる]
+\label{cor:v12-koszul-homology}
+15次に関係する普遍同変なKoszul複体の成分で、
+二番目のKoszulホモロジーは少なくとも1次元である。
+\end{corollary}
+\begin{proof}
+$g=\nabla F(q)$ とし、前節の19次元の空間を $\mathcal B_{15}$、
+その前にある3次元の空間を $\mathcal K_{3,15}$ と書く。
+縮約による複体は
+\[
+ \mathcal K_{3,15}\xrightarrow{\iota_g}
+ \mathcal B_{15}\xrightarrow{\beta\mapsto\beta g}
+ \mathcal D_{11}\xrightarrow{h\mapsto g\cdot h}\mathcal C_{15}
+\]
+である。交代性から隣接する写像の合成は零となる。
+最後の写像の核は15次元なので、
+\[
+ \dim\ker(\mathcal B_{15}\to\mathcal D_{11})\ge19-15=4.
+\]
+前の写像の像は高々3次元であり、従って
+\[
+ \dim\frac{\ker(\mathcal B_{15}\to\mathcal D_{11})}
+ {\operatorname{im}(\mathcal K_{3,15}\to\mathcal B_{15})}
+ \ge4-3=1.
+\]
+ここではホモロジーの正確な次元を主張していない。
+この下界だけでも、二つの源の次元を交互に引き算して接触階数を決める方法は
+この次数では成立しないことが分かる。
+\end{proof}
+
+\subsection{十一番目のTateブロックと実際の十五次項}
+
+以下でも $a$ に関する次数を用い、$x$ に関する次数とは区別する。
+Tate再帰を
+\[
+ A_n=-hR_n,\qquad R_n=\sum_{i=1}^{n-1}A_iA_{n-i},
+ \qquad K_n=\kappa(A_n)
+\]
+と書く。$\kappa$ は $x=0$ における符号付き補集合基底の
+$\Lambda^4V\to V$ ブロックであり、
+$K(a)=\sum_{n\ge1}K_n(a)$、$d^{\mathrm T}=\tfrac12\det K$ である。
+
+\begin{lemma}[十五次係数のための正確な切断]
+\label{lem:v12-exact-eleventh-truncation}
+$d^{\mathrm T}_{15}$ を計算するには $K_1,\ldots,K_{11}$ があれば十分である。
+さらに、完全な $A_1,\ldots,A_8$ から出発して、
+\[
+\begin{array}{c|c|c}
+ \text{求める項}&\text{残す曲率の $x$ 次数}&
+                    \text{得られる $A_n$ の $x$ 次数}\\ \hline
+ A_9&3\text{以下}&2\text{以下}\\
+ A_{10}&2\text{以下}&1\text{以下}\\
+ A_{11}&1\text{以下}&0
+\end{array}
+\]
+の順に再帰を計算すれば、必要な十一個の定数ブロックをすべて正確に得る。
+\end{lemma}
+
+\begin{proof}
+行列式は五個の成分の積からなる。各成分の $a$ 次数が1以上なので、
+総次数15に寄与する各因子の次数は11以下である。
+
+Chevalley正規表示でのClifford積は $x$ 次数を下げない。
+$\eta_i,\eta_j$ の縮約に現れる
+$B_{ij}=\operatorname{Hess}_{ij}F/6$ は $x$ に1次であり、
+$\theta_i,\eta_j$ の縮約は $x$ 次数0である。
+一方、$h$ は係数を一回微分するので $x$ 次数を1下げる。
+従って $A_9$ の $x$ 次数2以下は $R_9$ の3次以下だけから決まり、
+ここでは $A_1,\ldots,A_8$ だけを使う。
+$A_{10}$ の1次以下を求める際は $R_{10}$ の2次以下が必要であり、
+既に得た $A_9$ の2次以下で十分である。
+最後に $A_{11}$ の定数項には $R_{11}$ の1次以下だけが必要なので、
+$A_{10}$ の1次以下と $A_9$ の1次以下があればよい。
+切り捨てた高次の項が後から必要な定数項へ戻ることはない。
+\end{proof}
+
+\begin{proposition}[標準点での未正規化十五次係数]
+\label{prop:v12-actual-fifteenth-value}
+\[
+ F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3,\qquad
+ a_*=
+ \begin{pmatrix}
+ 0&1&-1&1&-1\\
+ -1&0&1&0&0\\
+ 1&-1&0&0&0\\
+ -1&0&0&0&1\\
+ 1&0&0&-1&0
+ \end{pmatrix}
+\]
+とする。$q(a_*)=(1,1,1,1,1)$、$P_{F_*}(a_*)=0$ であり、
+\[
+ \boxed{\displaystyle
+ d^{\mathrm T}_{15}(F_*,a_*)=
+ \frac{4805924857}{972000}.}
+\]
+同じ点で
+\[
+ dP\bigl(\operatorname{Alt}K_{10}\bigr)(F_*,a_*)
+ =\frac{461328704861}{181440000}
+\]
+である。
+\end{proposition}
+
+\begin{proof}
+\texttt{v12\_fifteenth\_tate.py} は有理数演算でTate再帰を行い、
+補題\ref{lem:v12-exact-eleventh-truncation}の切断から
+$K_1,\ldots,K_{11}$ と $\det K$ の15次までを求める。
+標準点では切断しない $A_1,\ldots,A_{11}$ も別途作り、
+各次数でMaurer--Cartan方程式を有理数上で検証した。
+この完全な再帰と切断した再帰の十一個のブロックはすべて一致する。
+得られる行列式の15次係数は
+\[
+ [t^{15}]\det K_{F_*}(ta_*)=\frac{4805924857}{486000}.
+\]
+また $\operatorname{Alt}K_{10}=(K_{10}-K_{10}^{\mathsf t})/2$ を
+$dP=dF(q)\circ dq$ に代入すると、二番目の値を得る。
+
+すべてのブロックと有理数値は
+\texttt{v12\_fifteenth\_full.json} に収録した。
+\texttt{--audit --output v12\_fifteenth\_full.json} は保存した十一個の
+ブロックから行列式と上の接触像を有理数で再計算する。
+\texttt{--full --indices 0 --output v12\_fifteenth\_full.json} は
+外部の計算キャッシュを読まずに完全な再帰を再構成する。
+さらに独立に実装した32次元の外積・縮約作用素で、
+$x=(1,2,3,4,5)$、法 $1000003$ における各次数0から11の
+Maurer--Cartan方程式を照合し、
+$x=0$ で各定数ブロックも照合している。
+この最後の有限体での照合は実装の独立な整合性検査であり、
+表示した数値そのものは有理数上の計算から得ている。
+\end{proof}
+
+\Needspace{22\baselineskip}
+\begin{theorem}[実際の境界の十五次までの普遍正規形]
+\label{thm:v12-fifteenth-normal-form}
+普遍的に多項式な座標変更と定数項1の単元により、
+\[
+ \boxed{\displaystyle
+ d^{\mathrm T}\ \sim\
+ P_F+\frac1{96}\det\operatorname{Hess}_F(q(a))+O(a^{16}).}
+\]
+この消去は各固定三次式 $F$ に特殊化して成立し、
+接触変換の間に $F$ を動かす必要はない。
+\end{theorem}
+
+\begin{proof}
+命題\ref{prop:v12-actual-fifteen-correction}により、
+第11版の具体的な正規化後の15次項は $R_{15}=d^{\mathrm T}_{15}$ である。
+
+命題\ref{prop:v12-contact-rank-fifteenth}より
+$dP:\mathcal G_{10}\to\mathcal C_{15}$ は全射である。
+各 $K_n$ の $F$ 次数は $n-1$ なので、行列式の15次係数は
+$F$ 次数10の共変量であり、$R_{15}\in\mathcal C_{15}$ である。
+従って $R_{15}=dP(\Xi_{10})$ となる普遍共変な
+$\Xi_{10}\in\mathcal G_{10}$ を選べる。
+既に得た正規形に
+\[
+ a\longmapsto a-\Xi_{10}(F,a)
+\]
+を適用すれば15次項が消える。
+この変更の $H_{10}$ への最初の寄与は19次であり、
+$P$ への二次寄与は24次なので、15次以下の他の項を変えない。
+係数は有限次元の普遍共変量空間で解いた定数の線形方程式から得られ、
+$P$ や判別式による除算を含まない。
+\end{proof}
+
+従って上の非零な数
+$4805924857/972000$ は指定したTate座標の係数であり、
+十五次の接触不変量ではない。
+この次数では $\mathcal Q^{\mathrm{lin}}_{15}
+=\mathcal Q^{\mathrm{eff}}_{15}=0$ であるため、
+実際の境界の十五次項に限らず、許された普遍共変な十五次項はすべて消去できる。
+
+
+\clearpage
+\section{全次数の偶化の代数性と収束性}
+\label{sec:algebraic-parity}
+
+前版の反転対称性は、無限の形式接触変換を与えた。
+本節ではその共役を有限方程式で構成し、代数的かつ収束する変更として実現する。
+Tate族そのものの有限代数化と、偶化する座標変更の代数化を分けて証明する。
+
+
+\subsection{偶化に必要な共役を有限個の方程式で構成する}
+\label{subsec:v13-algebraic-parity}
+
+第12版の偶化は全次数の形式接触変換として構成した。
+ここではその共役を有限次元の方程式へ戻すことにより、
+同じ変換が代数的冪級数であり、複素解析的にも収束することを示す。
+係数環を三次式の全係数の多項式環とし、$F$ の判別式は逆にしない。
+
+\begin{lemma}[内部重み0の代数と共役方向の補空間]
+\label{lem:v13-gauge-weight-spaces}
+Chevalley正規表示による内部重み空間について
+\[
+ \dim\mathsf E_{-3}=0,\qquad
+ \dim\mathsf E_{-3/2}=50,\qquad
+ \dim\mathsf E_0=1002,\qquad
+ \dim\mathsf E_{3/2}=5890
+\]
+である。$\mathsf E_0$ は単位元を持つ有限自由な結合代数である。
+\[
+ \mathsf L=\operatorname{im}
+       (h:\mathsf E_{3/2}\longrightarrow\mathsf E_0),\qquad
+ \mathsf B=\operatorname{im}
+       (h:\mathsf E_3\longrightarrow\mathsf E_{3/2})
+\]
+とおくと
+\[
+ \dim\mathsf L=951,\qquad \dim\mathsf B=4929,
+ \qquad h\delta|_{\mathsf L}=\operatorname{id}_{\mathsf L},
+\]
+および自然な直和分解
+\begin{equation}\label{eq:v13-full-gauge-decomposition}
+ \mathsf E_{3/2}
+ =A_1(W)\oplus\mathsf B\oplus\delta\mathsf L,
+ \qquad 5890=10+4929+951
+\end{equation}
+が成立する。正規記号による固定した係数空間の上で、
+$h,\pi,\delta$ は $F$ に依存しない。
+具体的な作用素への同定と積の構造定数は $F$ に多項式的である。
+\end{lemma}
+\begin{proof}
+正規単項式 $x^\alpha\theta_I\eta_{[J]}$ で
+$m=|\alpha|$、$u=|I|$、$v=|J|$ とすれば、内部重みの条件は
+\[
+ 2m-u+v=2w.
+\]
+対応する成分の次元は
+$\binom{m+4}{4}\binom5u\binom5v$ である。
+$w=0$ では $m=0,1,2$ だけが可能で、その寄与は
+\[
+ 252+600+150=1002.
+\]
+$w=-3/2$ では $m=0,1$ の寄与が $45+5=50$ であり、
+$w=-3$ では成分が存在しない。
+$w=3/2$ の和は既存の5890である。
+積は内部重みを保つので $\mathsf E_0$ は積について閉じている。
+Clifford関係の構造定数は $F$ に多項式的であり、
+正規基底は全ての $F$ にわたって自由な基底を与える。
+従って $\mathsf E_0$ は上記の有限自由代数である。
+
+負の内部重みでは $\pi=0$ であり、
+$\mathsf E_{-3}=0$ とcontractionから
+$\delta:\mathsf E_{-3/2}\to\mathsf E_0$ は単射となる。
+また内部重み0で $\pi$ が残すのはscalarだけなので
+\[
+ \ker(\delta|_{\mathsf E_0})
+ =\CC\cdot1\oplus\delta\mathsf E_{-3/2}.
+\]
+従って
+\[
+ \operatorname{rank}(\delta:\mathsf E_0\to\mathsf E_{3/2})
+ =1002-1-50=951.
+\]
+$\ell\in\mathsf L$ に対しては $h\ell=\pi\ell=0$ なので
+$h\delta\ell=\ell$ である。
+逆に $\delta h$ は $\operatorname{im}\delta$ 上で恒等写像となるため、
+$\delta:\mathsf L\to\operatorname{im}\delta$ は同型である。
+よって $\dim\mathsf L=951$ を得る。
+
+$\mathsf E_{3/2}$ にcontractionを適用すると
+$T=\pi T+h\delta T+\delta hT$ となる。
+$\pi T\in A_1(W)$、$h\delta T\in\mathsf B$、
+$\delta hT\in\delta\mathsf L$ であり、
+$h^2=\pi h=0$ と $h\delta|_{\mathsf L}=1$ からこの和は直和である。
+従って\eqref{eq:v13-full-gauge-decomposition}と
+$\dim\mathsf B=5890-10-951=4929$ が従う。
+\end{proof}
+
+\paragraph{重み空間の小さい厳密証明書.}
+\texttt{v13\_weight\_space\_certificate.py} は通常のPython標準ライブラリだけで、
+これらの単項式基底を列挙する。
+内部重み $-3/2,0,3/2$ の全6942個の基底記号について
+$\delta h+h\delta=1-\pi$、$\delta^2=h^2=0$ を有理数で確認し、
+$\delta:\mathsf E_{-3/2}\to\mathsf E_0$ と
+$\delta:\mathsf E_0\to\mathsf E_{3/2}$ の階数50、951を
+疎な有理数消去法でも直接検証する。
+後の代数性・収束性は、この有限計算だけから推論するのではなく、
+次の方程式とJacobianの同型性から証明する。
+
+\begin{proposition}[反転したTate族の代数的な切断への帰着]
+\label{prop:v13-algebraic-marked-regauging}
+Tate族の反転 $\mathsf D_A^*=\mathsf D_0+A(a)^*$ に対して、
+第12版の形式写像 $\sigma$ と同じ形式展開を持つ代数的冪級数 $\sigma(a)$、
+および代数的冪級数の偶可逆作用素 $g=1+\ell$ が存在し、
+\begin{equation}\label{eq:v13-algebraic-intertwining}
+ \mathsf D_A^*g=g\bigl(\mathsf D_0+A(\sigma(a))\bigr),
+ \qquad \ell\in\mathsf L\widehat\otimes(a),
+ \qquad g\equiv1\pmod{(a)}
+\end{equation}
+を満たす。両者の係数は $F$ に多項式的で、構成は $GL(V)$ と可換である。
+各固定 $F$ について、これらの級数は $a=0$ の複素解析的近傍で収束する。
+\end{proposition}
+\begin{proof}
+入力として定理\ref{thm:tate-algebraization}の
+4929個の二次方程式によるTate族の\'etale近傍 $\mathcal Z$ を用いる。
+その上で $A(a)$ は補助変数を含む代数的な作用素であり、
+零切断に沿う形式展開が元のTate再帰と一致する。
+反転 $*$ もこの有限次元空間上の代数的な操作である。
+
+追加の未知数を
+\[
+ b\in W,\qquad z\in\mathsf B,\qquad \ell\in\mathsf L
+\]
+とし、$C=A_1(b)+z$ と書く。未知数の総数は
+$10+4929+951=5890$ である。
+内部重み $3/2$ の5890成分の方程式
+\begin{equation}\label{eq:v13-finite-regauging-system}
+ (\mathsf D_0+A(a)^*)(1+\ell)
+       -(1+\ell)(\mathsf D_0+C)=0
+\end{equation}
+を課す。これは
+\[
+ \delta\ell+A(a)^*-C+A(a)^*\ell-\ell C=0
+\]
+という有限個の多項式方程式である。
+入力の零切断 $a=0$ では $(b,z,\ell)=(0,0,0)$ が解となり、
+未知数に関する微分は
+\begin{equation}\label{eq:v13-regauging-jacobian}
+ (\dot b,\dot z,\dot\ell)
+   \longmapsto\delta\dot\ell-A_1(\dot b)-\dot z.
+\end{equation}
+補題\ref{lem:v13-gauge-weight-spaces}の直和分解により、これは同型である。
+Chevalley正規基底では、この同型は $F$ にも依存しない。
+従ってJacobian判定\cite[Proposition 59.26.2(3)]{StacksEtaleCriterion}により、
+解空間の零切断を含む開部分は
+$\mathcal Z$ 上\'etaleとなる。
+
+$g=1+\ell$ の可逆性も代数的な開条件で確保できる。
+有限自由代数 $\mathsf E_0$ 上の左乗算 $L_g$ を取り、
+$\det L_g$ を可逆にする。この行列式は零切断上で1である。
+$L_g$ が可逆なら $gw=1$ を満たす $w$ があり、
+$g(wg-1)=0$ と $L_g$ の単射性から $wg=1$ も従う。
+従って $g$ は代数 $\mathsf E_0$ の可逆元となる。
+
+式\eqref{eq:v13-finite-regauging-system}から
+$\mathsf D_0+C=g^{-1}\mathsf D_A^*g$ である。
+よって $(\mathsf D_0+C)^2=F$ が成立する。
+一方、$z\in\mathsf B$ なので $hC=0$、$\pi C=A_1(b)$ であり、
+Maurer--Cartan方程式に $h$ を適用すると
+\[
+ C-A_1(b)+h(C^2)=0
+\]
+を得る。これは既存のTate切断の有限方程式そのものである。
+従って零切断に沿う形式展開では $C=A(b)$ となる。
+
+補題\ref{lem:v12-marked-tate-slice}のパラメータの一意性により、
+ここで得られた $b(a)$ は第12版の $\sigma(a)$ と一致する。
+特に $\sigma^2=\operatorname{id}$ と
+$d\sigma|_{a=0}=-\operatorname{id}$ を継承する。
+ここで共役作用素の選択に一意性を課しているのは
+$g=1+\ell$、$\ell\in\mathsf L$ という切断の中だけであり、
+全てのmarked gauge作用素が一意であるという主張ではない。
+
+上の解空間は有限型の\'etale近傍なので、$b,z,\ell$ は
+零切断に沿う代数的冪級数である。
+その形式係数は、入力のTate係数と
+定数の可逆写像\eqref{eq:v13-regauging-jacobian}を使って次数ごとに求まる。
+従って $F$ による除算は生じず、各係数は $F$ の多項式である。
+また全ての空間・写像・方程式は同変であり、形式解の一意性から
+得られた写像も同変である。
+
+固定した $F$ に対しては、入力のTate枝が収束し、
+\eqref{eq:v13-regauging-jacobian}が可逆なので、
+複素解析的陰関数定理が同じ方程式に適用できる。
+得られる解析解のTaylor展開は一意な形式解と一致する。
+従って $\sigma,g$ は実際に原点の近傍で収束する。
+\end{proof}
+
+\begin{theorem}[代数的かつ収束する全次数の偶正規形]
+\label{thm:v13-algebraic-even-normal-form}
+Tate境界には、普遍同変な代数的冪級数による座標変更と単元変更を用いて
+\begin{equation}\label{eq:v13-algebraic-even-normal-form}
+ \boxed{\displaystyle
+ d^{\mathrm T}\ \sim\
+ P_F+\frac1{96}H_{10}
+       +\sum_{\substack{n\ge16\\n\ \mathrm{even}}}R_n,
+ \qquad R_n\in\mathcal C_n
+ }
+\end{equation}
+という全次数の正規形が存在する。
+座標変更の線形部は恒等写像、単元の定数項は1であり、
+それらの形式係数は $F$ に多項式的である。
+各固定 $F$ では、これらの変更は複素解析的にも原点近傍で可逆であり、
+右辺の級数も収束する。
+\end{theorem}
+\begin{proof}
+命題\ref{prop:v13-algebraic-marked-regauging}で得た $g$ は、
+第12版の規約と同じ
+\[
+ \mathsf D_0+A(\sigma(a))=g^{-1}\mathsf D_A^*g
+\]
+を満たす。
+内部重み0により $x=0$ では $g$ が各 $\Lambda^kV$ を保存することと、
+反転が定数ブロックを $K^t$ にすることから、
+\[
+ d^{\mathrm T}(F,\sigma(a))
+ =v(F,a)d^{\mathrm T}(F,a),\qquad
+ v=\frac{\det g_4}{\det g_1},\qquad v(F,0)=1
+\]
+となる。この $v$ も代数的で収束する単元である。
+
+新しい座標を
+\[
+ y=\frac{a-\sigma(a)}2
+\]
+とする。これは代数的冪級数で、線形部が恒等写像なので、
+その逆 $a=a(y)$ も代数的冪級数である。
+実際、これを定義する写像は零切断上でJacobianが可逆なため、
+さらに\'etaleな近傍を取れば逆の枝を代数的に表せる。
+同じ理由から、解析的逆関数定理により逆写像も収束する。
+$\sigma^2=1$ から $y(\sigma(a))=-y(a)$ となる。
+
+$\widetilde d(F,y)=d^{\mathrm T}(F,a(y))$ と書き、
+第12版と同じ平均
+\[
+ d_{\mathrm{ev}}(F,y)
+ =\frac{\widetilde d(F,y)+\widetilde d(F,-y)}2
+ =\frac{1+v(F,a(y))}{2}\,\widetilde d(F,y)
+\]
+を取る。平均に現れる係数は定数項1の代数的・収束的単元であり、
+$d_{\mathrm{ev}}$ は全次数で偶関数となる。
+代数的冪級数の合成・逆写像・有限和は、必要なら\'etale近傍を共通に細分して
+代数的に表せるので、ここまでの構成は全て同じ種類の代数的germの中にある。
+
+系\ref{cor:v12-even-hessian-normal-form}の次数計算により、
+この偶化は従来の偶数次係数を14次まで変えない。
+従って従来の7次・9次の多項式座標変更と4次・6次・8次の多項式単元で、
+10次を $H_{10}/96$ に正規化し、12次と14次を消せる。
+これらの座標変更は奇写像、単元は偶関数なので、全次数の偶性も保たれる。
+有限な多項式変更は原点で可逆であり、上の代数的・収束的変更との合成も
+代数的で収束する。これで\eqref{eq:v13-algebraic-even-normal-form}を得る。
+\end{proof}
+
+\begin{remark}[改善された範囲と残る問題]
+本節は、第12版で留保した無限偶化の代数性・収束性を解決する。
+代数性は零切断近傍の\'etaleなgerm、または代数的冪級数としての意味であり、
+$W$ のZariski開部分上の単一の多項式自己同型を主張するものではない。
+構成に使った5890個は、既存のTate模型に追加した有限表示の補助未知数であり、
+変形パラメータの個数や最小の表示の大きさではない。
+
+本節の議論だけでは、16次以降の偶数次の残余項の消滅は従わない。
+次節では16次も消せることを証明するが、18次以上は残る問題である。
+境界を全次数で $P_F+H_{10}/96$ だけへ正規化できるかどうかは、依然として未決定である。
+\end{remark}
+
+
+\clearpage
+\section{16次の接触商と実際の境界係数}
+\label{sec:contact-sixteen}
+
+本節では、15次まで $P_F+H_{10}/96$ に正規化した境界の次の偶数次を調べる。
+普遍共変量の次元、接触写像の階数、低次安定化群による追加作用を順に決定する。
+実際のTate係数の評価には、12番目の定数ブロックまでを使う。
+以下の商は、全ての三次式に多項式的かつ同変に依存する共変量の商である。
+固定した $F$ の任意の座標変更によるJacobian商と同一視しない。
+
+
+\subsection{16次の普遍共変量空間}
+\label{subsec:v13-sixteenth-characters}
+
+\begin{proposition}[16次の次元]
+\label{prop:v13-sixteenth-characters}
+$\dim V=5$、$A=\Lambda^2V$ とする。このとき
+\[
+ \dim\mathcal C_{16}=40,\qquad
+ \dim\mathcal G_{11}=103,\qquad
+ \dim\mathcal U_{10}=18,\qquad
+ \dim\mathcal D_{12}=59.
+\]
+また $\delta q:\mathcal G_{11}\to\mathcal D_{12}$ は全射であり、
+その核は44次元である。
+\end{proposition}
+\begin{proof}
+Littlewood分解と整数alternantによる重複度計算を用いる。
+$\mathcal C_{16}$ に関係する
+$\lambda_j=(13,10-j,10-j,j,j)$ の
+$\operatorname{Sym}^{11}(\operatorname{Sym}^3V)$ における重複度と、
+$\mathcal U_{10}$ に関係する
+$\mu_j=(10,10-j,10-j,j,j)$ の
+$\operatorname{Sym}^{10}(\operatorname{Sym}^3V)$ における重複度は
+\[
+\begin{array}{c|rrrrrr}
+ j&0&1&2&3&4&5\\\hline
+ {}[S_{\lambda_j}V]&2&2&14&10&12&0\\
+ {}[S_{\mu_j}V]&1&0&6&5&6&0
+\end{array}
+\]
+である。$\mathcal G_{11}$ と $\mathcal D_{12}$ の次元はそれぞれ
+\[
+ [(11,11,10,10,10)]
+ \bigl(\operatorname{Sym}^{10}(\operatorname{Sym}^3V)
+                    \otimes\operatorname{Sym}^{11}A\bigr)=103,
+\]
+\[
+ [(11,11,11,11,10)]
+ \bigl(\operatorname{Sym}^{10}(\operatorname{Sym}^3V)
+                    \otimes\operatorname{Sym}^{12}A\bigr)=59
+\]
+から得られる。添付コードは、対称冪の総次元とWeyl次元公式を照合し、
+非零のPieri・plethysm成分16行を記録する。
+$\delta q$ の全射性は命題\ref{prop:v12-uniform-pfaffian-surjectivity}の
+$r=11$ の場合であり、核の次元は $103-59=44$ である。
+\end{proof}
+
+\paragraph{Koszul複体の源の次元.}
+$g=\nabla F(q)$ による縮約に関係する空間は
+\begin{align*}
+ \mathcal B_{16}&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{9}(\operatorname{Sym}^3V)\otimes\operatorname{Sym}^{8}A,
+        \Lambda^2V^*\otimes\det(V)^9\right),\\
+ \mathcal K_{3,16}&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{8}(\operatorname{Sym}^3V)\otimes\operatorname{Sym}^{4}A,
+        \Lambda^3V^*\otimes\det(V)^7\right),\\
+ \mathcal K_{4,16}&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{7}(\operatorname{Sym}^3V),
+        \Lambda^4V^*\otimes\det(V)^5\right)
+\end{align*}
+であり、同じ整数指標計算から
+\[
+ \dim\mathcal B_{16}=22,\qquad
+ \dim\mathcal K_{3,16}=2,\qquad
+ \dim\mathcal K_{4,16}=0
+\]
+を得る。これらの数の交代和から接触階数を決めることはしない。
+実際のKoszul像は、次節で明示的なテンソル縮約によって構成する。
+低次安定化群に必要な値も
+$\dim\mathcal U_6=2$、$\dim\mathcal G_7=7$、$\dim\mathcal D_8=4$ と再確認できる。
+
+\paragraph{対角三次式への制限では多くの方向が消える.}
+Fermat安定化群 $H=\mu_3^5\rtimes\mathfrak S_5$ と
+$N=\operatorname{Jac}(F_{\mathrm{Fer}})_3$ を用いる。
+$\mathcal C_{16}$ の非零成分について、指標平均による値は
+\[
+\begin{array}{c|r|r|r}
+ \lambda&\text{普遍重複度}&\dim(S_\lambda V)^H
+         &\dim\operatorname{Hom}_H(N,S_\lambda V)\\\hline
+ (13,10,10,0,0)&2&50&462\\
+ (13,9,9,1,1)&2&23&234\\
+ (13,8,8,2,2)&14&19&142\\
+ (13,7,7,3,3)&10&3&48\\
+ (13,6,6,4,4)&12&2&16
+\end{array}
+\]
+となる。各成分の制限階数は普遍重複度と固定次元の小さい方以下なので、
+$\mathcal C_{16}$ の対角制限の階数は高々 $2+2+14+3+2=23$ である。
+同じ計算による他の空間の上界も合わせると
+\[
+\begin{array}{c|rrrr}
+ &\mathcal C_{16}&\mathcal U_{10}&\mathcal D_{12}&\mathcal G_{11}\\\hline
+ \text{普遍次元}&40&18&59&103\\
+ \text{対角制限の階数上界}&23&8&30&49\\
+ \text{制限核の次元下界}&17&10&29&54
+\end{array}
+\]
+である。従って対角三次式の評価のみでは、今回の普遍接触階数は決まらない。
+以下では一般の三次テンソルの整数点を用いる。
+これらの表は制限階数の上界であり、法方向の一階微分が実際に各成分を検出することまでは主張しない。
+
+\subsection{一般の三次式を用いた16次の接触階数}
+\label{subsec:v13-sixteenth-tensor-rank}
+
+以下で $J_{16}=dP(\mathcal G_{11})$ とおく。
+普遍共変量を明示するため、体積形式の基底を選び、
+\[
+ F(x)=\sum_{i,j,k=0}^4 F_{ijk}x_ix_jx_k,\qquad F_{ijk}=F_{(ijk)},
+ \qquad \epsilon_{01234}=1
+\]
+という対称テンソルの規約を用いる。和は順序付き三つ組全体にわたる。
+また、$i,j,k$ が相異なり、$l<m$ がその補集合であるとき
+\[
+ \tau_{ijk}=\epsilon_{ijklm}a_{lm}
+\]
+とし、添字が重なる場合は零とする。
+この段落では $a\in A=\Lambda^2V$ の表示を用いており、
+座標に依存しない表示では
+$\tau\in\Lambda^3V^*\otimes\det V$ である。
+実際の変形変数 $W=A\otimes\det(V)^{-1}$ に戻すときは、
+各 $a$ 因子についてこの定数直線の捻りを戻す。
+
+\paragraph{グラフが定める普遍共変量.}
+用いるグラフは、左右に同数の頂点を持つ三価二部グラフである。
+各右頂点に並べた三つの左隣接頂点が $\tau$ の添字の順序を指定し、
+左頂点における三本の脚は右頂点番号の昇順に並べる。
+辺ごとの添字を0から4まで縮約する。
+全ての隣接リストと全ての入力は
+\texttt{v13\_tensor\_rank\_certificate.json} に記録している。
+
+まず左側に九個の $F$、右側に八個の $\tau$ を置き、
+九番目の右頂点の三本の脚だけを自由にする。
+得られる三階テンソルを $R^{ijk}$ として
+\[
+ \beta_{lm}=\sum_{i,j,k}\epsilon_{lmijk}R^{ijk}
+\]
+と交代化する。この出力は
+$\Lambda^3V\otimes\det^8\simeq\Lambda^2V^*\otimes\det^9$ に属し、
+$\beta$ は $F$ に9次、$a$ に8次なので $\mathcal B_{16}$ の元である。
+従って $g=\nabla F(q)$ に対し
+\[
+ h=\beta g\in\mathcal D_{12},\qquad g\cdot h=0
+\]
+が恒等的に成立する。これはKoszul関係の明示的な構成である。
+
+次に左側に十個の $F$、右側に十一個の $\tau$ を置き、
+十一番目の左頂点の三本の脚を自由にする。
+得られる $R_{ijk}$ から
+\begin{equation}\label{eq:v13-graph-coordinate-field}
+ \Gamma^{lm}=\frac16\sum_{i,j,k}\epsilon_{lmijk}R_{ijk}
+\end{equation}
+と定める。この出力は
+$\Lambda^3V^*\otimes\det^{11}\simeq\Lambda^2V\otimes\det^{10}$ に属し、
+$F^{10}a^{11}$ の次数を持つので $\Gamma\in\mathcal G_{11}$ である。
+$b_{lm}=\partial P/\partial a_{lm}$、$l<m$ とし、これを交代行列へ拡張する。
+$T_{ijk}=\epsilon_{ijklm}b_{lm}$ と置けば、閉じたグラフの縮約は
+\[
+ dP(\Gamma)=\frac16\sum_{i,j,k}R_{ijk}T_{ijk}
+\]
+である。添付コードはこの閉じた縮約だけでなく、
+自由脚から\eqref{eq:v13-graph-coordinate-field}の交代行列を取り出して
+Pfaffian微分を直接適用する方法とも照合する。
+
+最後に、左に $s$ 個の $F$、右に $s$ 個の $\tau$ を置いた閉じたグラフは、
+$F^sa^s$ の $\det(V)^s$ 値共変量である。
+$W$ の変数に戻すとスカラー値となり、$\mathcal U_s$ に属する。
+以下では $s=6$ の二つのグラフと、既出の四面体グラフを用いる。
+四面体の右隣接リストは
+\[
+ (012),\quad(013),\quad(023),\quad(123)
+\]
+であり、その縮約を24で割ったものが既出の $U_4$ である。
+
+\begin{proposition}[16次の普遍接触階数]
+\label{prop:v13-contact-rank-sixteenth}
+\[
+ \operatorname{rank}(dP:\mathcal G_{11}\to\mathcal C_{16})=39,
+ \qquad \dim\ker dP=64.
+\]
+さらに、公開データの二十一個のグラフに対応する場を
+$\Gamma_1,\ldots,\Gamma_{21}$ とすると
+\begin{equation}\label{eq:v13-contact-image-decomposition}
+ J_{16}=P\mathcal U_{10}
+       \oplus\operatorname{Span}_{\CC}\{dP(\Gamma_1),\ldots,dP(\Gamma_{21})\}.
+\end{equation}
+$dF:\mathcal D_{12}\to\mathcal C_{16}$ の核は20次元であり、
+構成した二十個のKoszulベクトルがその基底を与える。
+\end{proposition}
+\begin{proof}
+上界と下界を独立に証明する。
+上の第一の型のグラフを二十個選び、六個の整数入力で得られる
+ベクトル $\beta g$ の成分を並べる。
+その $20\times20$ 小行列の、素数1009を法とする行列式は
+\[
+ \det M_{\mathrm K}\equiv930\pmod{1009}
+\]
+である。従って二十個の普遍Koszulベクトルは独立である。
+これらは全て $\ker dF$ に含まれるので、$\dim\mathcal D_{12}=59$ から
+\[
+ \operatorname{rank}dP\le\operatorname{rank}dF\le59-20=39
+\]
+を得る。Koszul複体の完全性は用いていない。
+
+下界には、第二の型の二十一個のグラフを用いる。
+評価点は $q(a)=(1,1,1,1,1)$ を満たす整数交代行列と整数対称テンソルである。
+$F_{444}$ を他の順序付き三つ組の係数和の負数に取ることで、
+\[
+ P=F(q)=\sum_{i,j,k}F_{ijk}=0
+\]
+を有理数体上で厳密に満たす。
+従ってこれらの評価汎関数は $P\mathcal U_{10}$ を消す。
+二十一個の $dP(\Gamma_j)$ の評価行列には
+\[
+ \det M_{\mathrm G}\equiv175\pmod{1009}
+\]
+となる $21\times21$ 小行列がある。
+全ての入力は既に整数であり、場の規格化に現れる分母6も1009で可逆なので、
+これは有理数体上の独立性を証明する非零小行列である。
+
+一方、$\dim\mathcal U_{10}=18$、多項式環は整域であり、Eulerの等式
+\[
+ dP(au_{10}/6)=Pu_{10}
+\]
+から $P\mathcal U_{10}$ は接触像に含まれる18次元の部分空間である。
+従って $\operatorname{rank}dP\ge21+18=39$ となり、上界と一致する。
+これにより直和分解\eqref{eq:v13-contact-image-decomposition}と
+$\dim\ker dP=103-39=64$ を得る。
+全射 $\delta q$ による因子分解 $dP=dF\circ\delta q$ から、
+$\operatorname{rank}dF=39$、$\dim\ker dF=20$ も従う。
+既に構成した二十個のベクトルは、この核全体を張る。
+\end{proof}
+
+\subsection{16次の補元とHessian単元の所属}
+\label{subsec:v13-sixteenth-complement}
+
+既出の八次共変量 $\Theta_8$ は、今回のテンソル規約では
+\begin{equation}\label{eq:v13-theta-general-tensor}
+ B_{ij}=\sum_kF_{ijk}q_k=\frac16\operatorname{Hess}_F(q)_{ij},
+ \qquad
+ \Theta_8=\sum_{\substack{|I|=3\,,\ |J|=3}}
+          \tau_I\tau_J\det B_{I,J}
+\end{equation}
+と計算できる。三つ組 $I,J$ は昇順に並べる。
+$F$ が対角のときは既出の
+$\sum_{i<j}a_{ij}^2\prod_{k\ne i,j}c_kq_k$ に戻る。
+また $H=\det\operatorname{Hess}_F(q)=6^5\det B$ とする。
+
+\begin{proposition}[16次の通常接触商の生成元]
+\label{prop:v13-sixteenth-complement}
+\[
+ \mathcal C_{16}=J_{16}\oplus\CC\,\Theta_8U_4^2,
+ \qquad
+ \mathcal Q^{\mathrm{lin}}_{16}=\CC\,[\Theta_8U_4^2].
+\]
+\end{proposition}
+\begin{proof}
+前節と同じ種類の整数入力を二十二個用いる。
+二十一個の接触像と $W=\Theta_8U_4^2$ を並べた評価行列は
+\[
+ \det M_{\mathrm{full}}\equiv457\pmod{1009}
+\]
+を満たす。従って $W$ は
+$P\mathcal U_{10}+\operatorname{Span}\{dP(\Gamma_j)\}$ に属さない。
+既に $\dim J_{16}=39$、$\dim\mathcal C_{16}=40$ と分かっているので、
+これが求める補元である。
+
+特に、この二十二個の評価汎関数からなる写像を
+$L:\mathcal C_{16}\to\CC^{22}$ と書けば、その階数は22であり、
+\begin{equation}\label{eq:v13-generic-evaluation-kernel}
+ \ker L=P\mathcal U_{10}
+\end{equation}
+である。この等号は次の所属判定にも用いる。
+\end{proof}
+
+\begin{proposition}[Hessianの六次単元倍も通常接触像に入る]
+\label{prop:v13-hessian-unit-membership}
+\[
+ H\mathcal U_6\subset J_{16}.
+\]
+従って命題\ref{prop:v13-effective-contact-sixteen}の有効な接触商も
+\[
+ \mathcal Q^{\mathrm{eff}}_{16}
+ =\mathcal Q^{\mathrm{lin}}_{16}
+ =\CC\,[\Theta_8U_4^2]
+\]
+である。
+\end{proposition}
+\begin{proof}
+六頂点の二つの閉じたグラフが定める単元を $S_1,S_2$ とする。
+その評価行列の $2\times2$ 小行列は法1009で869となるので、
+$\dim\mathcal U_6=2$ と合わせて $S_1,S_2$ はこの空間の基底である。
+
+この所属の証明には、有限体上で行列式が零となることを使わない。
+前の二十二点における二十一個の接触像、$W$、$HS_1,HS_2$ を、
+多倍長整数のテンソル縮約で全て再計算する。
+得られた正確な有理数行列で
+\[
+ L(HS_i)=\sum_{j=1}^{21}c_{ij}L(dP(\Gamma_j))+b_iL(W)
+\]
+を解くと、
+\[
+ b_1=b_2=0
+\]
+が有理数体上で厳密に成立する。
+二組の係数 $c_{ij}$ は公開JSONに全て記録されており、検証コードは
+二十二行それぞれの等式を正確に検算する。
+よって\eqref{eq:v13-generic-evaluation-kernel}から
+\[
+ HS_i-\sum_{j=1}^{21}c_{ij}dP(\Gamma_j)\in P\mathcal U_{10}\subset J_{16}
+\]
+となり、主張が従う。
+有効商の分母は $J_{16}+H\mathcal U_6$ なので、この分母は $J_{16}$ と一致する。
+\end{proof}
+
+\paragraph{証明データの独立監査.}
+\texttt{v13\_tensor\_rank\_certificate.json} は、二十個のKoszulグラフ、
+二十一個の座標グラフ、二つの六次単元グラフ、全ての入力と小行列、
+Hessian単元の有理係数を含む。
+入力における三次式の滑らかさは証明の仮定ではない。
+非零評価は普遍多項式の独立性を証明する。
+多項式族として滑らかな三次式の稠密開集合へ制限しても、この独立性は保たれる。
+各三次式を固定した後の独立性を、この計算だけから主張しているわけではない。
+
+探索時の有限体縮約は右頂点で辺を番号付けし、整数の\texttt{einsum}を用いた。
+公開された正確な再計算は、左頂点で辺番号を作り直し、
+\texttt{NumPy}の\texttt{object}配列による明示的な軸縮約を用いる。
+成分はPythonの多倍長整数または有理数であり、浮動小数点演算を用いない。
+さらに全ての二十一個の座標グラフについて、第一の一般入力で
+自由三脚から交代行列を復元し、Pfaffian微分による $dP$ と閉じた縮約を一致させる。
+これにより自由脚の順序、交代化、$1/6$ の規格化を別経路で確認する。
+
+\texttt{v13\_tensor\_rank\_certificate.py} は、正確な等式と非零小行列を検証する。
+
+\texttt{--recompute} では全テンソル縮約を再計算する。
+非公開キャッシュや探索用ファイルは読まない。
+
+\subsection{16次では6次単元に伴うHessian方向も作用する}
+\label{subsec:v13-filtered-contact}
+
+以下では $P=P_F$、$H=H_{10}$、$c=1/96$ と書く。
+第12版で得た15次までの正規形を用い、
+\[
+ f=P+cH+R_{16}+O(a^{17}),\qquad R_{16}\in\mathcal C_{16}
+\]
+を考える。$F$、座標の線形項、方程式の先頭係数を固定する。
+線形接触像を $J_{16}=dP(\mathcal G_{11})$ とおく。
+
+\begin{lemma}[7次の接触安定化群のHessian作用]
+\label{lem:v13-seventh-stabilizer}
+$Z\in\mathcal G_7$、$b_6\in\mathcal U_6$ が
+\[
+ ZP+b_6P=0
+\]
+を満たすなら
+\[
+ \delta q(Z)=-\frac13b_6q,\qquad
+ ZH+b_6H=-\frac23b_6H.
+\]
+特に $ZP=0$ なら $ZH=0$ である。
+\end{lemma}
+\begin{proof}
+命題\ref{prop:v10-contact-exact-rank}により
+$dF:\mathcal D_8\to\mathcal C_{12}$ は単射である。
+また $dF(q)=3P$ なので
+\[
+ dF\left(\delta q(Z)+\frac13b_6q\right)=ZP+b_6P=0.
+\]
+括弧の中は $\mathcal D_8$ に属するので零である。
+$H$ は $q$ に5次であるから
+$ZH=-5b_6H/3$ となり、主張が従う。
+ここで用いた単射性は普遍正則な共変量空間上のものであり、
+固定した $F$ の任意のベクトル場についての主張ではない。
+\end{proof}
+
+\begin{proposition}[16次の有効な接触商]
+\label{prop:v13-effective-contact-sixteen}
+15次までの $P+cH$ を保つ全ての普遍正則な接触変換を用いた有効な商は
+\begin{equation}\label{eq:v13-effective-sixteen-quotient}
+ \boxed{\displaystyle
+ \mathcal Q^{\mathrm{eff}}_{16}
+ =\frac{\mathcal C_{16}}{J_{16}+H\mathcal U_6}.
+ }
+\end{equation}
+従って、この段階で線形接触商 $\mathcal C_{16}/J_{16}$ だけを用いるには、
+$H\mathcal U_6\subset J_{16}$ を別に示す必要がある。
+\end{proposition}
+\begin{proof}
+必要なjetを
+\begin{align*}
+ \chi&=a+\phi_5+\phi_6+\phi_7+\phi_8+\phi_9
+                +\phi_{10}+\phi_{11}+O(a^{12}),\\
+ u&=1+b_4+b_6+b_8+b_9+b_{10}+O(a^{11})
+\end{align*}
+と書き、$X=\phi_5$、$Y=\phi_6$、$Z=\phi_7$ とおく。
+$\mathcal G_2=\mathcal G_3=\mathcal G_4=0$ および
+$\mathcal U_1=\mathcal U_2=\mathcal U_3=\mathcal U_5=\mathcal U_7=0$
+を用いた。
+15次までを保つ条件のうち、10、11、12次の式は
+\[
+ XP+b_4P=0,\qquad YP=0,\qquad ZP+b_6P=0
+\]
+である。13、14、15次の残る条件は、順に
+\begin{align*}
+ &dP(\phi_8)=0,\\
+ &dP(\phi_9)+b_8P+\frac12d^2P(X,X)+b_4XP
+                         +c(XH+b_4H)=0,\\
+ &dP(\phi_{10})+b_9P+d^2P(X,Y)+b_4YP+cYH=0
+\end{align*}
+である。$\phi_8,\phi_9,\phi_{10},b_8,b_9$ は
+16次の展開には直接寄与しない。
+
+16次の変化を全て書くと
+\begin{align*}
+ R'_{16}-R_{16}
+ ={}&dP(\phi_{11})+b_{10}P
+       +d^2P(X,Z)+\frac12d^2P(Y,Y)\\
+    &+b_4ZP+b_6XP+c\bigl(ZH+b_6H\bigr).
+\end{align*}
+実際、$P$ の二次Taylor項では $5+7$ と $6+6$ だけが16次に達する。
+$\phi_5$ の三重作用は18次からであり、この次数には現れない。
+$H$ の一次Taylor項は $\phi_7$ だけが16次を与え、
+単元との交差項は表示した二つだけである。
+
+非線形な $P$ の寄与は高次の接触像に吸収できる。
+$ZP=-b_6P$ を $X$ で微分し、$YP=0$ を $Y$ で微分すると
+\[
+ d^2P(X,Z)=-dP(DZ\cdot X)-(Xb_6)P-b_6XP,
+\]
+\[
+ \frac12d^2P(Y,Y)=-\frac12dP(DY\cdot Y)
+\]
+を得る。さらに $b_4ZP=-b_4b_6P$ なので
+\begin{align*}
+ &d^2P(X,Z)+\frac12d^2P(Y,Y)+b_4ZP+b_6XP\\
+ &\hspace{1em}=-dP\left(DZ\cdot X+\frac12DY\cdot Y\right)
+               -(Xb_6+b_4b_6)P.
+\end{align*}
+ここで $DZ\cdot X,DY\cdot Y\in\mathcal G_{11}$、
+$Xb_6+b_4b_6\in\mathcal U_{10}$ である。
+また $P\mathcal U_{10}\subset J_{16}$ は
+$Pu_{10}=dP(au_{10}/6)$ から従う。
+補題\ref{lem:v13-seventh-stabilizer}を用いると、残る変化は
+\[
+ R'_{16}-R_{16}\equiv-\frac{2c}{3}b_6H\pmod{J_{16}}.
+\]
+これで必要性を得る。
+
+逆に $J_{16}$ の方向は11次の座標変更だけで実現できる。
+$w_6\in\mathcal U_6$ と $t\in\CC$ に対して
+\[
+ \chi_t=a+taw_6,\qquad u_t=1-6tw_6
+\]
+を取ると、$P$ の12次変化は相殺され、次の変化は18次からである。
+従ってこの変換は15次までを保ち、16次を
+\[
+ R_{16}\longmapsto R_{16}+4ctHw_6
+\]
+と変える。$c\ne0$ なので $H\mathcal U_6$ の全方向を実現できる。
+これで十分性も従う。
+\end{proof}
+
+\subsection{具体的な有限正規化による16次補正}
+\label{subsec:v13-sixteenth-correction}
+
+第10版で実際に固定した規約を用いる。
+\[
+ X_7=-\alpha\Phi_7-\beta\Psi_7,\qquad
+ X_8=\frac{4600}{2189}\Phi_8,
+\]
+\[
+ \alpha=\frac{15800}{6137},\qquad
+ \beta=\frac{689855}{883728},\qquad
+ \chi=a+X_7+X_8,\qquad u=1+3U_4-V_6.
+\]
+この規約は、単元を逐次掛けた積を16次まで保持する規約とは異なるので、
+命題\ref{prop:v10-explicit-thirteenth}で指定した式をそのまま用いる。
+
+\begin{proposition}[16次の正規化補正式]
+\label{prop:v13-actual-sixteen-correction}
+上の第10版の変更、第11版の9次座標変更と8次単元、
+第12版の15次消去に必要な10次座標変更と9次単元を順に適用する。
+得られる16次係数は
+\begin{equation}\label{eq:v13-raw-sixteen-correction}
+ \boxed{\begin{aligned}
+ R_{16}={}&d^{\mathrm T}_{16}+d(d^{\mathrm T}_{10})(X_7)
+        +3U_4\bigl(d^{\mathrm T}_{12}+dP(X_7)\bigr)
+        -V_6d^{\mathrm T}_{10}.
+ \end{aligned}}
+\end{equation}
+さらに
+\begin{equation}\label{eq:v13-sixteen-linear-class}
+ R_{16}\equiv d^{\mathrm T}_{16}
+                  +c\bigl(dH(X_7)-V_6H\bigr)\pmod{J_{16}},
+\end{equation}
+従って有効な商では
+\begin{equation}\label{eq:v13-sixteen-effective-representative}
+ \boxed{\displaystyle
+ [R_{16}]
+ =\left[d^{\mathrm T}_{16}
+       -\frac{\alpha}{96}dH(\Phi_7)
+       -\frac{\beta}{96}dH(\Psi_7)\right]
+ \quad\text{in }\mathcal Q^{\mathrm{eff}}_{16}.
+ }
+\end{equation}
+\end{proposition}
+\begin{proof}
+第10版の座標変更の16次への寄与は
+$d(d^{\mathrm T}_{10})(X_7)$ だけである。
+$X_8$ の寄与には元の9次係数が必要だが零であり、
+$P$ への二次Taylor項は18次からである。
+単元 $3U_4$ は、元の12次係数だけでなく
+$X_7$ による $P$ の12次補正にも掛かる。
+単元 $-V_6$ は元の10次係数に掛かる。
+これで\eqref{eq:v13-raw-sixteen-correction}を得る。
+
+第11版の9次座標変更と8次単元が16次に作用するには、
+いずれも8次係数が必要だが零である。
+第12版の10次座標変更と9次単元についても7次係数が必要で、やはり零である。
+従ってこれらの後続の変更は16次係数を変えない。
+
+既知の恒等式
+\[
+ d^{\mathrm T}_{10}=cH-3PU_4,\qquad
+ d^{\mathrm T}_{12}+dP(X_7)=PV_6
+\]
+を代入して整理すると、正確な等式
+\[
+ R_{16}=d^{\mathrm T}_{16}
+       +c\bigl(dH(X_7)-V_6H\bigr)
+       +3U_4d^{\mathrm T}_{12}
+       +3P\bigl(U_4V_6-X_7U_4\bigr)
+\]
+となる。
+$U_4d^{\mathrm T}_{12}=-dP(U_4X_7)+PU_4V_6$ は $J_{16}$ に入り、
+最後の $P$ の倍数も $P\mathcal U_{10}\subset J_{16}$ に入る。
+これで\eqref{eq:v13-sixteen-linear-class}が従う。
+有効な商では $V_6H\in H\mathcal U_6$ も消えるので、
+\eqref{eq:v13-sixteen-effective-representative}を得る。
+\end{proof}
+
+\begin{corollary}[偶化の明示計算を必要としない16次判定]
+\label{cor:v13-even-normalization-comparison}
+第12版の全次数偶正規形における16次係数の有効な接触類は、
+\eqref{eq:v13-sixteen-effective-representative}によって計算できる。
+従ってこの類を決定するために、形式involution $\sigma$ やその線形化を
+16次まで明示計算する必要はない。
+\end{corollary}
+\begin{proof}
+有限正規化による方程式と全次数の偶正規形は、どちらも普遍的な形式接触変換で
+同じTate方程式から得られ、15次まで $P+cH$ と一致する。
+一方の変換の形式逆を他方と合成すると、15次までを保つ普遍接触変換となる。
+命題\ref{prop:v13-effective-contact-sixteen}により、二つの16次係数の差は
+$J_{16}+H\mathcal U_6$ に含まれる。
+従って有効な接触類は一致する。
+\end{proof}
+
+16次の係数そのものを求める際には、$dH(X_7)$ の補正を省けない。
+$X_7$ は12次項を消すために選んだベクトル場であり、
+$X_7P=0$ という安定化条件を満たさず、標準点でもこの補正は非零となる。
+ただし、後の系\ref{cor:v13-seventh-Hessian-in-image}で
+$dH(\mathcal G_7)\subset J_{16}$ を証明するので、有効な類ではこの補正も消える。
+この消滅は追加の所属判定の結果である。
+$V_6$ の点ごとの値は有効な接触類には不要であり、
+判定に必要な追加量は $d^{\mathrm T}_{16}$ と、
+既存の $\Phi_7,\Psi_7$ に対する $dH(\Phi_7),dH(\Psi_7)$ だけである。
+
+\subsection{第十二Tateブロックと実際の十六次係数}
+\label{subsec:v13-actual-sixteenth}
+
+以下の計算では、切断しない $A_{12}$ を作る必要はない。
+$x$ 次数の切断を一段延ばすことにより、
+十六次の行列式を正確に計算できる。
+
+\begin{lemma}[十六次係数のための正確な切断]
+\label{lem:v13-exact-twelfth-truncation}
+$d^{\mathrm T}_{16}=\tfrac12[\deg_a16]\det K$ に寄与する定数ブロックは
+$K_1,\ldots,K_{12}$ で尽くされる。
+完全な $A_1,\ldots,A_8$ から出発して、曲率
+$R_n=\sum_{i=1}^{n-1}A_iA_{n-i}$ をそれぞれ
+\[
+ R_9:\deg_x\le4,\qquad
+ R_{10}:\deg_x\le3,\qquad
+ R_{11}:\deg_x\le2,\qquad
+ R_{12}:\deg_x\le1
+\]
+で切断し、$A_n=-hR_n$ を順に求めれば、
+\[
+ A_9:\deg_x\le3,\qquad
+ A_{10}:\deg_x\le2,\qquad
+ A_{11}:\deg_x\le1,\qquad
+ A_{12}:\deg_x=0
+\]
+を正確に得る。これらで必要な十二個のブロックがすべて決まる。
+\end{lemma}
+
+\begin{proof}
+五行五列の行列式の各項は、$a$ 次数1以上の成分五個の積である。
+従って総次数16に寄与する因子の次数は12以下である。
+Clifford積は $x$ 次数を下げず、$h$ は1下げるので、
+最後の定数項へ到達できる項だけを逆順に追えば、表示した切断限度を得る。
+例えば $A_{12}$ の定数項は $R_{12}$ の1次以下から決まり、
+これには $A_{11}$ の1次以下があればよい。
+その部分は $R_{11}$ の2次以下から決まり、$A_{10}$ の2次以下で十分である。
+同じ議論を続ければ $A_9$ の3次以下と完全な $A_1,\ldots,A_8$ に帰着する。
+
+また $\delta$ は正規表示で $x$ 次数を1上げるので、
+曲率の各 $x$ 斉次成分は別々に $\delta$-closed である。
+従って表示した切断された曲率と補正項についても、
+閉性と対応するMaurer--Cartan等式を有理数上で検証できる。
+\end{proof}
+
+\begin{proposition}[標準点での十六次項と低次正規化の補正]
+\label{prop:v13-actual-sixteenth-values}
+\[
+ F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3,\qquad
+ a_*=(e_1-e_0)\wedge(e_2-e_0)
+       +(e_3-e_0)\wedge(e_4-e_0)
+\]
+とする。このとき $q(a_*)=(1,1,1,1,1)$、$P_{F_*}(a_*)=0$ であり、
+\[
+ \boxed{\displaystyle
+ d^{\mathrm T}_{16}(F_*,a_*)
+ =\frac{3557764176857}{102060000}.}
+\]
+第10版の座標ベクトル場
+$\Phi_7=\operatorname{Alt}K_7$、
+$\Psi_7=\operatorname{Alt}\kappa h(A_1h(A_3^2))$ については、
+\[
+ dH_{10}(\Phi_7)(F_*,a_*)=\frac{5302368}{25},
+ \qquad
+ dH_{10}(\Psi_7)(F_*,a_*)=0.
+\]
+従って
+\[
+ X_7=-\frac{15800}{6137}\Phi_7
+          -\frac{689855}{883728}\Psi_7
+\]
+とおくと、$dH_{10}(X_7)(F_*,a_*)=-546048$ である。
+有効な十六次商で使う代表元
+\[
+ E_{16}=d^{\mathrm T}_{16}+\frac1{96}dH_{10}(X_7)
+\]
+の値は
+\[
+ \boxed{\displaystyle
+ E_{16}(F_*,a_*)=\frac{2977246896857}{102060000}.}
+\]
+\end{proposition}
+
+\begin{proof}
+\texttt{v13\_tate\_sixteenth.py} は標準点の $A_1,\ldots,A_8$ を
+外部の計算キャッシュを読まずに再構成する。
+この部分のMaurer--Cartan等式を有理数で検証し、
+独立な32次元の外積・縮約作用素でも照合する。
+補題\ref{lem:v13-exact-twelfth-truncation}に従って残り四段を計算し、
+各段の切断された曲率の閉性とMaurer--Cartan等式を有理数で検証する。
+十二個の定数ブロックは、$x=0$ における独立な外積・縮約作用素でも照合される。
+既存の $K_1,\ldots,K_{11}$ および15次までの行列式係数は、
+第12版の新規計算による公開データと全成分で一致する。
+
+行列式の新しい係数は
+\[
+ [t^{16}]\det K_{F_*}(ta_*)=\frac{3557764176857}{51030000}
+\]
+である。$\Phi_7,\Psi_7$ の行列、$dq$ による像も同じ再帰から求める。
+対角三次式 $F=\sum_i c_ix_i^3$ については
+\[
+ H_{10}=6^5\prod_{i=0}^4c_iq_i,\qquad
+ dH_{10}(Y)
+ =6^5\sum_{i=0}^4 c_i(dq(Y))_i
+                      \prod_{j\ne i}c_jq_j.
+\]
+この式から表示した二つの微分値を得る。
+$\alpha=15800/6137$、$\beta=689855/883728$ を用いると、
+\[
+ \frac1{96}dH_{10}(X_7)
+ =-\frac{\alpha}{96}\frac{5302368}{25}
+ =-5688.
+\]
+これを未正規化の十六次係数に加えれば最後の値を得る。
+
+すべての有理数ブロック、行列式、ベクトル場および補正量は
+\texttt{v13\_tate\_sixteenth.json} に収録した。
+\texttt{--audit} は保存した十二個のブロックから行列式を再計算し、
+Pfaffian微分、Hessianの微分値、補正後の代表元も有理数で再確認する。
+既定の実行は新規再帰であり、完全な $A_{12}$ や非公開の入力データを必要としない。
+\end{proof}
+
+命題\ref{prop:v13-actual-sixteen-correction}と
+\eqref{eq:v13-sixteen-effective-representative}により、
+$E_{16}$ は既存の有限正規化後の十六次項の有効類を表す。
+上の非零な評価値だけから、その有効類が非零であるとは結論できない。
+有効な接触像への所属は、共変量空間と接触写像の階数を使って別に判定する。
+
+\subsection{十六次商の係数を読み取る十二点の汎関数}
+\label{subsec:v13-sixteenth-rho}
+
+命題\ref{prop:v13-sixteenth-complement}で得た補元を
+$T_{16}=\Theta_8U_4^2$ と書く。
+普遍商が一次元であることを使うと、実際の十六次類は
+固定した対角三次式の上の有限個の評価だけで決定できる。
+
+$F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3$、$u_i=e_i-e_0$ とし、
+\begin{align*}
+ a(b,x,y,z,w)={}&b\,u_1\wedge u_2+x\,u_1\wedge u_3
+       +y\,u_1\wedge u_4+z\,u_2\wedge u_3+w\,u_2\wedge u_4\\
+ &+\frac{1+xw-yz}{b}\,u_3\wedge u_4
+\end{align*}
+とおく。$b\ne0$ なら $q(a)=(1,1,1,1,1)$ であり、
+$P_{F_*}(a)=0$ となる。
+以下の表で十二点 $a_j$ と整数 $N_j$ を指定する。
+
+\begin{center}
+\small
+\begin{tabular}{r|rrrrr|r}
+ $j$&$b$&$x$&$y$&$z$&$w$&$N_j$\\ \hline
+ 0&1&0&0&0&0&1510767119831929052613\\
+ 1&2&0&0&0&0&-662247272760455119872\\
+ 2&3&0&0&0&0&50489862555173579235\\
+ 3&1&1&0&0&0&78606347649894763400\\
+ 4&1&1&1&1&0&-114640079068578143080\\
+ 5&1&1&2&0&1&59225726829655272120\\
+ 6&1&1&-1&-1&0&363557452143472899000\\
+ 7&1&-1&1&-1&-1&-474107275671038100\\
+ 8&1&0&-1&0&-1&-592980195704384042100\\
+ 9&1&-1&1&-1&1&-54925626926618003400\\
+ 10&1&0&-1&-1&-1&220089974146168130160\\
+ 11&1&1&0&0&1&-366444447183161167600
+\end{tabular}
+\end{center}
+
+\begin{proposition}[十六次類の係数汎関数]
+\label{prop:v13-diagonal-rho-sixteenth}
+\[
+ D=2884048771027944336273600,\qquad
+ \rho_{16}(f)=\frac1D\sum_{j=0}^{11}N_j f(F_*,a_j)
+\]
+とおく。すると
+\[
+ \rho_{16}(J_{16})=0,\qquad
+ \rho_{16}(\Theta_8U_4^2)=1.
+\]
+従って任意の $f\in\mathcal C_{16}$ について
+\[
+ [f]=\rho_{16}(f)[\Theta_8U_4^2]
+ \quad\text{in }\mathcal Q^{\mathrm{lin}}_{16}
+                   =\mathcal Q^{\mathrm{eff}}_{16}.
+\]
+\end{proposition}
+
+\begin{proof}
+全ての点で $P=0$ なので、$\rho_{16}$ は
+$P\mathcal U_{10}$ を消す。
+命題\ref{prop:v13-contact-rank-sixteenth}の二十一個のグラフによる
+ベクトル場を $\Gamma_1,\ldots,\Gamma_{21}$ と書く。
+十二点での値を整数および有理数のテンソル縮約で求めると、
+\[
+ \sum_{j=0}^{11}N_j\,dP(\Gamma_i)(F_*,a_j)=0
+ \qquad(1\le i\le21)
+\]
+をすべて厳密に満たす。
+一方、対角三次式上の公式
+\[
+ \Theta_8=\sum_{i<j}a_{ij}^2\prod_{k\ne i,j}c_kq_k,\qquad
+ U_4=\sum_i\prod_{k\ne i}c_k a_{ik}
+\]
+を使うと
+\[
+ \sum_{j=0}^{11}N_j(\Theta_8U_4^2)(F_*,a_j)=D
+\]
+となる。
+
+計算に使った十二行、最初の十一個の接触グラフの列、
+および $\Theta_8U_4^2$ の列からなる正方行列の行列式は
+\[
+ 1356890223458353730451986976679070269440000000\ne0
+\]
+である。
+ただし残り十個の接触グラフについても、上の消滅を有理数上で個別に確認している。
+命題\ref{prop:v13-contact-rank-sixteenth}の直和分解
+\[
+ J_{16}=P\mathcal U_{10}\oplus
+           \langle dP(\Gamma_1),\ldots,dP(\Gamma_{21})\rangle
+\]
+により、$\rho_{16}$ は接触像全体を消す。
+命題\ref{prop:v13-sixteenth-complement}と
+命題\ref{prop:v13-hessian-unit-membership}から、最後の係数公式を得る。
+\end{proof}
+
+\paragraph{有理数上での再現方法.}
+\texttt{v13\_diagonal\_rho\_certificate.json} は、
+十二点、二十一個のグラフ、全評価行列、整数重みを含む。
+\texttt{v13\_diagonal\_rho\_certificate.py} の既定動作は、
+上の二十二個の線形等式と非零行列式を有理数で確認する。
+\texttt{--recompute} は公開されたグラフから全評価値を再構成する。
+
+分数成分を持つ点では共通分母 $d$ を払い、$a'=da$ を使う。
+このとき $\tau(a')=d\tau(a)$、
+$dP$ の交代勾配テンソルは $d^5$ 倍なので、
+十一次ベクトル場の接触像の縮約値は $d^{16}$ 倍される。
+従って、任意精度整数による縮約の結果を $d^{16}$ で割れば元の有理数値に戻る。
+この実装では有限体上の消滅だけを根拠に所属を推測していない。
+
+\subsection{実際の十六次類は零である}
+\label{subsec:v13-actual-sixteenth-zero}
+
+\begin{theorem}[実際の十六次接触類の消滅]
+\label{thm:v13-actual-sixteenth-class}
+実際のTate方程式について
+\[
+ \rho_{16}(d^{\mathrm T}_{16})=0,\qquad
+ \rho_{16}\bigl(dH_{10}(\Phi_7)\bigr)=0,\qquad
+ \rho_{16}\bigl(dH_{10}(\Psi_7)\bigr)=0
+\]
+が成立する。従って、この三つの共変量はそれぞれ $J_{16}$ に含まれ、
+低次正規化後の実際の十六次項は
+\[
+ \boxed{[R_{16}]=0\quad\text{in }\mathcal Q^{\mathrm{eff}}_{16}}
+\]
+を満たす。
+\end{theorem}
+
+\begin{proof}
+命題\ref{prop:v13-diagonal-rho-sixteenth}の十二点について、
+補題\ref{lem:v13-exact-twelfth-truncation}の再帰を行う。
+標準点 $a_0$ の新規計算済みデータを再利用し、残る十一点では
+$A_1,\ldots,A_8$ をそれぞれ新たに作る。
+全ての点で有理数上のMaurer--Cartan等式を検証し、
+独立な外積作用素と定数ブロックの照合を行った。
+この後に $K_9,\ldots,K_{12}$ を正確な $x$ 切断で求め、
+行列式の十六次係数を計算する。
+同時に既存の二つのベクトル場の $dq$ による像から
+$dH_{10}(\Phi_7)$、$dH_{10}(\Psi_7)$ を求める。
+
+各値を表示した整数重みで足すと、有理数上で厳密に
+\begin{align*}
+ \sum_{j=0}^{11}N_jd^{\mathrm T}_{16}(F_*,a_j)&=0,\\
+ \sum_{j=0}^{11}N_jdH_{10}(\Phi_7)(F_*,a_j)&=0,\\
+ \sum_{j=0}^{11}N_jdH_{10}(\Psi_7)(F_*,a_j)&=0
+\end{align*}
+となる。従って
+\[
+ \rho_{16}\left(
+ d^{\mathrm T}_{16}-\frac{\alpha}{96}dH_{10}(\Phi_7)
+                   -\frac{\beta}{96}dH_{10}(\Psi_7)\right)=0
+\]
+でもある。
+$\ker\rho_{16}=J_{16}$ は既に普遍的に決定されているので、
+最初の三つの共変量は個別に $J_{16}$ に入る。
+\eqref{eq:v13-sixteen-effective-representative}より
+実際の正規化後の十六次類も零である。
+
+\texttt{v13\_actual\_sixteenth\_certificate.json} は十二点の
+全ての定数ブロック、行列式係数、低次正規化のベクトル場、
+Hessian微分値および重み付き和を一つにまとめた公開データである。
+\texttt{v13\_actual\_sixteenth\_certificate.py} は十二個の行列式を再計算し、
+三つの表示した和、補正項の和、補正後の代表元の和が全て零となることを確認する。
+従って、この結論は有限体上での零や近似計算による判定ではない。
+\end{proof}
+
+\begin{corollary}[七次座標変更のHessian作用も接触像に含まれる]
+\label{cor:v13-seventh-Hessian-in-image}
+\[
+ dH_{10}(\mathcal G_7)\subset J_{16}
+\]
+である。特に、十六次類に関しては
+$dH_{10}(X_7)$ の補正も接触像に吸収できる。
+\end{corollary}
+\begin{proof}
+第10版で示した $dF:\mathcal D_8\to\mathcal C_{12}$ の単射性と
+十二次接触像の四次元の基底から、
+\[
+ \mathcal D_8
+ =q\mathcal U_6\oplus
+       \mathbb C\,\delta q(\Phi_7)\oplus
+       \mathbb C\,\delta q(\Psi_7)
+\]
+となる。実際、$q\mathcal U_6$ は $dF$ によって
+$3P\mathcal U_6$ に写り、残る二つの像と合わせて四次元の接触像を張る。
+$H_{10}=h(q)$、$h=\det\operatorname{Hess}F$ は $q$ に五次なので、
+$q\mathcal U_6$ のHessian作用は $5H_{10}\mathcal U_6$ に入る。
+これは命題\ref{prop:v13-hessian-unit-membership}により $J_{16}$ に含まれる。
+残る二つの方向も定理\ref{thm:v13-actual-sixteenth-class}によって
+$J_{16}$ に含まれる。
+また $\delta q$ の核は $H_{10}=h(q)$ に零作用するので、主張が従う。
+\end{proof}
+
+\Needspace{24\baselineskip}
+\begin{theorem}[残余項が18次以降の代数的・収束的な偶正規形]
+\label{thm:v13-eighteenth-even-normal-form}
+実際のTate境界には、普遍同変な代数的冪級数による接触変換の下で
+\begin{equation}\label{eq:v13-eighteenth-even-normal-form}
+ \boxed{\displaystyle
+ d^{\mathrm T}\ \sim\
+ P_F+\frac1{96}\det\operatorname{Hess}_F(q(a))
+       +\sum_{\substack{n\ge18\\n\ \mathrm{even}}}R_n,
+ \qquad R_n\in\mathcal C_n
+ }
+\end{equation}
+という正規形が存在する。
+座標変更の線形部は恒等写像、単元の定数項は1であり、
+各形式係数は $F$ の係数に多項式的である。
+各固定 $F$ では、変更と右辺の級数は原点近傍で収束する。
+\end{theorem}
+\begin{proof}
+定理\ref{thm:v13-algebraic-even-normal-form}の偶正規形から出発する。
+系\ref{cor:v13-even-normalization-comparison}と
+定理\ref{thm:v13-actual-sixteenth-class}により、その十六次係数は
+$J_{16}+H_{10}\mathcal U_6=J_{16}$ に含まれる。
+従ってそれを $dP(\Xi_{11})$ と書き、
+\[
+ a\longmapsto a-\Xi_{11}(F,a),\qquad \Xi_{11}\in\mathcal G_{11}
+\]
+と変更すれば十六次項が消える。
+$\Xi_{11}$ は奇数次なので、この座標変更は奇写像であり、
+方程式の全次数における偶性を保つ。
+その $H_{10}$ への最初の寄与は20次であり、
+既に正規化した15次以下を変えない。
+有限な多項式座標変更は原点で可逆であり、
+既存の代数的・収束的な変更と合成しても同じ性質を持つ。
+これで表示した正規形を得る。
+\end{proof}
+
+十六次の普遍商は零ではなく、
+$[\Theta_8U_4^2]$ という非零の候補を持つ。
+今回確定したのは、実際の境界がこの候補方向に成分を持たないことである。
+十八次以降の偶数次項が全て消えるという主張は、まだ得ていない。
+
+
+\clearpage
+% BEGIN characters/v14_character_notes.tex
+% 第14版への追加用LaTeX断片。既存本文の定理環境とAMSパッケージを用いる。
+\section{18次の普遍共変量と対角制限の限界}
+\label{sec:v14-eighteenth-characters}
+
+この節では、18次の接触問題の有限次元の入力を決定する。
+以下の次元は整数指標計算による確定値である。
+接触写像の階数、Koszul複体の完全性、実際の18次境界係数は、
+ここでの計算のみからは決まらない。
+
+\subsection{次数とdeterminant twistの導出}
+
+$\dim V=5$、$A=\Lambda^2V$、$\Delta=\det V$、
+$W=A\otimes\Delta^{-1}$ とする。
+$F\in\operatorname{Sym}^3V$、$a\in W$ に対し、
+$q(a)=\tfrac12a\wedge a\in V^*\otimes\Delta^{-1}$、
+$P(F,a)=F(q(a))\in\Delta^{-3}$ である。
+中心元 $t\,\mathrm{id}_V$ は $F$、$a$、$P$ にそれぞれ
+$t^3$、$t^{-3}$、$t^{-15}$ で作用する。
+したがって境界の $a$ 次数 $n$ の項は $F$ 次数 $n-5$ を持ち、
+$a$ 次数 $r$ の座標補正は $F$ 次数 $r-1$、
+$a$ 次数 $s$ の単元補正は $F$ 次数 $s$ を持つ。
+trace線を外した表示は
+\begin{align*}
+\mathcal C_n&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{n-5}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^n A,\Delta^{n-3}\right),\\
+\mathcal G_r&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{r-1}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^r A,A\otimes\Delta^{r-1}\right),\\
+\mathcal D_{r+1}&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{r-1}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^{r+1} A,\Lambda^4V\otimes\Delta^{r-1}\right),\\
+\mathcal U_s&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^s(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^s A,\Delta^s\right).
+\end{align*}
+18次では $n=18$、$r=13$、$s=12$ である。
+
+さらに $g=\nabla F(q)$ は、trace線を外した変数では
+$F$ 次数1、$a$ 次数4の $V\otimes\Delta^2$ 値共変量となる。
+従ってKoszulの第 $k$ 項は
+\begin{equation}\label{eq:v14-koszul-general-term}
+\mathcal K_{k,n}=
+\operatorname{Hom}_{\mathrm{GL}(V)}
+\left(\operatorname{Sym}^{n-5-k}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^{n-4k}A,
+ \Lambda^kV^*\otimes\Delta^{n-3-2k}\right).
+\end{equation}
+$\mathcal K_{0,n}=\mathcal C_n$、
+$\mathcal K_{1,n}=\mathcal D_{n-4}$、
+$\mathcal K_{2,n}=\mathcal B_n$ と一致する。
+これは各段で $g$ と縮約すると、$F$ 次数が1、$a$ 次数が4、
+determinant指数が2だけ増えることによる。
+この次数の確認を経ずに、前の版の添字だけを置き換えることはしない。
+
+\begin{proposition}[18次の次元]\label{prop:v14-eighteenth-dimensions}
+次の次元が成り立つ。
+\[
+\begin{array}{c|rrrrrrr}
+ &\mathcal C_{18}&\mathcal G_{13}&\mathcal U_{12}&\mathcal D_{14}
+ &\mathcal B_{18}&\mathcal K_{3,18}&\mathcal K_{4,18}\\\hline
+\dim&119&372&58&212&112&19&1
+\end{array}
+\]
+\end{proposition}
+
+\begin{proof}
+Littlewood分解
+\[
+\operatorname{Sym}^d A=
+\bigoplus_{j=0}^{\lfloor d/2\rfloor}
+ S_{(d-j,d-j,j,j,0)}V
+\]
+を用いる。長方形内の補分割を取ると、
+$\mathcal C_{18}$ は
+$\operatorname{Sym}^{13}(\operatorname{Sym}^3V)$ の
+$\lambda_j=(15,12-j,12-j,j,j)$ 成分、
+$\mathcal U_{12}$ は
+$\operatorname{Sym}^{12}(\operatorname{Sym}^3V)$ の
+$\mu_j=(12,12-j,12-j,j,j)$ 成分の重複度の和となる。
+それぞれの重複度は
+\[
+\begin{array}{c|rrrrrrr}
+j&0&1&2&3&4&5&6\\\hline
+[S_{\lambda_j}]&3&3&20&27&47&11&8\\
+{}[S_{\mu_j}]&2&1&8&12&24&6&5
+\end{array}
+\]
+であり、和は119と58である。
+
+残る五空間も、次の表のhighest weightの重複度として計算する。
+\[
+\begin{array}{c|rr|c|r}
+\text{空間}&F\text{次数}&a\text{次数}&\text{値域のhighest weight}&\dim\\\hline
+\mathcal G_{13}&12&13&(13,13,12,12,12)&372\\
+\mathcal D_{14}&12&14&(13,13,13,13,12)&212\\
+\mathcal B_{18}&11&10&(11,11,11,10,10)&112\\
+\mathcal K_{3,18}&10&6&(9,9,8,8,8)&19\\
+\mathcal K_{4,18}&9&2&(7,6,6,6,6)&1
+\end{array}
+\]
+各行では入力の中心重み $3\deg_F+2\deg_a$ と、
+値域のhighest weightの総和も一致する。
+
+計算証明書の算法を明示する。
+35個の三次単項式の重みを $\alpha$ として
+\[
+ \prod_{|\alpha|=3}(1-tx^\alpha)^{-1}
+ =\sum_{m,\beta}M_m(\beta)t^mx^\beta
+\]
+を整数の動的計画法で計算する。
+$\rho=(4,3,2,1,0)$ とすると、重複度は
+\[
+ [\operatorname{Sym}^m(\operatorname{Sym}^3V):S_\lambda V]
+ =\sum_{\sigma\in\mathfrak S_5}
+  \operatorname{sgn}(\sigma)\,
+  M_m(\lambda+\rho-\sigma\rho)
+\]
+で与えられる。左辺の記法は $S_\lambda V$ の出現重複度を表す。
+一般の二つのcharacterの積に対しても同じ交代式を用いる。
+
+独立な照合として、$h_m=\operatorname{ch}\operatorname{Sym}^m
+(\operatorname{Sym}^3V)$ を
+\[
+ m h_m=\sum_{k=1}^m p_kh_{m-k},\qquad
+ p_k=\sum_{|\alpha|=3}x^{k\alpha},\qquad h_0=1
+\]
+というNewton--Adams再帰でも計算した。
+$1\le m\le13$ の全重みで両算法の整数係数が一致し、
+$m=13$ では123410個の重みを照合した。
+さらに $9\le m\le13$ の全Schur分解について
+\[
+ \sum_\lambda m_\lambda\dim S_\lambda V=\binom{m+34}{m}
+\]
+をWeyl次元公式で確認した。
+$\mathcal G_{13}$ と $\mathcal D_{14}$ は22行のPieri分解とも一致する。
+三つのKoszul源は、別実装の縦strip Pieri算法でも同じ値になる。
+計算は全て整数または有理数によるものであり、標本評価や浮動小数点近似を用いない。
+\end{proof}
+
+\paragraph{Pfaffian微分についての帰結.}
+第12版の全次数Pfaffian全射定理を $r=13$ に適用すると
+\[
+ \delta q:\mathcal G_{13}\twoheadrightarrow\mathcal D_{14},
+ \qquad\operatorname{rank}\delta q=212,\qquad
+ \dim\ker\delta q=160
+\]
+となる。この全射性は指標の一致だけから導いているのではなく、
+既存の全次数定理に依存する。
+18次接触写像の残る問題は $dF:\mathcal D_{14}\to\mathcal C_{18}$ の階数である。
+
+\paragraph{KoszulのEuler標数は階数を決めない.}
+18次の該当成分は
+\[
+ 0\longrightarrow\mathcal K_{4,18}
+ \longrightarrow\mathcal K_{3,18}
+ \longrightarrow\mathcal B_{18}
+ \longrightarrow\mathcal D_{14}
+ \longrightarrow\mathcal C_{18}\longrightarrow0
+\]
+という複体であり、各空間の次元は順に $1,19,112,212,119$ である。
+$k=5$ では $a$ 次数が $-2$ となるので項は零である。
+従ってEuler標数は
+\[
+ 119-212+112-19+1=1.
+\]
+この等式から $\dim\mathcal C_{18}/dF(\mathcal D_{14})=1$ とは結論できない。
+そのためには、他のホモロジーを別に決定する必要がある。
+
+\subsection{Fermat値と法方向一階微分で検出できない成分}
+
+$F_{\mathrm{Fer}}=x_0^3+\cdots+x_4^3$、
+$H=\mu_3^5\rtimes\mathfrak S_5$、
+$N=\operatorname{Jac}(F_{\mathrm{Fer}})_3$ とおく。
+$N$ は平方因子を持たない三次単項式10個で張られる。
+$S_\lambda V$ の普遍出現重複度を $m_\lambda$ とし、
+\[
+ h_0(\lambda)=\dim(S_\lambda V)^H,\qquad
+ h_1(\lambda)=\dim\operatorname{Hom}_H(N,S_\lambda V)
+\]
+と書く。値の制限階数は $\min(m_\lambda,h_0)$ 以下であり、
+値と全法方向一階微分を合わせても $\min(m_\lambda,h_0+h_1)$ 以下である。
+Pieri側の重複度がある場合は、この上界にその重複度を掛けて足す。
+これは評価写像の実際の階数ではなく、表現論的な上界である。
+
+\begin{proposition}[18次の対角制限と一階jetの上界]
+\label{prop:v14-eighteenth-visibility}
+次の上界と下界が成り立つ。
+\[
+\begin{array}{c|rrrr}
+&\mathcal C_{18}&\mathcal U_{12}&\mathcal D_{14}&\mathcal G_{13}\\\hline
+\text{普遍次元}&119&58&212&372\\
+\text{対角値の階数上界}&61&22&93&154\\
+\text{対角値の核の次元下界}&58&36&119&218\\
+\text{値と法方向一階jetの階数上界}&119&54&208&365\\
+\text{同じ一階jetの核の次元下界}&0&4&4&7
+\end{array}
+\]
+特に単元空間・Pfaffian微分の終域・座標補正空間については、
+Fermat値と全法方向一階微分だけを用いても普遍空間全体を検出できない。
+\end{proposition}
+
+\begin{proof}
+有限群の指標平均を $\mathbb Q(\zeta_3)$ 上で正確に計算する。
+$\mathcal C_{18}$ に必要な表は
+\[
+\begin{array}{c|r|r|r}
+\lambda&m_\lambda&h_0&h_1\\\hline
+(15,12,12,0,0)&3&122&993\\
+(15,11,11,1,1)&3&60&629\\
+(15,10,10,2,2)&20&52&452\\
+(15,9,9,3,3)&27&20&180\\
+(15,8,8,4,4)&47&11&79\\
+(15,7,7,5,5)&11&1&12\\
+(15,6,6,6,6)&8&3&5
+\end{array}
+\]
+となり、値の上界は $3+3+20+20+11+1+3=61$ である。
+単元空間については
+\[
+\begin{array}{c|r|r|r}
+\lambda&m_\lambda&h_0&h_1\\\hline
+(12,12,12,0,0)&2&18&79\\
+(12,11,11,1,1)&1&8&81\\
+(12,10,10,2,2)&8&12&97\\
+(12,9,9,3,3)&12&5&41\\
+(12,8,8,4,4)&24&4&23\\
+(12,7,7,5,5)&6&0&3\\
+(12,6,6,6,6)&5&2&2
+\end{array}
+\]
+である。最後の二成分には一階jetでもそれぞれ少なくとも3方向と1方向の核がある。
+この二成分は $\mathcal D_{14}$ 側にはそれぞれ外側重複度1、1で、
+$\mathcal G_{13}$ 側には2、1で現れる。
+したがって同じ核の下界はそれぞれ4、7である。
+他の成分を含む22行のPieri表と指標平均はJSON証明書に全て保存した。
+\end{proof}
+
+\paragraph{18次研究への含意.}
+接触像の厳密な階数を決める際には、一般の三次テンソルを含む評価を使うか、
+必要な場合は二階以上の法方向jetを加える必要がある。
+$\mathcal C_{18}$ の一階jetの上界119は普遍次元と等しいが、
+このことだけでは一階jetによる単射性を意味しない。
+また $P\mathcal U_{12}\subset dP(\mathcal G_{13})$ はEulerの等式により
+58次元の単元方向を与えるが、それだけでは残る接触像や18次商は決まらない。
+
+\subsection{再現用ファイルと確認範囲}
+
+\texttt{v14\_character\_certificate.py} は、原第13版の次の三ファイルを変更せず読み込む。
+\begin{itemize}
+ \item \texttt{nc\_cubic\_verify\_v7.py}
+ \item \texttt{v9\_verify\_contact\_bounds.py}
+ \item \texttt{v11\_fermat\_scope\_certificate.py}
+\end{itemize}
+原コードのEuler積、交代式、有限安定化群の指標平均に加え、
+Newton--Adams再帰、全Schur次元、22行のPieri整合性を検査する。
+\texttt{v14\_koszul\_pieri\_check.py} は旧Pieri実装を使わず、
+行の部分集合を列挙してKoszul源の三つの次元を再検算する。
+\texttt{v14\_jet\_visibility\_certificate.py} は上の一階jet上界を再計算する。
+新しい計算証明書とログは旧版の証明書から分離して保存する。
+
+本節の結論は、新たに確認した有限次元表現論の命題と、
+既存のPfaffian全射定理からの帰結に限る。
+実際の18次Tate項の接触像への所属は、後続の節で独立に検証する。
+20次以上の全消去は未決定である。
+
+% END characters/v14_character_notes.tex
+
+
+% BEGIN rank/rank18_section_ja.tex
+\section{十八次の通常接触商}
+\label{sec:v14-ordinary-contact}
+
+\subsection{18次の通常接触階数と一つの補元}
+\label{subsec:v14-eighteenth-contact-rank}
+
+以下では $P=P_F=F(q(a))$、$g=\nabla F(q(a))$ とし、
+$J_{18}=dP(\mathcal G_{13})$ とおく。
+前節の整数指標計算から
+\[
+ \dim\mathcal C_{18}=119,\quad
+ \dim\mathcal G_{13}=372,\quad
+ \dim\mathcal D_{14}=212,\quad
+ \dim\mathcal U_{12}=58
+\]
+を用いる。また命題\ref{prop:v12-uniform-pfaffian-surjectivity}により
+$\delta q:\mathcal G_{13}\twoheadrightarrow\mathcal D_{14}$ は全射である。
+本小節は、Koszul複体の完全性を仮定せず、像と核の有限証明書を独立に構成する。
+
+\begin{proposition}[18次の通常接触階数]
+\label{prop:v14-contact-rank-eighteenth}
+普遍共変量の空間上で
+\[
+ \operatorname{rank}(dP:\mathcal G_{13}\longrightarrow\mathcal C_{18})=118,
+ \qquad \dim\ker dP=254.
+\]
+さらに
+\[
+ \operatorname{rank}(dF:\mathcal D_{14}\longrightarrow\mathcal C_{18})=118,
+ \qquad \dim\ker dF=94.
+\]
+公開データの六十個の座標場を $\Gamma_1,\ldots,\Gamma_{60}$ とすると
+\[
+ J_{18}=P\mathcal U_{12}\oplus
+    \operatorname{Span}_{\CC}\{dP(\Gamma_1),\ldots,dP(\Gamma_{60})\}.
+\]
+また、九十四個の明示的なKoszulベクトルが $\ker dF$ の基底となる。
+\end{proposition}
+
+\begin{proof}
+\textbf{普遍的なkernel方向の構成。}
+第\ref{subsec:v13-sixteenth-tensor-rank}節と同じテンソル規約を用いる。
+$F_{ijk}=F_{(ijk)}$、$\tau_{ijk}=\epsilon_{ijklm}a_{lm}$ とし、
+$l<m$ は $i,j,k$ の補集合とする。
+三価二部グラフの左に十一個の $F$、右に十個の $\tau$ を置き、
+第十一右頂点の三本の脚を自由にする。
+その三階テンソルを $R^{ijk}$ として
+\[
+ \beta_{lm}=\sum_{i,j,k}\epsilon_{lmijk}R^{ijk},\qquad h=\beta g
+\]
+と定める。$\beta$ は $F$ に十一、$a$ に十の次数を持ち、
+$\mathcal B_{18}$ の元となる。
+交代性から $g\cdot h=g^{\mathrm t}\beta g=0$ が恒等的に成立するので、
+$h\in\ker(dF:\mathcal D_{14}\to\mathcal C_{18})$ である。
+
+この方法で構成した九十四個の $h$ を三十個の整数入力で評価し、
+五成分を並べた行列には、素数1009を法として
+\[
+                 \det M_{\mathrm K}\equiv7\pmod{1009}
+\]
+となる $94\times94$ 小行列がある。
+全グラフ・全入力・選択行は
+\texttt{koszul18\_search.json} に、
+有理数上で再縮約した小行列の全成分は
+\texttt{koszul18\_exact\_minor.json} に記録した。
+従って九十四個の普遍ベクトルは特性零で独立であり、
+\[
+                         \operatorname{rank}dF\le212-94=118.
+\]
+
+\textbf{接触像の下界。}
+今度は左に十二個の $F$、右に十三個の $\tau$ を置き、
+第十三左頂点の三本の脚を自由にする。
+得られる $R_{ijk}$ から
+\[
+              \Gamma^{lm}=\frac16\sum_{i,j,k}\epsilon_{lmijk}R_{ijk}
+\]
+と定める。これは $F^{12}a^{13}$ の次数を持つ
+$\mathcal G_{13}$ の元である。
+$T_{ijk}=\epsilon_{ijklm}(\partial P/\partial a_{lm})$ と置けば、
+閉じたグラフの縮約
+\[
+                         \frac16\sum_{i,j,k}R_{ijk}T_{ijk}
+\]
+が $dP(\Gamma)$ を与える。
+
+六十二個の整数入力を
+\[
+ q(a)=(1,1,1,1,1),\qquad
+ P=\sum_{i,j,k}F_{ijk}=0
+\]
+となるように取る。この等式は有限体だけでなく有理数体上で成立する。
+これらの評価は $P\mathcal U_{12}$ を消す。
+選んだ六十個の場に対する評価行列には
+\[
+                    \det M_{\mathrm G}\equiv889\pmod{1009}
+\]
+となる $60\times60$ 小行列がある。
+全ての縮約は整数演算であり、場の正規化の唯一の分母6は1009で可逆である。
+従って、これは特性零での、$P\mathcal U_{12}$ を法とする独立性の証明書となる。
+データと有理数による再縮約は
+\texttt{contact18\_search.json} と
+\texttt{contact18\_exact\_minor.json} に記録した。
+
+一方、Eulerの関係
+\[
+                         dP(au/6)=Pu
+\]
+から $P\mathcal U_{12}\subset J_{18}$ である。
+多項式環は整域なので、この部分空間は58次元である。
+よって $\operatorname{rank}dP\ge60+58=118$。
+全射 $\delta q$ による因子分解 $dP=dF\circ\delta q$ と合わせると
+上下界が一致する。核の次元と、構成したKoszul像が全kernelを尽くすことも従う。
+\end{proof}
+
+\begin{remark}[有限体の役割と独立な再検算]
+探索に擬似乱数を用いたが、採用したグラフと整数入力は全て固定して公開している。
+非零の小行列式を有限体で確認する操作は、有理数体上の独立性を証明するものであり、
+確率的な階数の推測ではない。
+発見時の縮約は左頂点で辺を番号付けし、明示的な軸の縮約を用いた。
+独立監査では右頂点で番号付けし、整数 \texttt{einsum} によって全入力を再計算した。
+各縮約の和の上界を確認して整数のoverflowを排除し、演算ごとに1009で還元している。
+両方法で小行列式 $7,889$ を再現し、さらに小行列の全成分を
+多倍長整数・有理数で再計算した。
+\end{remark}
+
+\begin{proposition}[18次の通常商]
+\label{prop:v14-ordinary-eighteenth-quotient}
+第\ref{subsec:v13-sixteenth-tensor-rank}節の四面体unit $U_4$ と、
+第28節の六頂点unit $J_6$ を用いると
+\[
+                   \mathcal C_{18}/J_{18}
+                         =\CC\cdot[\Theta_8U_4J_6].
+\]
+\end{proposition}
+\begin{proof}
+$\Theta_8U_4J_6$ は $F^{13}a^{18}$ の次数を持つので
+$\mathcal C_{18}$ に属する。
+上の六十列にこの共変量の評価列を加えると、
+$61\times61$ 小行列式が1009を法として948となる。
+従って、この共変量は $J_{18}$ に属さない。
+前命題と $\dim\mathcal C_{18}=119$ から商は一次元である。
+$\Theta_8,U_4,J_6$ の六十二点での値は全て有理数で再計算し、
+\texttt{complement18\_certificate.json} に記録した。
+\end{proof}
+
+\subsection{有限評価が普遍所属を判定する理由}
+\label{subsec:v14-evaluation-and-divisibility}
+
+後で接触像への所属を評価値から判定するため、
+$P\mathcal U_{12}$ で割った商の大きさを確認する。
+三次式の係数を $F_\alpha$ として
+\[
+ R=\CC[a_{ij},F_\alpha],\qquad
+ P=\sum_{|\alpha|=3}F_\alpha q(a)^\alpha
+\]
+と書く。テンソル係数の規約で現れる非零の整数係数は、以下の議論を変えない。
+Pl\"uckerイデアルは高さ3なので、五つの $q_i$ の共通因子は1である。
+$q_i^3$ を含む上の係数のcontentも1であり、
+$P$ は $\CC[a]$ 上primitiveである。
+$\CC(a)[F_\alpha]$ 上では非零一次式として既約なので、Gaussの補題により
+$P$ は $R$ でも既約となる。
+
+従って $\mathcal C_{18}$ の元が $P=0$ の全スキーム上で消えれば、
+その元は $P$ で割り切れる。
+商の $F,a$ に関する次数はともに12であり、
+$P$ と元の式の変換則を割るとunitの変換則を得る。
+よってその商は $\mathcal U_{12}$ に属する。
+このことから、制限の核はちょうど $P\mathcal U_{12}$ であり、
+\[
+                         \dim\bigl(\mathcal C_{18}/P\mathcal U_{12}\bigr)=61.
+\]
+前小節の六十個の接触像と一つの補元は、この商全体の基底を与える。
+そのため、この六十像を消し、$\Theta_8U_4J_6$ を1へ送る
+\emph{有理数上の}有限評価汎関数は、通常接触商の係数を正確に読み取る。
+ある追加列が1009を法として像に入るという観察だけでは、
+特性零での所属を結論しない。
+
+% END rank/rank18_section_ja.tex
+
+
+% BEGIN contact/contact_log_reduction_ja.tex
+% 第14版追加候補。第13版原稿のプリアンブル・記号・既存ラベルを用いる。
+% 作成日：2026-10-29。原稿内の既存命題を入力として明記する。
+
+\section{接触変換の対数と18次の有効作用}
+\label{sec:v14-log-contact}
+
+本節では、低次の正規形を保つ接触変換を、接触作用素の対数によって
+有限個の線形条件へ帰着する。これにより18次では、通常のJacobian像に
+加えて調べるべき方向を、Hessianの八次単元倍と一つの追加方向に絞れる。
+この段階では、追加方向が通常のJacobian像に含まれるとは仮定しない。
+
+以下、$P=P_F=F(q(a))$、$H=H_{10}=\det\operatorname{Hess}_F(q(a))$、
+$c=1/96$ と書く。$F$ は接触変換の間に固定し、全ての係数は
+$F$ に多項式的かつ $\mathrm{GL}(V)$ 同変とする。
+座標変更の線形項は恒等写像、単元の定数項は1に固定する。
+$\mathcal G_r,\mathcal U_s,\mathcal C_n$ の規約は既存の節と同じである。
+
+\subsection{全次数で使えるfilteredな対数補題}
+
+\begin{lemma}[接触作用素の対数]
+\label{lem:v14-contact-logarithm}
+$R$ を $\mathbb Q$-代数、$A=R[[a_1,\ldots,a_m]]$、
+$\mathfrak m=(a_1,\ldots,a_m)$ とする。
+$\chi=a+O(\mathfrak m^{s+1})$、$u=1+O(\mathfrak m^s)$、$s\ge1$ に対し
+\[
+ T(f)=u\,f\circ\chi
+\]
+と置く。このとき $\log T$ は一意に
+\[
+ L=Y+b
+\]
+と書ける。ここで $Y$ は連続な $R$-導分、$Y(a_i)\in\mathfrak m^{s+1}$、
+$b\in\mathfrak m^s$ は乗算作用素である。
+逆にこの形の $L$ の指数は、上と同じ型の接触作用素を与える。
+
+$f\in A$、$N\ge0$ に対し
+\[
+ T(f)-f\in\mathfrak m^N\quad\Longleftrightarrow\quad
+ L(f)\in\mathfrak m^N.
+\]
+これらが成立するとき
+\[
+ T(f)-f\equiv L(f)\pmod{\mathfrak m^{N+s}}.
+\]
+従って、指定された次数未満のjetを保つ条件と次の次数における作用は、
+$L(f)$ の斉次成分を用いる線形条件で完全に記述できる。
+\end{lemma}
+
+\begin{proof}
+$T-1$ は $\mathfrak m$-進次数を少なくとも $s$ 上げるので、
+$\log T=\sum_{j\ge1}(-1)^{j+1}(T-1)^j/j$ は収束する。
+対数が一階作用素であることを確認する。
+各有限jet上で
+\[
+ T^t=\sum_{j\ge0}\binom tj(T-1)^j
+\]
+は $t$ の多項式である。非負整数 $t$ では $T^t$ は接触作用素の反復なので
+\[
+ T^t(fg)\,T^t(1)=T^t(f)\,T^t(g)
+\]
+が成立する。有限jetごとの多項式恒等式として全ての $t$ で成立し、
+$t=0$ で微分すると
+\[
+ L(fg)+fgL(1)=L(f)g+fL(g)
+\]
+を得る。従って $b=L(1)$、$Y=L-b$ と置けば $Y$ は導分である。
+次数の条件も $T-1$ の条件から従い、$b=L(1)$ により分解は一意である。
+
+逆に $L=Y+b$ について、$u_t=\exp(tL)(1)$ と置く。
+微分方程式を比較すると
+\[
+ \exp(tL)(f)=u_t\,\exp(tY)(f)
+\]
+である。$\exp(tY)$ は形式自己同型だから、$t=1$ で接触作用素を得る。
+これらの構成では有限jetごとに有限回の和・積と有理数による除算だけを用いる。
+
+最後に、$T(f)-f\in\mathfrak m^N$ なら対数の第2項以降は
+$\mathfrak m^{N+s}$ に入る。逆向きは指数級数に同じ議論を適用する。
+これで同値と合同式を得る。
+\end{proof}
+
+\begin{remark}[単元とその対数の規約]
+$L$ の乗算成分 $b$ は、一般には $\log u$ そのものではない。
+座標変更と単元の合成が対数に含まれるためである。
+以下の $b_k$ は常に $\log T$ の乗算成分を表し、
+具体的な有限正規化の単元の斉次成分とは区別する。
+この区別を保てば、mergedな単元表示も逐次合成も同じ補題で扱える。
+\end{remark}
+
+\begin{corollary}[次のjetの有効作用は線形条件の核からの像である]
+\label{cor:v14-filtered-contact-linearization}
+$L=\sum_{k\ge s}Q_k$ と内部の $a$ 次数増分で分解し、
+$Q_k=Y_{k+1}+b_k$ とする。$f=\sum_j f_j$ に対し、
+$N$ 次未満を保つ接触変換が $N$ 次に与える差の集合は、
+\[
+ \sum_{k+j=n}Q_kf_j=0\quad(n<N)
+\]
+という有限個の線形条件を満たす $Q_k$ による
+\[
+ \sum_{k+j=N}Q_kf_j
+\]
+の像である。特にこれは線形部分空間である。
+普遍共変量の場合、対数・指数の各係数も $F$ に多項式的で同変である。
+必要な有限jetは、多項式の座標変更と単元で実現できる。
+\end{corollary}
+
+\begin{proof}
+補題を $N$ 次まで適用する。$Q_k$ は指定次数を $k$ 上げるので、
+表示された条件はちょうど $L(f)$ の $N$ 次未満の消滅である。
+各有限次数での対数・指数は有限和であり、同変性と係数の多項式性を保つ。
+最後に座標変更と単元の不要な高次項を切り捨てても、対象の有限jetは変わらない。
+\end{proof}
+
+\subsection{18次での全接触作用と偶性を保つ作用の一致}
+
+既存の低次計算により $\mathcal G_2=\mathcal G_3=\mathcal G_4=0$、
+$\mathcal U_1=\mathcal U_2=\mathcal U_3=0$ なので、最小の次数増分は4である。
+$Q_k\in\mathcal G_{k+1}\oplus\mathcal U_k$ と書く。
+$f=P+cH+R_{18}+O(a^{19})$ の17次までを保つ条件は、対数を用いると
+\[
+ Q_kP+cQ_{k-4}H=0\quad(4\le k\le11),
+ \qquad Q_j=0\ (j<4)
+\]
+であり、18次の変化は
+\[
+ Q_{12}P+cQ_8H
+\]
+である。
+偶数の次数増分だけを並べると
+\begin{equation}\label{eq:v14-even-stabilizer-chain}
+ \begin{split}
+ Q_4P&=0,\qquad Q_6P=0,\\
+ Q_8P+cQ_4H&=0,\qquad Q_{10}P+cQ_6H=0.
+ \end{split}
+\end{equation}
+奇数の増分についても独立に
+\[
+ Q_5P=Q_7P=0,\qquad
+ Q_9P+cQ_5H=Q_{11}P+cQ_7H=0
+\]
+となる。
+
+\begin{proposition}[18次では偶性保存への制限で有効像が変わらない]
+\label{prop:v14-parity-restriction}
+17次までの $P+cH$ を保つ全ての普遍接触変換の18次像は、
+奇写像の座標変更と偶関数の単元だけを許した18次像と一致する。
+\end{proposition}
+
+\begin{proof}
+$P,H$ はともに偶関数であり、$Q_k$ は次数を $k$ 増やすため、
+上の低次条件は偶増分と奇増分で分離する。18次の変化には
+$Q_{12},Q_8$ だけが現れる。従って任意の解の奇増分成分を捨てても、
+低次条件と18次作用は変わらない。
+偶増分だけを持つ $L$ は $a\mapsto-a$ と可換する。
+その指数から得られる座標変更は奇写像、単元は偶関数である。
+逆の包含は明らかである。
+\end{proof}
+
+この証明は、任意の次数で同変接触分類と非同変接触分類が一致するという主張ではない。
+ここでは $F$ に普遍同変な変換の範囲を保ち、$P+cH$ の18次作用だけを扱っている。
+同じ対数の偶奇分離は、他の偶数次でも下の正規形が偶関数であれば利用できる。
+
+\subsection{九次の接触安定化場のHessian作用}
+
+$J_{18}=dP(\mathcal G_{13})\subset\mathcal C_{18}$ と置く。
+Eulerの恒等式により $P\mathcal U_{12}\subset J_{18}$ である。
+以下で用いる重要な既存入力は、第28節で証明した
+\[
+ \ker(dF:\mathcal D_{10}\to\mathcal C_{14})
+       =\{\beta\nabla F(q):\beta\in\mathcal B_{14}\}
+\]
+と、第30節のPfaffian微分の全次数の全射性である。
+このKoszul像による核の記述は、当該14次成分だけの結論である。
+
+\begin{lemma}[九次安定化場の作用]
+\label{lem:v14-ninth-stabilizer-hessian}
+$S_8=Y_9+b_8$、$Y_9\in\mathcal G_9$、$b_8\in\mathcal U_8$ が
+$S_8P=0$ を満たすなら
+\[
+ S_8H\equiv-\frac23b_8H\pmod{J_{18}}.
+\]
+特に $dP(Y_9)=0$ なら $dH(Y_9)\in J_{18}$ である。
+\end{lemma}
+
+\begin{proof}
+$g=\nabla F(q)$、$h(p)=\det\operatorname{Hess}_F(p)$ と置く。
+$dF(q)=3P$ より
+\[
+ dF\left(\delta q(Y_9)+\frac13b_8q\right)=0.
+\]
+括弧内は $\mathcal D_{10}$ に属するため、上記の既存核の記述により
+\[
+ \delta q(Y_9)=-\frac13b_8q+\beta g
+\]
+となる普遍交代共変量 $\beta\in\mathcal B_{14}$ が存在する。
+$h$ は $q$ に5次なので
+\[
+ S_8H=-\frac23b_8H+(\nabla h(q))^t\beta g
+     =-\frac23b_8H-g^t\beta\nabla h(q).
+\]
+$\beta\nabla h(q)$ は $F$ に12次、$a$ に14次の $\mathcal D_{14}$ の元である。
+$\delta q:\mathcal G_{13}\to\mathcal D_{14}$ は全射なので、この元を持ち上げれば
+最後の項は $J_{18}$ に入る。
+\end{proof}
+
+\subsection{18次の有効像の正確な記述}
+
+第28節の所属 $HU_4\in dP(\mathcal G_9)$ により、
+\[
+ Z_9\in\mathcal G_9,\qquad dP(Z_9)=HU_4
+\]
+を一つ選ぶ。ここで $U_4$ は第27節の規格化を持つ四次単元である。
+
+\begin{theorem}[18次有効商の有限な縮約]
+\label{thm:v14-effective-eighteenth}
+$c\ne0$ とする。17次までの正規形 $P+cH$ を保つ全ての普遍接触変換の
+18次像は正確に
+\begin{equation}\label{eq:v14-effective-image}
+ I_{18}=J_{18}+H\mathcal U_8+\CC\,dH(Z_9)
+\end{equation}
+であり、従って
+\[
+ \mathcal Q^{\mathrm{eff}}_{18}
+ =\mathcal C_{18}/\bigl(J_{18}+H\mathcal U_8+\CC dH(Z_9)\bigr).
+\]
+$dH(Z_9)$ の $\mathcal C_{18}/J_{18}$ における類は、
+$dP(Z_9)=HU_4$ を満たす $Z_9$ の選択に依存しない。
+この式は $H\mathcal U_8$ や $dH(Z_9)$ の $J_{18}$ への所属を主張しない。
+\end{theorem}
+
+\begin{proof}
+第24節の低次計算により、$Y_5\in\mathcal G_5$ のPfaffian像は
+$\delta q(Y_5)=\lambda qU_4$ の形である。
+$Q_4=Y_5+b_4$、$Q_4P=0$ なら $b_4=-3\lambda U_4$ であり、
+\[
+ Q_4H=2\lambda HU_4.
+\]
+$t=\lambda/2$ と置けば $Q_4H=4tHU_4$ となる。
+この値は $Q_4=tU_4(\mathcal E-6)$ で実現される。
+ここで $\mathcal E=\sum a_i\partial_{a_i}$ はEuler導分である。
+$\ker\delta q$ の五次場は $P,H$ の両方に零作用する。
+
+\eqref{eq:v14-even-stabilizer-chain}により
+$Q_8P=-4ctHU_4$ だから
+\[
+ Q_8=-4ctZ_9+S_8,\qquad S_8P=0
+\]
+と書ける。従って18次作用は
+\[
+ Q_{12}P+cQ_8H
+ \in J_{18}+H\mathcal U_8+\CC dH(Z_9)
+\]
+となる。ここで $Q_{12}P\in J_{18}$ はEulerの恒等式、
+$S_8H\in J_{18}+H\mathcal U_8$ は前補題による。
+これで一方の包含を得る。
+
+逆に $J_{18}$ は13次の座標場だけで実現できる。
+任意の $w_8\in\mathcal U_8$ に対し
+$Q_8=w_8(\mathcal E-6)$、他の成分を零とすれば、
+全低次条件を満たし、18次作用は $4cHw_8$ である。
+最後に
+\[
+ Q_4=tU_4(\mathcal E-6),\qquad Q_8=-4ctZ_9,
+ \qquad Q_6=Q_{10}=0
+\]
+とすれば全低次条件を満たし、18次作用は $-4c^2t\,dH(Z_9)$ である。
+$c\ne0$ なので、表示された全方向が実現される。
+対数補題により、これらは実際の有限jetの接触変換を与える。
+
+二つの選択 $Z_9,Z'_9$ の差は $dP$ の核に入り、
+補題\ref{lem:v14-ninth-stabilizer-hessian}の $b_8=0$ の場合から
+$dH(Z_9-Z'_9)\in J_{18}$ となる。
+\end{proof}
+
+\begin{remark}[グラフによる計算に適した持ち上げ]
+実装では、純粋な持ち上げの代わりに
+\[
+ HU_4=dP(Z'_9)+PB_8
+\]
+という分解を求めればよい。このとき
+$Z_9=Z'_9+aB_8/6$ は純粋な持ち上げであり、
+\[
+ dH(Z_9)-dH(Z'_9)=\frac53HB_8\in H\mathcal U_8.
+\]
+従って\eqref{eq:v14-effective-image}の $dH(Z_9)$ を
+$dH(Z'_9)$ に置き換えても像は変わらない。
+既存の $J_{14}/P\mathcal U_8$ は7次元なので、
+$P=0$ 上で独立な七つの九次グラフの接触像を用いれば、
+七元の線形方程式から $Z'_9$ を構成できる。
+\end{remark}
+
+\begin{proposition}[八次単元のうち $P$ の倍数となる部分]
+\label{prop:v14-pdivisible-eighth-unit}
+$\mathcal U_8$ のうち $P$ で割り切れる部分は1次元であり、
+この部分の $H$ 倍は $J_{18}$ に含まれる。
+\end{proposition}
+
+\begin{proof}
+商の共変量は
+\[
+ \operatorname{Hom}_{GL(V)}\left(
+ \operatorname{Sym}^7(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^2(\Lambda^2V),\det(V)^5\right)
+\]
+に属する。Littlewood分解による二つの補分割は
+$(5,5,5,3,3)$ と $(5,4,4,4,4)$ である。
+既存の整数指標計算をこの二つに適用すると、重複度はそれぞれ1と0となる。
+従ってこの空間は1次元である。
+多項式環は整域なので $P$ 倍は単射であり、商の共変性は
+$P$ と元の式の共変性から従う。
+$u_8=Pv$ と書けば、$Hv\in\mathcal U_{12}$ だから
+$Hu_8=P(Hv)\in P\mathcal U_{12}\subset J_{18}$ である。
+\end{proof}
+
+\section{十八次の実際の係数に入る低次正規化の補正}
+\label{sec:v14-eighteenth-corrections}
+
+ここでは第27節のmerged規約をそのまま固定する。
+\[
+ X_7=-\alpha\Phi_7-\beta\Psi_7,
+ \quad\alpha=\frac{15800}{6137},\quad
+ \beta=\frac{689855}{883728},\qquad
+ X_8=\frac{4600}{2189}\operatorname{Alt}K_8,
+\]
+\[
+ \chi_{10}=a+X_7+X_8,\qquad u_{10}=1+3U_4-V_6.
+\]
+$u_{10}$ を $(1+3U_4)(1-V_6)$ に交換してはならない。
+$d^{\mathrm T}_n$ は未正規化の $\tfrac12\det K$ の斉次成分とし、
+\[
+ d^{\mathrm T}_{10}=cH-3PU_4,
+ \qquad d^{\mathrm T}_{12}+dP(X_7)=PV_6
+\]
+を用いる。
+第28節の十四次消去を
+\[
+ R_{14}=d^{\mathrm T}_{14}+3U_4d^{\mathrm T}_{10}
+       =dP(\Xi_9)+PB_8,
+ \qquad\chi_{11}=a-\Xi_9,\quad u_{11}=1-B_8
+\]
+という規約で行う。
+
+\begin{proposition}[十八次の正確な補正式]
+\label{prop:v14-raw-eighteen-correction}
+上記二段階の変更の後の18次係数は正確に
+\begin{equation}\label{eq:v14-raw-eighteen-correction}
+ \begin{split}
+ R_{18}={}&d^{\mathrm T}_{18}
+   +d(d^{\mathrm T}_{12})(X_7)
+   +\frac12d^2P(X_7,X_7)
+   +3U_4d^{\mathrm T}_{14}-PV_6^2\\
+   &\hspace{2em}-c\bigl(dH(\Xi_9)+B_8H\bigr).
+ \end{split}
+\end{equation}
+その後に行う十五次消去の10次座標変更・9次単元、および
+十六次消去の11次座標変更・10次単元は、18次係数を変えない。
+ここで $d^2P(X_7,X_7)$ はHessianの双線形評価であり、
+変数に依存するベクトル場の反復 $X_7^2P$ とは区別する。
+\end{proposition}
+
+\begin{proof}
+最初の引き戻しの18次には、
+$d^{\mathrm T}_{18}$、$d(d^{\mathrm T}_{12})(X_7)$、
+$\tfrac12d^2P(X_7,X_7)$ のみが寄与する。
+$X_8$ の一次寄与には $d^{\mathrm T}_{11}$ が必要だが零であり、
+$X_7,X_8$ の混合二次項は19次からである。
+$3U_4$ が掛かる14次係数は $d^{\mathrm T}_{14}$、
+$-V_6$ が掛かる12次係数は
+$d^{\mathrm T}_{12}+dP(X_7)=PV_6$ である。
+従って最初の変更の18次は
+\[
+ d^{\mathrm T}_{18}+d(d^{\mathrm T}_{12})(X_7)
+ +\tfrac12d^2P(X_7,X_7)+3U_4d^{\mathrm T}_{14}-PV_6^2.
+\]
+この変更後の10次係数は $cH$ である。
+次の $-\Xi_9$ による18次への寄与は $-c\,dH(\Xi_9)$、
+$-B_8$ による寄与は $-cB_8H$ であり、二次寄与は22次以降である。
+これで式を得る。
+
+その後の10次座標変更・9次単元が18次へ作用するには9次係数、
+11次座標変更・10次単元が作用するには8次係数が必要である。
+いずれも零であり、二次Taylor項はさらに高次なので、18次は変わらない。
+\end{proof}
+
+\subsection{有効商における二項への簡約}
+
+第28節により $d^{\mathrm T}_{14}\in J_{14}$ である。
+従って $Z_{14}\in\mathcal G_9$ を
+\[
+ dP(Z_{14})=d^{\mathrm T}_{14}
+\]
+となるように選べる。
+
+\begin{theorem}[実際の十八次類の計算に十分な代表元]
+\label{thm:v14-eighteenth-effective-representative}
+原稿の既存正規化の後の実際の18次類は
+\begin{equation}\label{eq:v14-eighteen-effective-representative}
+ \boxed{\displaystyle
+ [R_{18}]=\left[
+ d^{\mathrm T}_{18}-\frac12d^2P(X_7,X_7)-c\,dH(Z_{14})
+ \right]\quad\text{in }\mathcal C_{18}/I_{18}.
+ }
+\end{equation}
+$Z_{14}$ の選択はこの類に影響しない。
+$P\mathcal U_8$ を残す持ち上げ
+$d^{\mathrm T}_{14}=dP(Z'_{14})+PC_8$ でも、
+式の $Z_{14}$ を $Z'_{14}$ に置き換えてよい。
+この定理は、表示された補正項や実際の18次類が零であることを主張しない。
+\end{theorem}
+
+\begin{proof}
+恒等式 $d^{\mathrm T}_{12}+X_7P=PV_6$ を $X_7$ で微分する。
+ベクトル場の係数の微分を含めると
+\[
+ X_7d^{\mathrm T}_{12}+d^2P(X_7,X_7)
+       +dP(DX_7\cdot X_7)
+ =V_6X_7P+P X_7V_6.
+\]
+$DX_7\cdot X_7$ と $V_6X_7$ は $\mathcal G_{13}$ に属し、
+$X_7V_6\in\mathcal U_{12}$ である。従って
+\[
+ d(d^{\mathrm T}_{12})(X_7)
+    \equiv-d^2P(X_7,X_7)\pmod{J_{18}}.
+\]
+また $d^{\mathrm T}_{14}\in J_{14}$ より
+$U_4d^{\mathrm T}_{14}\in J_{18}$、
+$PV_6^2\in P\mathcal U_{12}\subset J_{18}$ である。
+補正式は従って
+\[
+ R_{18}\equiv d^{\mathrm T}_{18}-\tfrac12d^2P(X_7,X_7)
+                       -c\,dH(\Xi_9)\pmod{J_{18}+H\mathcal U_8}
+\]
+に簡約される。
+
+$\widetilde\Xi_9=\Xi_9+aB_8/6$ と置くと
+$dP(\widetilde\Xi_9)=R_{14}$ である。
+一方、
+\[
+ R_{14}=d^{\mathrm T}_{14}+3cHU_4-9PU_4^2
+\]
+なので
+\[
+ dP\left(Z_{14}+3cZ_9-\tfrac32aU_4^2\right)=R_{14}.
+\]
+二つの持ち上げの差は $dP$ の核に入るから、
+補題\ref{lem:v14-ninth-stabilizer-hessian}によりHessianへの作用の差は
+$J_{18}$ に入る。Euler補正のHessian作用は $H\mathcal U_8$ に入り、
+$3c\,dH(Z_9)$ は $I_{18}$ に含まれる。
+従って $dH(\Xi_9)$ を $dH(Z_{14})$ に置き換えられる。
+
+純粋な二つの持ち上げ $Z_{14}$ の差には同じ補題を適用する。
+$P\mathcal U_8$ を残す場合は $aC_8/6$ を加えれば純粋な持ち上げとなり、
+そのHessian作用は $5HC_8/3$ であるため、有効商で消える。
+\end{proof}
+
+\begin{corollary}[十七次の明示的な消去を省いてよい]
+\label{cor:v14-eighteen-without-seventeenth}
+既存の有限正規化を16次まで実行した方程式と、全次数の偶正規形の
+18次有効類は一致する。従って式\eqref{eq:v14-eighteen-effective-representative}を
+用いるために、17次項や偶化する対合を明示計算する必要はない。
+\end{corollary}
+
+\begin{proof}
+有限正規化後を
+$f=P+cH+R_{17}+R_{18}+O(a^{19})$ と書き、
+全次数偶正規形と比較する接触作用素の対数を取る。
+次数増分が4以上なので $L(R_{17})$ は21次以上であり、
+18次までの条件は $L(P+cH)$ だけによる。
+17次での非零右辺は奇増分の条件だけを変える。
+偶増分の四条件\eqref{eq:v14-even-stabilizer-chain}はそのまま成立し、
+18次の差はその条件を満たす $Q_{12}P+cQ_8H$ である。
+従って差は $I_{18}$ に入る。
+\end{proof}
+
+\subsection{さらに必要な評価を減らす二つの判定}
+
+次の命題は既存の核の記述から従う。
+これにより、後の有限証明書で確認すべき所属を十六列に限定できる。
+
+\begin{proposition}[全九次場のHessian作用を調べる有限基底]
+\label{prop:v14-test-all-ninth-hessian}
+$\Gamma_1,\ldots,\Gamma_7\in\mathcal G_9$ の接触像が
+$J_{14}/P\mathcal U_8$ の基底を与えるとする。
+$H\mathcal U_8\subset J_{18}$ および
+$dH(\Gamma_i)\in J_{18}$ が全て成り立てば
+\[
+ dH(\mathcal G_9)\subset J_{18}.
+\]
+\end{proposition}
+
+\begin{proof}
+任意の $Y_9$ に対して、その $dP$ 像から七つの像の線形結合と
+$P\mathcal U_8$ の部分を除く。後者はEuler場で持ち上がり、
+そのHessian作用は $H\mathcal U_8$ に含まれる。
+残る場は $dP$ の核に属し、補題\ref{lem:v14-ninth-stabilizer-hessian}により
+Hessianへの作用は $J_{18}$ に入る。
+\end{proof}
+
+\begin{proposition}[七次場の二次補正を調べる三つの評価]
+\label{prop:v14-test-seventh-quadratic}
+$\Gamma_1,\Gamma_2\in\mathcal G_7$ の像が
+$J_{12}/P\mathcal U_6$ の基底を与えるとする。
+\[
+ B_{ij}=\operatorname{Hess}_F(q)
+             \bigl(\delta q(\Gamma_i),\delta q(\Gamma_j)\bigr)
+ \quad(1\le i\le j\le2)
+\]
+の三つが $J_{18}$ に含まれれば、全ての $Y,Z\in\mathcal G_7$ について
+$d^2P(Y,Z)\in J_{18}$ である。
+\end{proposition}
+
+\begin{proof}
+合成関数の二次微分は
+\[
+ d^2P(Y,Z)=\operatorname{Hess}_F(q)(\delta qY,\delta qZ)
+                      +dF\bigl(d^2q(Y,Z)\bigr)
+\]
+である。$d^2q(Y,Z)\in\mathcal D_{14}$ であり、
+全次数のPfaffian微分の全射性から最後の項は $J_{18}$ に入る。
+第27節の $dF:\mathcal D_8\to\mathcal C_{12}$ の単射性により
+\[
+ \mathcal D_8=q\mathcal U_6\oplus
+       \CC\delta q(\Gamma_1)\oplus\CC\delta q(\Gamma_2).
+\]
+$\operatorname{Hess}_F(q)q=2\nabla F(q)$ なので、
+$q\mathcal U_6$ を一方の因子に含む双線形項は $J_{18}$ に入る。
+従って残る三つの組だけを判定すればよい。
+\end{proof}
+
+上の二つの有限判定により、必要な十六列の所属が確認されれば、
+実際の18次有効類は未正規化の $[d^{\mathrm T}_{18}]$ だけから読める。
+後の有理数上の係数汎関数の証明書が、この有限判定を完了する。
+
+% END contact/contact_log_reduction_ja.tex
+
+
+% BEGIN detector/v14_detector_notes_ja.tex
+\section{五点汎関数と低次補正の普遍消滅}
+\label{sec:v14-five-point}
+
+% 原稿追加用断片。通常の18次接触階数の証明の後、実際のTate係数の節の前に置く。
+\subsection{五つの対角値による18次商の検出}
+\label{subsec:v14-five-point-detector}
+
+この節では、命題\ref{prop:v14-ordinary-eighteenth-quotient}で決定した普遍商
+\[
+ \mathcal Q_{18}=\mathcal C_{18}/J_{18},\qquad
+ J_{18}=dP(\mathcal G_{13}),\qquad
+ \dim\mathcal Q_{18}=1
+\]
+の係数を、五つの明示的な有理数点から読む。
+全ての共変量を対角三次式だけで復元する必要はない。
+既に普遍商の次元が1であると分かっているので、
+$J_{18}$ を消し、補元で非零となる一つの汎関数を構成すれば十分である。
+
+基底 $e_0,\ldots,e_4$ と体積形式を固定し、
+\[
+ F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3,
+\]
+\[
+ a_b=b(e_1-e_0)\wedge(e_2-e_0)
+       +b^{-1}(e_3-e_0)\wedge(e_4-e_0)
+ \qquad (b\ne0)
+\]
+とおく。直接計算で
+\[
+ q(a_b)=(1,1,1,1,1),\qquad P(F_*,a_b)=0
+\]
+である。普遍共変量 $f$ のこの点での値を $\operatorname{ev}_b(f)$ と書く。
+
+\begin{proposition}[18次商の五点汎関数]
+\label{prop:v14-rho-eighteenth}
+\begin{align*}
+ D={}&3295420924723200000,\\
+ (n_1,n_2,n_3,n_4,n_5)={}&
+ (7455703449849690,\ -159838529212047360,\\
+ &\hspace{1em}232937478407243349,\ -92218652889186304,\
+ 11664000244140625)
+\end{align*}
+として
+\[
+ \rho_{18}=D^{-1}\sum_{b=1}^{5}n_b\operatorname{ev}_b
+\]
+と定める。このとき
+\[
+ \rho_{18}(J_{18})=0,\qquad
+ \rho_{18}(\Theta_8U_4J_6)=1.
+\]
+従って $\ker(\rho_{18}:\mathcal C_{18}\to\mathbb C)=J_{18}$ であり、
+任意の $f\in\mathcal C_{18}$ の普遍接触類は
+\[
+ [f]=\rho_{18}(f)[\Theta_8U_4J_6]
+\]
+で与えられる。
+\end{proposition}
+
+\begin{proof}
+通常の接触階数の証明で得た60個のグラフ共変量を
+$\Gamma_1,\ldots,\Gamma_{60}$ と書くと
+\[
+ J_{18}=P\mathcal U_{12}\oplus
+        \operatorname{Span}\{dP(\Gamma_1),\ldots,dP(\Gamma_{60})\}.
+\]
+五点は全て $P=0$ 上にあるため、$\rho_{18}$ は $P\mathcal U_{12}$ を消す。
+全60列を五点で整数・有理数により再縮約すると、その評価行列の階数は4であり、
+補元 $\Theta_8U_4J_6$ を加えた行列の階数は5となる。
+元のグラフ順序で第1、2、3、20列と補元列を取った $5\times5$ 行列式は
+\[
+ -190124533925774622720\ne0
+\]
+である。表示した重みはこの行列の転置に対する有理数連立方程式を解いて得る。
+選んだ4列だけでなく、残る56列についても重み付き和が厳密に零であることを確認した。
+
+例として $b=1$ での値は
+\[
+ \Theta_8=-14,\quad U_4=-4,\quad J_6=888,\quad
+ \Theta_8U_4J_6=49728,
+\]
+選んだ4接触列の値は $(496,-480,576,3520)$ である。
+五点全ての60列、追加列、グラフの定義、非零行列式、汎関数を
+\texttt{v14\_rho18\_exact\_certificate.json} に保存した。
+これで $\rho_{18}$ は $J_{18}$ を消して補元を1へ送る。
+普遍商の次元が1であることから、核と接触像の等式が従う。
+\end{proof}
+
+\paragraph{再縮約と保存証明書監査の区別.}
+上の証明書は全 $5\times60$ 成分を新たに縮約して得た。
+$a_b$ の分母を $b$ 倍で除き、多倍長整数で縮約した後、
+18次の斉次性により $b^{18}$ で割っている。
+再計算用の \texttt{v14\_rho18\_exact\_certificate.py} はこの操作を実行する。
+別の \texttt{v14\_rho18\_audit.py} は、保存された行列に対する
+有理数線形代数、五点の補元値、60列全ての消滅を高速に再検算する。
+後者の成功を新規の全テンソル再縮約と同一視しない。
+
+\subsection{低次正規化の寄与は18次接触像に含まれる}
+\label{subsec:v14-lower-normalizers-vanish}
+
+五点汎関数を、低次安定化群と実際の正規化補正にも適用する。
+以下の主張は、特殊な五点での値だけを普遍恒等式と見なすものではない。
+命題\ref{prop:v14-rho-eighteenth}の $\ker\rho_{18}=J_{18}$ と、各空間の既知の有限次元分解を用いる。
+
+\begin{proposition}[単元・Hessian作用・二次補正の消滅]
+\label{prop:v14-all-lower-corrections-in-image}
+$H=H_{10}$ とすると
+\[
+ H\mathcal U_8\subset J_{18},\qquad
+ dH(\mathcal G_9)\subset J_{18},\qquad
+ d^2P(\mathcal G_7,\mathcal G_7)\subset J_{18}
+\]
+が成り立つ。
+\end{proposition}
+
+\begin{proof}
+\textbf{単元方向。}
+$\dim\mathcal U_8=7$ である。
+$P$ の倍数となる方向を作る共変量空間は
+\[
+ \mathcal E=
+ \operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^7(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^2(\Lambda^2V),\Delta^5\right).
+\]
+二つのLittlewood成分に対応する
+$(5,5,5,3,3)$ と $(5,4,4,4,4)$ の重複度は1、0なので
+$\dim\mathcal E=1$ である。
+また六つの明示的な単元グラフ $u_1,\ldots,u_6$ は
+$P=0$ 上の六点での有理数行列式が非零である。
+従って
+\[
+ \mathcal U_8=P\mathcal E\oplus
+             \operatorname{Span}\{u_1,\ldots,u_6\}.
+\]
+$H(P\mathcal E)\subset P\mathcal U_{12}\subset J_{18}$ であり、
+五点の厳密縮約は全ての $j$ について $\rho_{18}(Hu_j)=0$ を与える。
+これで第一の包含を得る。
+この分解の独立な指標計算と $6\times6$ の有理数minorは
+\texttt{v14\_unit8\_span\_certificate.py} に記録した。
+
+\textbf{9次座標場のHessian作用。}
+ここでは $h(p)=\det\operatorname{Hess}_F(p)$ と置き、
+$H(a)=h(q(a))$ と書く。
+$dH$ は $a$ 方向の微分、$d_qh(q)$ は $q$ の値域での微分を表す。
+既存の14次階数証明から、$\mathcal D_{10}$ は
+$q\mathcal U_8$、七つの非単元グラフのPfaffian微分、
+および $dF$ の核である三つのKoszul方向によって生成される。
+Pfaffian微分の核は $dH$ にも作用しない。
+径方向には $d_qh(q)(q u)=5Hu$ が成り立ち、既に第一の包含で処理した。
+Koszul方向を $\beta g$、$g=\nabla F(q)$ と書けば、$\beta$ の交代性から
+\[
+ d_qh(q)(\beta g)=-dF\bigl(\beta\nabla h(q)\bigr)
+\]
+である。右辺の共変ベクトルは $\mathcal D_{14}$ に属するので $J_{18}$ に入る。
+残る七方向については、五点での新規縮約が
+\[
+ \rho_{18}(dH(\Gamma_j^{(9)}))=0\qquad(1\le j\le7)
+\]
+を与える。これで第二の包含が従う。
+
+\textbf{7次座標場の二次作用。}
+$\mathcal D_8$ は、二次元の $q\mathcal U_6$ と
+二つの非単元グラフのPfaffian微分によって生成される。
+$F$ が三次であることから
+\[
+ \operatorname{Hess}_F(q)(q,v)=2\,\nabla F(q)\cdot v.
+\]
+従って一方が径方向である項は $J_{18}$ に入る。
+残る二つの方向の対称積は三方向であり、その全てについて
+\[
+ \rho_{18}\bigl(\operatorname{Hess}_F(q)
+       (\delta q\Gamma_i^{(7)},\delta q\Gamma_j^{(7)})\bigr)=0
+ \qquad(1\le i\le j\le2)
+\]
+を厳密に確認した。
+最後に合成関数の二階微分は
+\[
+ d^2P(X,Y)=\operatorname{Hess}_F(q)(\delta qX,\delta qY)
+          +dF\bigl(d^2q(X,Y)\bigr)
+\]
+であり、第二項は $d^2q(X,Y)\in\mathcal D_{14}$ により $J_{18}$ に属する。
+これで第三の包含が得られる。
+
+計算証明書は、以上の六つの単元方向、七つのHessian方向、
+三つの二次方向の計16列について、汎関数の値が有理数として全て零であることを保存する。
+\end{proof}
+
+\paragraph{実際の18次係数への適用.}
+低次の正規化を展開したときに現れる有効代表は
+\[
+ R_{18}^{\mathrm{eff}}
+ =d_{18}^{\mathrm T}
+  -\frac12d^2P(X_7,X_7)-\frac1{96}dH(Z_{14})
+ \pmod{J_{18}},
+\]
+ただし $X_7$ は12次を消す座標補正、$Z_{14}$ は14次項の9次liftである。
+命題\ref{prop:v14-all-lower-corrections-in-image}により
+\[
+ \rho_{18}(R_{18}^{\mathrm{eff}})=\rho_{18}(d_{18}^{\mathrm T})
+\]
+となる。
+従って実際の18次類を決めるために必要な新規Tate計算は、
+公開した $b=1,2,3,4,5$ の五点だけである。
+$Z_{14}$ を新たに選び直したり、その全係数を再構成したりする必要はない。
+18次有効商に対する低次安定化群の追加方向も全て $J_{18}$ に含まれるため、
+有効商と通常商は一致する。
+
+% END detector/v14_detector_notes_ja.tex
+
+
+% BEGIN tate/v14_tate_notes_ja.tex
+\section{十八次Tate係数の厳密な再構成}
+\label{sec:v14-tate-eighteenth}
+
+前節までの接触商の計算と、実際の境界の係数の計算を区別する。
+ここでは第13版の切断を証明なしに延長せず、18次に必要な範囲を改めて決める。
+$d^{\mathrm T}=\tfrac12\det K$、$K_n=\kappa(A_n)$ とし、
+Tate再帰を $A_n=-h\sum_{i=1}^{n-1}A_iA_{n-i}$ とする。
+
+\begin{lemma}[十八次に必要な正確な切断]
+\label{lem:v14-exact-fourteenth-truncation}
+$d^{\mathrm T}_{18}$ は $K_1,\ldots,K_{14}$ だけから決まる。
+完全な $A_1,\ldots,A_{10}$ から出発し、曲率を
+\[
+ R_{11}:\deg_x\le4,\quad
+ R_{12}:\deg_x\le3,\quad
+ R_{13}:\deg_x\le2,\quad
+ R_{14}:\deg_x\le1
+\]
+で順に切断すれば、必要な補正の範囲
+\[
+ A_{11}:\deg_x\le3,\quad
+ A_{12}:\deg_x\le2,\quad
+ A_{13}:\deg_x\le1,\quad
+ A_{14}:\deg_x=0
+\]
+を正確に得る。
+\end{lemma}
+
+\begin{proof}
+行列式は五つの成分の積であり、各成分の $a$ 次数は1以上である。
+従って18次に寄与する一因子の次数は $18-4=14$ 以下である。
+Clifford関係による縮約は係数の $x$ 次数を下げず、
+Euler homotopy $h$ はそれを1下げる。
+$A_{14}$ の定数項に必要な $R_{14}$ は1次以下、
+そこに現れる $A_{13}$ は1次以下でよい。
+これを逆向きにたどると、表示された各切断次数が得られる。
+初めの十項を完全に作るので、切断した項が後で必要な部分に戻ることはない。
+
+内部重み $3/2$ の正規単項式では
+$2\deg_x-|I|+|J|=3$ なので、$A_n$ の $x$ 次数は高々4である。
+また $\delta$ は $x$ 次数を1上げるため、曲率の閉性を各 $x$ 次数で判定できる。
+従って切断した曲率と補正に対しても
+$\delta R_n=0$、$\delta A_n+R_n=0$ を厳密に照合できる。
+\end{proof}
+
+\subsection{共通分母による整数演算と独立な照合}
+
+各 $A_n$ を整数係数の正規記号多項式 $N_n$ と正整数 $D_n$ を用いて
+$A_n=N_n/D_n$ と保存する。積の分母 $D_iD_{n-i}$ の最小公倍数を取れば、
+曲率の加算を多倍長整数だけで実行できる。
+$h$ の係数に現れる $\deg_x+|I|$ の最小公倍数をさらに掛け、
+最後に全係数と分母の最大公約数で割る。
+これは有理数演算の表現を変えるだけであり、丸めを伴わない。
+
+\texttt{v14\_tate\_eighteenth.py} は各入力から $A_1$ を作り直し、
+上の範囲を再構成する。全ての再帰段階で内部重み、閉性、対応する
+Maurer--Cartan等式を確認する。
+完全な $A_1,\ldots,A_{10}$ については、別実装の32次元外積・収縮作用素で
+次数0から10の等式も検査する。さらに十四個の定数ブロックを
+独立な外積作用素で照合する。
+行列式の係数は、120個の置換の和と、使用済み列集合による動的計画法の
+二方式で有理数として一致することを確認する。
+これは後半の切断された $A_n$ を完全な作用素として評価したという意味ではない。
+
+\begin{proposition}[標準点での十八次係数]
+\label{prop:v14-standard-eighteenth-value}
+\[
+ F_*=x_0^3+x_1^3+x_2^3+x_3^3-4x_4^3,
+ \qquad
+ a_*=(e_1-e_0)\wedge(e_2-e_0)
+       +(e_3-e_0)\wedge(e_4-e_0)
+\]
+とすると、$q(a_*)=(1,1,1,1,1)$、$P(F_*,a_*)=0$ であり、
+\[
+ d^{\mathrm T}_{18}(F_*,a_*)
+     =\frac{2908218666274031183}{1875352500000}.
+\]
+第27節の $X_7=-\alpha\Phi_7-\beta\Psi_7$ に対する二次補正は
+\[
+ \frac12d^2P(X_7,X_7)(F_*,a_*)=\frac{23856412}{1377}.
+\]
+\end{proposition}
+
+\begin{proof}
+公開した入力を用い、補題\ref{lem:v14-exact-fourteenth-truncation}の再帰を
+二方式で初めから実行した。
+通常のPython \texttt{Fraction} による方法と、上記の共通分母整数演算は、
+十四個のブロック全て、0次から18次までの行列式係数全て、
+および低次正規化のデータ全てで一致した。
+0次から16次は第13版の保存証明書とも一致する。
+
+二次補正は、$q(a+tX)=q(a)+t\,\delta q(X)+t^2q(X)$ を用いて
+\[
+ [t^2]P(a+tX)
+  =\sum_i c_i\left(3q_i^2q_i(X)+3q_i(\delta q_i(X))^2\right)
+\]
+と計算した。$t=0,1,\ldots,6$ の七つの正確な値からLagrange補間で求めた
+$t^2$ 係数とも一致する。
+\end{proof}
+
+以上の標準点での非零値は未正規化の係数の値である。
+普遍接触商における実際の類は、接触像を消す汎関数を適用して決定する。
+
+\subsection{五つの新規Tate値と実際の十八次類の消滅}
+
+\begin{proposition}[実際の十八次類は零である]
+\label{prop:v14-actual-eighteenth-class}
+命題\ref{prop:v14-rho-eighteenth}の五点汎関数に対して
+\[
+ \rho_{18}(d^{\mathrm T}_{18})=0,\qquad
+ \rho_{18}\left(\tfrac12d^2P(X_7,X_7)\right)=0.
+\]
+通常商と有効商はともに $\CC\cdot[\Theta_8U_4J_6]$ であり、
+既存の低次正規化後の実際の十八次係数はその零元を表す。
+\end{proposition}
+
+\begin{proof}
+公開した $a_b$ の五つの入力から、Tate再帰を各々初めから再構成した。
+得られた未正規化の係数は次の通りである。
+\[
+\begin{array}{c|c}
+b&d^{\mathrm T}_{18}(F_*,a_b)\\\hline
+1&\dfrac{2908218666274031183}{1875352500000}\\[0.7em]
+2&\dfrac{396921899835705304591}{11854080000000}\\[0.7em]
+3&\dfrac{259707810011438926969409}{384505867265625}\\[0.7em]
+4&\dfrac{1590036351104669653664022401}{245806202880000000}\\[0.7em]
+5&\dfrac{2791927762015243689203604361}{73255957031250000}
+\end{array}
+\]
+命題\ref{prop:v14-rho-eighteenth}の整数重みで足し合わせると、
+\[
+ \sum_{b=1}^5 n_b\,d^{\mathrm T}_{18}(F_*,a_b)=0
+\]
+が有理数として正確に成立する。
+二次補正の五つの値は順に
+\[
+ \left(
+ \frac{23856412}{1377},\quad
+ \frac{501277499}{2754},\quad
+ \frac{33576631924}{37179},\quad
+ \frac{125350459859}{44064},\quad
+ \frac{5971728868828}{860625}
+ \right)
+\]
+であり、同じ重み付き和は零である。
+後者は命題\ref{prop:v14-all-lower-corrections-in-image}の普遍的な所属とも整合する。
+
+五つの各計算について、十四個の定数ブロック、18次までの全行列式係数、
+閉性とMaurer--Cartan等式の検査結果、独立なブロック抽出の検査結果を公開した。
+
+\texttt{v14\_actual\_eighteenth\_certificate.py} は、
+汎関数の五点とTate計算の入力を厳密一致で照合し、各行列式を再計算してから
+上の和を有理数で検証する。
+
+別の \texttt{v14\_detector\_independent\_audit.py} は、
+独自の有理数消去法により評価行列と重み付き和をもう一度確認する。
+
+命題\ref{prop:v14-all-lower-corrections-in-image}により、
+有効像の追加方向と低次正規化の二項の補正は全て $J_{18}$ に入る。
+従って定理\ref{thm:v14-eighteenth-effective-representative}は
+$[R_{18}]=[d^{\mathrm T}_{18}]$ を与える。
+一方、$\ker\rho_{18}=J_{18}$ であり、今計算した値が零なので
+この類は零である。
+\end{proof}
+
+% END tate/v14_tate_notes_ja.tex
+
+
+% BEGIN contact/twentieth_normal_form_ja.tex
+% 第14版の確定稿。2026-10-29、rank・16補正方向・fresh Tate 5点を有理数上で認証。
+% contact_log_reduction_ja.tex の命題、第13版の結果、今回の有限証明書を使用する。
+
+\section{十八次判定から二十次開始の正規形への帰結}
+\label{sec:v14-twentieth}
+
+本節では、十八次の通常階数、五点係数汎関数、低次正規化の補正、
+実際のTate係数の有限証明書を組み合わせる。
+これらの計算により、通常商に残る一つの普遍方向は有効商にも残るが、
+実際の境界が定める類は零であることが確定する。
+$P=P_F$、$H=H_{10}$、$c=1/96$、$J_{18}=dP(\mathcal G_{13})$ とする。
+
+\begin{theorem}[十八次の消去と二十次開始の代数的収束偶正規形]
+\label{thm:v14-twentieth-normal-form}
+十八次の通常商と有効商は一致し、
+\[
+ \mathcal Q^{\mathrm{lin}}_{18}
+ =\mathcal Q^{\mathrm{eff}}_{18}
+ =\CC\cdot[W_{18}],\qquad
+ W_{18}=\Theta_8U_4J_6
+\]
+と一次元である。ここで $J_6$ は六頂点単元グラフによる既存の六次共変量である。
+実際の境界の十八次類は零である。
+任意の滑らかな三次式 $F$ の実際の境界は、普遍同変な代数的冪級数による
+接触変換の下で
+\begin{equation}\label{eq:v14-twentieth-normal-form}
+ \boxed{\displaystyle
+ d^{\mathrm T}\sim P_F+\frac1{96}\det\operatorname{Hess}_F(q(a))
+       +\sum_{\substack{n\ge20\\n\ \mathrm{even}}}R_n,
+ \qquad R_n\in\mathcal C_n
+ }
+\end{equation}
+と正規化できる。座標変更の線形項は恒等写像、単元の定数項は1である。
+各形式係数は $F$ の係数に多項式的であり、
+各固定 $F$ では変更・逆変更・方程式の級数は原点近傍で収束する。
+この結論は20次項以降の消去を主張しない。
+\end{theorem}
+
+\begin{proof}
+まず、今回の有限証明書から使う事実を整理する。
+整数指標と普遍接触階数の証明書により
+\[
+ \dim\mathcal C_{18}=119,\qquad
+ \dim J_{18}=118,\qquad \dim P\mathcal U_{12}=58
+\]
+であり、選ばれた六十の接触グラフ像は
+$J_{18}/P\mathcal U_{12}$ の基底である。
+五つの有理点で定義された係数汎関数 $\rho_{18}$ は、
+この六十列を全て消し、$\rho_{18}(W_{18})=1$ を満たす。
+五点は全て $P=0$ 上にあるため、$P\mathcal U_{12}$ も自動的に消える。
+従って
+\[
+ \ker\rho_{18}=J_{18}.
+\]
+これは119次元の共変量を五点から復元するという主張ではなく、
+既に余次元1と確定した接触像を消す、非零な係数汎関数の構成である。
+
+命題\ref{prop:v14-all-lower-corrections-in-image}の
+同じ汎関数による有理数上の計算は、
+六つの八次単元の $H$ 倍、七つの九次場のHessian作用、
+二つの七次場に対する三つのHessian双線形評価の全十六列を消す。
+最初の六つは $\mathcal U_8$ の $P$ 倍部分を法とする基底であり、
+残る一次元の $H$ 倍は命題\ref{prop:v14-pdivisible-eighth-unit}により
+$J_{18}$ に属する。従って $H\mathcal U_8\subset J_{18}$ である。
+七つの場 $\Gamma_i\in\mathcal G_9$ の接触像は
+$J_{14}/P\mathcal U_8$ の基底を、二つの場
+$\Lambda_i\in\mathcal G_7$ の接触像は
+$J_{12}/P\mathcal U_6$ の基底を与える。
+以上の所属と命題\ref{prop:v14-test-all-ninth-hessian}、
+\ref{prop:v14-test-seventh-quadratic}から
+\[
+ dH(\mathcal G_9)\subset J_{18},\qquad
+ d^2P(\mathcal G_7,\mathcal G_7)\subset J_{18}
+\]
+を得る。特に $dP(Z_9)=HU_4$ を満たす場のHessian作用も $J_{18}$ に入る。
+定理\ref{thm:v14-effective-eighteenth}により有効像は通常像 $J_{18}$ と一致する。
+従って通常商と有効商はいずれも $[W_{18}]$ を基底とする一次元空間である。
+
+定理\ref{thm:v14-eighteenth-effective-representative}の補正項は、
+今得た二つの所属によりともに $J_{18}$ に入る。
+従って、既存の有限正規化後の18次係数 $R_{18}^{\mathrm{fin}}$ は
+\[
+ [R_{18}^{\mathrm{fin}}]=[d^{\mathrm T}_{18}]
+      \quad\text{in }\mathcal C_{18}/J_{18}
+\]
+を満たす。
+命題\ref{prop:v14-actual-eighteenth-class}で
+実際のTate作用素から新たに計算した五点の18次係数は、
+同じ有理数係数の汎関数に対して厳密に
+\[
+ \rho_{18}(d^{\mathrm T}_{18})=0
+\]
+を満たす。五点の入力は $(F,a)$ の有理数値で照合されており、
+既存の補正係数や零という結論から18次係数を逆算していない。
+よって $d^{\mathrm T}_{18}\in J_{18}$ であり、実際の18次類は零である。
+
+第13版の定理\ref{thm:v13-eighteenth-even-normal-form}の
+全次数偶正規形を
+\[
+ f_{\mathrm{ev}}=P+cH+R_{18}^{\mathrm{ev}}+R_{20}^{\mathrm{ev}}+\cdots
+\]
+と書く。
+有限正規化後には17次の項が残っていてもよい。
+系\ref{cor:v14-eighteen-without-seventeenth}の対数による偶奇分離から
+\[
+ R_{18}^{\mathrm{ev}}-R_{18}^{\mathrm{fin}}\in I_{18}=J_{18}
+\]
+である。従って $R_{18}^{\mathrm{ev}}\in J_{18}$ であり、
+17次の明示的な消去や、対合 $\sigma$ の18次までの計算を必要としない。
+
+$J_{18}=dP(\mathcal G_{13})$ の定義から、普遍多項式な
+$\Xi_{13}\in\mathcal G_{13}$ を
+$dP(\Xi_{13})=R_{18}^{\mathrm{ev}}$ となるように選べる。
+これは有限次元の普遍共変量空間の線形写像に対する持ち上げであり、
+$F$ の判別式や $P$ の点ごとの値による除算を含まない。
+\[
+ a\longmapsto a-\Xi_{13}(F,a)
+\]
+で引き戻すと18次が消える。
+$\Xi_{13}$ は奇数次なので座標変更は奇写像であり、
+全次数の偶性を保つ。
+$H$ への最初の寄与は22次、$P$ への二次Taylor項は30次からであるため、
+既定の低次正規形は変わらない。次に残り得る次数は20である。
+
+既存の全次数偶正規形への変換は、代数的冪級数であり、
+各固定 $F$ において解析的に収束していた。
+今回加えた変更は有限な多項式で、原点でのJacobianは恒等写像である。
+従ってその局所逆は代数的冪級数で、解析的にも原点近傍で収束する。
+既存の変更との有限合成はこれらの性質を保つ。
+普遍係数の多項式性と同変性も保たれ、所要の正規形を得る。
+\end{proof}
+
+\begin{remark}[有限計算の範囲と残る問題]
+普遍階数の上下界は、一般三次テンソルによる独立性と
+恒等的なKoszul核の構成から証明している。
+五点の評価は、その後で一次元の商を検出するために用いている。
+所属と実際の類の消滅には有理数上の零を使っており、
+有限体上の零という観察だけには依存しない。
+標準点における未正規化の $d^{\mathrm T}_{18}$ は非零だが、
+接触像を除いた普遍類は零である。
+
+定理は、十八次の実際の障害が消えることと、二十次以上にのみ項が残り得る
+代数的収束偶正規形の存在を述べる。
+二十次以上の普遍接触商、実際の次の非零係数、
+$P+H/96$ への全次数の接触同値は、ここでは未決定である。
+\end{remark}
+
+% END contact/twentieth_normal_form_ja.tex
+
+
+% BEGIN rank/v14_unit_structure_ja.tex
+\section{次の次数に向けた二つの単元の構造}
+\label{sec:v14-unit-structure}
+
+十八次までの商に現れた $U_4,J_6$ について、
+全次数の議論へ進むための具体的な制限計算を記録する。
+ここでは普遍多項式の性質を調べるため、補助入力として特異な三次式も用いる。
+
+\begin{proposition}[階数二の点における単元の制限と代数的独立性]
+\label{prop:v14-rank-two-unit-restriction}
+体積形式を固定して
+\[
+ a=e_0\wedge e_1,\qquad
+ F_t=x_2^3+x_3^3+x_4^3+6t x_2x_3x_4
+\]
+とすると、本稿の規格化で
+\[
+ U_4(F_t,a)=t^4-t,\qquad
+ J_6(F_t,a)=6-120t^3-48t^6
+\]
+であり、
+\[
+ J_6(F_t,a)^2-2304U_4(F_t,a)^3=36(1+8t^3)^3
+\]
+となる。また $U_4,J_6$ は普遍多項式として代数的に独立である。
+\end{proposition}
+
+\begin{proof}
+$U_4$ と $J_6$ のテンソルグラフをこの入力で縮約する。
+両者の $F$ 次数はそれぞれ4、6なので、$t$ についての次数は高々4、6である。
+$t=0,1,\ldots,6$ の七つの整数入力で得た値は
+\[
+\begin{array}{c|rrrrrrr}
+t&0&1&2&3&4&5&6\\\hline
+U_4&0&0&14&78&252&620&1290\\
+J_6&6&-162&-4026&-38226&-204282&-764994&-2265402
+\end{array}
+\]
+であり、有理数の補間は表示した多項式を与える。
+二つ目の恒等式はそれらの多項式を直接展開して確認できる。
+
+さらに $F=sF_t$ とすると、次数から
+\[
+ (U_4,J_6)=\bigl(s^4(t^4-t),\ s^6(6-120t^3-48t^6)\bigr).
+\]
+この写像の $(s,t)=(1,0)$ におけるJacobian行列式は36である。
+従って二つの成分の間に非零の多項式関係はなく、普遍多項式としても独立である。
+計算は \texttt{v14\_rank2\_unit\_restriction.py} で再現できる。
+\end{proof}
+
+\paragraph{二十次に向けた作業仮説.}
+既に決定した通常商の生成元
+\[
+ [\Theta_8],\quad[\Theta_8U_4],\quad[\Theta_8J_6],\quad
+ [\Theta_8U_4^2],\quad[\Theta_8U_4J_6]
+\]
+は、それぞれ8、12、14、16、18次に現れる。
+この規則から、20次では $\Theta_8U_4^3$ と $\Theta_8J_6^2$ を
+まず調べるのが自然である。
+上の単元の代数的独立性だけでは、この二つが接触商で独立であることも、
+商を生成することも従わない。
+全次数の接触商の構造とHilbert級数は、ここでは未決定である。
+特に、今回消去した実際の十八次類が零であることから、
+二十次以降の実際の類の消滅を推論することはできない。
+
+% END rank/v14_unit_structure_ja.tex
+
+\clearpage
+% BEGIN characters/v15_character_notes_ja.tex
+% 第15版用。第13・14版の本文・証明書は変更せず参照する。
+\section{20次の普遍共変量とKoszul終端}
+\label{sec:v15-twentieth-characters}
+
+20次の研究の入力として、普遍境界、座標補正、単元補正、Pfaffian微分の
+終域とKoszul各項の次元を確定する。
+本節の計算は整数指標計算であり、Koszul完全性や接触写像の階数を仮定しない。
+特に18次とは異なり、20次ではKoszulの第5項が消えない。
+
+\subsection{次数とdeterminant twist}
+
+$\dim V=5$、$A=\Lambda^2V$、$\Delta=\det V$、
+$W=A\otimes\Delta^{-1}$ とする。
+$F\in\operatorname{Sym}^3V$、$a\in W$、
+$q(a)=\tfrac12a\wedge a\in V^*\otimes\Delta^{-1}$、
+$P=F(q(a))\in\Delta^{-3}$ という規約を保つ。
+中心元 $t\,\mathrm{id}_V$ に対する重みは
+$F$ が3、$a$ が $-3$、$P$ が $-15$ である。
+従って $a$ 次数 $n$ の境界項は $F$ 次数 $n-5$、
+$a$ 次数 $r$ の座標補正は $F$ 次数 $r-1$、
+$a$ 次数 $s$ の単元補正は $F$ 次数 $s$ を持つ。
+trace線を外すと
+\begin{align*}
+\mathcal C_n&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{n-5}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^n A,\Delta^{n-3}\right),\\
+\mathcal G_r&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{r-1}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^r A,A\otimes\Delta^{r-1}\right),\\
+\mathcal D_{r+1}&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{r-1}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^{r+1}A,\Lambda^4V\otimes\Delta^{r-1}\right),\\
+\mathcal U_s&=\operatorname{Hom}_{\mathrm{GL}(V)}
+ \left(\operatorname{Sym}^{s}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^{s}A,\Delta^{s}\right).
+\end{align*}
+20次では $n=20$、$r=15$、$s=14$ となる。
+
+$g=\nabla F(q)$ は $F$ 次数1、$a$ 次数4を持つ。
+trace線を外したKoszulの第 $k$ 項は
+\begin{equation}\label{eq:v15-koszul-term}
+\mathcal K_{k,20}=
+\operatorname{Hom}_{\mathrm{GL}(V)}
+\left(\operatorname{Sym}^{15-k}(\operatorname{Sym}^3V)
+ \otimes\operatorname{Sym}^{20-4k} A,
+ \Lambda^k V^*\otimes\Delta^{17-2k}\right).
+\end{equation}
+$\mathcal K_{0,20}=\mathcal C_{20}$、
+$\mathcal K_{1,20}=\mathcal D_{16}$、
+$\mathcal K_{2,20}=\mathcal B_{20}$ である。
+$k=5$ では $a$ 次数は0、$F$ 次数は10、
+値域は $\Lambda^5V^*\otimes\Delta^7=\Delta^6$ となる。
+従って、この項を次数の理由で零とすることはできない。
+
+\begin{proposition}[20次の厳密次元]\label{prop:v15-twentieth-dimensions}
+次の次元が成り立つ。
+\[
+\begin{array}{c|rrrrrrrr}
+ &\mathcal C_{20}&\mathcal G_{15}&\mathcal U_{14}&\mathcal D_{16}
+ &\mathcal B_{20}&\mathcal K_{3,20}&\mathcal K_{4,20}&\mathcal K_{5,20}\\\hline
+\dim&330&1244&164&688&468&117&10&1
+\end{array}
+\]
+\end{proposition}
+
+\begin{proof}
+Littlewood分解
+\[
+\operatorname{Sym}^d A=
+ \bigoplus_{j=0}^{\lfloor d/2\rfloor}S_{(d-j,d-j,j,j,0)}V
+\]
+とdeterminant長方形の補分割を用いる。
+$\mathcal C_{20}$ は $\operatorname{Sym}^{15}(\operatorname{Sym}^3V)$ の
+$\lambda_j=(17,14-j,14-j,j,j)$ 成分の重複度の和、
+$\mathcal U_{14}$ は $\operatorname{Sym}^{14}(\operatorname{Sym}^3V)$ の
+$\mu_j=(14,14-j,14-j,j,j)$ 成分の重複度の和となる。
+ここで $0\le j\le7$ であり、重複度は
+\[
+\begin{array}{c|rrrrrrrr}
+j&0&1&2&3&4&5&6&7\\\hline
+[S_{\lambda_j}]&3&4&28&49&118&72&55&1\\
+{}[S_{\mu_j}]&1&1&11&21&59&38&32&1
+\end{array}
+\]
+である。和はそれぞれ330、164となる。
+残る空間は、次のhighest weightの重複度として求める。
+\[
+\begin{array}{c|rr|c|r}
+\text{空間}&F\text{次数}&a\text{次数}&\text{値域のhighest weight}&\dim\\\hline
+\mathcal G_{15}&14&15&(15,15,14,14,14)&1244\\
+\mathcal D_{16}&14&16&(15,15,15,15,14)&688\\
+\mathcal B_{20}&13&12&(13,13,13,12,12)&468\\
+\mathcal K_{3,20}&12&8&(11,11,10,10,10)&117\\
+\mathcal K_{4,20}&11&4&(9,8,8,8,8)&10\\
+\mathcal K_{5,20}&10&0&(6,6,6,6,6)&1
+\end{array}
+\]
+各行で $3\deg_F+2\deg_a$ はhighest weightの総和と一致する。
+
+計算算法は有限な整数演算である。
+三次単項式の35個の重み $\alpha$ について
+\[
+ \prod_{|\alpha|=3}(1-tx^\alpha)^{-1}
+  =\sum_{m,\beta}M_m(\beta)t^mx^\beta
+\]
+をEuler積の動的計画法で計算した。
+$\rho=(4,3,2,1,0)$ とするとSchur重複度は
+\[
+ \sum_{\sigma\in\mathfrak S_5}\operatorname{sgn}(\sigma)
+ M_m(\lambda+\rho-\sigma\rho)
+\]
+である。二つのcharacterの積にも同じ交代式を適用する。
+第5項の終端については、正符号項と負符号項の和がそれぞれ
+$35085580$、$35085579$ であり、その差が1となる。
+
+独立な検算としてNewton--Adams再帰
+\[
+ mh_m=\sum_{k=1}^m p_kh_{m-k},\qquad
+ p_k=\sum_{|\alpha|=3}x^{k\alpha},\qquad h_0=1
+\]
+でも $h_m=\operatorname{ch}\operatorname{Sym}^m(\operatorname{Sym}^3V)$ を求めた。
+$1\le m\le15$ の全重みの整数係数が一致し、
+$m=15$ では211876個の重みを照合した。
+全体の次元も
+\[
+ \dim\operatorname{Sym}^{15}(\operatorname{Sym}^3V)
+ =\binom{49}{15}=1575580702584
+\]
+と一致する。
+$10\le m\le15$ の全Schur分解を列挙し、
+Weyl次元公式による和と $\binom{m+34}{m}$ の一致も確認した。
+この範囲の非零Schur成分数は順に
+$550,793,1107,1469,1931,2476$ である。
+
+$\mathcal G_{15}$ と $\mathcal D_{16}$ は27行の独立なPieri表で再計算した。
+四つのKoszul源は、旧Pieri実装を読み込まず、
+5行のうち $k$ 行を選んで1を加える縦strip列挙でも再計算した。
+各段でPieri分解全体の次元と
+$\binom5k\dim\operatorname{Sym}^{20-4k}A$ も一致する。
+これらの検算は標本評価や浮動小数点近似を用いない。
+\end{proof}
+
+\paragraph{Pfaffian微分とEuler標数.}
+既存の全次数Pfaffian全射定理を $r=15$ に適用すると
+\[
+ \delta q:\mathcal G_{15}\twoheadrightarrow\mathcal D_{16},\qquad
+ \operatorname{rank}\delta q=688,\qquad
+ \dim\ker\delta q=556
+\]
+を得る。ここでの全射性は指標の次元比較ではなく、既存の定理に依存する。
+20次のKoszul成分は
+\[
+0\longrightarrow\mathcal K_{5,20}\longrightarrow\mathcal K_{4,20}
+ \longrightarrow\mathcal K_{3,20}\longrightarrow\mathcal B_{20}
+ \longrightarrow\mathcal D_{16}\longrightarrow\mathcal C_{20}
+ \longrightarrow0
+\]
+であり、そのEuler標数は
+\[
+ 330-688+468-117+10-1=2.
+\]
+この等式だけでは $\dim\mathcal C_{20}/dF(\mathcal D_{16})=2$ とは結論できない。
+他のホモロジーまたは写像の階数を別に決める必要がある。
+
+\subsection{対角値と一階jetの普遍的な不足}
+
+$F_{\mathrm{Fer}}=\sum_i x_i^3$、
+$H=\mu_3^5\rtimes\mathfrak S_5$、
+$N=\operatorname{Jac}(F_{\mathrm{Fer}})_3$ とする。
+$N$ は平方因子を持たない三次単項式10個で張られる。
+$m_\lambda$ を普遍出現重複度、
+$h_0(\lambda)=\dim(S_\lambda V)^H$、
+$h_1(\lambda)=\dim\operatorname{Hom}_H(N,S_\lambda V)$ と書く。
+対角値の制限階数は $\min(m_\lambda,h_0)$ 以下、
+値と全法方向一階jetを合わせた階数も $\min(m_\lambda,h_0+h_1)$ 以下である。
+
+\begin{proposition}[20次の制限上界]\label{prop:v15-diagonal-visibility}
+次の上界と下界が成り立つ。
+\[
+\begin{array}{c|rrrr}
+&\mathcal C_{20}&\mathcal U_{14}&\mathcal D_{16}&\mathcal G_{15}\\\hline
+\text{普遍次元}&330&164&688&1244\\
+\text{対角値の階数上界}&137&43&230&382\\
+\text{対角値の核の次元下界}&193&121&458&862\\
+\text{値と全法方向一階jetの階数上界}&307&130&624&1102\\
+\text{同じ一階jetの核の次元下界}&23&34&64&142
+\end{array}
+\]
+\end{proposition}
+
+\begin{proof}
+有限群の指標平均を $\mathbb Q(\zeta_3)$ の整数対表示で計算する。
+$\mathcal C_{20}$ の表は
+\[
+\begin{array}{c|r|r|r}
+\lambda&m_\lambda&h_0&h_1\\\hline
+(17,14,14,0,0)&3&218&2019\\
+(17,13,13,1,1)&4&151&1529\\
+(17,12,12,2,2)&28&133&1105\\
+(17,11,11,3,3)&49&52&564\\
+(17,10,10,4,4)&118&38&323\\
+(17,9,9,5,5)&72&10&79\\
+(17,8,8,6,6)&55&5&28\\
+(17,7,7,7,7)&1&0&0
+\end{array}
+\]
+となる。最後の二成分には、一階jetまででもそれぞれ少なくとも22方向、1方向の核が残る。
+単元空間の表は
+\[
+\begin{array}{c|r|r|r}
+\lambda&m_\lambda&h_0&h_1\\\hline
+(14,14,14,0,0)&1&21&165\\
+(14,13,13,1,1)&1&22&219\\
+(14,12,12,2,2)&11&33&232\\
+(14,11,11,3,3)&21&12&133\\
+(14,10,10,4,4)&59&13&98\\
+(14,9,9,5,5)&38&3&22\\
+(14,8,8,6,6)&32&2&10\\
+(14,7,7,7,7)&1&0&0
+\end{array}
+\]
+であり、最後の三成分から一階jetの核の次元下界 $13+20+1=34$ を得る。
+$\mathcal D_{16}$ と $\mathcal G_{15}$ では、同じ上界にPieri側の外側重複度を掛けて和を取る。
+全27行の表と指標平均はJSON証明書に保存した。
+\end{proof}
+
+これらは制限写像の階数の上界であり、実際の階数ではない。
+20次では境界空間そのものも、対角値と全法方向一階jetだけでは単射に検出できない。
+一方、普遍接触商の次元と補元が別途確定した場合には、
+その商だけを少数の対角点で検出できる可能性は残る。
+普遍空間の検出と、既に決定された商の検出を区別する必要がある。
+
+\subsection{計算証明書}
+
+\nolinkurl{v15_character_certificate.py} は原第13版の
+\nolinkurl{nc_cubic_verify_v7.py}、
+\nolinkurl{v9_verify_contact_bounds.py}、
+\nolinkurl{v11_fermat_scope_certificate.py} を不変入力として使用する。
+入力のSHA256、全交代式、全Schur分解、Pieri表、有限安定化群の平均、
+全重みNewton照合の記録を出力する。
+\nolinkurl{v15_koszul_pieri_check.py} は四つのKoszul源を別実装で再検算する。
+いずれもassertionを無効にする実行設定を拒否する。
+本節では、通常接触商・有効接触商の次元と実際の20次係数をまだ主張しない。
+
+% END characters/v15_character_notes_ja.tex
+
+
+% BEGIN rank/rank20_section_ja.tex

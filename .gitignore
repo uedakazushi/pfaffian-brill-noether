@@ -1,0 +1,14 @@
+build/
+*.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.xdv
+__pycache__/
+*.pyc
+.DS_Store
+*.zip
